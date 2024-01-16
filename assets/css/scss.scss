@@ -1,0 +1,251 @@
+$breadcrumb-divider: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'><path d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='#{$breadcrumb-divider-color}'/></svg>");
+
+@use 'commons' as *;
+@use 'nav' as *;
+@use 'forms' as *;
+@use 'admin' as *;
+@use 'modale' as *;
+
+// Doit toujours être au début du fichier
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $white;
+    color: $dark;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    padding: 0;
+
+    main {
+        @include flex(column);
+        padding: 1.5rem;
+        section {
+            width: 60%;
+
+            .pageIntroduction {
+                @include flex(column);
+            }
+
+            .subTitle {
+                @include titles(1.5rem, 300, $dark);
+            }
+        }
+    }
+
+    footer {
+        background-color: $dark;
+        color: $white;
+        margin: 0;
+        margin-top: auto;
+        padding: 1.5rem;
+        .footerTitle{
+            @include titles(1.5rem, 800, $white);
+        }
+
+        .footerSubTitle {
+            @include titles(1.2rem, 800, $white);
+        }
+    }
+}
+
+#modalContainer {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+        align-items: center;
+        justify-content: center;
+    height: 100%;
+    position: fixed;
+        left: 0;
+        top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+#modal {
+    background-color: whitesmoke;
+    padding: 1rem;
+    width: 50%;
+}
+
+#closeBtn {
+    cursor: pointer;
+    float: right;
+}
+
+@use 'commons' as *;
+
+.quickAccessContainer {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+
+    @media all and (max-width: 963px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .quickAccess {
+        text-align: center;
+        background-color: $primary;
+        color: $white;
+        padding: 1rem;
+        border-radius: 5px;
+    }
+}
+
+.lastAddedContainer {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    @media all and (max-width: 963px) {
+        grid-template-columns: 1fr;
+    }
+    .lastAdded {
+        padding: 1rem;
+        h3 {
+            color: $primary;
+            font-variant: small-caps;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            tr, th, td {
+                border: 1px solid $primary;
+                padding: 0.5rem;
+                text-align: center;
+            }
+        }
+    }
+}
+
+//Imports 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap');
+
+// Variables
+$primary: #A53860;
+$secondary: #4C3B4D;
+$success: #028090;
+$danger: #E84855;
+$white: #F8F8F8;
+$dark: #333135;
+$ligthDark: #524E55;
+
+//Mixins
+@mixin flex($direction: row, $justify: center, $align: center){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin titles ($size, $weight, $color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+
+@use 'commons' as *;
+
+form {
+    @include flex(column, center, left);
+
+    label {
+        font-weight: bold;
+        margin-top: 0.5rem;
+    }
+
+    input {
+        &:not([type="submit"]) {
+            border: none;
+            border-bottom: 1px solid $dark;
+            margin: 0.5rem 0;
+            padding: 0.4rem;
+        }
+
+        &:focus {
+            outline: none;
+            border-bottom: 2px solid $primary;
+        }
+
+        &[type="checkbox"] {
+            margin: 0;
+            margin-right: 0.3rem;
+            padding: 0;
+
+            +label {
+                font-weight: unset;
+            }
+        }
+
+        &[type="submit"] {
+            background-color: $success;
+            border: none;
+            border-radius: 25px;
+            color: $white;
+            margin: auto;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            width: fit-content;
+        }
+    }
+
+    .errorsMessage {
+        color: $danger;
+    }
+}
+
+button {
+    background-color: $danger;
+    border: none;
+    border-radius: 25px;
+    color: $white;
+    margin: auto;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    width: fit-content;
+}
+
+@use 'commons' as *;
+
+nav {
+    background-color: $primary;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            display: inline-block;
+            margin: 0 0.5rem;
+
+            a {
+                color: $white;
+                position: relative;
+                text-decoration: none;
+
+                &:after {
+                    background-color: $white;
+                    content: '';
+                    height: 2px;
+                    position: absolute;
+                    bottom: -3px;
+                    left: 0;
+                    transform: scaleX(0);
+                    width: 100%;
+                    transition: transform 0.3s;
+                }
+                &:hover {
+                    &:after {
+                        transform: scaleX(1);
+                    }
+                }
+            }
+        }
+    }
+}
