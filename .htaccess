@@ -1,0 +1,24 @@
+RewriteEngine On
+#users
+RewriteRule ^accueil$ /controllers/indexController.php
+RewriteRule ^inscription$ /controllers/users/registerController.php
+RewriteRule ^connexion$ /controllers/users/loginController.php
+RewriteRule ^mon-compte$ /controllers/users/accountController.php
+RewriteRule ^modifier-mon-compte$ /controllers/users/updateAccountController.php
+RewriteRule ^deconnexion$ /controllers/users/logoutController.php
+RewriteRule ^profile$ /controllers/users/profileController.php
+RewriteRule ^contact$ /controllers/users/contactController.php
+RewriteRule ^inbox$ /views/pages/inbox.php
+RewriteRule ^compte-supprime$ index.php?deleteAccount=true
+
+#posts
+RewriteRule ^topics$ /controllers/posts/topicsController.php
+RewriteRule ^threadss$ /controllers/posts/topicsController.php
+RewriteRule ^thread$ /views/posts/thread.php
+RewriteRule ^forum$ /controllers/posts/forumController.php
+RewriteRule ^arena$ /controllers/posts/forumController.php
+RewriteRule ^media$ /views/pages/media.php
+
+#ADMIN
+RewriteRule ^dashboard$ /controllers/users/adminController.php
+RewriteRule ^errors$ /views/errors/errors.php
