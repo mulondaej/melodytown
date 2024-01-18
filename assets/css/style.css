@@ -81,22 +81,22 @@ header a {
 
 @keyframes bowAnimation {
     0% {
-      color: #c4e5e1d6; /* Red */
+      color: #c4e5e1d6; /* Cyan */
     }
     20% {
       color: #d9a147c4; /* Orange */
     }
     40% {
-      color: #3e8daecc; /* Yellow */
+      color: #3e8daecc; /* bleu */
     }
     60% {
-      color: #646cb9c9; /* Green */
+      color: #646cb9c9; /* Violet */
     }
     80% {
-      color: #9f6c85be; /* Blue */
+      color: #9f6c85be; /* Brun */
     }
     100% {
-      color: #b48a8ac7; /* Purple */
+      color: #b48a8ac7; /* Brown */
     }
   }
 
