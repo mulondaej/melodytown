@@ -21,7 +21,7 @@
             <div class="siteLogo">
                 <img src="../../assets/IMG/logo2.jpg" alt="site logo" id="logo">
                 <a href="/accueil">
-                    <h1>Melody</h1>
+                    <h1>MelodyTown</h1>
                 </a>
             </div>
 
