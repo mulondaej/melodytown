@@ -38,10 +38,12 @@
                 <?php require_once 'navbar.php'; ?>
                 <button class="btn btn-secondary btn-sm" id="connect"><i class="fa-solid fa-right-to-bracket fa-beat-fade"><a href="/connexion"> Connexion</a></i></button>
             <?php } else { ?>
-                
-                <?php  require_once 'navMember.php'; ?>
-                 
-                
+                <?php require_once 'navMember.php'; ?>
+
+                <?php if (header('Location: /profile')) {
+                    require_once 'navProfile.php';
+                } ?>
+
                 <div class="btn-group" id="menu-button">
                     <button type="button" class="btn btn-sm btn-tertiary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="../assets/IMG/asha-logo.png" alt="User Avatar" id="avatar">
@@ -52,15 +54,16 @@
                         <li><a class="dropdown-item" type="button" href="../pages/donate.php">Donate</a></li>
                     </ul>
                 </div>
-                
+
                 <?php ?><div id="logging">
                     <?php if ($_SESSION['user']['id_usersRoles'] == 1) { ?>
                         <a href="/profile" id="idCorner">@<?= $_SESSION['user']['username'] ?></a>
                     <?php }
-                    if ($_SESSION['user']['id_usersRoles'] == 258) { ?>
+                    if ($_SESSION['user']['id_usersRoles'] == 142) { ?>
                         <a href="/dashboard">Moderateur</a></li>
                     <?php }
                     if ($_SESSION['user']['id_usersRoles'] == 258) { ?>
+                        <a href="/profile" id="idCorner">@<?= $_SESSION['user']['username'] ?></a>
                         <a href="/dashboard">Admin</a>
                     <?php } ?>
                     <a href="/deconnexion">Déconnexion</a>
