@@ -3,7 +3,5 @@
 
 
 
-
-
-    <?php require_once 'views/pages/forum.php'; ?>
-    <?php require_once 'views/parts/footer.php'; ?>
+<?php require_once 'views/pages/forum.php'; ?>
+<?php require_once 'views/parts/footer.php'; ?>

@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     //menuOverlay.style.right = menuOverlay.style.right === "0%" ? "-100%" : "0%";
     //});
 
-
     const searchBtn = document.getElementById('searchBtn');
     const searched = document.getElementById('searching');
 
@@ -103,14 +102,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Add functionality to trigger the file input when "Edit Cover" is clicked
+    // file input when "Edit Cover" is clicked
     const editCoverButton = document.getElementById("editCover");
 
     editCoverButton.addEventListener("click", function () {
         coverImageUpload.click(); // Trigger the file input click event
     });
 
-    // JavaScript for avatar image upload (Similar to cover image upload)
+    // avatar image upload (Similar to cover image upload)
     const avatarImageUpload = document.getElementById("avatarUpload");
     const avatarImg = document.getElementById("avatar");
 
@@ -138,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const mediaLink = document.getElementById('media-link');
     const mediaFolder = document.getElementById('media-folder');
 
-    // Toggle media folder visibility
+    // Toggle media folder 
     mediaLink.addEventListener('click', function (e) {
         e.preventDefault();
         mediaFolder.classList.toggle('show-media-folder');
@@ -150,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ... (previous code) ...
 
-    // Handle "Edit Username" button click
+    // "Edit Username" button click
     document.getElementById("editUsername").addEventListener("click", () => {
         const currentTime = new Date().getTime();
         if (!lastUsernameEditTime || currentTime - lastUsernameEditTime >= 31536000000) {
@@ -163,47 +162,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Handle "Edit Location" button click (similar to username editing)
+    // "Edit Location" button click (similar to username editing)
     document.getElementById("editLocation").addEventListener("click", () => {
         // Allow editing location
         document.getElementById("location").contentEditable = true;
         document.getElementById("saveStatus").classList.remove("hidden");
     });
 
-    // Handle "Save Status" button click
-    document.getElementById("saveStatus").addEventListener("click", () => {
-        // Save the edited status to local storage
-        const editedStatus = document.getElementById("status-text").value;
-        localStorage.setItem("userStatus", editedStatus);
-        // Disable editing status
-        document.getElementById("status-text").disabled = true;
-        document.getElementById("status-text").value = editedStatus;
-        document.getElementById("saveStatus").classList.add("hidden");
-    });
-
-    // ... (previous code) ...
-
-    // ... (previous code) ...
-
-    // Handle status likes
-    const likeStatusButtons = document.querySelectorAll('.likeStatus');
-    likeStatusButtons.forEach(function (button) {
-        button.addEventListener('click', function () {
-            // Handle like functionality here
-        });
-    });
-
-    // Handle status comments
-    const commentStatusButtons = document.querySelectorAll('.commentStatus');
-    commentStatusButtons.forEach(function (button) {
-        button.addEventListener('click', function () {
-            const statusContainer = button.closest('.statusContainer');
-            const replyForm = statusContainer.querySelector('.reply-form');
-            replyForm.classList.toggle('hidden');
-        });
-    });
-
-    // Handle comment likes
+    // Likes
     const likeCommentButtons = document.querySelectorAll('.likeComment');
     likeCommentButtons.forEach(function (button) {
         button.addEventListener('click', function () {
@@ -211,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Handle reply to comment
+    // replies 
     const replyCommentButtons = document.querySelectorAll('.replyComment');
     replyCommentButtons.forEach(function (button) {
         button.addEventListener('click', function () {
@@ -253,4 +219,131 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Call the function to render user activity when the page loads
     renderActivity();
+
+    // le thread 
+    const threads = JSON.parse(localStorage.getItem('threads')) || [];
+
+    let users = ($_SESSION['user'] && $_SESSION['user']['username']) ? $_SESSION['user']['username'] : '';
+
+    let score = 0;
+
+    const createThread = document.getElementById('createThread');
+    const newThreadForm = document.getElementById('threadForm');
+    const forumContainer = document.getElementById('forumcontainer');
+    const closeBtn = document.getElementById('closeBtn');
+    const modalContainer = document.getElementById('modalContainer');
+
+    createThread.addEventListener('click', () => {
+        score = +1;
+        let timestamp = new Date().toLocaleString();
+        const newThread = {
+            tag: document.getElementById('tag').value,
+            title: document.getElementById('title').value,
+            content: document.getElementById('content').value,
+            timestamp,
+            user: users,
+        };
+
+        threads.push(newThread);
+        localStorage.setItem('threads', JSON.stringify(threads));
+
+        displayThreads();
+    });
+
+    function displayThreads() {
+        forumContainer.innerHTML = '';
+
+        for (let i = 0; i < threads.length; i++) {
+            const threadLink = document.createElement('a');
+            threadLink.href = `thread.php?threadId=${i}`;
+            threadLink.innerHTML = `<h4>${threads[i].title}</h4>
+            <p> An interesting ${threads[i].tag}'s topic to discuss </p>`;
+
+            const threadDiv = document.createElement('div');
+            threadDiv.classList.add('subforum-row');
+            threadDiv.innerHTML = `
+            <div class="subforum-icon subforum-column center" id="icon">
+                <i class="fa-regular fa-comment" style="color: #e0e9f6;"></i>
+            </div>
+            <div class="subforum-description subforum-column" id="subDescript">
+                <ul class="thread-list">
+                    <li>
+                        ${threadLink.outerHTML}
+                    </li>   
+                </ul>
+            </div>
+            <div class="subforum-stats subforum-column center">
+                <span><a href="#" id="topicPost">${score} Posts | <a href="#" id="topics">${score} Topics</a></span>
+            </div>
+            <div class="subforum-info subforum-column">
+                <b><a href="#">Last post</a></b> by <a href="#">${threads[i].user}</a>,
+                <small id="dateAlert">${threads[i].timestamp}</small>
+            </div>
+        `;
+
+            forumContainer.appendChild(threadDiv);
+        }
+    }
+
+    newThreadForm.addEventListener("click", () => {
+        if (threadForm.style.display === 'none' || threadForm.style.display === '') {
+            threadForm.style.display = 'block';
+        } else {
+            threadForm.style.display = 'none';
+        }
+    });
+
+    closeBtn.addEventListener("click", () => {
+        modalContainer.style.display = 'none';
+    });
+
+    modalContainer.addEventListener("click", (e) => {
+        modalContainer.style.display = 'none';
+    });
+
+    const contents = document.getElementById('threadContent');
+    const commentBtn = document.getElementById('commentBtn');
+    const likeBtn = document.getElementById('likeBtn');
+    const quoteBtn = document.getElementById('quoteBtn');
+
+    const quotedHere = document.getElementById('comments');
+    let commentbox = document.querySelector('.commentsArea');
+    let replied = document.querySelector('.replies');
+
+    const replies = [];
+
+    score = 0;
+
+    commentBtn.addEventListener('click', () => {
+        let commento = document.getElementById('comments').value;
+
+        replies.push(commento);
+        displayReplies();
+    });
+
+    function displayReplies() {
+        let timestamp = new Date().toLocaleString();
+        commentbox.innerHTML = '';
+
+        for (let reply of replies) {
+            let replyDiv = `<br><div class="replies"><p id="replied">${reply}<p>
+        <br><p id=timed>${timestamp}</p><br>
+        <button id="likedBtn"><i class="fa-solid fa-heart"></i></button>
+        <button id="replyBtn"><a href="#comments">Reply</a></button>
+        <button id="quotedBtn">+Quote</button></div>
+        <hr>
+        `;
+            commentbox.innerHTML += replyDiv;
+            console.log(replyDiv);
+        }
+    }
+
+    likeBtn.addEventListener('click', () => {
+        likeBtn.classList.toggle("changeColor");
+    });
+
+    quoteBtn.addEventListener('click', () => {
+        quotedHere.value += '" ' + content + '\n\n' + '"';
+    });
+
 });
