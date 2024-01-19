@@ -1,0 +1,5 @@
+<a href="">Last post</a></b> by <a href=""><?php if(!empty($_SESSION['user'])){
+                    $userAccount->username ;
+                } else { ?>
+                     <p><?php ?> Random User </p>; <?php
+                }?></a>  

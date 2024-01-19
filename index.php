@@ -1,8 +1,6 @@
 <?php require_once 'views/parts/header.php'; ?>
-<div id="main">
-    <?php if (isset($_GET['deleteAccount'])) { ?>
-        <p>Votre compte a bien été supprimé.</p>
-    <?php } ?>
+
+
 
 
 

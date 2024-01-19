@@ -1,3 +1,7 @@
+<div id="main">
+    <?php if (isset($_GET['deleteAccount'])) { ?>
+        <p>Votre compte a bien été supprimé.</p>
+    <?php } ?>
 <section class="forum" id="forum">
     <!-- Thread creation form -->
     <div class="forumcontainer">
@@ -46,7 +50,7 @@
                 <p><?= $_POST['content'] ?></p>
                 <p><?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%H:%M')); ?></p>
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p>
             <?php } ?>
             <?php
             var_dump($_POST);
@@ -74,7 +78,9 @@
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                    <small id="dateAlert">12 Dec 2020</small>
+                    <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                 </div>
             </div>
             <div class="subforum-row">
@@ -95,7 +101,9 @@
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                    <small id="dateAlert">12 Dec 2020</small>
+                    <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                 </div>
             </div>
             <?php if (!empty($_SESSION['user'])) { ?>
@@ -117,7 +125,9 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
                 <div class="subforum-row">
@@ -138,7 +148,9 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
         </div>
@@ -168,7 +180,9 @@
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert">12 Dec 2020</small>
+                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
             </div>
         </div>
         <hr class="subforum-devider">
@@ -190,7 +204,9 @@
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert">12 Dec 2020</small>
+                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
             </div>
         </div>
         <hr class="subforum-devider">
@@ -212,7 +228,9 @@
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert">12 Dec 2020</small>
+                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
             </div>
         </div>
         <hr class="subforum-devider">
@@ -234,7 +252,9 @@
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert">12 Dec 2020</small>
+                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
             </div>
         </div>
         <hr class="subforum-devider">
@@ -256,7 +276,9 @@
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert">12 Dec 2020</small>
+                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
             </div>
         </div>
         <div class="subforum-row">
@@ -278,7 +300,9 @@
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert">12 Dec 2020</small>
+                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
             </div>
         </div>
         <div class="subforum-row">
@@ -299,7 +323,9 @@
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert">12 Dec 2020</small>
+                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
             </div>
         </div>
         <div class="subforum-row">
@@ -314,7 +340,9 @@
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert">12 Dec 2020</small>
+                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
             </div>
         </div>
         <hr class="subforum-devider">
@@ -340,7 +368,9 @@
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                    <small id="dateAlert">12 Dec 2020</small>
+                    <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                 </div>
             </div>
             <div class="subforum-row">
@@ -361,7 +391,9 @@
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                    <small id="dateAlert">12 Dec 2020</small>
+                    <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                 </div>
             </div>
             <div class="subforum-row">
@@ -381,7 +413,9 @@
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                    <small id="dateAlert">12 Dec 2020</small>
+                    <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                 </div>
             </div>
             <hr class="subforum-devider">
@@ -410,7 +444,9 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
                 <hr class="subforum-devider">
@@ -433,7 +469,9 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
                 <div class="subforum-row">
@@ -451,7 +489,9 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
             </div>
@@ -474,7 +514,9 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
                 <hr class="subforum-devider">
@@ -492,7 +534,9 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
             </div>
@@ -515,7 +559,9 @@
                         </div>
                         <div class="subforum-info subforum-column">
                             <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                            <small id="dateAlert">12 Dec 2020</small>
+                            <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                         </div>
                     </div>
                     <hr class="subforum-devider">
@@ -533,7 +579,9 @@
                         </div>
                         <div class="subforum-info subforum-column">
                             <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                            <small id="dateAlert">12 Dec 2020</small>
+                            <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                         </div>
                     </div>
                 </div>
@@ -559,7 +607,9 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
                 <hr class="subforum-devider">
@@ -577,7 +627,9 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
                 <hr class="subforum-devider">
@@ -595,7 +647,9 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
             </div>
@@ -618,7 +672,9 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
                 <hr class="subforum-devider">
@@ -636,7 +692,9 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
             </div>
@@ -659,7 +717,9 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
                 <hr class="subforum-devider">
@@ -677,9 +737,12 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
+                <?php if (!empty($_SESSION['user'])) { ?>
                 <div class="subforum-row">
                     <div class="subforum-icon subforum-column ">
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
@@ -694,9 +757,12 @@
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert">12 Dec 2020</small>
+                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    date_default_timezone_set('Europe/Paris');
+                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
                     </div>
                 </div>
+                <?php  } ?>
             </div>
         </div>
     </div>

@@ -855,6 +855,7 @@ button:hover,
     text-align: center;
     margin-top: 10px;
     height: max-content;
+    /
   }
   
   #logForm h1 {
@@ -939,9 +940,10 @@ button:hover,
 
   .compteFlex {
     display: flex;
-    width: max-content;
     margin: 0 auto;
+    justify-content: space-evenly;
   }
+
 /* MAIN SECTION FORUM*/
 #main {
     width: 100%;

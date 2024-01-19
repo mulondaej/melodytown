@@ -1,7 +1,7 @@
 <div class="navbar">
         <div class="btn-group dropdown-center">
             <button class="btn btn-secondary btn-sm" type="button">
-                <i class="fa-brands fa-discourse" id="discuss"></i><a href="/forum"> Discuss</a></button>
+                <i class="fa-brands fa-discourse" id="discuss"></i><a href="/forum"> Forum</a></button>
             <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="visually-hidden"></span>
             </button>
@@ -14,8 +14,8 @@
         </div>
         <div class="btn-group dropdown-center">
             <button class="btn btn-secondary btn-sm" type="button">
-                <i class="fa-sharp fa-solid fa-sailboat" id="discover"></i><a href="/discover">
-                    Discover</a></button>
+                <i class="fa-sharp fa-solid fa-sailboat" id="discover"></i><a href="/forum">
+                    Découvrir</a></button>
             <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="visually-hidden"></span>
             </button>
@@ -25,19 +25,7 @@
                 <li><a class="dropdown-item" href="#">Series</a></li>
             </ul>
         </div>
-        <div class="btn-group dropdown-center">
-            <button class="btn btn-secondary btn-sm" type="button">
-                <i class="fa-solid fa-hands-bubbles" id="arena"></i><a href="/arena"> Arena</a>
-            </button>
-            <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="visually-hidden"></span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark text-center">
-                <li><a class="dropdown-item" href="#">Vs Manga</a></li>
-                <li><a class="dropdown-item" href="#">Vs Comics</a></li>
-                <li><a class="dropdown-item" href="#">Vs Multiverse</a></li>
-            </ul>
-        </div>
+        
         <div class="btn-group dropdown-center">
             <button class="btn btn-secondary btn-sm notification" type="button">
                 <i class="fa-solid fa-message" id="chats"></i><a href="/inbox"> Inbox
