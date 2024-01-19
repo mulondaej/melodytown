@@ -7,7 +7,7 @@
     <div class="forumcontainer">
         <?php if (!empty($_SESSION['user'])) { ?>
             <h1>Detendez-vous avec plaisir dans des discussions !</h1>
-            <input id="newThread" type="button" value="Create new thread" href="/topic">
+            <button type="button" id="newThread" value="thread" href="/topic">Nouveau topic</button>
             <?php
             if (empty($_POST) || !empty($errors)) {
             ?>

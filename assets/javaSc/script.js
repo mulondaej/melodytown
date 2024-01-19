@@ -65,6 +65,15 @@ document.addEventListener("DOMContentLoaded", function () {
         window.history.back
     }
 
+    //
+    newThread.addEventListener("click", () => {
+        if (threadForm.style.display === 'none' || threadForm.style.display === '') {
+            threadForm.style.display = 'block';
+        } else {
+            threadForm.style.display = 'none';
+        }
+    })
+
     //modal
     openModalBtn.addEventListener("click", () => {
         modalContainer.style.display = "flex"
@@ -144,12 +153,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    // Define a variable to track the last edit time for username
+    // variable to track the last edit time for username
     let lastUsernameEditTime = null;
 
     // ... (previous code) ...
 
-    // "Edit Username" button click
+    // "Edit Username" 
     document.getElementById("editUsername").addEventListener("click", () => {
         const currentTime = new Date().getTime();
         if (!lastUsernameEditTime || currentTime - lastUsernameEditTime >= 31536000000) {
@@ -162,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // "Edit Location" button click (similar to username editing)
+    // "Edit Location" 
     document.getElementById("editLocation").addEventListener("click", () => {
         // Allow editing location
         document.getElementById("location").contentEditable = true;
@@ -187,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Sample data (You would replace this with data from your server)
+    // Sample data 
     const userActivityData = [
         { type: "post", text: "Posted a new status: Hello, world!" },
         { type: "profileVisit", visitor: "John Doe" },
