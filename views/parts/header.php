@@ -19,7 +19,7 @@
             <li class="active">Contact</li>
             </ul>-->
             <div class="siteLogo">
-                <img src="../../assets/IMG/logo2.jpg" alt="site logo" id="logo">
+                <img src="assets/IMG/logo2.jpg" alt="site logo" id="logo">
                 <a href="/accueil">
                     <h1>MelodyTown</h1>
                 </a>
@@ -36,17 +36,18 @@
 
             <?php if (empty($_SESSION['user'])) { ?>
                 <?php require_once 'navbar.php'; ?>
-                <button class="btn btn-secondary btn-sm" id="connect"><i class="fa-solid fa-right-to-bracket fa-beat-fade"><a href="/connexion"> Connexion</a></i></button>
-            <?php } else { ?>
+                <button class="btn btn-secondary btn-sm" id="connect"><i class="fa-solid fa-right-to-bracket ">
+                    <a href="/connexion"> Connexion</a></i></button>
+                <button class="btn btn-secondary btn-sm" id="connect"><i class="fa-solid fa-right-to-bracket ">
+                    <a href="/inscription"> S'inscrire</a></i></button>
+            <?php } 
+                
+            else { ?>
                 <?php require_once 'navMember.php'; ?>
-
-                <?php if (header('Location: /profile')) {
-                    require_once 'navProfile.php';
-                } ?>
 
                 <div class="btn-group" id="menu-button">
                     <button type="button" class="btn btn-sm btn-tertiary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../assets/IMG/asha-logo.png" alt="User Avatar" id="avatar">
+                        <img src="../assets/IMG/logokib.png" alt="User Avatar" id="avatar">
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
                         <li><a class="dropdown-item" type="button" href="/mon-compte">Mon compte</a></li>

@@ -22,6 +22,9 @@ h1, h2, h3, p, button, input, select, textarea {
     color: black;
 }
 
+section {
+    text-align: center;
+}
 /* .... */
 button {
     cursor: pointer;
@@ -851,6 +854,7 @@ button:hover,
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin-top: 10px;
+    height: max-content;
   }
   
   #logForm h1 {
@@ -894,7 +898,7 @@ button:hover,
     width: max-content;
   }
   
-  #logForm input[type="submit"]:hover {
+  #logForm input[type="submit"]:hover, #openModalBtn:hover{
     background-color: #45a049;
   }
 
@@ -919,7 +923,25 @@ button:hover,
     text-align: center;
   }
   
+  #openModalBtn {
+    background-color: rgb(219, 30, 30);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    justify-content: center;
+    margin: 12px;
+    width: max-content;
+    height: max-content;
+  }
 
+  .compteFlex {
+    display: flex;
+    width: max-content;
+    margin: 0 auto;
+  }
 /* MAIN SECTION FORUM*/
 #main {
     width: 100%;
@@ -989,7 +1011,7 @@ button:hover,
     display: grid;
     grid-template-columns: 8% 65% 12% 15%;
     margin-bottom: 6px;
-    max-height: fit-content;
+    max-height: 70px;
 }
 
 .subforum-column {
@@ -1000,6 +1022,7 @@ button:hover,
     background-color: #51686a;
     margin-bottom: 3px;
     margin-top: 2px;
+    max-height: 70px;
 }
 
 .subforum-column h4 {
@@ -1027,7 +1050,6 @@ button:hover,
 
 .subforum-description * {
     margin-block: 0;
-    margin-top: -8px;
 }
 
 .subforum-description p {
@@ -1041,6 +1063,7 @@ button:hover,
 .subforum-info {
     text-align: center;
     font-size: 13px;
+    max-height: 70px;
 }
 
 .subforum-info a {
@@ -1052,6 +1075,7 @@ button:hover,
     font-size: 13px;
     margin: 0 auto;
     text-align: center;
+    max-height: 70px;
 }
 
 .center {
@@ -1069,22 +1093,6 @@ button:hover,
     margin-bottom: 8px;
 }
 
-/* forum info Styling */
-.forum-info {
-    margin-top: 15px;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #747c7f;
-}
-
-.chart {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-#displayForm {
-    display: none;
-}
 
 /* comment section */
 .comment-area {
@@ -1643,87 +1651,30 @@ fieldset {
 }
 
 /* RESPONSIVE */
-@media screen and (max-width: 600px) {
-    #newThreadForm,
-    #modal {
-        width: 90%;
-    }
-    .mainbox {
-        justify-content: center;
-        display: block;
-    }
-
-    .profile-container,
-    .user-info {
-        justify-content: center;
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-
-    .mainContainer {
-        margin: 0 auto;
-        justify-content: center;
-        width: 100%;
-    }
-
-    .mainStatus {
-        margin: 0;
-        box-shadow: none;
-        width: fit-content;
-
-    }
-
-    .asideBar,
-    .activ {
-        display: none;
+@media screen and (min-width: 600px) {
+    #forum {
+        width: 70%;
+        margin-left: 20px;
+        margin-right: 10px;
     }
 }
 
-/* For the smartphones */
-@media screen and (max-width: 460px) {
-    .container {
-        margin: 10px;
-        padding: 10px;
-    }
-
+@media screen and (min-width: 768px) {
     .subforum-row {
-        display: grid;
-        grid-template-columns: 25% 75%;
-        grid-template-rows: 65% 35%;
-    }
-
-    .subforum-devider {
-        display: block;
-        border: 0;
-        height: 1px;
-        background-image: linear-gradient(to right, rgba(190, 190, 190, 0), 
-        rgba(255, 255, 255, 0.75), rgba(190, 190, 190, 0));
+        grid-template-columns: 8% 50% 12% 30%;
     }
 }
 
-/* For the tablets */
-@media screen and (min-width: 460px) and (max-width: 1024px) {
-    .container {
-        margin: 15px;
-        padding: 15px;
+@media screen and (min-width: 992px) {
+    #main {
+        justify-content: space-between;
     }
 
-    .subforum-row {
-        display: grid;
-        grid-template-columns: 10% 60% 10% 20%;
-    }
-
-    .subforum-icon i {
-        font-size: 35px;
-    }
-
-    html {
-        font-size: 14px;
-    }
-
-    h1 {
-        font-size: 16px;
+    #forum {
+        width: 70%;
+        margin-left: 20px;
+        margin-right: 10px;
     }
 }
+
 

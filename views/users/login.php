@@ -19,6 +19,6 @@
             <input type="checkbox" name="remember" id="remember"><label for="remember">Se souvenir de moi</label>
         </div>
         <input type="submit" value="Se connecter">
-        <hr> Ou <a href="/inscription"><i class="fa-solid fa-arrow-right-to-bracket"> S'enregistrer </i></a>
+        <hr> Ou <a href="/inscription"><i class="fa-solid fa-circle-arrow-right"> S'enregistrer </i></a>
     </form>
 </section>

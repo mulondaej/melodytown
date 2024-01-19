@@ -13,7 +13,7 @@ RewriteRule ^compte-supprime$ index.php?deleteAccount=true
 
 #posts
 RewriteRule ^topics$ /controllers/posts/topicsController.php
-RewriteRule ^threadss$ /controllers/posts/topicsController.php
+RewriteRule ^threads$ /views/posts/threadsList.php
 RewriteRule ^thread$ /views/posts/thread.php
 RewriteRule ^forum$ /controllers/posts/forumController.php
 RewriteRule ^arena$ /controllers/posts/forumController.php
