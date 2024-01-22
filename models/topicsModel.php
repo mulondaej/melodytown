@@ -111,6 +111,15 @@ class Topics
 
     public function getList()
     {
+        $sql = 'SELECT `tag`, `title`, `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
+                FROM `a8yk4_topics`
+                INNER JOIN `a8yk4_users` ON `a8yk4_topics`.`id_users` = `a8yk4_users`.`id`
+                INNER JOIN `a8yk4_categories` ON `a8yk4_topics`.`id_categories` = `a8yk4_topics`.`id`
+                WHERE `a8yk4_users`.`id` = :id';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':id', $this->id, PDO::PARAM_STR);
+        $req->execute();
+        return $req->fetch(PDO::FETCH_OBJ);
     }
 
     public function updateTopic()

@@ -9,6 +9,7 @@ require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
 
+
 session_start();
 
 // Confirmation que l'utilisateur est bel et bien en ligne
@@ -18,21 +19,10 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-$user = new Users;
-$user->id = $_SESSION['user']['id'];
-
-$forums = new Forums;
-
-
-$categories = new Categories;
-$categoriesList = $categories->getList();
-
-$tags = new Tags;
-$tagsList = $tags->getList();
-
-    
+$posts = new Topics;
+$postsList = $posts->getList();
 
 require_once '../../views/parts/header.php';
-require_once '../../views/pages/forum.php'; 
+require_once '../../views/posts/topicList.php'; 
 require_once '../../views/parts/footer.php';
 ?>

@@ -1,60 +1,11 @@
 <div id="main">
-    <?php if (isset($_GET['deleteAccount'])) { ?>
-        <p>Votre compte a bien été supprimé.</p>
-    <?php } ?>
 <section class="forum" id="forum">
     <!-- Thread creation form -->
     <div class="forumcontainer">
         <?php if (!empty($_SESSION['user'])) { ?>
             <h1>Detendez-vous avec plaisir dans des discussions !</h1>
-            <button type="button" id="newThread" value="thread" href="/topic">Nouveau topic</button>
-            <?php
-            if (empty($_POST) || !empty($errors)) {
-            ?>
-                <form action='/forum' method="POST" id="threadForm">
-                    <label for="tag">Tag:</label>
-                    <select name="tag" id="tag">
-                        <?php foreach ($tagsList as $t) { ?>
-                            <option value="<?= $t->id ?>"><?= $t->name ?></option>
-                        <?php } ?>
-                    </select>
-                    <?php if (isset($errors['tag'])) : ?>
-                        <p><?= $errors['tag'] ?></p>
-                    <?php endif; ?>
+            <a href="/topics">Nouveau topic</a>
 
-                    <label for="categories">Categories</label>
-                    <select id="categories" name="categories">
-                        <?php foreach ($categoriesList as $c) { ?>
-                            <option value="<?= $c->id ?>"><?= $c->name ?></option>
-                        <?php } ?>
-                    </select>
-
-                    <label for="title">Title:</label>
-                    <input type="text" id="title" name="title"><br>
-                    <?php if (isset($errors['title'])) { ?>
-                        <p><?= $errors['title'] ?></p>
-                    <?php } ?>
-
-                    <label for="content">Content:</label><br>
-                    <textarea id="content" name="content"></textarea>
-                    <?php if (isset($errors['content'])) { ?>
-                        <p><?= $errors['content'] ?></p>
-                    <?php } ?>
-
-                    <div class="send">
-                        <input id="createThread" type="submit" value="create" name="threadPost">
-                    </div>
-                </form>
-            <? } else { ?>
-                <h2><?= $_POST['title'] ?></h2><br>
-                <p><?= $_POST['content'] ?></p>
-                <p><?= setlocale(LC_TIME, 'fr_FR');
-                    date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p>
-            <?php } ?>
-            <?php
-            var_dump($_POST);
-            ?>
         <?php } ?>
 
         <div class="subforum central" id="central">
@@ -808,7 +759,7 @@
         <h2>Forum stats</h2>
         <ul>
             <li>Newest Member: <span id="members-online"><a href="#profile">0</a></span></li>
-            <li>Total Amount of Posts: <span id="posts-posted">0</span></li>
+            <li>Total Amount of Posts: <span id="posts-posted"><a href="/posts">0</a></span></li>
             <li><a href="../views/pages/members.php">Members Online: </a><span id="members-online">0</span></li>
             <li>Guests Online: <span id="guests-online">0</span></li>
         </ul>

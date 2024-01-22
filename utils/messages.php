@@ -48,21 +48,32 @@ define('USERS_BIRTHDATE_ERROR_INVALID', 'La date de naissance est invalide. Elle
 
 define('USERS_LOGIN_ERROR', 'Votre adresse mail ou votre mot de passe est incorrect');
 
+//MIS A JOUR
 define('USERS_UPDATE_SUCCESS', 'Votre compte a bien été mis à jour');
 define('USERS_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre compte');
 
 define('USERS_PASSWORD_UPDATE_SUCCESS', 'Votre mot de passe a bien été mis à jour');
 define('USERS_PASSWORD_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre mot de passe');
 
+// IMAGE
+define('IMAGE_ERROR_EMPTY', 'L\'image est requise');
+define('IMAGE_ERROR_INVALID', 'L\'image est invalide');
+define('IMAGE_ERROR_EXTENSION', 'L\'image est invalide. Elle doit être au format jpg, jpeg, png, gif ou webp');
+define('IMAGE_ERROR_SIZE', 'L\'image est invalide. Elle doit faire moins de 1Mo');
+define('IMAGE_ERROR', 'Une erreur est survenue lors de l\'envoi de l\'image');
+
+// TITRE
 define('TOPICS_TITLE_SUCCESS', 'Merci d\avoir respecté le norme');
 define('TOPICS_TITLE_ERROR_INVALID', 'Le titre existe déjà; choisissez un autre svp!');
 define('TOPICS_TITLE_ERROR_INVALID_2', 'Le titre doit contenir au moins 8 caractères');
 define('TOPICS_TITLE_ERROR', 'Mettez un titre SVP');
 
+// CONTENT
 define('TOPICS_CONTENT_SUCCESS', 'Merci d\avoir respecté le norme');
 define('TOPICS_CONTENT_ERROR_INVALID', 'Le contenu doit contenir au moins 30 caractères');
 define('TOPICS_CONTENT_ERROR', 'Veuillez redigez une phrase au moins, la case ne peut pas être vide');
 
+// TOPIC
 define('TOPICS_SUCCESS', 'Votre topic vient d\etre publié avec succes');
 define('TOPICS_ERROR', 'Il y a un eu un soucis: soit le titre;,le tag ou le contenu y manque');
 

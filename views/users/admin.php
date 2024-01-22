@@ -1,13 +1,19 @@
-<main>
+<main class="dashboard">
     <h1>Tableau de bord - Dashboard</h1>
     <p>
-        Partie admin visible uniquement si mon utilisateur a le rôle 1. <br>
-        Ici, on va surtout y mettre des accès rapides à différentes pages de gestion du site.
+        Cher Admin, ceci est votre dashboard de maintenance du site, à vous la gestion !
     </p>
     <h2>Notifications</h2>
     <p>On peut y mettre des notifications, pour signaler des éléments à modérer par exemple.</p>
     <div>
-        <i class="fa-solid fa-envelope"></i> 5 nouveaux messages | <i class="fa-solid fa-user-large-slash"></i> 14 utilisateurs signalés | <i class="fa-solid fa-comment-slash"></i> 3 commentaires signalés
+             <li><a class="dropdown-item" href="#">
+                    <i class="fa-solid fa-envelope"></i> 5 nouveaux messages</a></li>
+             <li><a class="dropdown-item" href="#">
+                    <i class="fa-solid fa-user-large-slash"></i> 14 utilisateurs signalés</a></li>
+             <li><a class="dropdown-item" href="#">
+                    <i class="fa-solid fa-comment-slash"></i> 3 commentaires signalés</a></li>
+                <li><a class="dropdown-item" href="/alerts">check all</a></li>
+          
     </div>
 
     <h2>Accès rapides</h2>

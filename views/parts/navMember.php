@@ -53,10 +53,27 @@
             <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="visually-hidden"></span>
             </button>
+            <?php if($_SESSION['user']['id_userRoles'] = 258) { ?>
             <ul class="dropdown-menu dropdown-menu-dark text-center">
-                <li><a class="dropdown-item" href="#">...</a></li>
+                <li><a class="dropdown-item" href="#">
+                    <i class="fa-solid fa-envelope"></i> 5 nouveaux messages</a></li>
+                <li><a class="dropdown-item" href="#">
+                    <i class="fa-solid fa-user-large-slash"></i> 14 utilisateurs signalés</a></li>
+                <li><a class="dropdown-item" href="#">
+                    <i class="fa-solid fa-comment-slash"></i> 3 commentaires signalés</a></li>
                 <li><a class="dropdown-item" href="/alerts">check all</a></li>
             </ul>
+        <?php } else { ?>
+            <ul class="dropdown-menu dropdown-menu-dark text-center">
+            <li><a class="dropdown-item" href="#">
+                <i class="fa-solid fa-envelope"></i> 0 nouveaux messages</a></li>
+            <li><a class="dropdown-item" href="#">
+                <i class="fa-solid fa-user-large-slash"></i> 0 mentions</a></li>
+            <li><a class="dropdown-item" href="#">
+                <i class="fa-solid fa-comment-slash"></i> 0 reponses </a></li>
+            <li><a class="dropdown-item" href="/alerts">check all</a></li>
+        </ul>
+       <?php } ?>
         </div>
     </div>
     <!--toggled profile menu-->

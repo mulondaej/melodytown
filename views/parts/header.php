@@ -18,6 +18,8 @@
             <li>&gt;</li>
             <li class="active">Contact</li>
             </ul>-->
+
+            <?php  //le logo à gauche, le photo profile d'utilisateur à droite  ?>
             <div class="siteLogo">
                 <img src="assets/IMG/logo2.jpg" alt="site logo" id="logo">
                 <a href="/accueil">
@@ -32,9 +34,8 @@
                 </form>
             </div>
 
-            <!-- <button class="btn btn-secondary btn-sm"><i class="fa-solid fa-house"></i><a href="/accueil"> Accueil</a></button> require_once 'navbar.php'<li><a href="/accueil">Accueil</a></li>-->
-
-            <?php if (empty($_SESSION['user'])) { ?>
+            <?php // si la personne n'est pas connécté
+             if (empty($_SESSION['user'])) { ?>
                 <?php require_once 'navbar.php'; ?>
                 <button class="btn btn-secondary btn-sm" id="connect"><i class="fa-solid fa-right-to-bracket ">
                     <a href="/connexion"> Connexion</a></i></button>
@@ -43,7 +44,8 @@
             <?php } 
                 
             else { ?>
-                <?php require_once 'navMember.php'; ?>
+                <?php // si l'utilisateur est connécté alors la navbar change
+                require_once 'navMember.php'; ?>
 
                 <div class="btn-group" id="menu-button">
                     <button type="button" class="btn btn-sm btn-tertiary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -51,12 +53,14 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
                         <li><a class="dropdown-item" type="button" href="/mon-compte">Mon compte</a></li>
+                        <li><a class="dropdown-item" type="button" href="/posts">Posts</a></li>
                         <li><a class="dropdown-item" type="button" href="../pages/events.php">What's New</a></li>
                         <li><a class="dropdown-item" type="button" href="../pages/donate.php">Donate</a></li>
                     </ul>
                 </div>
 
-                <?php ?><div id="logging">
+                <?php //Le liens dans le navbar se different par rapport aux roles d'utilisateurs
+                 ?><div id="logging"> 
                     <?php if ($_SESSION['user']['id_usersRoles'] == 1) { ?>
                         <a href="/profile" id="idCorner">@<?= $_SESSION['user']['username'] ?></a>
                     <?php }

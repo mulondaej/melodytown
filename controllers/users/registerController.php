@@ -1,6 +1,8 @@
 <?php
 require_once '../../models/usersModel.php';
-require_once 'formValidation.php';
+require_once "../../models/sectionsModel.php" ;
+require_once '../../utils/regex.php';
+require_once '../../utils/messages.php';
 
 session_start();
 
@@ -67,7 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (empty($errors)) {
         if($user->create()) {
-            $success = '<p id=successMessage">Bienvenue! Vous êtes bel et bien inscript dans le forum' . '<a href="/connexion"> Vous pouvez vous connecter maintenant </a></p>';
+            $success = '<p id=successMessage">Bienvenue! Vous êtes bel et bien inscript dans le forum. Vous pouvez vous ' 
+            . '<a href="/connexion"> connecter maintenant </a></p>';
         }
     }
 }

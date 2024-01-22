@@ -4,16 +4,16 @@
 <div id="main">
     <section class="forum" id="forum">
         <h1>Have fun through the forums!</h1>
-        <input type="button" value="New thread" id="newThread">
-        <form action="/thread" method="POST" id="threadForm">
-            <label for="tag">Tag:</label>
-            <select name="tag" id="tag">
+        <button type="button" id="newThread" value="thread">Nouveau topic</button>
+        <form action="" method="POST" id="threadForm">
+            <label for="tags">Tags:</label>
+            <select name="tags" id="tags">
             <?php foreach($tagsList as $t){ ?>
                     <option value="<?= $t->id ?>"><?= $t->name ?></option>
                     <?php } ?>
             </select>
-            <?php if (isset($errors['tag'])) : ?>
-                <p><?= $errors['tag'] ?></p>
+            <?php if (isset($errors['tags'])) : ?>
+                <p><?= $errors['tags'] ?></p>
             <?php endif; ?>
 
             <label for="categories">Categories</label>
@@ -22,6 +22,9 @@
                     <option value="<?= $c->id ?>"><?= $c->name ?></option>
                     <?php } ?>
             </select>
+            <?php if (isset($errors['categories'])) : ?>
+                <p><?= $errors['categories'] ?></p>
+            <?php endif; ?>
 
             <label for="title">Title:</label>
             <input type="text" id="title" name="title">
@@ -44,7 +47,7 @@
 function displayThreads()
 {
     global $threads, $users, $score;
-    echo '<div class="forumcontainer" id="forumcontainer"></div>';
+    //echo '<div class="forumcontainer" id="forumcontainer"></div>';
     if (empty($threads)) {
         echo '<p>No threads available</p>';
     } else {
@@ -53,7 +56,7 @@ function displayThreads()
             // Your existing code to display threads
             $threadLink = '<a href="thread?threadId=' . $i . '">';
             $threadLink .= '<h4>' . $thread['title'] . '</h4>';
-            $threadLink .= '<p>An interesting ' . $thread['tag'] . '\'s topic to discuss </p>';
+            $threadLink .= '<p>An interesting ' . $thread['tags'] . '\'s topic to discuss </p>';
             $threadLink .= '</a>';
 
             $threadDiv = '<div class="subforum-row">';
@@ -77,8 +80,8 @@ function displayThreads()
             echo $threadDiv;
         }
     }
-    echo '</div>';
-    echo '</div>';
+    //echo '</div>';
+    //echo '</div>';
 }
 
 displayThreads();

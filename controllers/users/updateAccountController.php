@@ -1,12 +1,17 @@
 <?php
 require_once '../../models/usersModel.php';
-require_once 'formValidation.php';
+require_once '../../utils/regex.php';
+require_once '../../utils/messages.php';
+require_once '../../utils/functions.php';
+
 
 session_start();
 
-if(!isset($_SESSION['user'])) {
-    header('Location: /connexion');
-    exit;
+// Confirmation que l'utilisateur est bel et bien en ligne
+if (!isset($_SESSION['user'])) {
+    // Sinon, lui rediriger vers la page d'accueil ou de connexion
+    header("Location: /connexion");
+    exit();
 }
 
 $user = new Users;
