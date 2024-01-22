@@ -1,33 +1,5 @@
 <?php 
-//FONCTIONS
-/**
- * Nettoie la chaîne de caractères
- * @param string $string La chaîne à nettoyer
- * @return string La chaîne nettoyée
- */
-function clean($string)
-{
-    $string = trim($string);
-    $string = strip_tags($string);
-    return $string;
-}
-
-/**
- * Fonction qui permet de vérifier la validité d'une date
- * @param string $date - La date à vérifier (au format mysql)
- * @return bool - true si la date est valide, false sinon
- */
-function checkDateValidity($date) {
-    $dateArray = explode('-', $date);
-    return checkdate($dateArray[1], $dateArray[2], $dateArray[0]);
-}
-
-// REGEX
-$regex = [
-    'name' => '/^[A-zÄ-ÿ]{1,}([ \'-]{1}[A-zÄ-ÿ]{1,}){0,}$/',
-    'date' => '/^[0-9]{4}(-[0-9]{2}){2}$/',
-    'password' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{8,}$/',
-];
+$errors = [];
 
 // MESSAGES D'ERREUR
 define('USERS_USERNAME_ERROR_EMPTY', 'Le nom d\'utilisateur est requis');
@@ -72,6 +44,14 @@ define('TOPICS_TITLE_ERROR', 'Mettez un titre SVP');
 define('TOPICS_CONTENT_SUCCESS', 'Merci d\avoir respecté le norme');
 define('TOPICS_CONTENT_ERROR_INVALID', 'Le contenu doit contenir au moins 30 caractères');
 define('TOPICS_CONTENT_ERROR', 'Veuillez redigez une phrase au moins, la case ne peut pas être vide');
+
+// TAGS
+define('TOPICS_TAGS_ERROR_EMPTY', 'Le tag est requis');
+define('TOPICS_TAGS_ERROR_INVALID', 'Le tag est invalide');
+
+// CATEGORIES
+define('TOPICS_CATEGORIES_ERROR_EMPTY', 'Le tag est requis');
+define('TOPICS_CATEGORIES_ERROR_INVALID', 'Le tag est invalide');
 
 // TOPIC
 define('TOPICS_SUCCESS', 'Votre topic vient d\etre publié avec succes');

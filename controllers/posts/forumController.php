@@ -1,5 +1,7 @@
 <?php
+require_once "../../models/usersModel.php" ;
 require_once "../../models/topicsModel.php" ;
+require_once "../../models/forumModel.php" ;
 require_once "../../models/topicAnswersModel.php" ;
 require_once "../../models/commentsModel.php" ;
 require_once "../../models/categoriesModel.php" ;

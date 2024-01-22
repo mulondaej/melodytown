@@ -131,6 +131,27 @@ body {
     }
 }
 
+@use 'commons' as *;
+.articlesContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    .article {
+        .articleImage {
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            width: 100%;
+        }
+        .articleBottom {
+            padding: 1rem;
+        }
+        border: 1px solid $dark;
+        border-radius: 4px;
+
+    }
+}
+
 //Imports 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap');
 
@@ -259,4 +280,21 @@ nav {
             }
         }
     }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+a.cta {
+    background-color: $primary;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    margin: auto;
+    margin-top: 1rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    width: fit-content;
 }

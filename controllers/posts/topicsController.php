@@ -26,65 +26,84 @@ $tags = new Tags;
 $tagsList = $tags->getList();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $topic = new Topics;
-    $topic->id_users = 1;
-
+    
     if (!empty($_POST['tag'])) {
         $topic->id_tags = $_POST['tag'];
-
-            if ($_POST['tag'] != $topic->id_tags) {
-                $errors['tag'] = 'Veuillez choisir un tag svp!';
-            }
+        if ($tags->checkIfExistsById() == 1) {
+            $topic->id_tags = clean($_POST['tag']);
         } else {
-            $errors['tag'] = 'Le tag ne doit pas etre vide';
-        }
-    
-
-    if (!empty($_POST['categories'])) {
-        $topic->id_categories = $_POST['categories'];
-        if ($_POST['categories'] != $topic->id_categories) {
-            $errors['categories'] = 'Veuillez choisir une categorie svp!';
+            $errors['tag'] = TOPICS_TAGS_ERROR_INVALID;
         }
     } else {
-            $errors['categories'] = 'La categorie ne doit pas etre vide';
+        $errors['tag'] = TOPICS_TAGS_ERROR_EMPTY;
+    }
+
+    if (!empty($_POST['categories'])) {
+        $categories->id = $_POST['categories'];
+        if ($categories->checkIfExistsById() == 1) {
+            $categoriesList = clean($_POST['categories']);
+        } else {
+            $errors['categories'] = TOPICS_CATEGORIES_ERROR_INVALID;
         }
-    
+    } else {
+        $errors['categories'] = TOPICS_CATEGORIES_ERROR_EMPTY;
+    }
 
     if (!empty($_POST['title'])) {
         if (preg_match($regex['title'], $_POST['title'])) {
-            $topic->title = $_POST['title'];
-            if ($topic->checkIfExistsByTitle() == 1) {
-                $errors['title'] = TOPICS_TITLE_ERROR_INVALID;
-            } 
+            $topic->title = clean($_POST['title']);
         } else {
-            $errors['title'] = TOPICS_TITLE_ERROR;
+            $errors['title'] = TOPICS_TITLE_ERROR_INVALID;
         }
+    } else {
+        $errors['title'] = TOPICS_TITLE_ERROR;
     }
 
     if (!empty($_POST['content'])) {
-        $wordCount = str_word_count($topic->content);
-        if (preg_match($regex['content'], $_POST['content'])) {
-            $topic->content = $_POST['content'];
-            if ($wordcunt < 30) {
-                $errors['content'] = TOPICS_CONTENT_ERROR_INVALID;
-            } else if ($wordcunt < 1) {
-                $errors['content'] = TOPICS_CONTENT_ERROR;
-            }
+        if (!preg_match($regex['content'], $_POST['content'])) {
+            $topic->content = trim($_POST['content']);
         } else {
-            $errors['content'] = TOPICS_CONTENT_ERROR;
+            $errors['content'] = TOPICS_CONTENT_ERROR_INVALID;
         }
+    } else {
+        $errors['content'] = TOPICS_CONTENT_ERROR;
     }
 
-    if (empty($errors)) {
-        if ($topic->create()) {
-            $success = 'Votre topic vient d\être publié avec succes';
+   
+
+    if(empty($errors)) {
+        $topic->id_users = $_SESSION['user']['id'];
+        // if(move_uploaded_file($_FILES['image']['tmp_name'], '../../assets/img/topics/' . $topic->image)) {
+            if($topic->create()){
+                $success = TOPICS_SUCCESS;
+            } else {
+                // unlink('../../assets/img/topics/' . $topic->image);
+                $errors['add'] = TOPICS_ERROR;
+            }
         } else {
-            $errors = TOPICS_ERROR;
+            $errors['add'] = TOPICS_ERROR;
         }
+
     }
-}
+//}
 
 
 require_once '../../views/parts/header.php';
 require_once '../../views/posts/topics.php';
 require_once '../../views/parts/footer.php';
+
+?>
+<?php
+ // if (!empty($_FILES['image'])) {
+    //     $imageMessage = checkImage($_FILES['image']);
+
+    //     if ($imageMessage != '') {
+    //         $errors['image'] = $imageMessage;
+    //     } else {
+    //         $topic->image = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+
+    //         while(file_exists('../../assets/img/topics/' . $topic->image)) {
+    //             $topic->image = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+    //         }
+    //     }
+    // }

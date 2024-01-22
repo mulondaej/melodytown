@@ -23,6 +23,6 @@ $posts = new Topics;
 $postsList = $posts->getList();
 
 require_once '../../views/parts/header.php';
-require_once '../../views/posts/topicList.php'; 
+require_once '../../views/posts/topicsList.php'; 
 require_once '../../views/parts/footer.php';
 ?>

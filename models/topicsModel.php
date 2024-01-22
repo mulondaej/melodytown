@@ -117,8 +117,6 @@ class Topics
                 INNER JOIN `a8yk4_categories` ON `a8yk4_topics`.`id_categories` = `a8yk4_topics`.`id`
                 WHERE `a8yk4_users`.`id` = :id';
         $req = $this->pdo->prepare($sql);
-        $req->bindValue(':id', $this->id, PDO::PARAM_STR);
-        $req->execute();
         return $req->fetch(PDO::FETCH_OBJ);
     }
 
