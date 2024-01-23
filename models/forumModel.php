@@ -28,24 +28,6 @@ class Forums
      * @return bool
      */
 
-    public function checkIfExistsByTag()
-    {
-        $sql = 'SELECT COUNT(`tag`) FROM `a8yk4_topics` WHERE `tag` = :tag';
-        $req = $this->pdo->prepare($sql);
-        $req->bindValue(':tag', $this->id_tags, PDO::PARAM_STR);
-        $req->execute();
-        return $req->fetch(PDO::FETCH_COLUMN);
-    }
-
-    public function checkIfExistsByCategories()
-    {
-        $sql = 'SELECT COUNT(`categories`) FROM `a8yk4_categories` WHERE `categories` = :categories';
-        $req = $this->pdo->prepare($sql);
-        $req->bindValue(':categories', $this->id_categories, PDO::PARAM_STR);
-        $req->execute();
-        return $req->fetch(PDO::FETCH_COLUMN);
-    }
-
     public function checkIfExistsBySections()
     {
         $sql = 'SELECT COUNT(`sections`) FROM `a8yk4_sections` WHERE `sections` = :sections';
@@ -121,6 +103,13 @@ class Forums
 
     public function getList()
     {
+        $sql = 'SELECT `tag`, `title`, `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
+                FROM `a8yk4_topics`
+                INNER JOIN `a8yk4_users` ON `a8yk4_topics`.`id_users` = `a8yk4_users`.`id`
+                INNER JOIN `a8yk4_categories` ON `a8yk4_topics`.`id_categories` = `a8yk4_topics`.`id`
+                WHERE `a8yk4_users`.`id` = :id';
+        $req = $this->pdo->prepare($sql);
+        return $req->fetch(PDO::FETCH_OBJ);
     }
 
     public function updateTopic()

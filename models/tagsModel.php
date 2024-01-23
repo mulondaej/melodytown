@@ -14,8 +14,9 @@ class Tags
         }
     }
 
-    public function checkIfExistsById() {
-        $sql = 'SELECT COUNT(*) FROM `a8yk4_tags` WHERE `id` = :id';
+    public function checkIfExistsById()
+    {
+        $sql = 'SELECT COUNT(`id`) FROM `a8yk4_tags` WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         $req->execute();

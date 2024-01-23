@@ -2,6 +2,9 @@
 <?php
 require_once '../../models/adminModel.php';
 require_once '../../models/usersModel.php';
+require_once '../../utils/regex.php';
+require_once '../../utils/messages.php';
+require_once '../../utils/functions.php';
 
 session_start();
 if(empty($_SESSION['user']) && $_SESSION['user']['role'] = 258){

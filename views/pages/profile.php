@@ -15,8 +15,8 @@
 
     <div class="userContainer">
         <div class="username">
-            <h4>@<?= $userAccount->username ?></h4>
-            <p>Location: <?= $userAccount->location ?></p>
+            <h4>@<?= $userAccount->username ?>
+            <p>Location: <?= $userAccount->location ?></p></h4>
         </div>
         <div class="infoUser">
             <p>Joined since <?= $userAccount->registerDate ?></p>
@@ -27,27 +27,27 @@
     </div>
     <div class="mainContainer">
         <aside class="asideBar">
-            <h3>Your Media</h3><i class="fa-solid fa-folder-open"></i>
+            <h3>Your Media <i class="fa-solid fa-folder-open"></i></h3>
             <div class="Media">
                 <input type="file" id="mediaUpload" accept="image*/" style="display: none;">
                 <div class="disGallery">
-                    <img src="../assets/asha-pic (3).jpg" alt="media" id="gallery">
-                    <img src="../assets/asha-pic (5).jpg" alt="media" id="gallery">
-                    <img src="../assets/asha-pic (7).jpg" alt="media" id="gallery">
+                    <img src="assets/IMG/melodytown.jpg" alt="media" id="gallery">
+                    <img src="assets/IMG/melodytown.jpg" alt="media" id="gallery">
+                    <img src="assets/IMG/melodytown.jpg" alt="media" id="gallery">
                 </div>
                 <button id="upload-media"><a href="/media">Open</a></button>
             </div>
-            <h3>Archive</h3><i class="fa-solid fa-box-archive"></i>
+            <h3>Archive <i class="fa-solid fa-box-archive"></i></h3>
             <div class="Archive">
                 <input type="file" id="archiveUpload" accept="image*/" style="display: none;">
-                <img src="img.jpg" alt="archive" id="archives">
+                <img src="assets/IMG/melodytown.jpg" alt="archive" id="archives">
                 <button id="open-archive"><a href="/media">Open</a></button>
             </div>
         </aside>
-        <main class="mainStatus">
-            <main class="StaTus">
+         <main class="mainStatus"> 
+            <div class="State">
                 <div class="post">
-                    <textarea name="" id="PostHere" cols="45" rows="1"></textarea>
+                    <textarea name="" id="PostHere" ></textarea>
                     <button type="submit" id="Posted">Post</button>
                 </div>
                 <div class="statusContainer">
@@ -73,10 +73,10 @@
                         <button class="postReply">Reply</button>
                     </div>
                 </div>
-            </main>
+            </div>
         </main>
         <aside class="activ">
-            <h2>Activity</h2>
+            <h3>Activity</h3>
             <div class="activity">
                 <ul id="activity-list">
                     <!-- Activity items will be added here dynamically with JavaScript -->

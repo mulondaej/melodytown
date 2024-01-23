@@ -1,21 +1,21 @@
 <main>
     <h1>Threads</h1>
 <div class="articlesContainer">
-    <?php foreach ($postsList as $p) { ?>
+    <?php foreach ($topicsList as $t) { ?>
         <div class="article">
-            <div class="articleImage" style="background-image: url('assets/img/articles/<?= $p->image ?>')"></div>
+            
             <div class="articleBottom">
-                <h2><?= $p->title ?></h2>
+                <h2><?= $t->title ?></h2>
                 <p>
-                    <b>Ecrit par :</b> <?= $p->username ?><br>
-                    <b>Catégorie :</b> <?= $p->category ?><br>
-                    <b>Publié :</b> <?= $p->publicationDateFr ?><br>
-                    <b>Mis à jour :</b> <?= $p->updateDateFr ?>
+                    <b>Ecrit par :</b> <?= $t->username ?><br>
+                    <b>Catégorie :</b> <?= $t->categories ?><br>
+                    <b>Publié :</b> <?= $t->publicationDateFr ?><br>
+                    <b>Mis à jour :</b> <?= $t->updateDateFr ?>
                 </p>
                 <p>
-                    <?= strip_tags($p->content) ?>...
+                    <?= strip_tags($t->content) ?>...
                 </p>
-                <a href="/article-<?= $p->id ?>" class="cta">Lire la suite</a>
+                <a href="/topics-<?= $t->id ?>" class="cta">Lire la suite</a>
             </div>
         </div>
     <?php } ?>

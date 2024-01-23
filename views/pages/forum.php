@@ -8,6 +8,10 @@
 
         <?php } ?>
 
+        <?php if (!empty($_SESSION['topics'])) { ?>
+            'header(Location : /error404)'
+        <?php } ?>
+
         <div class="subforum central" id="central">
             <div class="subforum-title">
                 <h1>Central</h1>

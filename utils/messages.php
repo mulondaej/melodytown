@@ -10,6 +10,10 @@ define('USERS_EMAIL_ERROR_EMPTY', 'L\'adresse email est requise');
 define('USERS_EMAIL_ERROR_INVALID', 'L\'adresse email est invalide. Elle ne peut contenir que des lettres, des chiffres, des tirets, des underscores, des points et des arobases');
 define('USERS_EMAIL_ERROR_EXISTS', 'L\'adresse email existe déjà');
 
+define('USERS_LOCATION_ERROR_EMPTY', 'La location est requise');
+define('USERS_LOCATION_ERROR_INVALID', 'La location est invalide. Elle ne peut contenir que des lettres, des chiffres, des tirets, des underscores, des points et des arobases');
+define('USERS_LOCATION_ERROR_EXISTS', 'La location existe déjà');
+
 define('USERS_PASSWORD_ERROR_EMPTY', 'Le mot de passe est requis');
 define('USERS_PASSWORD_ERROR_INVALID', 'Le mot de passe est invalide. Il doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial');
 define('USERS_PASSWORD_CONFIRM_ERROR_INVALID', 'La confirmation du mot de passe est invalide. Les mots de passe ne correspondent pas');

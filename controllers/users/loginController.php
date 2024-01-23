@@ -1,6 +1,8 @@
 <?php
 require_once '../../models/usersModel.php';
-require_once 'formValidation.php';
+require_once '../../utils/regex.php';
+require_once '../../utils/messages.php';
+require_once '../../utils/functions.php';
 
 session_start();
 

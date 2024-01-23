@@ -27,20 +27,13 @@ class Topics
      * @return bool
      */
 
-    public function checkIfExistsByTag()
-    {
-        $sql = 'SELECT COUNT(`tag`) FROM `a8yk4_topics` WHERE `tag` = :tag';
-        $req = $this->pdo->prepare($sql);
-        $req->bindValue(':tag', $this->id_tags, PDO::PARAM_STR);
-        $req->execute();
-        return $req->fetch(PDO::FETCH_COLUMN);
-    }
+    // 
 
-    public function checkIfExistsByCategories()
+    public function checkIfExistsById()
     {
-        $sql = 'SELECT COUNT(`categories`) FROM `a8yk4_categories` WHERE `categories` = :categories';
+        $sql = 'SELECT COUNT(*) FROM `a8yk4_topics` WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
-        $req->bindValue(':categories', $this->id_categories, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         $req->execute();
         return $req->fetch(PDO::FETCH_COLUMN);
     }
@@ -85,7 +78,6 @@ class Topics
         $req->bindValue(':id_categories', $this->id_categories, PDO::PARAM_INT);
         $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
         $req->bindValue(':id_tags', $this->id_tags, PDO::PARAM_INT);
-
         return $req->execute();
     }
 
@@ -100,27 +92,37 @@ class Topics
     public function getById()
     {
         $sql = 'SELECT `tag`, `title`, `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
-                FROM `a8yk4_topics`
-                INNER JOIN `a8yk4_users` ON `a8yk4_topics`.`id_users` = `a8yk4_users`.`id`
-                WHERE `a8yk4_users`.`id` = :id';
+        FROM `a8yk4_topics`
+        INNER JOIN `a8yk4_users` ON `a8yk4_topics`.`id_users` = `a8yk4_users`.`id`
+        INNER JOIN `a8yk4_categories` ON `a8yk4_topics`.`id_categories` = `a8yk4_topics`.`id`
+        WHERE `a8yk4_users`.`id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id', $this->id, PDO::PARAM_STR);
         $req->execute();
         return $req->fetch(PDO::FETCH_OBJ);
     }
 
-    public function getList()
+    public function getListByIdUsers()
     {
-        $sql = 'SELECT `tag`, `title`, `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
-                FROM `a8yk4_topics`
-                INNER JOIN `a8yk4_users` ON `a8yk4_topics`.`id_users` = `a8yk4_users`.`id`
-                INNER JOIN `a8yk4_categories` ON `a8yk4_topics`.`id_categories` = `a8yk4_topics`.`id`
-                WHERE `a8yk4_users`.`id` = :id';
+        $sql = 'SELECT `a8yk4_tags`.`name` AS `tag`, `title`, `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` FROM `a8yk4_topics` INNER JOIN `a8yk4_users` ON `a8yk4_topics`.`id_users` = `a8yk4_users`.`id` INNER JOIN `a8yk4_categories` ON `a8yk4_topics`.`id_categories` = `a8yk4_categories`.`id` INNER JOIN `a8yk4_tags` ON `a8yk4_topics`.`id_tags` = `a8yk4_tags`.`id` WHERE `id_users` = :id_users';
         $req = $this->pdo->prepare($sql);
-        return $req->fetch(PDO::FETCH_OBJ);
+        $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function updateTopic()
+    public function getList()
+    {
+        $sql = 'SELECT `a8yk4_tags`.`name` AS `tag`, `title`, `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, `username`
+        FROM `a8yk4_topics`
+        INNER JOIN `a8yk4_users` ON `a8yk4_topics`.`id_users` = `a8yk4_users`.`id`
+        INNER JOIN `a8yk4_categories` ON `a8yk4_topics`.`id_categories` = `a8yk4_categories`.`id`
+        INNER JOIN `a8yk4_tags` ON `a8yk4_topics`.`id_tags` = `a8yk4_tags`.`id`';
+        $req = $this->pdo->query($sql);
+        return $req->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function update()
     {
         $sql = 'UPDATE `a8yk4_topics` SET `title`=:title,`content`=:content, `publicationDate` = :publicationDate WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);

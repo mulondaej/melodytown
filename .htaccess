@@ -14,12 +14,15 @@ RewriteRule ^compte-supprime$ index.php?deleteAccount=true
 #posts
 RewriteRule ^posts$ /controllers/posts/topicListController.php
 RewriteRule ^topics$ /controllers/posts/topicsController.php
-RewriteRule ^threads$ /views/posts/threadsList.php
-RewriteRule ^thread$ /views/posts/thread.php
+#RewriteRule ^threads$ /views/posts/threadsList.php
+RewriteRule ^thread$ /controllers/posts/threadController.php
 RewriteRule ^forum$ /controllers/posts/forumController.php
 RewriteRule ^arena$ /controllers/posts/forumController.php
 RewriteRule ^media$ /views/pages/media.php
 
 #ADMIN
 RewriteRule ^dashboard$ /controllers/users/adminController.php
-RewriteRule ^errors$ /controllers/errorsController.php
+
+#ERRORS
+RewriteRule ^errors$ /controllers/errors/errorsController.php
+RewriteRule ^error404$ /controllers/errors/404Controller.php

@@ -4,6 +4,12 @@
         <?php if (isset($success)) { ?>
             <p id="successMessage"><?= $success ?></p>
         <?php } ?>
+        
+        <!-- <label for="avatar">Avatar</label>
+        <input type="file" name="avatar" id="avatar" value=" $userAccount->avatar ?>">
+         if (isset($errors['avatar'])) { ?>
+            <p class="errorsMessage"> $errors['avatar'] ?></p>
+         } ?> -->
 
         <label for="username">Nom d'utilisateur</label>
         <input type="text" name="username" id="username" placeholder="alfnzau" value="<?= $userAccount->username ?>">
@@ -16,6 +22,12 @@
         <?php if (isset($errors['email'])) { ?>
             <p id=errorsMessage><?= $errors['email'] ?></p>
         <?php } ?>
+
+        <!-- <label for="location">Location</label>
+        <input type="text" name="location" id="location" value=" $userAccount->location ?>">
+         if (isset($errors['location'])) { ?
+            <p id=errorsMessage>$errors['location'] ?></p>
+         } ?> -->
 
         <label for="birthdate">Date de naissance</label>
         <input type="date" name="birthdate" id="birthdate" value="<?= $userAccount->birthdate ?>">

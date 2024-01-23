@@ -17,6 +17,8 @@ require_once '../../views/parts/header.php';
 $user = new Users;
 $user->id = $_SESSION['user']['id'];
 $userAccount = $user->getById();
+// $userAccount->avatar;
+
 
 var_dump($userAccount);
 var_dump('----');
