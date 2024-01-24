@@ -24,12 +24,25 @@ define('USERS_BIRTHDATE_ERROR_INVALID', 'La date de naissance est invalide. Elle
 
 define('USERS_LOGIN_ERROR', 'Votre adresse mail ou votre mot de passe est incorrect');
 
-//MIS A JOUR
+//MIS A JOUR USERS
 define('USERS_UPDATE_SUCCESS', 'Votre compte a bien été mis à jour');
 define('USERS_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre compte');
 
 define('USERS_PASSWORD_UPDATE_SUCCESS', 'Votre mot de passe a bien été mis à jour');
 define('USERS_PASSWORD_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre mot de passe');
+
+//MIS A JOUR TOPICS
+define('TOPIC_UPDATE_SUCCESS', 'Votre compte a bien été mis à jour');
+define('TOPIC_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre compte');
+
+define('TOPIC_TITLE_UPDATE_SUCCESS', 'Le titre a bien été mis à jour');
+define('TOPIC_TITLE_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de titre');
+
+define('TOPIC_CONTENT_UPDATE_SUCCESS', 'Le contenu a bien été mis à jour');
+define('TOPIC_CONTENT_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du contenu');
+
+define('TOPIC_TAG_CATEGORIE_UPDATE_SUCCESS', 'Cela a bien été mis à jour');
+define('TOPIC_TAG_CATEGORIE_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du tag ou categorie');
 
 // IMAGE
 define('IMAGE_ERROR_EMPTY', 'L\'image est requise');

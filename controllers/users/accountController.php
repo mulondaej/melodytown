@@ -2,7 +2,7 @@
 /**
  *vérifier que l'utilisateur est connecté.
  */
-require_once '../../models/usersModel.php';
+require_once '../../models/users/usersModel.php';
 
 session_start();
 

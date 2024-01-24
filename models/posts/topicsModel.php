@@ -70,7 +70,8 @@ class Topics
      */
     public function create()
     {
-        $sql = 'INSERT INTO `a8yk4_topics`(`title`, `content`, `publicationDate`, `updateDate`, `id_users`, `id_categories`, `id_tags`) 
+        $sql = 'INSERT INTO `a8yk4_topics`(`title`, `content`, `publicationDate`,
+         `updateDate`, `id_users`, `id_categories`, `id_tags`) 
         VALUES (:title,:content,NOW(),NOW(),:id_users,:id_categories, :id_tags)';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':title', $this->title, PDO::PARAM_STR);
@@ -81,7 +82,7 @@ class Topics
         return $req->execute();
     }
 
-    public function deleteTopic()
+    public function delete()
     {
         $sql = 'DELETE `id` FROM `a8yk4_topics` WHERE `title`= :title ;';
         $req = $this->pdo->prepare($sql);
@@ -91,7 +92,8 @@ class Topics
 
     public function getById()
     {
-        $sql = 'SELECT `tag`, `title`, `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
+        $sql = 'SELECT `tag`, `title`, `content`, 
+        DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
         FROM `a8yk4_topics`
         INNER JOIN `a8yk4_users` ON `a8yk4_topics`.`id_users` = `a8yk4_users`.`id`
         INNER JOIN `a8yk4_categories` ON `a8yk4_topics`.`id_categories` = `a8yk4_topics`.`id`
@@ -104,7 +106,12 @@ class Topics
 
     public function getListByIdUsers()
     {
-        $sql = 'SELECT `a8yk4_tags`.`name` AS `tag`, `title`, `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` FROM `a8yk4_topics` INNER JOIN `a8yk4_users` ON `a8yk4_topics`.`id_users` = `a8yk4_users`.`id` INNER JOIN `a8yk4_categories` ON `a8yk4_topics`.`id_categories` = `a8yk4_categories`.`id` INNER JOIN `a8yk4_tags` ON `a8yk4_topics`.`id_tags` = `a8yk4_tags`.`id` WHERE `id_users` = :id_users';
+        $sql = 'SELECT `a8yk4_tags`.`name` AS `tag`, `title`, `content`, 
+        DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` FROM `a8yk4_topics` 
+        INNER JOIN `a8yk4_users` ON `a8yk4_topics`.`id_users` = `a8yk4_users`.`id` 
+        INNER JOIN `a8yk4_categories` ON `a8yk4_topics`.`id_categories` = `a8yk4_categories`.`id`
+         INNER JOIN `a8yk4_tags` ON `a8yk4_topics`.`id_tags` = `a8yk4_tags`.`id` 
+         WHERE `id_users` = :id_users';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
         $req->execute();
@@ -113,7 +120,8 @@ class Topics
 
     public function getList()
     {
-        $sql = 'SELECT `a8yk4_tags`.`name` AS `tag`, `title`, `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, `username`
+        $sql = 'SELECT `a8yk4_tags`.`name` AS `tag`, `title`, `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, 
+        DATE_FORMAT(`updateDate`, "%d/%m/%y") AS `updateDate`, `username`
         FROM `a8yk4_topics`
         INNER JOIN `a8yk4_users` ON `a8yk4_topics`.`id_users` = `a8yk4_users`.`id`
         INNER JOIN `a8yk4_categories` ON `a8yk4_topics`.`id_categories` = `a8yk4_categories`.`id`
@@ -124,11 +132,14 @@ class Topics
 
     public function update()
     {
-        $sql = 'UPDATE `a8yk4_topics` SET `title`=:title,`content`=:content, `publicationDate` = :publicationDate WHERE `id` = :id';
+        $sql = 'UPDATE `a8yk4_topics` SET `title`=:title,`content`=:content, `updateDate` = :updateDate,
+        `id_categories`=:id_categories, `id_tags`=:id_tags WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':title', $this->title, PDO::PARAM_STR);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
         $req->bindValue(':publicationDate', $this->publicationDate, PDO::PARAM_STR);
+        $req->bindValue(':id_categories', $this->id_categories, PDO::PARAM_INT);
+        $req->bindValue(':id_tags', $this->id_tags, PDO::PARAM_INT);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
     }

@@ -1,5 +1,5 @@
 <?php
-require_once '../../models/usersModel.php';
+require_once '../../models/users/usersModel.php';
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';

@@ -1,7 +1,7 @@
 <?php
-require_once "../../models/topicsModel.php";
-require_once "../../models/categoriesModel.php";
-require_once "../../models/tagsModel.php";
+require_once "../../models/posts/topicsModel.php";
+require_once "../../models/posts/categoriesModel.php";
+require_once "../../models/posts/tagsModel.php";
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';

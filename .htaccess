@@ -12,13 +12,15 @@ RewriteRule ^inbox$ /views/pages/inbox.php
 RewriteRule ^compte-supprime$ index.php?deleteAccount=true
 
 #posts
-RewriteRule ^posts$ /controllers/posts/topicListController.php
+RewriteRule ^modifier-topic$ /controllers/posts/updateTopicController.php
+RewriteRule ^posts$ /controllers/posts/topicsListController.php
 RewriteRule ^topics$ /controllers/posts/topicsController.php
-#RewriteRule ^threads$ /views/posts/threadsList.php
+RewriteRule ^view-topic$ /controllers/posts/viewTopicController.php
 RewriteRule ^thread$ /controllers/posts/threadController.php
 RewriteRule ^forum$ /controllers/posts/forumController.php
 RewriteRule ^arena$ /controllers/posts/forumController.php
 RewriteRule ^media$ /views/pages/media.php
+RewriteRule ^topic-supprime$ index.php?deleteTopict=true
 
 #ADMIN
 RewriteRule ^dashboard$ /controllers/users/adminController.php

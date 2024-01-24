@@ -59,7 +59,7 @@
                         </div>
                         <div class="subforum-description subforum-column" id="subDescript">
                             <ul class="topic-list">
-                                <h4><a href=" /thread?tag&title&content&publicationDate">
+                                <h4><a href=" /thread?tag&title&content&publicationDate&username">
                                         <?= $t->title ?>
                                     </a></h4>
                                 <p>An interesting <?= $t->tag ?>'s topic to discuss </p>

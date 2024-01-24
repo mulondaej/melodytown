@@ -1,14 +1,11 @@
 <?php
-require_once "../../models/topicsModel.php" ;
-require_once "../../models/topicAnswersModel.php" ;
-require_once "../../models/commentsModel.php" ;
-require_once "../../models/categoriesModel.php" ;
-require_once "../../models/tagsModel.php" ;
-require_once "../../models/sectionsModel.php" ;
+require_once "../../models/posts/topicsModel.php";
+require_once "../../models/posts/categoriesModel.php";
+// require_once "../../models/posts/categoriesModel.php";
+require_once "../../models/posts/tagsModel.php";
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
-
 
 
 session_start();
@@ -22,43 +19,42 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-$topic = new Topics;
- $topicsList = $topic->getList();
+$topic = new Topics();
 
- if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    
- }
+$topic->id = $_GET['id'];
+if($topic->checkIfExistsById() == 0) {
+    header('Location: /thread');
+    exit;
+}
 
- require_once '../../views/posts/thread.php';
+$topicDetails = $topic->getById();
+
+$comment = new Comments();
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if(!empty($_POST['content'])) {
+        if(!preg_match($regex['content'], $_POST['content'])) {
+            $comment->content = $_POST['content'];
+        } else {
+            $errors['content'] = COMMENT_CONTENT_ERROR_INVALID;
+        }
+    } else {
+        $errors['content'] = COMMENT_CONTENT_ERROR_EMPTY;
+    }
+   
+    $comment->id_topics = $topic->id;
+    $comment->id_users = $_SESSION['user']['id'];
+
+    if(empty($errors)) {
+        if($comment->create()) {
+            $success = COMMENT_ADD_SUCCESS;
+        } else {
+            $errors['add'] = COMMENT_ADD_ERROR;
+        }
+    }
+}
+
+require_once '../../views/parts/header.php';
+require_once '../../views/posts/thread.php';
+// require_once '../../views/comments/addComment.php';
 require_once '../../views/parts/footer.php';
-?>
-<!-- <main id="threadMain"><div id="threadHeader"><button id="backBtn"><a href="/forum">
-    <i id="backArrow" class="fa fa-arrow-left"> Back</i>  </a></button><div id="threadTitle">
-    <h2 id="tag">  $topic->id_tags ?> </h2><h2>  $topic->title ?> </h2></div></div><hr><br>
-    <fieldset id="threadContains"><div id="userCard">
-    <div class="userImg"><img src="../../assets/IMG/logo.jpg" id="userAvy"></div><br>
-    <div class="username"><h5><a href="/profile">@  $topic->username ?> 
-    '</a><br><p href="location"> $topic->id_users ?> </p></h5></div>
-    <div class="pFlex"><p><a href="">200</a> likes</p><p><a href="">100</a> points</p></div></div>
-    </div>
-    <div id="threadContent">
-    <div id="contents"><p> $topic->content ?></p><br>
-    <div id="timed"><p>$topic->publicationDate ?></p></div>
-    <br><div class="interact">
-    <button id="likeBtn"><i class="fa-solid fa-heart"></i></button>
-    <button id="replyBtn"><a href="#comments">Reply</a></button>
-    <button id="quoteBtn">+Quote</button>
-    </div></fieldset><br>
-    <fieldset>
-    <div class="commentsArea"><div class="replies">
-    <fieldset id="threadContains"> '
-     <div id="userCard"><div class="userImg"><img src="../../assets/IMG/logo.jpg" id="userAvy"><br>
-    <div class="username"><h5><a href="#user">@'  $_GET['user']['username'] . 
-    '</a><br><p href="location">'. $_GET['user']['id_usersRoles'] . '</p></h5>
-    <div class="pFlex"><p><a href="">200</a> likes</p><p><a href="">100</a> points</p></div></div>
-    </div></div> -->
-    <!-- </div></fieldset><br>
-    <fieldset id="userPosting">
-    <div id="centered"><label for="comments"></label>
-    <textarea name="comments" id="comments" ></textarea>
-    <br><input type="submit" value="POST" id="commentBtn"></div></fieldset></main> --> 

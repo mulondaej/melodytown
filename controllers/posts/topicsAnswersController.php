@@ -1,24 +1,21 @@
 <?php
+
 require_once("../../models/topicAnswersModel.php");
-require_once("../../models/commentsModel.php");
 require_once("../../models/categoriesModel.php");
 require_once("../../models/tagsModel.php");
 
 
 session_start();
 
-// Check if the user is logged in. You can implement your authentication logic here.
-if (!isset($_SESSION['user'])) {
-    // Redirect to the login page or display an error message.
-    header("Location: /connexion");  
+// Confirmation que l'utilisateur est bel et bien en ligne
+if (!isset($_SESSION['topic'])) {
+    // Sinon, lui rediriger vers la page d'accueil ou de connexion
+    header("Location: /connexion");
     exit();
 }
 
-//$answers = new Answers;
-$answersList = $answers->getById();
 
-//$comments = new Comments;
-$commentsList = $comments->getById();
+$answersList = $answers->getById();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $answers = new Answers;
@@ -70,11 +67,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 require_once '../../views/parts/header.php';
-
-if ('Location: /topics') {
-    require_once '../../views/posts/topics.php';
-} else if ('Location: /threads') {
-    require_once '../../views/posts/threadsList.php';
-}
-
+require_once '../../views/posts/topics.php';
 require_once '../../views/parts/footer.php';

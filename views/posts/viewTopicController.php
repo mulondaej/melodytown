@@ -1,7 +1,7 @@
 <?php
-require_once "../../models/topicsModel.php" ;
-require_once "../../models/categoriesModel.php" ;
-require_once "../../models/tagsModel.php" ;
+require_once "../../models/posts/topicsModel.php";
+require_once "../../models/posts/categoriesModel.php";
+require_once "../../models/posts/tagsModel.php";
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
@@ -17,19 +17,16 @@ if (!isset($_SESSION['user'])) {
 }
 
 $topic = new Topics;
- $topicsList = $topic->getList();
+$topicsList = $topic->getList();
 
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//     $topic = new Topics;
-//     $topicList = $topic->getList();
-
-//     if ($topic->checkIfExistsById() == 1) {
-//         $topic->id = clean($_POST['topic']);
-//     } else {
-//         $errors['topic'] = TOPICS_ERROR;
-//     }
+// if($topic->checkIfExistsById() == 0) {
+//     header('Location: /posts');
 // }
 
+//$topicsDetails = $topic->getListByIdUsers();
+var_dump($topicsList);
+
 require_once '../../views/parts/header.php';
+require_once '../../views/posts/topicsList.php';
 require_once '../../views/parts/footer.php';
 ?>

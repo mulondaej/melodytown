@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 if (isset($_GET['tag']) && isset($_GET['title']) && isset($_GET['content']) 
 && isset($_GET['username']) && isset($_GET['publicationDate'])) {
 
-    echo '<main id="threadMain"><div id="threadHeader"><button id="backBtn"><a href="/forum">
+    <main id="threadMain"><div id="threadHeader"><button id="backBtn"><a href="/forum">
     <i id="backArrow" class="fa fa-arrow-left"> Back</i>  </a></button><div id="threadTitle">
     <h2 id="tag">' . $_GET['tag'] . '</h2><h2>' . $_GET['title'] . '</h2></div></div><hr><br>
     <fieldset id="threadContains"><div id="userCard">
@@ -42,4 +42,17 @@ if (isset($_GET['tag']) && isset($_GET['title']) && isset($_GET['content'])
     }
     
     var_dump($_GET);
+    <div class="singleArticle">
+    <h1><?= $articleDetails->title ?></h1>
+    <p>
+        <b>Ecrit par :</b> <?= $articleDetails->username ?><br>
+        <b>Catégorie :</b> <?= $articleDetails->category ?><br>
+        <b>Publié :</b> <?= $articleDetails->publicationDateFr ?><br>
+        <b>Mis à jour :</b> <?= $articleDetails->updateDateFr ?>
+    </p>
+    <img src="assets/img/articles/<?= $articleDetails->image ?>" alt="Image d'illustration">
+    <p>
+        <?= $articleDetails->content ?>
+    </p>
+</div>
 ?>
