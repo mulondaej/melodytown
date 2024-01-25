@@ -66,20 +66,36 @@
                             </ul>
                         </div>
                         <div class="subforum-stats subforum-column center">
-                            <span><a href="" id="topicPost">11 Answers | <a href="" id="topics">12</a>
+                            <span><a href="" id="topicPost">11  </a>Answers | <a href="" id="topics">12</a>
                                     Topics</span>
                         </div>
                         <div class="subforum-info subforum-column">
-                            <b><a href="#">Last post</a></b> by <a href="#"><?= $t->username ?></a>,
+                            <b><a href="#"><?= $t->title ?></a></b> by <a href="#"><?= $t->username ?></a>,
                             <small id="dateAlert"><?= $t->publicationDate ?></small>
                         </div>
                     </div>
                 <?php } ?>
             <?php } ?>
         </div>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
         </main>
-
-
-
+ 
     </section>
 </div>

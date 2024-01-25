@@ -71,19 +71,20 @@ if(isset($_POST['updateInfos'])) {
     if(empty($errors)) {
         $topic->id_users = $_SESSION['user']['id'];
         if($topic->update()){
-            //  $topic->title;
-            //  $topic->content;
-            //  $topic->id_categories;
-            //  $topic->id_tags;
+              $topic->title;
+              $topic->content;
+              $topic->id_categories;
+              $topic->id_tags;
             $success = TOPIC_UPDATE_SUCCESS;
         } else {
             $errors['update'] = TOPIC_UPDATE_ERROR;
         }
     }
+ $topicsList = $topic->getList();
 
 }
 
-if(isset($_POST['deleteTopic'])) {
+if(isset($_POST['delete'])) {
     if($topic->delete()) {
         unset($_SESSION);
         session_destroy();
@@ -92,10 +93,9 @@ if(isset($_POST['deleteTopic'])) {
     }
 }
 
-$topicsDetails = $topic->getListByIdUsers();
 
 require_once '../../views/parts/header.php';
-require_once '../../views/posts/modifier-topic.php';
+require_once '../../views/posts/updateTopic.php';
 require_once '../../views/parts/footer.php';
 
 

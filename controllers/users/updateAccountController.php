@@ -47,18 +47,7 @@ if(isset($_POST['updateInfos'])) {
         $errors['email'] = USERS_EMAIL_ERROR_EMPTY;
     }
 
-    // if (!empty($_POST['location'])) {
-    //     if (preg_match($regex['location'], $_POST['location'])) {
-    //         $user->location = clean($_POST['location']);
-    //         if ($user->checkIfExistsByLocation() == 1 && $user->location != $_SESSION['user']['location']) {
-    //             $errors['location'] = USERS_LOCATION_ERROR_EXISTS;
-    //         }
-    //     } else {
-    //         $errors['location'] = USERS_LOCATION_ERROR_INVALID;
-    //     }
-    // } else {
-    //     $errors['location'] = USERS_LOCATION_ERROR_EMPTY;
-    // }
+    
 
     if (!empty($_POST['birthdate'])) {
         if (preg_match($regex['date'], $_POST['birthdate'])) {
@@ -74,19 +63,7 @@ if(isset($_POST['updateInfos'])) {
         $errors['birthdate'] = USERS_BIRTHDATE_ERROR_EMPTY;
     }
     
-    // if (!empty($_FILES['avatar'])) {
-    //     $imageMessage = checkImage($_FILES['avatar']);
     
-    //     if ($imageMessage != '') {
-    //         $errors['avatar'] = $imageMessage;
-    //     } else {
-    //         $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-    
-    //         while(file_exists('../../assets/IMG/' . $user->avatar)) {
-    //             $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-    //         }
-    //     }
-    // }
     
     if(empty($errors)) {
         if($user->update()){
@@ -145,3 +122,30 @@ $userAccount = $user->getById();
 require_once '../../views/parts/header.php';
 require_once '../../views/users/updateAccount.php';
 require_once '../../views/parts/footer.php';
+
+// if (!empty($_POST['location'])) {
+    //     if (preg_match($regex['location'], $_POST['location'])) {
+    //         $user->location = clean($_POST['location']);
+    //         if ($user->checkIfExistsByLocation() == 1 && $user->location != $_SESSION['user']['location']) {
+    //             $errors['location'] = USERS_LOCATION_ERROR_EXISTS;
+    //         }
+    //     } else {
+    //         $errors['location'] = USERS_LOCATION_ERROR_INVALID;
+    //     }
+    // } else {
+    //     $errors['location'] = USERS_LOCATION_ERROR_EMPTY;
+    // }
+    
+    // if (!empty($_FILES['avatar'])) {
+    //     $imageMessage = checkImage($_FILES['avatar']);
+    
+    //     if ($imageMessage != '') {
+    //         $errors['avatar'] = $imageMessage;
+    //     } else {
+    //         $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+    
+    //         while(file_exists('../../assets/IMG/' . $user->avatar)) {
+    //             $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+    //         }
+    //     }
+    // }

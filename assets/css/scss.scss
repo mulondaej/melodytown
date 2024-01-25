@@ -132,27 +132,71 @@ body {
 }
 
 @use 'commons' as *;
-.articlesContainer {
+.topicsContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    .article {
-        .articleImage {
+    .topic {
+        .topicImage {
             background-size: cover;
             background-position: center;
             height: 200px;
             width: 100%;
         }
-        .articleBottom {
+        .topicBottom {
             padding: 1rem;
-        width: 80%;
-        margin: 0 auto;
-        text-align: center;
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #d7d8d8;
+            border-radius: 7px;
+
+            .topicContent {
+                background-color: #dee3e7de;
+                border-radius: 7px;
+
+            }
         }
         border: 1px solid $dark;
-        border-radius: 4px;
+        margin: 10px;
 
     }
+}
+
+a.cta {
+    background-color: $primary;
+    border: none;
+    border-radius: 3px;
+    color: rgb(0, 0, 0);
+    margin: auto;
+    text-decoration: underline;
+    padding: 0.5rem 1rem;
+    width: fit-content;
+}
+
+button.cta {
+    background-color: $primary;
+    border: none;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    margin: 10px;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    width: fit-content;
+}
+
+button.cta:hover, a.cta:hover {
+    color: #E84855;
+}
+
+.topics {
+    display: block;
+    text-align: center;
+}
+
+.topics h1 {
+    text-align: center;
+    margin: 0 auto;
 }
 
 //Imports 
@@ -290,14 +334,4 @@ nav {
 }
 
 
-a.cta {
-    background-color: $primary;
-    border: none;
-    border-radius: 3px;
-    color: white;
-    margin: auto;
-    margin-top: 1rem;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    width: fit-content;
-}
+

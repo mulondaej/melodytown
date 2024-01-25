@@ -1,6 +1,6 @@
 <?php
 require_once "../../models/users/usersModel.php" ;
-require_once "../../models/posts/forumModel.php" ;
+require_once "../../models/forumModel.php" ;
 require_once "../../models/posts/topicAnswersModel.php" ;
 require_once "../../models/posts/commentsModel.php" ;
 require_once "../../models/posts/topicsModel.php";
@@ -24,7 +24,7 @@ $user = new Users;
 $user->id = $_SESSION['user']['id'];
 
 $forums = new Forums;
-
+$forumsList = $forums->getList();
 
 $categories = new Categories;
 $categoriesList = $categories->getList();

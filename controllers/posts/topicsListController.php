@@ -16,10 +16,16 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
+$tags = new Tags;
+$tagsList = $tags->getList();
+
+$categories = new Categories;
+$categoriesList = $categories->getList();
+
 $topic = new Topics;
 $topicsList = $topic->getList();
 
-// var_dump($topicsList);
+ var_dump($topicsList);
 
 require_once '../../views/parts/header.php';
 require_once '../../views/posts/topicsList.php';

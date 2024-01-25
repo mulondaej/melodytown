@@ -5,6 +5,23 @@ ini_set('display_errors', 1);
 
 if (isset($_GET['tag']) && isset($_GET['title']) && isset($_GET['content']) 
 && isset($_GET['username']) && isset($_GET['publicationDate'])) {
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 
     <main id="threadMain"><div id="threadHeader"><button id="backBtn"><a href="/forum">
     <i id="backArrow" class="fa fa-arrow-left"> Back</i>  </a></button><div id="threadTitle">
@@ -37,6 +54,23 @@ if (isset($_GET['tag']) && isset($_GET['title']) && isset($_GET['content'])
     <textarea name="comments" id="comments" ></textarea>
     <br><input type="submit" value="post" id="commentBtn"></div></fieldset></main>';
 
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
     } else {
         echo '<p id="messTxt"> Ce contenu n\'est pas disponible</p>';
     }

@@ -3,6 +3,9 @@
  *vérifier que l'utilisateur est connecté.
  */
 require_once '../../models/users/usersModel.php';
+require_once '../../utils/regex.php';
+require_once '../../utils/messages.php';
+require_once '../../utils/functions.php';
 
 session_start();
 
@@ -12,16 +15,15 @@ if(empty($_SESSION['user'])){
 }
 
 
-
-require_once '../../views/parts/header.php';
 $user = new Users;
 $user->id = $_SESSION['user']['id'];
 $userAccount = $user->getById();
 // $userAccount->avatar;
 
-
 var_dump($userAccount);
 var_dump('----');
 var_dump($user);
+
+require_once '../../views/parts/header.php';
 require_once '../../views/users/account.php';
 require_once '../../views/parts/footer.php';
