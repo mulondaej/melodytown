@@ -4,7 +4,7 @@
         <?php if (isset($success)) { ?>
             <p id="successMessage"><?= $success ?></p>
         <?php } ?>
-        
+
         <!-- <label for="avatar">Avatar</label>
         <input type="file" name="avatar" id="avatar" value=" $userAccount->avatar ?>">
          if (isset($errors['avatar'])) { ?>
@@ -37,7 +37,7 @@
         <br>
         <input type="submit" value="Modifier" name="updateInfos">
 
-        <button id="openModalBtn">Supprimer ton compte</button>
+        <button id="openModalBtn"><a href="#delete">Supprimer ton compte</a></button>
     </form>
 
     <form action="/modifier-mon-compte" method="post" id="logForm">
@@ -61,7 +61,7 @@
         <div id="modal">
             <span id="closeBtn">&times;</span>
             <p id="modalText">Êtes-vous sûr de vouloir supprimer votre compte ?</p>
-            <form action="/modifier-mon-compte" method="POST">
+            <form action="/modifier-mon-compte" method="POST" id="delete">
                 <input type="submit" value="Supprimer" name="deleteAccount">
             </form>
         </div>

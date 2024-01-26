@@ -1,7 +1,7 @@
 <?php
 require_once "../../models/users/usersModel.php" ;
 require_once "../../models/forumModel.php" ;
-require_once "../../models/posts/topicAnswersModel.php" ;
+require_once "../../models/posts/topicsAnswersModel.php" ;
 require_once "../../models/posts/commentsModel.php" ;
 require_once "../../models/posts/topicsModel.php";
 require_once "../../models/posts/categoriesModel.php";
@@ -24,7 +24,6 @@ $user = new Users;
 $user->id = $_SESSION['user']['id'];
 
 $forums = new Forums;
-$forumsList = $forums->getList();
 
 $categories = new Categories;
 $categoriesList = $categories->getList();
@@ -32,7 +31,15 @@ $categoriesList = $categories->getList();
 $tags = new Tags;
 $tagsList = $tags->getList();
 
-    
+$topic = new Topics;
+$topicsList = $topic->getList();
+$count = count($topicsList);
+
+$answers = new Answers;
+$answersList = $answers->getList();
+$countA = count($answersList);
+
+$title = 'MelodyTown';
 
 require_once '../../views/parts/header.php';
 require_once '../../views/pages/forum.php'; 

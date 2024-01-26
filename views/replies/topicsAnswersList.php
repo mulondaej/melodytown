@@ -19,24 +19,23 @@
         </nav>
     <div class="topicsContainer">
         
-        <?php foreach($topicsList as $t) { ?>
+        <?php foreach($answersList as $a) { ?>
         <div class="topic">
             <div class="topicBottom">
-                <h2><b>Titre :</b> <?= $t->title ?> <br></h2>
+                <h2><b>Titre :</b> <?= $a->title ?> <br></h2>
                 <p>
-                    <b>Ecrit par :</b> <?= $t->username ?> <br>
-                    <b>Tags :</b> <?= $t->tag ?> <br>
-                    <b>Catégorie :</b> <?= $t->categorie ?> <br>
-                    <b>Publié :</b> <?= $t->publicationDate ?> <br>
-                    <b>Mis à jour :</b> <?= $t->updateDate ?>
+                    <b>Ecrit par :</b> <?= $a->u ?> <br>
+                    <b>ID :</b> <?= $a->a ?> <br>
+                    <b>Topic répondu :</b> <?= $a->t ?> <br>
+                    <b>Publié :</b> <?= $a->publicationDate ?> <br>
+                    <b>Mis à jour :</b> <?= $a->updateDate ?>
                 </p><b>content :</b>
-                <p class="topicContent">  <?= $t->content ?> <br>
+                <p class="topicContent">  <?= $a->content ?> <br>
                 </p>
-                <p><a href="/reponses"><b>Réponses :</b> <?= $countA ?></a></p>
-                <a href="/thread?<?= $t->id ?>" class="cta">Lire la suite</a><br>
+            <a href="/thread" class="cta">Lire la suite</a>
                 <div class="threads">
-                    <button type="submit" class="cta"><a href="/modifier-topic?<?= $t->id ?>">modifier</a></button>
-                    <button type="submit" class="cta"><a href="/modifier-topic?<?= $t->id ?>">supprimer</a></button>
+                    <button type="submit" class="cta"><a href="/modifier-topic">modifier</a></button>
+                    <button type="submit" class="cta"><a href="/modifier-topic">supprimer</a></button>
                 </div>
             </div>
         </div>

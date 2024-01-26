@@ -96,7 +96,7 @@ class Users
     }
     public function delete()
     {
-        $sql = 'DELETE `id` FROM `a8yk4_users` WHERE `email`= :email ;';
+        $sql = 'DELETE FROM `a8yk4_users` WHERE `id`= :id ;';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();

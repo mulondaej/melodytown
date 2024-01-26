@@ -117,7 +117,7 @@ if(isset($_POST['deleteAccount'])) {
 
 $userAccount = $user->getById();
 
-
+$title = 'Account-update';
 
 require_once '../../views/parts/header.php';
 require_once '../../views/users/updateAccount.php';

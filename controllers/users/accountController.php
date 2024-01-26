@@ -20,6 +20,8 @@ $user->id = $_SESSION['user']['id'];
 $userAccount = $user->getById();
 // $userAccount->avatar;
 
+$title = 'Account';
+
 var_dump($userAccount);
 var_dump('----');
 var_dump($user);

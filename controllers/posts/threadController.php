@@ -1,7 +1,7 @@
 <?php
 require_once "../../models/posts/topicsModel.php";
+require_once "../../models/posts/topicsAnswersModel.php";
 require_once "../../models/posts/categoriesModel.php";
-// require_once "../../models/posts/categoriesModel.php";
 require_once "../../models/posts/tagsModel.php";
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
@@ -10,8 +10,6 @@ require_once '../../utils/functions.php';
 
 session_start();
 
-require_once '../../views/parts/header.php';
-  
 // Confirmation que l'utilisateur est bel et bien en ligne
 if (!isset($_SESSION['user'])) {
     // Sinon, lui rediriger vers la page d'accueil ou de connexion
@@ -21,40 +19,46 @@ if (!isset($_SESSION['user'])) {
 
 $topic = new Topics();
 
-$topic->id = $_GET['id'];
-if($topic->checkIfExistsById() == 0) {
-    header('Location: /thread');
-    exit;
-}
+// $topic->id = $_GET['id'];
 
-$topicDetails = $topic->getById();
+// if($topic->checkIfExistsById() == 0) {
+//     header('Location: /topics');
+//     exit;
+// }
 
-$comment = new Comments();
+$answers = new Answers();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(!empty($_POST['content'])) {
-        if(!preg_match($regex['content'], $_POST['content'])) {
-            $comment->content = $_POST['content'];
+        if(!preg_match($regex['answers'], $_POST['content'])) {
+            $answers->content = $_POST['content'];
         } else {
-            $errors['content'] = COMMENT_CONTENT_ERROR_INVALID;
+            $errors['content'] = TOPICS_ANSWERS_ERROR;
         }
     } else {
-        $errors['content'] = COMMENT_CONTENT_ERROR_EMPTY;
+        $errors['content'] = TOPICS_ANSWERS_ERROR;
     }
    
-    $comment->id_topics = $topic->id;
-    $comment->id_users = $_SESSION['user']['id'];
+    $answers->id_topics = $topic->id;
+    $answers->id_users = $_SESSION['user']['id'];
 
     if(empty($errors)) {
-        if($comment->create()) {
-            $success = COMMENT_ADD_SUCCESS;
+        if($answers->create()) {
+            $success = TOPICS_ANSWERS_SUCCESS;
         } else {
-            $errors['add'] = COMMENT_ADD_ERROR;
+            $errors['add'] = TOPICS_ANSWERS_ERROR;
         }
     }
+
+    $title = $topic->title;
 }
+
+$topicsList = $topic->getList();
+$answersList = $answers->getList();
+$countA = count($answersList);
+
 
 require_once '../../views/parts/header.php';
 require_once '../../views/posts/thread.php';
-// require_once '../../views/comments/addComment.php';
+require_once '../../views/replies/topicAnswers.php';
 require_once '../../views/parts/footer.php';

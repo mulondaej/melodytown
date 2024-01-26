@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap");
+
 /* BASIC */
 * {
+    scroll-behavior: smooth;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 body {
-    overflow: scroll;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -16,7 +17,14 @@ body {
 }
 
 /* DEFAULT*/
-h1, h2, h3, p, button, input, select, textarea {
+h1,
+h2,
+h3,
+p,
+button,
+input,
+select,
+textarea {
     margin: 0;
     padding: 0;
     color: black;
@@ -25,6 +33,7 @@ h1, h2, h3, p, button, input, select, textarea {
 section {
     text-align: center;
 }
+
 /* .... */
 button {
     cursor: pointer;
@@ -33,7 +42,10 @@ button {
     border-radius: 7px;
 }
 
-button:hover, #uploadMediaBtn:hover, #createThread:hover, #ToCreate:hover {
+button:hover,
+#uploadMediaBtn:hover,
+#createThread:hover,
+#ToCreate:hover {
     background-color: #6ca4ca;
     text-decoration: none;
 }
@@ -85,24 +97,35 @@ header a {
 
 @keyframes bowAnimation {
     0% {
-      color: #c4e5e1d6; /* Cyan */
+        color: #c4e5e1d6;
+        /* Cyan */
     }
+
     20% {
-      color: #d9a147c4; /* Orange */
+        color: #d9a147c4;
+        /* Orange */
     }
+
     40% {
-      color: #3e8daecc; /* bleu */
+        color: #3e8daecc;
+        /* bleu */
     }
+
     60% {
-      color: #646cb9c9; /* Violet */
+        color: #646cb9c9;
+        /* Violet */
     }
+
     80% {
-      color: #9f6c85be; /* Brun */
+        color: #9f6c85be;
+        /* Brun */
     }
+
     100% {
-      color: #b48a8ac7; /* Brown */
+        color: #b48a8ac7;
+        /* Brown */
     }
-  }
+}
 
 #logo {
     width: 60px;
@@ -131,7 +154,8 @@ header a {
     position: absolute;
 }
 
-#menu, #connect {
+#menu,
+#connect {
     background-color: transparent;
     border: transparent;
     color: white;
@@ -187,6 +211,7 @@ button:hover,
 /* COMPTE */
 .comptePage {
     margin: 0 auto;
+    margin-top: 10px;
     text-align: center;
     justify-content: center;
     display: block;
@@ -232,7 +257,8 @@ button:hover,
     text-decoration: none;
 }
 
-.comptePage p a:hover, .comptePage p:hover {
+.comptePage p a:hover,
+.comptePage p:hover {
     color: rgb(255, 86, 14);
 }
 
@@ -300,13 +326,13 @@ button:hover,
     position: relative;
     display: inline-block;
     border-radius: 2px;
-  }
-  
-  .notification:hover {
+}
+
+.notification:hover {
     background-color: red;
-  }
-  
-  .notification .badge {
+}
+
+.notification .badge {
     position: absolute;
     top: -1px;
     right: -5px;
@@ -315,7 +341,7 @@ button:hover,
     background: red;
     color: white;
     z-index: 1;
-  }
+}
 
 /* SEARCHBAR */
 #searching {
@@ -572,10 +598,6 @@ button:hover,
     color: white;
 }
 
-/* .infoUser p {
-    color: white;
-} */
-
 .mainContainer {
     background-color: transparent;
     width: 100%;
@@ -591,8 +613,10 @@ button:hover,
 .mainContainer p {
     margin-top: 1rem;
 }
+
 /* profile's left asidebar */
-.asideBar, .activ {
+.asideBar,
+.activ {
     width: 15%;
     display: block;
     background-color: rgb(251, 253, 255);
@@ -603,7 +627,8 @@ button:hover,
     margin: 5px;
 }
 
-.asideBar button , .asideBar input {
+.asideBar button,
+.asideBar input {
     margin: 5px;
     right: 0;
     cursor: pointer;
@@ -613,16 +638,20 @@ button:hover,
     border-radius: 5px;
 }
 
-.Media a, .Archive a {
+.Media a,
+.Archive a {
     text-decoration: none;
     color: white;
 }
-.asideBar h3, .activ h3 {
+
+.asideBar h3,
+.activ h3 {
     margin: 8px;
     text-align: center;
 }
 
-.Media, .Archive {
+.Media,
+.Archive {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     margin: 4px;
@@ -631,12 +660,14 @@ button:hover,
     margin: 0 auto;
 }
 
-.disGallery, .Archive img {
+.disGallery,
+.Archive img {
     display: grid;
     margin: 5px;
 }
 
-#gallery, .Archive img {
+#gallery,
+.Archive img {
     display: flex;
     width: 40%;
     margin: 5px;
@@ -652,7 +683,7 @@ button:hover,
     width: max-content;
     margin: 5px;
     position: relative;
-} 
+}
 
 .state {
     background-color: #fff;
@@ -660,6 +691,7 @@ button:hover,
     border-radius: 5px;
     margin: 10px;
 }
+
 .statusContainer {
     margin: 15px;
     height: max-content;
@@ -680,7 +712,7 @@ button:hover,
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    margin : 12px;
+    margin: 12px;
     text-align: center;
 }
 
@@ -702,12 +734,13 @@ button:hover,
 }
 
 .likeComment,
-.replyComment, .postReply {
+.replyComment,
+.postReply {
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    margin : 12px;
+    margin: 12px;
     text-align: center;
 }
 
@@ -844,37 +877,37 @@ button:hover,
     margin-top: 10px;
     height: max-content;
     /
-  }
-  
-  #logForm h1 {
+}
+
+#logForm h1 {
     justify-self: center;
     text-align: center;
     color: #0b2b34;
     margin-bottom: 25px;
-  }
+}
 
-  #logForm h2 {
+#logForm h2 {
     justify-self: center;
     text-align: center;
     color: #8f9292;
-  }
-  
-  #logForm label {
+}
+
+#logForm label {
     display: block;
     margin: 15px 0 5px;
     color: #13414d;
-  }
-  
-  #logForm input[type] {
+}
+
+#logForm input[type] {
     width: 80%;
     padding: 8px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
     box-sizing: border-box;
-  }
-  
-  #logForm input[type="submit"] {
+}
+
+#logForm input[type="submit"] {
     background-color: #6499a3;
     color: white;
     padding: 10px 15px;
@@ -885,34 +918,36 @@ button:hover,
     justify-content: center;
     margin: 12px;
     width: max-content;
-  }
-  
-  #logForm input[type="submit"]:hover, #openModalBtn:hover{
+}
+
+#logForm input[type="submit"]:hover,
+#openModalBtn:hover {
     background-color: #45a049;
-  }
+}
 
-  #logForm input[placeholder], #logForm input[name] {
+#logForm input[placeholder],
+#logForm input[name] {
     text-align: center;
-  }
+}
 
-  #logForm a:hover {
+#logForm a:hover {
     color: rgb(54, 56, 44);
-  }
+}
 
-  /* # */
-  #successMessage {
+/* # */
+#successMessage {
     color: #23ff6d;
     text-align: center;
     justify-content: center;
     margin: 0 auto;
-  }
+}
 
-  .errorsMessage {
+.errorsMessage {
     color: red;
     text-align: center;
-  }
-  
-  #openModalBtn {
+}
+
+#openModalBtn {
     background-color: rgb(219, 30, 30);
     color: white;
     padding: 10px 15px;
@@ -924,15 +959,15 @@ button:hover,
     margin: 12px;
     width: max-content;
     height: max-content;
-  }
+}
 
-  .compteFlex {
+.compteFlex {
     display: flex;
     margin: 0 auto;
     justify-content: space-evenly;
-  }
+}
 
-  
+
 /* MAIN SECTION FORUM*/
 #main {
     width: 100%;
@@ -940,6 +975,16 @@ button:hover,
     border-radius: 5px;
     justify-content: space-evenly;
     display: flex;
+}
+
+#topicContainer {
+    width: 80%;
+    padding: 10px;
+    background-color: #f8fffde3;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    margin: 0 auto;
 }
 
 #forum {
@@ -1032,6 +1077,10 @@ button:hover,
     margin-top: 5px;
 }
 
+.subforum-column a {
+    color: #d8f4fc;
+}
+
 .subforum-column div a {
     font-size: 14px;
     color: rgb(30, 20, 13);
@@ -1054,7 +1103,6 @@ button:hover,
 .subforum-info {
     text-align: center;
     font-size: 13px;
-    max-height: 70px;
 }
 
 .subforum-info a {
@@ -1076,7 +1124,13 @@ button:hover,
 }
 
 .subforum-icon i {
+    margin: 0 auto;
     font-size: 30px;
+    margin-top: 10px;
+}
+
+.subforum-icon {
+    width: fit-content;
 }
 
 .subforum-devider {
@@ -1117,7 +1171,7 @@ button:hover,
     background-color: #ccdde2e1;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(82, 85, 86, 0.1);
-    
+
 }
 
 label {
@@ -1136,6 +1190,7 @@ textarea {
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
+    text-align: center;
 }
 
 #threadForm option {
@@ -1150,10 +1205,12 @@ textarea {
     height: 150px;
 }
 
-.threadPosted p, .threadPosted h2 {
+.threadPosted p,
+.threadPosted h2 {
     text-align: center;
     margin: 0 auto;
-    color: #ffffff; /* Red color for error messages */
+    color: #ffffff;
+    /* Red color for error messages */
 }
 
 .send {
@@ -1186,7 +1243,8 @@ textarea {
 
 #createThread {
     padding: 10px 20px;
-    background-color: #a9b7c0; /* Blue color for the button */
+    background-color: #a9b7c0;
+    /* Blue color for the button */
     color: #fff;
     border: none;
     margin: 6px;
@@ -1196,7 +1254,8 @@ textarea {
 }
 
 #createThread:hover {
-    background-color: #2980b9; /* Darker blue on hover */
+    background-color: #2980b9;
+    /* Darker blue on hover */
 }
 
 /* modal styling */
@@ -1211,19 +1270,19 @@ textarea {
     width: 100%;
     z-index: 1;
     margin: 0 auto;
-  }
-  
-  #modal {
+}
+
+#modal {
     background-color: whitesmoke;
     padding: 1rem;
     width: 50%;
     margin: 0 auto;
-  }
-  
-  #closeBtn {
+}
+
+#closeBtn {
     cursor: pointer;
     float: right;
-  }
+}
 
 /* THREADS */
 #threadMain {
@@ -1243,7 +1302,7 @@ fieldset {
     justify-content: space-evenly;
 }
 
-#threadTheader{
+#threadTheader {
     display: flex;
     text-align: center;
     justify-content: space-between;
@@ -1265,7 +1324,7 @@ fieldset {
     color: rgb(52, 85, 64);
 }
 
-#backArrow {  
+#backArrow {
     text-align: left;
     justify-content: left;
     top: 0;
@@ -1309,7 +1368,10 @@ fieldset {
     position: relative;
 }
 
-#userCard a, #userCard p, .usernameMedia a, .userMedia a {
+#userCard a,
+#userCard p,
+.usernameMedia a,
+.userMedia a {
     text-decoration: none;
     color: #507b97;
 }
@@ -1362,7 +1424,8 @@ fieldset {
     margin-right: 1px;
 }
 
-.interact button a, .replies button a {
+.interact button a,
+.replies button a {
     color: black;
 }
 
@@ -1396,7 +1459,8 @@ fieldset {
     margin: 0 auto;
 }
 
-#messTxt, #compteH1 {
+#messTxt,
+#compteH1 {
     text-align: center;
     margin-bottom: 10px;
 }
@@ -1428,7 +1492,8 @@ fieldset {
     text-align: right;
 }
 
-.replies button:hover, #commentBtn:hover {
+.replies button:hover,
+#commentBtn:hover {
     color: rgb(235, 90, 70);
 }
 
@@ -1492,18 +1557,20 @@ fieldset {
     margin-bottom: 5px;
     box-shadow: 0 0 10px rgba(85, 86, 87, 0.2);
 }
-  
-  .profileMedia:hover .overLay {
+
+.profileMedia:hover .overLay {
     opacity: 1;
-  }
+}
 
 /*media user info */
 .userMedia {
     width: 100%;
     max-height: 200px;
-    margin-top: -190px; /* Move user info up to overlap cover */
+    margin-top: -190px;
+    /* Move user info up to overlap cover */
     position: relative;
-    z-index: 3; /* Place user info above cover */
+    z-index: 3;
+    /* Place user info above cover */
     margin: 0 auto;
     justify-self: center;
     text-align: center;
@@ -1634,30 +1701,165 @@ fieldset {
 }
 
 /* RESPONSIVE */
-@media screen and (min-width: 600px) {
-    #forum {
-        width: 70%;
-        margin-left: 20px;
-        margin-right: 10px;
+@media screen and (max-width: 300px) {
+    * {
+        box-sizing: content-box;
+        margin: 0;
+        padding: 0;
     }
-}
 
-@media screen and (min-width: 768px) {
-    .subforum-row {
-        grid-template-columns: 8% 50% 12% 30%;
+    body {
+        overflow: scroll;
+        font-family: Arial, sans-serif;
+        margin: 0 auto;
+        padding: 0;
+        background-color: #b4b8bd;
     }
-}
 
-@media screen and (min-width: 992px) {
     #main {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    #forum {
+        width: 100%;
+    }
+
+    .forumcontainer {
+        width: 100%;
+        max-height: max-content;
+    }
+
+    .subforum {
+        margin-top: 15px;
+        text-decoration: none;
+        max-height: max-content;
+        width: 100%;
+    }
+
+    .subforum-row {
+        width: 100%;
+    }
+
+    .subforum-icon i {
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+
+    .subforum-info {
+        margin: auto;
+        text-align: center;
+        font-size: 10px;
+        height: max-content;
+    }
+
+    .subforum-stats {
+        font-size: 10px;
+        display: flex;
+        height: fit-content;
+    }
+
+    .subforum-info a {
+        font-size: 11px;
+        display: flex;
+    }
+
+    .right-sidebar {
+        width: max-content;
+        display: block;
+        gap: 1rem;
+    }
+
+    .updates {
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .updates li a {
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 301px) {
+    #main {
+        display: block;
+        width: 100%;
+    }
+
+    #forum {
+        width: 100%;
+    }
+
+    .forumcontainer {
+        width: 100%;
+        max-height: max-content;
+    }
+
+    .subforum {
+        margin-top: 15px;
+        text-decoration: none;
+        max-height: max-content;
+        width: 100%;
+    }
+
+    .subforum-row {
+        width: 100%;
+    }
+
+
+
+    .right-sidebar {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
         justify-content: space-between;
     }
 
-    #forum {
-        width: 70%;
-        margin-left: 20px;
-        margin-right: 10px;
+    .updates {
+        margin: 0 auto;
     }
 }
 
+@media screen and (min-width: 600px) {
+    #main {
+        display: flex;
+        width: 100%;
+    }
 
+    #forum {
+        width: 100%;
+    }
+
+    .forumcontainer {
+        width: 100%;
+        max-height: max-content;
+    }
+
+    .subforum {
+        margin-top: 15px;
+        text-decoration: none;
+        max-height: max-content;
+    }
+
+    .subforum-icon i {
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+
+    .subforum-icon {
+        width: fit-content;
+    }
+
+    .right-sidebar {
+        display: block;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .updates {
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+}

@@ -2,6 +2,7 @@
 require_once '../../models/users/usersModel.php';
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
+require_once '../../utils/functions.php';
 
 session_start();
 
@@ -73,6 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
+
+$title = 'Inscription';
 
 require_once '../../views/parts/header.php';
 require_once '../../views/users/register.php';

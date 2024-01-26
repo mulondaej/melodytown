@@ -1,6 +1,6 @@
 <?php
 
-require_once "../../models/posts/topicAnswersModel.php" ;
+require_once "../../models/posts/topicsAnswersModel.php" ;
 require_once "../../models/posts/commentsModel.php" ;
 require_once "../../models/posts/topicsModel.php";
 require_once "../../models/posts/categoriesModel.php";
@@ -18,12 +18,14 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
+$topic = new Topics;
+
 if(isset($_POST['updateInfos'])) {
 
     if (!empty($_POST['title'])) {
         if (preg_match($regex['title'], $_POST['title'])) {
             $topic->title = clean($_POST['title']);
-            if ($topic->checkIfExistsByTitle() == 1 ) {
+            if ($topic->checkIfExistsByTitle() == 1) {
                 $errors['title'] = TOPIC_TITLE_UPDATE_ERROR;
             }
         } else {
@@ -47,7 +49,7 @@ if(isset($_POST['updateInfos'])) {
     }
 
     if (!empty($_POST['categories'])) {
-        $categories->id = $_POST['categories'];
+        $categorie->id = $_POST['categories'];
         if ($categories->checkIfExistsById() == 1) {
             $topic->id_categories = clean($_POST['categories']);
         } else {
@@ -80,8 +82,7 @@ if(isset($_POST['updateInfos'])) {
             $errors['update'] = TOPIC_UPDATE_ERROR;
         }
     }
- $topicsList = $topic->getList();
-
+ 
 }
 
 if(isset($_POST['delete'])) {
@@ -93,6 +94,10 @@ if(isset($_POST['delete'])) {
     }
 }
 
+$topicsList = $topic->getList();
+// var_dump();
+
+$title = 'Topic-update';
 
 require_once '../../views/parts/header.php';
 require_once '../../views/posts/updateTopic.php';

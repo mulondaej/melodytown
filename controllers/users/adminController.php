@@ -17,6 +17,7 @@ if(empty($_SESSION['user']) && $_SESSION['user']['role'] = 258){
  * S'il n'a pas accès à cette page, je renvoie l'utilisateur vers sa page de profil.
  */
  
+ $title = 'Admin';
 
 require_once '../../views/parts/header.php';
 require_once '../../views/users/admin.php';

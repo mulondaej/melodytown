@@ -22,6 +22,7 @@ body {
     main {
         @include flex(column);
         padding: 1.5rem;
+
         section {
             width: 60%;
 
@@ -45,7 +46,8 @@ body {
         margin: 0;
         margin-top: auto;
         padding: 1.5rem;
-        .footerTitle{
+
+        .footerTitle {
             @include titles(1.5rem, 800, $white);
         }
 
@@ -60,17 +62,17 @@ body {
     display: flex;
     margin: 0 auto;
     justify-content: space-evenly;
-  }
+}
 
 #modalContainer {
     background-color: rgba(0, 0, 0, 0.3);
     display: none;
-        align-items: center;
-        justify-content: center;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     position: fixed;
-        left: 0;
-        top: 0;
+    left: 0;
+    top: 0;
     width: 100%;
     z-index: 1;
 }
@@ -110,19 +112,26 @@ body {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(2, 1fr);
+
     @media all and (max-width: 963px) {
         grid-template-columns: 1fr;
     }
+
     .lastAdded {
         padding: 1rem;
+
         h3 {
             color: $primary;
             font-variant: small-caps;
         }
+
         table {
             border-collapse: collapse;
             width: 100%;
-            tr, th, td {
+
+            tr,
+            th,
+            td {
                 border: 1px solid $primary;
                 padding: 0.5rem;
                 text-align: center;
@@ -132,10 +141,12 @@ body {
 }
 
 @use 'commons' as *;
+
 .topicsContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+
     .topic {
         .topicImage {
             background-size: cover;
@@ -143,20 +154,32 @@ body {
             height: 200px;
             width: 100%;
         }
+
         .topicBottom {
             padding: 1rem;
             width: 80%;
             margin: 0 auto;
             text-align: center;
             background-color: #d7d8d8;
-            border-radius: 7px;
+            border-radirgb(181, 220, 234)x;
 
             .topicContent {
                 background-color: #dee3e7de;
                 border-radius: 7px;
 
             }
+
+
         }
+
+        .topicBottom a {
+            color: rgb(0, 11, 15);
+        }
+
+        .topicBottom a:hover {
+            color: #E84855;
+        }
+        
         border: 1px solid $dark;
         margin: 10px;
 
@@ -185,7 +208,8 @@ button.cta {
     width: fit-content;
 }
 
-button.cta:hover, a.cta:hover {
+button.cta:hover,
+a.cta:hover, .topicBottom a:hover {
     color: #E84855;
 }
 
@@ -212,7 +236,7 @@ $dark: #333135;
 $ligthDark: #524E55;
 
 //Mixins
-@mixin flex($direction: row, $justify: center, $align: center){
+@mixin flex($direction: row, $justify: center, $align: center) {
     display: flex;
     flex-direction: $direction;
     justify-content: $justify;
@@ -319,6 +343,7 @@ nav {
                     width: 100%;
                     transition: transform 0.3s;
                 }
+
                 &:hover {
                     &:after {
                         transform: scaleX(1);
@@ -332,6 +357,3 @@ nav {
 * {
     box-sizing: border-box;
 }
-
-
-

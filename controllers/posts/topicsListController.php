@@ -1,5 +1,6 @@
 <?php
 require_once "../../models/posts/topicsModel.php";
+require_once "../../models/posts/topicsAnswersModel.php";
 require_once "../../models/posts/categoriesModel.php";
 require_once "../../models/posts/tagsModel.php";
 require_once '../../utils/regex.php';
@@ -24,6 +25,13 @@ $categoriesList = $categories->getList();
 
 $topic = new Topics;
 $topicsList = $topic->getList();
+$count = count($topicsList);
+
+$answers = new Answers;
+$answersList = $answers->getList();
+$countA = count($answersList);
+
+$title = 'Posts';
 
  var_dump($topicsList);
 

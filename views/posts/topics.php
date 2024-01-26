@@ -2,7 +2,7 @@
 
 ?>
 <div id="main">
-    <section class="forum" id="forum">
+    <section class="forum" id="topicContainer">
         <h1>Have fun through the forums!</h1>
         <button type="button" id="newThread" value="thread">Nouveau topic</button>
         <!--  if(empty($_POST)) {  -->
@@ -59,19 +59,19 @@
                         </div>
                         <div class="subforum-description subforum-column" id="subDescript">
                             <ul class="topic-list">
-                                <h4><a href=" /thread?tag&title&content&publicationDate&username">
+                                <h4><a href="/thread?<?= $t->id ?>">
                                         <?= $t->title ?>
                                     </a></h4>
-                                <p>An interesting <?= $t->tag ?>'s topic to discuss </p>
+                                <p>An interesting <?= $t->tag ?> to discuss </p>
                             </ul>
                         </div>
                         <div class="subforum-stats subforum-column center">
-                            <span><a href="" id="topicPost">11  </a>Answers | <a href="" id="topics">12</a>
-                                    Topics</span>
+                            <span><a href="" id="topicPost"> <?= $countA ?> </a>Answers </a></span>
                         </div>
                         <div class="subforum-info subforum-column">
-                            <b><a href="#"><?= $t->title ?></a></b> by <a href="#"><?= $t->username ?></a>,
-                            <small id="dateAlert"><?= $t->publicationDate ?></small>
+                            <b><?php foreach ($answersList as $a) { ?><a href="/thread?<?= $a->content ?>"><?php } ?>
+                            Last post:</a></b> by <a href="/profile?="><?= $t->username ?>,
+                            <?php foreach ($answersList as $a) { ?><?php } ?> <?= $a->publicationDate ?></a>
                         </div>
                     </div>
                 <?php } ?>

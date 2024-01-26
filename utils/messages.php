@@ -41,6 +41,9 @@ define('TOPIC_TITLE_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à j
 define('TOPIC_CONTENT_UPDATE_SUCCESS', 'Le contenu a bien été mis à jour');
 define('TOPIC_CONTENT_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du contenu');
 
+define('TOPIC_ANSWERS_UPDATE_SUCCESS', 'La reponse a bien été mis à jour');
+define('TOPIC_ANSWERS_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre reponse');
+
 define('TOPIC_TAG_CATEGORIE_UPDATE_SUCCESS', 'Cela a bien été mis à jour');
 define('TOPIC_TAG_CATEGORIE_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du tag ou categorie');
 
@@ -61,6 +64,14 @@ define('TOPICS_TITLE_ERROR', 'Mettez un titre SVP');
 define('TOPICS_CONTENT_SUCCESS', 'Merci d\avoir respecté le norme');
 define('TOPICS_CONTENT_ERROR_INVALID', 'Le contenu doit contenir au moins 30 caractères');
 define('TOPICS_CONTENT_ERROR', 'Veuillez redigez une phrase au moins, la case ne peut pas être vide');
+
+// ANSWERS
+define('TOPICS_ANSWERS_SUCCESS', 'Merci d\avoir respecté le norme');
+define('TOPICS_ANSWERS_ERROR', 'Veuillez redigez une phrase au moins, la case ne peut pas être vide');
+
+// COMMENTS
+define('TOPICS_COMMENTS_SUCCESS', 'Merci d\avoir respecté le norme');
+define('TOPICS_COMMENTS_ERROR', 'Veuillez redigez une phrase au moins, la case ne peut pas être vide');
 
 // TAGS
 define('TOPICS_TAGS_ERROR_EMPTY', 'Le tag est requis');

@@ -1,15 +1,15 @@
 <?php 
 
-class Comments {
+class Answers {
 
     private $pdo;
     public int $id;
-    public int $content;
-    public int $publicationDate;
-    public int $updateDate;
-    public int $username;
-    public int $id_status;
+    public string $content;
+    public string $publicationDate;
+    public string $updateDate;
+    public string $username;
     public int $id_users;
+    public int $id_topics;
 
     public function __construct()
     {
@@ -20,31 +20,31 @@ class Comments {
         }
     }
 
-    public function checkIfExistsByReply()
+    public function checkIfExistsByContent()
         {
-            $sql = 'SELECT COUNT(content) FROM `a8yk4_comments` WHERE `reply` = :reply';
+            $sql = 'SELECT COUNT(content) FROM `a8yk4_topicanswers` WHERE `content` = :content';
             $req = $this->pdo->prepare($sql);
             $req->bindValue(':content', $this->content, PDO::PARAM_STR);
             $req->execute();
             return $req->fetch(PDO::FETCH_COLUMN);
-
         }
 
     public function create()
     {
-        $sql = 'INSERT INTO `a8yk4_comments`( `content`,`publicationDate`, `username`, `id_status`,`id_users` )
-        VALUES (:content, NOW(), :username, :id_users, :id_status)';
+        $sql = 'INSERT INTO `a8yk4_topicanswers`( `content`,`publicationDate`,`updateDate`, 
+        `username`, `id_users`, `id_topics`) 
+        VALUES (:content, NOW(), NOW(), :username, :id_users, :id_topics)';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
         $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
-        $req->bindValue(':id_status', $this->id_status, PDO::PARAM_INT);
+        $req->bindValue(':id_topics', $this->id_topics, PDO::PARAM_INT);
         $req->execute();
     }
 
     public function delete()
     {
-        $sql = 'DELETE `id` FROM `a8yk4_comments` WHERE `content`= :content ;';
+        $sql = 'DELETE FROM `a8yk4_topicanswers` WHERE `id`= :id ;';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
@@ -52,37 +52,36 @@ class Comments {
 
     public function getById()
     {
-        $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, 
-        DATE_FORMAT(`updateDate`, "%d/%m/%y") AS `updateDate`
-        FROM `a8yk4_topicComments`
+        $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 
+        FROM `a8yk4_topicanswers`
         INNER JOIN `a8yk4_users` ON `a8yk4_topicanswers`.`id_users` = `a8yk4_users`.`id`
         WHERE `a8yk4_users`.`id` = :id';
         $req = $this->pdo->prepare($sql);
-        $req->bindValue(':id', $this->id, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         $req->execute();
         return $req->fetch(PDO::FETCH_OBJ);
     }
 
     public function getList()
     {
-        $sql = 'SELECT `k`.`id`, `k`.`content` AS `comments`, DATE_FORMAT(`k`.`publicationDate`, "%d/%m/%y") 
-        AS `publicationDate`, DATE_FORMAT(`k`.`updateDate`, "%d/%m/%y") AS `updateDate`,
-        `u`.`username` AS `username`, `k`.`id_users`, `k`.`id_status`
-        FROM `a8yk4_comments` AS `k`
-        INNER JOIN `a8yk4_users` AS `u` ON `k`.`id_users` = `u`.`id`
-        INNER JOIN `a8yk4_status` AS `s` ON `k`.`id_status` = `s`.`id`
-        ORDER BY `publicationDate` DESC';
+        $sql = 'SELECT `a`.`id`, SUBSTR(`a`.`content`, 1, 500) AS `content`,
+        DATE_FORMAT(`a`.`publicationDate`, "%d/%m/%y") AS `publicationDate`,
+        DATE_FORMAT(`a`.`updateDate`, "%d/%m/%y") AS `updateDate`,
+        `u`.`username`, `a`.`id_users`, `a`.`id_topics`
+        FROM `a8yk4_topicanswers` AS `a`
+        INNER JOIN `a8yk4_users` AS `u` ON `a`.`id_users` = `u`.`id`
+        INNER JOIN `a8yk4_topics` AS `t` ON `a`.`id_topics` = `t`.`id`';
         $req = $this->pdo->query($sql);
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function update()
     {
-        $sql = 'UPDATE `a8yk4_comments` SET `content`=:content,`updateDate` = :updateDate 
+        $sql = 'UPDATE `a8yk4_topicanswers` SET `content`=:content , `publicationDate` = :publicationDate 
         WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
-        $req->bindValue(':updateDate', $this->updateDate, PDO::PARAM_STR);
+        $req->bindValue(':publicationDate', $this->publicationDate, PDO::PARAM_STR);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
     }

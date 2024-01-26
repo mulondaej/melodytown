@@ -33,6 +33,7 @@ $userAccount = $user->getById();
 //     }
 // }
 
+$title = 'Profile';
 
 require_once '../../views/parts/header.php';
 require_once '../../views/pages/profile.php';

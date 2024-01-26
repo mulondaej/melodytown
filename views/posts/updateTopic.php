@@ -1,4 +1,4 @@
-<h1 id="compteH1">Modifier le page</h1>
+<h1 id="compteH1">Modifier le topic</h1>
 <main class="compteFlex">
 
     <form action="/modifier-topic" method="post" id="logForm">
@@ -8,8 +8,8 @@
 
         <label for="tag">Tag: </label>
         <select name="tag" id="tag">
-                <?php foreach ($tagsList as $g) { ?>
-                    <option value="<?= $g->id ?>"><?= $g->name ?></option>
+                <?php foreach ($topicsList as $t) { ?>
+                    <option value="<?= $t->id ?>"><?= $t->tag ?></option>
                  <?php } ?>
             </select>
         <?php if (isset($errors['tag'])) { ?>
@@ -19,7 +19,7 @@
         <label for="categories">Categorie: </label>
         <select id="categories" name="categories">
                 <?php foreach ($topicsList as $t) { ?>
-                    <option value="<?= $t->id_categories ?>"></option>
+                    <option value="<?= $t->id ?>"><?= $t->categorie ?></option>
                 <?php } ?>
             </select>
         <?php if (isset($errors['categories'])) { ?>
@@ -27,18 +27,14 @@
         <?php } ?>
 
         <label for="title">Titre: </label>
-        <?php foreach ($topicsList as $t) { ?>
-            <input type="text" name="title" id="title" value="<?= $t->title ?>">
-        <?php } ?>
+        <input type="text" name="title" id="title" value="<?= $t->title ?>">
         <?php if (isset($errors['title'])) { ?>
             <p id=errorsMessage><?= $errors['title'] ?></p>
         <?php } ?>
 
         <label for="content">Content: </label>
         <br>
-        <?php foreach ($topicsList as $t) { ?>
-            <textarea type="text" name="content" id="content" value="<?= $t->content ?>"></textarea>
-        <?php } ?>
+        <textarea type="text" name="content" id="content" value="<?= $t->content ?>"></textarea>
         <?php if (isset($errors['content'])) { ?>
             <p id=errorsMessage><?= $errors['content'] ?></p>
         <?php } ?>

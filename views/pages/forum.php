@@ -13,7 +13,7 @@
         <?php if (!empty($_SESSION['topics'])) { ?>
             'header(Location : /error404)'
         <?php } ?>
-
+        
         <div class="subforum central" id="central">
             <div class="subforum-title">
                 <h1>Central</h1>
@@ -30,14 +30,15 @@
                     <p>Description Content: let's try to be cool</p>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
+                    <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a>
                         Topics</span>
                 </div>
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                    <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                        <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
+                    
                 </div>
             </div>
             <div class="subforum-row">
@@ -53,14 +54,14 @@
                     <p>Description Content: let's try to be cool</p>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
+                    <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a>
                         Topics</span>
                 </div>
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                    <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                        <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                 </div>
             </div>
             <?php if (!empty($_SESSION['user'])) { ?>
@@ -77,14 +78,14 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                            <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
                 <div class="subforum-row">
@@ -100,14 +101,14 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                            <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
         </div>
@@ -133,13 +134,13 @@
                 </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a> Topics</span>
+                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
-                <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                    <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')); ?></a>
             </div>
         </div>
         <hr class="subforum-devider">
@@ -157,13 +158,13 @@
                 </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a> Topics</span>
+                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
-                <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                    <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')); ?></a>
             </div>
         </div>
         <hr class="subforum-devider">
@@ -181,13 +182,13 @@
                 </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a> Topics</span>
+                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
-                <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                    <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')); ?></a>
             </div>
         </div>
         <hr class="subforum-devider">
@@ -205,13 +206,13 @@
                 </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a> Topics</span>
+                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
-                <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                    <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')); ?></a>
             </div>
         </div>
         <hr class="subforum-devider">
@@ -229,13 +230,13 @@
                 </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a> Topics</span>
+                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
-                <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                    <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')); ?></a>
             </div>
         </div>
         <div class="subforum-row">
@@ -253,13 +254,13 @@
                 </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a> Topics</span>
+                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
-                <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                    <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')); ?></a>
             </div>
         </div>
         <div class="subforum-row">
@@ -276,13 +277,13 @@
                 </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a> Topics</span>
+                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
-                <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                    <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')); ?></a>
             </div>
         </div>
         <div class="subforum-row">
@@ -293,13 +294,13 @@
                 <h4><a href="/topics">Finished series</a></h4>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a> Topics</span>
+                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
-                <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                    <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')); ?></a>
             </div>
         </div>
         <hr class="subforum-devider">
@@ -320,14 +321,14 @@
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
+                    <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a>
                         Topics</span>
                 </div>
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                    <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                                <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                 </div>
             </div>
             <div class="subforum-row">
@@ -343,14 +344,14 @@
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
+                    <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a>
                         Topics</span>
                 </div>
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                    <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                                <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                 </div>
             </div>
             <div class="subforum-row">
@@ -365,14 +366,14 @@
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
+                    <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a>
                         Topics</span>
                 </div>
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                    <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                    <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                                <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                 </div>
             </div>
             <hr class="subforum-devider">
@@ -396,14 +397,14 @@
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post :</a></b> <a href="">JustAUser, 
+                            <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
                 <hr class="subforum-devider">
@@ -421,14 +422,14 @@
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                            <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
                 <div class="subforum-row">
@@ -441,14 +442,14 @@
                             <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                            <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
             </div>
@@ -466,14 +467,14 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                            <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
                 <hr class="subforum-devider">
@@ -486,14 +487,14 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                            <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
             </div>
@@ -511,14 +512,14 @@
                             <p>Description Content: let's try to be cool</p>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                            <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                                Topics</span>
-                        </div>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
+                    </div>
                         <div class="subforum-info subforum-column">
-                            <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                            <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                            <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                                <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                         </div>
                     </div>
                     <hr class="subforum-devider">
@@ -531,14 +532,14 @@
                             <p>Description Content: let's try to be cool</p>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                            <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                                Topics</span>
-                        </div>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
+                    </div>
                         <div class="subforum-info subforum-column">
-                            <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                            <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                            <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                                <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                         </div>
                     </div>
                 </div>
@@ -559,14 +560,14 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                            <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
                 <hr class="subforum-devider">
@@ -579,14 +580,14 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                            <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
                 <hr class="subforum-devider">
@@ -599,14 +600,14 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                            <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
             </div>
@@ -624,14 +625,14 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                            <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
                 <hr class="subforum-devider">
@@ -644,14 +645,14 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, 
+                            <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
             </div>
@@ -669,14 +670,13 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
                 <hr class="subforum-devider">
@@ -689,14 +689,13 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
                 <?php if (!empty($_SESSION['user'])) { ?>
@@ -709,14 +708,13 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost">24</a> Posts | <a href="" id="topics">12</a>
-                            Topics</span>
+                        <span><a href="" id="topicPost"></a> Posts | 
+                        <a href="" id="topics"></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post</a></b> by <a href="">JustAUser,</a>
-                        <small id="dateAlert"><p><?= setlocale(LC_TIME, 'fr_FR');
+                        <b><a href="">Last post:</a></b> <a href="">JustAUser, <?= setlocale(LC_TIME, 'fr_FR');
                     date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%A, %d %B %Y')); ?></p></small>
+                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
                     </div>
                 </div>
                 <?php  } ?>
