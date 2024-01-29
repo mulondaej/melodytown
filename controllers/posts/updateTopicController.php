@@ -1,5 +1,6 @@
 <?php
 
+require_once "../../models/users/usersModel.php" ;
 require_once "../../models/posts/topicsAnswersModel.php" ;
 require_once "../../models/posts/commentsModel.php" ;
 require_once "../../models/posts/topicsModel.php";
@@ -17,6 +18,13 @@ if (!isset($_SESSION['user'])) {
     header("Location: /connexion");
     exit();
 }
+
+
+$user = new Users;
+$user->id = $_SESSION['user']['id'];
+$userAccount = $user->getById();
+$userDetails = $user->getList();
+$userCount = count($userDetails);
 
 $topic = new Topics;
 
@@ -89,12 +97,13 @@ if(isset($_POST['delete'])) {
     if($topic->delete()) {
         unset($_SESSION);
         session_destroy();
-        header('Location: /compte-supprime');
+        header('Location: /topic-supprime');
         exit;
     }
 }
 
 $topicsList = $topic->getList();
+$topicCount = count($topicsList);
 // var_dump();
 
 $title = 'Topic-update';

@@ -1,4 +1,4 @@
-<h1 id="compteH1">Modifier le topic</h1>
+<h1 id="compteH1">Modifier le topic</h1><hr>
 <main class="compteFlex">
 
     <form action="/modifier-topic" method="post" id="logForm">

@@ -117,6 +117,12 @@ class Users
 
     public function getList()
     {
+        $sql = 'SELECT `u`.`id`, `username`, `email`, `location`, DATE_FORMAT(`birthdate`, "%d/%m/%y") 
+        AS `birthdateFr`, `birthdate` , DATE_FORMAT(`registerDate`, "%M %Y") AS `registerDate`, `name` AS `roleName` 
+        FROM `a8yk4_users` AS `u`
+        INNER JOIN `a8yk4_usersroles` ON id_usersRoles = `a8yk4_usersroles`.`id`';
+        $req = $this->pdo->query($sql);
+        return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
        /**

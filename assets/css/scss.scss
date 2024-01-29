@@ -144,7 +144,7 @@ body {
 
 .topicsContainer {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 
     .topic {
@@ -161,7 +161,7 @@ body {
             margin: 0 auto;
             text-align: center;
             background-color: #d7d8d8;
-            border-radirgb(181, 220, 234)x;
+            border-radius: 10px;
 
             .topicContent {
                 background-color: #dee3e7de;

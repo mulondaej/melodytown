@@ -1,4 +1,6 @@
 <?php
+
+require_once "../../models/users/usersModel.php" ;
 require_once "../../models/posts/topicsModel.php";
 require_once "../../models/posts/topicsAnswersModel.php";
 require_once "../../models/posts/categoriesModel.php";
@@ -16,6 +18,12 @@ if (!isset($_SESSION['user'])) {
     header("Location: /connexion");
     exit();
 }
+
+$user = new Users;
+$user->id = $_SESSION['user']['id'];
+$userAccount = $user->getById();
+$userDetails = $user->getList();
+$userCount = count($userDetails);
 
 $topic = new Topics();
 
@@ -55,7 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $topicsList = $topic->getList();
 $answersList = $answers->getList();
-$countA = count($answersList);
+$postCount = count($answersList);
 
 
 require_once '../../views/parts/header.php';

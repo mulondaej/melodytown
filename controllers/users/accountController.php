@@ -22,9 +22,9 @@ $userAccount = $user->getById();
 
 $title = 'Account';
 
-var_dump($userAccount);
-var_dump('----');
-var_dump($user);
+// var_dump($userAccount);
+// var_dump('----');
+// var_dump($user);
 
 require_once '../../views/parts/header.php';
 require_once '../../views/users/account.php';

@@ -1,5 +1,7 @@
 <main class="topics">
     <h1>Threads</h1><hr>
+    <p><b>Total nombre de Threads :</b> <?= $topicCount ?></p>
+    
     <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item">
@@ -32,7 +34,7 @@
                 </p><b>content :</b>
                 <p class="topicContent">  <?= $t->content ?> <br>
                 </p>
-                <p><a href="/reponses"><b>Réponses :</b> <?= $countA ?></a></p>
+                <p><a href="/reponses"><b>Réponses :</b> <?= $postCount ?></a></p>
                 <a href="/thread?<?= $t->id ?>" class="cta">Lire la suite</a><br>
                 <div class="threads">
                     <button type="submit" class="cta"><a href="/modifier-topic?<?= $t->id ?>">modifier</a></button>

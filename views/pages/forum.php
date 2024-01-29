@@ -6,12 +6,51 @@
     <div class="forumcontainer">
         <?php if (!empty($_SESSION['user'])) { ?>
             <h1>Detendez-vous avec plaisir dans des discussions !</h1>
-            <a href="/topics">Nouveau topic</a>
+            <button type="button" id="newThread" value="thread">Nouveau topic</button>
 
+        <form action="/topics" method="POST" id="threadForm">
+            <label for="tag">Tags:</label>
+            <select name="tag" id="tag">
+                <?php foreach ($tagsList as $t) { ?>
+                    <option value="<?= $t->id ?>"><?= $t->name ?></option>
+                <?php } ?>
+            </select>
+            <?php if (isset($errors['tag'])) : ?>
+                <p><?= $errors['tag'] ?></p>
+            <?php endif; ?>
+
+            <label for="categories">Categories</label>
+            <select id="categories" name="categories">
+                <?php foreach ($categoriesList as $c) { ?>
+                    <option value="<?= $c->id ?>"><?= $c->name ?></option>
+                <?php } ?>
+            </select>
+            <?php if (isset($errors['categories'])) : ?>
+                <p><?= $errors['categories'] ?></p>
+            <?php endif; ?>
+
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title">
+            <?php if (isset($errors['title'])) : ?>
+                <p><?= $errors['title'] ?></p>
+            <?php endif; ?>
+
+            <label for="content">Content:</label>
+            <textarea id="content" name="content"></textarea>
+            <?php if (isset($errors['content'])) : ?>
+                <p><?= $errors['content'] ?></p>
+            <?php endif; ?>
+
+            <div class="send">
+                <input type="submit" name="threadPost" value="Create" id=>
+            </div>
+        </form>
+
+        <hr>
         <?php } ?>
 
         <?php if (!empty($_SESSION['topics'])) { ?>
-            'header(Location : /error404)'
+          <?php  header('Location : /error404')?>
         <?php } ?>
         
         <div class="subforum central" id="central">
@@ -30,8 +69,8 @@
                     <p>Description Content: let's try to be cool</p>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a>
-                        Topics</span>
+                    <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                    <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -50,12 +89,12 @@
                     <ul class="thread-list">
                         <!-- Thread items go here -->
                     </ul>
-                    <h4><a href="/topics">News</a></h4>
+                    <h4><a href="/topics?<?= $c->name ?>">News</a></h4>
                     <p>Description Content: let's try to be cool</p>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a>
-                        Topics</span>
+                    <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                    <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -78,8 +117,8 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -101,8 +140,8 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="/" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="/" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -134,7 +173,7 @@
                 </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
+                <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -158,7 +197,7 @@
                 </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
+                <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -182,7 +221,7 @@
                 </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
+                <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -206,7 +245,7 @@
                 </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
+                <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -227,34 +266,11 @@
                     <h5><a href="/topics">Saint Seiya</a></h5>
                     <h5><a href="/topics">Sailor Moon</a></h5>
                     <h5><a href="/topics">Pokemon</a></h5>
-                </div>
-            </div>
-            <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
-            </div>
-            <div class="subforum-info subforum-column">
-                <b><a href="">Last post:</a></b> <a href="">JustAUser, 
-                    <?= setlocale(LC_TIME, 'fr_FR');
-                    date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%d/%m/%Y')); ?></a>
-            </div>
-        </div>
-        <div class="subforum-row">
-            <div class="subforum-icon subforum-column ">
-                <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
-            </div>
-            <div class="subforum-description subforum-column">
-                <h4><a href="/topics">Exceptional</a></h4>
-                <div>
-                    <h5><a href="/topics">Reborn</a></h5>
-                    <h5><a href="/topics">Fairytail</a></h5>
-                    <h5><a href="/topics">Seven Deadly Sins</a></h5>
-                    <h5><a href="/topics">Hajime no Ippo</a></h5>
                     <h5><a href="/topics">JoJo Bizarre</a></h5>
                 </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
+                <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -277,7 +293,7 @@
                 </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
+                <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -292,9 +308,16 @@
             </div>
             <div class="subforum-description subforum-column">
                 <h4><a href="/topics">Finished series</a></h4>
+                <div>
+                    <h5><a href="/topics">Reborn</a></h5>
+                    <h5><a href="/topics">Fairytail</a></h5>
+                    <h5><a href="/topics">Seven Deadly Sins</a></h5>
+                    <h5><a href="/topics">Hajime no Ippo</a></h5>
+                    <h5><a href="/topics">more</a></h5>
+                </div>
             </div>
             <div class="subforum-stats subforum-column ">
-                <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a> Topics</span>
+                <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
             </div>
             <div class="subforum-info subforum-column">
                 <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -321,8 +344,8 @@
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a>
-                        Topics</span>
+                <span><a href="/" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="/" id="topics"><?= $topicCount ?></a> Topics</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -344,8 +367,8 @@
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a>
-                        Topics</span>
+                <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -359,15 +382,15 @@
                     <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                 </div>
                 <div class="subforum-description subforum-column">
-                    <h4><a href="/topics">Other publish</a></h4>
+                    <h4><a href="/topics">Other publishers</a></h4>
                     <div>
                         <h5><a href="/topics">Invincible</a></h5>
                         <h5><a href="/topics">other Series</a></h5>
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topicPost"></a> Posts | <a href="" id="topics"></a>
-                        Topics</span>
+                    <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -397,8 +420,8 @@
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post :</a></b> <a href="">JustAUser, 
@@ -413,37 +436,17 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics">Explore</a></h4>
+                        <h4><a href="/topics">Explore more</a></h4>
                         <div>
                             <h5><a href="/topics">Dr. Frost</a></h5>
                             <h5><a href="/topics">Gosu</a></h5>
-                            <h5><a href="/topics">Nano</a></h5>
                             <h5><a href="/topics">Dice</a></h5>
+                            <h5><a href="/topics">Others</a></h5>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
-                    </div>
-                    <div class="subforum-info subforum-column">
-                        <b><a href="">Last post:</a></b> <a href="">JustAUser, 
-                            <?= setlocale(LC_TIME, 'fr_FR');
-                    date_default_timezone_set('Europe/Paris');
-                    echo utf8_encode(strftime('%d/%m/%Y')) ?></a>
-                    </div>
-                </div>
-                <div class="subforum-row">
-                    <div class="subforum-icon subforum-column ">
-                        <i class="fa-regular fa-comment" style="color: #e0e9f6;"></i>
-                    </div>
-                    <div class="subforum-description subforum-column">
-                        <ul class="thread-list">
-                            <h4><a href="/topics">More</a></h4>
-                            <p>Description Content: let's try to be cool</p>
-                    </div>
-                    <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -467,8 +470,8 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -487,8 +490,8 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -512,8 +515,8 @@
                             <p>Description Content: let's try to be cool</p>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                         <div class="subforum-info subforum-column">
                             <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -532,8 +535,8 @@
                             <p>Description Content: let's try to be cool</p>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                         <div class="subforum-info subforum-column">
                             <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -560,8 +563,8 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -580,8 +583,8 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -600,8 +603,8 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -614,7 +617,9 @@
 
             <div class="subforum gather" id="gather">
                 <div class="subforum-title">
-                    <h1>Générale</h1>
+                    <?php foreach($categoriesList as $c) { ?>
+                        <h1><?= $c->name == [1] ?></h1>
+                    <?php } ?>
                 </div>
                 <div class="subforum-row">
                     <div class="subforum-icon subforum-column ">
@@ -625,8 +630,8 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -645,8 +650,8 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="">JustAUser, 
@@ -670,8 +675,8 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="">JustAUser, <?= setlocale(LC_TIME, 'fr_FR');
@@ -689,8 +694,8 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="">JustAUser, <?= setlocale(LC_TIME, 'fr_FR');
@@ -708,8 +713,8 @@
                         <p>Description Content: let's try to be cool</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topicPost"></a> Posts | 
-                        <a href="" id="topics"></a> Topics</span>
+                        <span><a href="" id="topicPost"><?= $postCount ?></a> Posts | 
+                        <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="">JustAUser, <?= setlocale(LC_TIME, 'fr_FR');
@@ -747,14 +752,16 @@
     <div class="updates">
         <h2>Posts</h2>
         <ul>
-            <li><a href="#thread">Latest Post: </a><span id="posts-posted"><a href="#profile">0</a></span></li>
-            <li><a href="#thread">Latest Thread: </a><span id="posts-posted"><a href="#profile">0</a></span>
+            <li><a href="#thread">Latest Post: </a><span id="posts-posted">
+                <a href="#profile"> </a></span></li>
+            <li><a href="#thread">Latest Thread: </a><span id="posts-posted">
+                <a href="#profile"> </a></span>
             </li>
-            <li><a href="#thread">Latest Status: </a><span id="posts-posted"><a href="#profile">0</a></span>
+            <li><a href="#thread">Latest Status: </a><span id="posts-posted">
+                <a href="#profile"><?= $postCount ?></a></span>
             <li><a href="#winners">Kings of posting:</a>
-                <span id="members-online"><a href="#profile">0</a></span>
-                <span id="members-online"><a href="#profile">0</a></span>
-                <span id="members-online"><a href="#profile">0</a></span>
+                <span id="members-online"><a href="#profile">
+                    <?= $userAccount->username ?></a></span>
             </li>
             </li>
         </ul>
@@ -762,10 +769,13 @@
     <div class="updates">
         <h2>Forum stats</h2>
         <ul>
-            <li>Newest Member: <span id="members-online"><a href="#profile">0</a></span></li>
-            <li>Total Amount of Posts: <span id="posts-posted"><a href="/posts">0</a></span></li>
-            <li><a href="../views/pages/members.php">Members Online: </a><span id="members-online">0</span></li>
-            <li>Guests Online: <span id="guests-online">0</span></li>
+            <li><b>Newest Member: </b><span id="members-online"><a href="#profile">
+                <?= $userAccount->username ?></a></span></li>
+            <li><b>Total Posts: </b><span id="posts-posted"><a href="/posts"><?= $totalCount ?></a></span></li>
+            <li><b>Members Online : </b><a href=".#"> <?= $userAccount->username ?></a>
+            <span id="members-online"><?= $userCount ?></span></li>
+            <li><b>Guests Online : </b><span id="guests-online">0</span></li>
+            <li><b>Members joined : </b><a href="#"></a><span id="members-online"><?= $userCount ?></span></li>
         </ul>
     </div>
 </aside>

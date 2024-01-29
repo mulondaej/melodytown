@@ -86,10 +86,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
 
 
 $topicsList = $topic->getList();
-$count = count($topicsList);
+$topicCount = count($topicsList);
 
 $answersList = $answers->getList();
-$countA = count($answersList);
+$postCount = count($answersList);
+
+$totalCount = $postCount + $topicCount;
 
 $title = 'forum';
 

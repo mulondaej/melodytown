@@ -1,27 +1,30 @@
 RewriteEngine On
-#users
+#USERS
 RewriteRule ^accueil$ /controllers/indexController.php
 RewriteRule ^inscription$ /controllers/users/registerController.php
 RewriteRule ^connexion$ /controllers/users/loginController.php
+RewriteRule ^deconnexion$ /controllers/users/logoutController.php
 RewriteRule ^mon-compte$ /controllers/users/accountController.php
 RewriteRule ^modifier-mon-compte$ /controllers/users/updateAccountController.php
-RewriteRule ^deconnexion$ /controllers/users/logoutController.php
 RewriteRule ^profile$ /controllers/users/profileController.php
-RewriteRule ^contact$ /controllers/users/contactController.php
 RewriteRule ^inbox$ /views/pages/inbox.php
+RewriteRule ^contact$ /controllers/users/contactController.php
 RewriteRule ^compte-supprime$ index.php?deleteAccount=true
 
-#posts
-RewriteRule ^modifier-topic$ /controllers/posts/updateTopicController.php
-RewriteRule ^reponses$ /controllers/posts/topicsAnswersController.php
+#POSTS
 RewriteRule ^posts$ /controllers/posts/topicsListController.php
 RewriteRule ^topics$ /controllers/posts/topicsController.php
+RewriteRule ^modifier-topic$ /controllers/posts/updateTopicController.php
 RewriteRule ^view-topic$ /controllers/posts/viewTopicController.php
-RewriteRule ^thread$ /controllers/posts/threadController.php
+RewriteRule ^reponses$ /controllers/posts/topicsAnswersController.php
 RewriteRule ^forum$ /controllers/posts/forumController.php
+RewriteRule ^thread$ /controllers/posts/threadController.php
 RewriteRule ^arena$ /controllers/posts/forumController.php
-RewriteRule ^media$ /views/pages/media.php
-RewriteRule ^topic-supprime$ index.php?deleteTopict=true
+RewriteRule ^media$ /controllers/users/mediaController.php
+RewriteRule ^topic-supprime$ topicsList.php?deleteTopict=true
+
+
+RewriteRule ^search$ /controllers/users/searchController.php
 
 #ADMIN
 RewriteRule ^dashboard$ /controllers/users/adminController.php

@@ -22,6 +22,9 @@ if (!isset($_SESSION['user'])) {
 
 $user = new Users;
 $user->id = $_SESSION['user']['id'];
+$userAccount = $user->getById();
+$userDetails = $user->getList();
+$userCount = count($userDetails);
 
 $forums = new Forums;
 
@@ -33,11 +36,13 @@ $tagsList = $tags->getList();
 
 $topic = new Topics;
 $topicsList = $topic->getList();
-$count = count($topicsList);
+$topicCount = count($topicsList);
 
 $answers = new Answers;
 $answersList = $answers->getList();
-$countA = count($answersList);
+$postCount = count($answersList);
+
+$totalCount = $postCount + $topicCount;
 
 $title = 'MelodyTown';
 

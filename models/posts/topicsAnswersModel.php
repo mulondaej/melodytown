@@ -44,7 +44,7 @@ class Answers {
 
     public function delete()
     {
-        $sql = 'DELETE FROM `a8yk4_topicanswers` WHERE `id`= :id ;';
+        $sql = 'DELETE FROM `a8yk4_topicanswers` WHERE `id`= :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();

@@ -27,7 +27,6 @@ $topic = new Topics();
 // }
 
 $answers = new Answers();
-$answersDetails = $answers->getById();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(!empty($_POST['content'])) {
@@ -54,13 +53,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 $answersList = $answers->getList();
-$countA = count($answersList);
+$postCount= count($answersList);
 
-$counted = count($answersDetails);
-var_dump($answersDetails);
+$topicsList = $topic->getList();
+$topicCount = count($topicsList);
+
+$totalCount = $postCount + $topicCount;
+// $counted = count($answersDetails);
+// var_dump($answersDetails);
 
 $title = 'Topic-Replies';
 
 require_once '../../views/parts/header.php';
-require_once '../../views/posts/topicsAnswersList.php';
+require_once '../../views/replies/topicsAnswersList.php';
 require_once '../../views/parts/footer.php';

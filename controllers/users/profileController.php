@@ -2,6 +2,9 @@
 /**
  *vérifier que l'utilisateur est connecté.
  */
+require_once "../../models/posts/topicsAnswersModel.php" ;
+require_once "../../models/posts/commentsModel.php" ;
+require_once "../../models/posts/topicsModel.php";
 require_once '../../models/users/usersModel.php';
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
@@ -32,6 +35,14 @@ $userAccount = $user->getById();
 //         }
 //     }
 // }
+
+$topic = new Topics;
+$topicsList = $topic->getList();
+$topicCount = count($topicsList);
+
+$answers = new Answers;
+$answersList = $answers->getList();
+$postCount = count($answersList);
 
 $title = 'Profile';
 

@@ -1,9 +1,10 @@
-<h1 id="compteH1">Modifier ton compte</h1>
-<main class="compteFlex">
-    <form action="/modifier-mon-compte" method="post" id="logForm">
-        <?php if (isset($success)) { ?>
+<h1 id="compteH1">Modifier ton compte</h1><hr>
+<?php if (isset($success)) { ?>
             <p id="successMessage"><?= $success ?></p>
         <?php } ?>
+<main class="compteFlex">
+    <form action="/modifier-mon-compte" method="post" id="logForm">
+        
 
         <!-- <label for="avatar">Avatar</label>
         <input type="file" name="avatar" id="avatar" value=" $userAccount->avatar ?>">
@@ -39,7 +40,7 @@
 
         <button id="openModalBtn"><a href="#delete">Supprimer ton compte</a></button>
     </form>
-
+        
     <form action="/modifier-mon-compte" method="post" id="logForm">
 
         <label for="password">Nouveau mot de passe</label>

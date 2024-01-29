@@ -1,13 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
-    //const menuButton = document.getElementById("menu-button");
-    //const menuOverlay = document.getElementById("menu-overlay");
-
-    //menuButton.addEventListener("click", function () {
-    //menuOverlay.style.right = menuOverlay.style.right === "0%" ? "-100%" : "0%";
-    //});
-
+    // Declare variables
     const searchBtn = document.getElementById('searchBtn');
+    const sBtn = document.getElementById('sBtn');
     const searched = document.getElementById('searching');
+    const avatar = document.getElementById("avatar");
+    const avyOverlay = document.getElementById("avy-overlay");
+    const fileInput = document.getElementById('fileUploadMedia');
+    const uploadButton = document.getElementById('uploadMediaBtn');
+    const mediaList = document.getElementById('media-list');
+    const editCoverButton = document.getElementById("editCover");
+    const avatarImageUpload = document.getElementById("avatarUpload");
+    const editAvatarButton = document.getElementById("editAvatar");
+    const mediaLink = document.getElementById('media-link');
+    const mediaFolder = document.getElementById('media-folder');
+    const lastUsernameEditTime = null; // Initialize lastUsernameEditTime
 
     searchBtn.addEventListener('click', () => {
         if (searched.style.display === 'none' || searched.style.display === '') {
@@ -19,9 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ;
 
     //toggle profile settings
-    const avatar = document.getElementById("avatar");
-    const avyOverlay = document.getElementById("avy-overlay");
-
     avatar.addEventListener('click', function () {
         avyOverlay.style.left = avyOverlay.style.left === "0%" ? "-100%" : "0%";
 
@@ -40,10 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     //Media js
-    const fileInput = document.getElementById('fileUploadMedia');
-    const uploadButton = document.getElementById('uploadMediaBtn');
-    const mediaList = document.getElementById('media-list');
-
     uploadButton.addEventListener('click', function () {
         fileInput.click();
     });
@@ -78,16 +77,16 @@ document.addEventListener("DOMContentLoaded", function () {
     openModalBtn.addEventListener("click", () => {
         modalContainer.style.display = "flex"
     })
-    
+
     closeBtn.addEventListener("click", () => {
         modalContainer.style.display = "none"
     })
-    
+
     modalContainer.addEventListener("click", (e) => {
-        if(e.target != modal && e.target != modalText){
+        if (e.target != modal && e.target != modalText) {
             modalContainer.style.display = "none"
         }
-    
+
     })
 
     //PROFILE
@@ -112,14 +111,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // file input when "Edit Cover" is clicked
-    const editCoverButton = document.getElementById("editCover");
 
     editCoverButton.addEventListener("click", function () {
         coverImageUpload.click(); // Trigger the file input click event
     });
 
     // avatar image upload (Similar to cover image upload)
-    const avatarImageUpload = document.getElementById("avatarUpload");
     const avatarImg = document.getElementById("avatar");
 
     avatarImageUpload.addEventListener("change", function () {
@@ -136,98 +133,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    const editAvatarButton = document.getElementById("editAvatar");
     if (editAvatarButton != null) {
         editAvatarButton.addEventListener("click", function () {
             avatarImageUpload.click();
         });
     }
 
-    const mediaLink = document.getElementById('media-link');
-    const mediaFolder = document.getElementById('media-folder');
-
     // Toggle media folder 
     mediaLink.addEventListener('click', function (e) {
         e.preventDefault();
         mediaFolder.classList.toggle('show-media-folder');
     });
-
-
-    // variable to track the last edit time for username
-    let lastUsernameEditTime = null;
-
-    // ... (previous code) ...
-
-    // "Edit Username" 
-    document.getElementById("editUsername").addEventListener("click", () => {
-        const currentTime = new Date().getTime();
-        if (!lastUsernameEditTime || currentTime - lastUsernameEditTime >= 31536000000) {
-            // Allow editing if it's the first time or it's been a year since the last edit
-            document.getElementById("username").contentEditable = true;
-            document.getElementById("saveStatus").classList.remove("hidden");
-            lastUsernameEditTime = currentTime;
-        } else {
-            alert("You can only edit your username once a year.");
-        }
-    });
-
-    // "Edit Location" 
-    document.getElementById("editLocation").addEventListener("click", () => {
-        // Allow editing location
-        document.getElementById("location").contentEditable = true;
-        document.getElementById("saveStatus").classList.remove("hidden");
-    });
-
-    // Likes
-    const likeCommentButtons = document.querySelectorAll('.likeComment');
-    likeCommentButtons.forEach(function (button) {
-        button.addEventListener('click', function () {
-            // Handle like functionality for comments here
-        });
-    });
-
-    // replies 
-    const replyCommentButtons = document.querySelectorAll('.replyComment');
-    replyCommentButtons.forEach(function (button) {
-        button.addEventListener('click', function () {
-            const commentContainer = button.closest('li');
-            const replyForm = commentContainer.querySelector('.reply-form');  // Change to the appropriate class or ID
-            replyForm.classList.toggle('hidden');
-        });
-    });
-
-    // Sample data 
-    const userActivityData = [
-        { type: "post", text: "Posted a new status: Hello, world!" },
-        { type: "profileVisit", visitor: "John Doe" },
-        { type: "follow", user: "Alice" },
-        { type: "follow", user: "Bob" },
-        { type: "follower", user: "Charlie" },
-        // Add more activity items here
-    ];
-
-    // Function to render user activity
-    function renderActivity() {
-        const activityList = document.getElementById("activity-list");
-
-        userActivityData.forEach((item) => {
-            const li = document.createElement("li");
-            if (item.type === "post") {
-                li.textContent = item.text;
-            } else if (item.type === "profileVisit") {
-                li.textContent = `${item.visitor} visited your profile.`;
-            } else if (item.type === "follow") {
-                li.textContent = `You started following ${item.user}.`;
-            } else if (item.type === "follower") {
-                li.textContent = `${item.user} started following you.`;
-            }
-
-            activityList.appendChild(li);
-        });
-    }
-
-    // Call the function to render user activity when the page loads
-    renderActivity();
 
     // le thread 
     const threads = JSON.parse(localStorage.getItem('threads')) || [];
@@ -266,29 +182,29 @@ document.addEventListener("DOMContentLoaded", function () {
             const threadLink = document.createElement('a');
             threadLink.href = `thread.php?threadId=${i}`;
             threadLink.innerHTML = `<h4>${threads[i].title}</h4>
-            <p> An interesting ${threads[i].tag}'s topic to discuss </p>`;
+              <p> An interesting ${threads[i].tag}'s topic to discuss </p>`;
 
             const threadDiv = document.createElement('div');
             threadDiv.classList.add('subforum-row');
             threadDiv.innerHTML = `
-            <div class="subforum-icon subforum-column center" id="icon">
-                <i class="fa-regular fa-comment" style="color: #e0e9f6;"></i>
-            </div>
-            <div class="subforum-description subforum-column" id="subDescript">
-                <ul class="thread-list">
-                    <li>
-                        ${threadLink.outerHTML}
-                    </li>   
-                </ul>
-            </div>
-            <div class="subforum-stats subforum-column center">
-                <span><a href="#" id="topicPost">${score} Posts | <a href="#" id="topics">${score} Topics</a></span>
-            </div>
-            <div class="subforum-info subforum-column">
-                <b><a href="#">Last post</a></b> by <a href="#">${threads[i].user}</a>,
-                <small id="dateAlert">${threads[i].timestamp}</small>
-            </div>
-        `;
+              <div class="subforum-icon subforum-column center" id="icon">
+                  <i class="fa-regular fa-comment" style="color: #e0e9f6;"></i>
+              </div>
+              <div class="subforum-description subforum-column" id="subDescript">
+                  <ul class="thread-list">
+                      <li>
+                          ${threadLink.outerHTML}
+                      </li>   
+                  </ul>
+              </div>
+              <div class="subforum-stats subforum-column center">
+                  <span><a href="#" id="topicPost">${score} Posts | <a href="#" id="topics">${score} Topics</a></span>
+              </div>
+              <div class="subforum-info subforum-column">
+                  <b><a href="#">Last post</a></b> by <a href="#">${threads[i].user}</a>,
+                  <small id="dateAlert">${threads[i].timestamp}</small>
+              </div>
+          `;
 
             forumContainer.appendChild(threadDiv);
         }
@@ -336,12 +252,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         for (let reply of replies) {
             let replyDiv = `<br><div class="replies"><p id="replied">${reply}<p>
-        <br><p id=timed>${timestamp}</p><br>
-        <button id="likedBtn"><i class="fa-solid fa-heart"></i></button>
-        <button id="replyBtn"><a href="#comments">Reply</a></button>
-        <button id="quotedBtn">+Quote</button></div>
-        <hr>
-        `;
+          <br><p id=timed>${timestamp}</p><br>
+          <button id="likedBtn"><i class="fa-solid fa-heart"></i></button>
+          <button id="replyBtn"><a href="#comments">Reply</a></button>
+          <button id="quotedBtn">+Quote</button></div>
+          <hr>
+          `;
             commentbox.innerHTML += replyDiv;
             console.log(replyDiv);
         }
@@ -354,5 +270,48 @@ document.addEventListener("DOMContentLoaded", function () {
     quoteBtn.addEventListener('click', () => {
         quotedHere.value += '" ' + content + '\n\n' + '"';
     });
+
+    // Event listener for the modal
+    openModalBtn.addEventListener("click", () => {
+        // Your existing code...
+    });
+
+    // Event listener for "Edit Username"
+    document.getElementById("editUsername").addEventListener("click", () => {
+        const currentTime = new Date().getTime();
+        if (!lastUsernameEditTime || currentTime - lastUsernameEditTime >= 31536000000) {
+            // Allow editing if it's the first time or it's been a year since the last edit
+            document.getElementById("username").contentEditable = true;
+            document.getElementById("saveStatus").classList.remove("hidden");
+            lastUsernameEditTime = currentTime;
+        } else {
+            alert("You can only edit your username once a year.");
+        }
+    });
+
+    // Event listener for "Edit Location"
+    document.getElementById("editLocation").addEventListener("click", () => {
+        // Allow editing location
+        document.getElementById("location").contentEditable = true;
+        document.getElementById("saveStatus").classList.remove("hidden");
+    });
+
+    // searching 
+    sBtn.addEventListener('click', () => {
+        // Retrieve values from input fields
+        const searchQuery = document.getElementById('searchQuery').value;
+        const category = document.getElementById('categorie').value;
+        const tags = document.getElementById('tags').value;
+
+        // Perform search based on categories and tags
+        // You need to replace this with your actual search logic
+        console.log('Search Query:', searchQuery);
+        console.log('Categorie:', categorie);
+        console.log('Tags:', tags);
+
+        // Redirect to a search results page
+        window.location.href = `/search?query=${searchQuery}&category=${category}&tags=${tags}`;
+    });
+
 
 });

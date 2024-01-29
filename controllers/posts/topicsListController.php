@@ -25,15 +25,17 @@ $categoriesList = $categories->getList();
 
 $topic = new Topics;
 $topicsList = $topic->getList();
-$count = count($topicsList);
+$topicCount = count($topicsList);
 
 $answers = new Answers;
 $answersList = $answers->getList();
-$countA = count($answersList);
+$postCount = count($answersList);
+
+$totalCount = $postCount + $topicCount;
 
 $title = 'Posts';
 
- var_dump($topicsList);
+//  var_dump($topicsList);
 
 require_once '../../views/parts/header.php';
 require_once '../../views/posts/topicsList.php';

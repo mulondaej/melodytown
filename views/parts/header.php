@@ -23,9 +23,15 @@
         </div>
 
         <div id="searching" class="searching">
-            <form class="d-flex mt-1 h-25" role="search">
-                <input class="form-control me-1 btn-sm h-25" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex mt-1 h-25" role="search" id="searchForm">
+                <input class="form-control me-1 btn-sm h-25" type="search" placeholder="Search" aria-label="Search" id="searchQuery">
                 <button class="btn btn-outline-success btn-sm mt-3 h-75" type="submit" id="sBtn"><i class="fa fa-search"></i></button>
+
+                <label for="categorie">Category:</label>
+                <input type="text" id="categorie" name="categorie">
+
+                <label for="tags">Tags:</label>
+    <input type="text" id="tags" name="tags">
             </form>
         </div>
 
@@ -60,9 +66,9 @@
 
             <div class="btn-group" id="menu-button">
                 <button type="button" class="btn btn-sm btn-tertiary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="../assets/IMG/logokib.png" alt="User Avatar" id="avatar">
+                    <img src="../assets/IMG/Avril23j.jpg" alt="User Avatar" id="avatar">
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
+                <ul class="dropdown-menu text-center dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
                     <li><a class="dropdown-item" type="button" href="/mon-compte">Mon compte</a></li>
                     <li><a class="dropdown-item" type="button" href="/posts">Posts</a></li>
                     <li><a class="dropdown-item" type="button" href="../pages/events.php">What's New</a></li>

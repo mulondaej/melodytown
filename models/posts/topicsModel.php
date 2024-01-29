@@ -71,12 +71,12 @@ class Topics
     public function create()
     {
         $sql = 'INSERT INTO `a8yk4_topics`(`title`, `content`, `publicationDate`,
-         `updateDate`, `username`, `id_users`, `id_categories`, `id_tags`) 
-        VALUES (:title,:content,NOW(),NOW(),:username,:id_users,:id_categories, :id_tags)';
+         `updateDate`, `id_users`, `id_categories`, `id_tags`) 
+        VALUES (:title,:content,NOW(),NOW(),:id_users,:id_categories, :id_tags)';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':title', $this->title, PDO::PARAM_STR);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
-        $req->bindValue(':username', $this->username, PDO::PARAM_STR);
+        // $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->bindValue(':id_categories', $this->id_categories, PDO::PARAM_INT);
         $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
         $req->bindValue(':id_tags', $this->id_tags, PDO::PARAM_INT);

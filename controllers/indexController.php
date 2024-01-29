@@ -16,6 +16,8 @@ session_start();
 
 $user = new Users;
 $user->id = $_SESSION['user']['id'];
+$userAccount = $user->getList();
+$userCount = count($userAccount);
 
 $forums = new Forums;
 
@@ -27,11 +29,11 @@ $tagsList = $tags->getList();
 
 $topic = new Topics;
 $topicsList = $topic->getList();
-$count = count($topicsList);
+$topicCount = count($topicsList);
 
 $answers = new Answers;
 $answersList = $answers->getList();
-$countA = count($answersList);
+$postCount = count($answersList);
 
 $title = 'MelodyTown';
 

@@ -197,7 +197,7 @@ a:hover,
 button:hover,
 .navbar button:hover {
     text-decoration: underline;
-    color: gold;
+    color: rgb(159, 57, 2);
 }
 
 #logging {
@@ -217,7 +217,7 @@ button:hover,
     display: block;
     height: max-content;
     width: 60%;
-    background-color: #98a0a0d9;
+    background-color: #b7c2c5d9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(82, 83, 83, 0.2);
 }
@@ -1661,15 +1661,23 @@ fieldset {
     font-size: 15px;
 }
 
+.updates a {
+    text-decoration: none;
+}
+
+.updates a:hover {
+    text-decoration: underline;
+}
+
 .updates ul {
     list-style-type: none;
     padding: 0;
+    text-decoration: none;
 }
 
 .updates li {
     margin-bottom: 7px;
 }
-
 
 /* FOOTER */
 .footer {
