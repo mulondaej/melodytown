@@ -86,9 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
 
 
 $topicsList = $topic->getList();
+$latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
 
 $answersList = $answers->getList();
+$latestAnswer = $answers->getAnswer();
 $postCount = count($answersList);
 
 $totalCount = $postCount + $topicCount;
@@ -98,3 +100,6 @@ $title = 'forum';
 require_once '../../views/parts/header.php';
 require_once '../../views/posts/topics.php';
 require_once '../../views/parts/footer.php';
+
+
+

@@ -29,9 +29,9 @@
                             <span><a href="" id="topicPost"> <?= $postCount ?> </a>Answers </a></span>
                         </div>
                         <div class="subforum-info subforum-column">
-                            <b><?php foreach ($answersList as $a) { ?><a href="/thread?<?= $a->content ?>"><?php } ?>
-                            Last post:</a></b> by <a href="/profile?="><?= $t->username ?>,
-                            <?php foreach ($answersList as $a) { ?><?php } ?> <?= $a->publicationDate ?></a>
+                            <a href="/thread?<?= $latestTopic->content ?>">
+                            <b>Latest post</b> </a> by <a href="/profile?="><?= $latestAnswer->id_users ?>,
+                             <?= $latestAnswer->publicationDate ?></a>
                         </div>
                     </div>
                 <?php } ?>

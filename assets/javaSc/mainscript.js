@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Declare variables
+    // Les variables déclarés
     const searchBtn = document.getElementById('searchBtn');
     const sBtn = document.getElementById('sBtn');
     const searched = document.getElementById('searching');
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const mediaFolder = document.getElementById('media-folder');
     const lastUsernameEditTime = null; // Initialize lastUsernameEditTime
 
-    searchBtn.addEventListener('click', () => {
+    searchBtn.addEventListener('click', function () {
         if (searched.style.display === 'none' || searched.style.display === '') {
             searched.style.display = 'block';
         } else {

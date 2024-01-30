@@ -14,15 +14,8 @@ require_once '../utils/functions.php';
 
 session_start();
 
-// // Confirmation que l'utilisateur est bel et bien en ligne
-// if (!isset($_SESSION['user'])) {
-//     // Sinon, lui rediriger vers la page d'accueil ou de connexion
-//     header("Location: /connexion");
-//     exit();
-// }
-
 $user = new Users;
-// $user->id = $_SESSION['user']['id'];
+$user->id = $_SESSION['user']['id'];
 $userAccount = $user->getList();
 $userCount = count($userAccount);
 
@@ -44,8 +37,9 @@ $postCount = count($answersList);
 
 $totalCount = $postCount + $topicCount;
 
-$title = 'MelodyTown';
+$title = 'Search-results';
+
 
  require_once('..//views/parts/header.php');
- require_once('..//index.php');
+ require_once('../views/pages/search.php');
  require_once('..//views/parts/footer.php'); ?>

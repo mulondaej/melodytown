@@ -38,9 +38,9 @@
         <br>
         <input type="submit" value="Modifier" name="updateInfos">
 
-        <button id="openModalBtn"><a href="#delete">Supprimer ton compte</a></button>
-    </form>
         
+    </form>
+        <button id="openModalBtn"><a href="#delete">Supprimer ton compte</a></button>
     <form action="/modifier-mon-compte" method="post" id="logForm">
 
         <label for="password">Nouveau mot de passe</label>

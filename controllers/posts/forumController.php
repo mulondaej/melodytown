@@ -22,6 +22,7 @@ if (!isset($_SESSION['user'])) {
 
 $user = new Users;
 $user->id = $_SESSION['user']['id'];
+$latestUser = $user->getUser();
 $userAccount = $user->getById();
 $userDetails = $user->getList();
 $userCount = count($userDetails);
@@ -36,10 +37,12 @@ $tagsList = $tags->getList();
 
 $topic = new Topics;
 $topicsList = $topic->getList();
+$latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
 
 $answers = new Answers;
 $answersList = $answers->getList();
+$latestAnswer = $answers->getAnswer();
 $postCount = count($answersList);
 
 $totalCount = $postCount + $topicCount;

@@ -119,6 +119,13 @@ class Topics
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function getTopic()
+    {
+        $sql = 'SELECT * FROM  `a8yk4_topics` ORDER BY `publicationDate` DESC LIMIT 1';
+        $req = $this->pdo->query($sql);
+        return $req->fetch(PDO::FETCH_OBJ);
+    }
+
     public function getList()
     {
         $sql = 'SELECT `t`.`id`, `a8yk4_tags`.`name` AS `tag`, `a8yk4_categories`.`name` AS `categorie`,

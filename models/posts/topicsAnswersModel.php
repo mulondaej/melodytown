@@ -50,6 +50,13 @@ class Answers {
         return $req->execute();
     }
 
+    public function getAnswer()
+    {
+        $sql = 'SELECT * FROM  `a8yk4_topicanswers` ORDER BY `publicationDate` DESC LIMIT 1';
+        $req = $this->pdo->query($sql);
+        return $req->fetch(PDO::FETCH_OBJ);
+    }
+
     public function getById()
     {
         $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 

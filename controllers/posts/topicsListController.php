@@ -25,10 +25,12 @@ $categoriesList = $categories->getList();
 
 $topic = new Topics;
 $topicsList = $topic->getList();
+$latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
 
 $answers = new Answers;
 $answersList = $answers->getList();
+$latestAnswer = $answers->getAnswer();
 $postCount = count($answersList);
 
 $totalCount = $postCount + $topicCount;
