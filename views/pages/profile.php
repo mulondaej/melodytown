@@ -20,6 +20,7 @@
         </div>
         <div class="infoUser">
             <p>Joined since <?= $userAccount->registerDate ?></p>
+            <p>Posts: <span id="postCount"><?= $userTotalAnswer ?></span></p>
             <p>Likes: <span id="likeCount">100</span></p>
             <p>Rank: <span id="rank">Member</span></p>
             <p>Points: <span id="points">500</span></p>

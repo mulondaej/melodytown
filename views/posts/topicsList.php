@@ -1,5 +1,5 @@
 <main class="topics">
-    <h1>Threads</h1><hr>
+    <h1>Liste de Topics </h1><hr>
     <p><b>Total nombre de Threads :</b> <?= $topicCount ?></p>
     
     <nav aria-label="Page navigation example">

@@ -22,15 +22,20 @@
                                 <h4><a href="/thread?<?= $t->id ?>">
                                         <?= $t->title ?>
                                     </a></h4>
-                                <p>An interesting <?= $t->tag ?> to discuss </p>
+                                <p>  <?= $t->tag ?> to discuss </p>
                             </ul>
                         </div>
                         <div class="subforum-stats subforum-column center">
-                            <span><a href="" id="topicPost"> <?= $postCount ?> </a>Answers </a></span>
+                            <span><a href="" id="topicPost"> 
+                                <?php if(!empty($postCount)) { ?>
+                                    <?= $postCount ?> 
+                                <?php } else { ?>
+
+                                    <?php } ?> </a>réponses </a></span>
                         </div>
                         <div class="subforum-info subforum-column">
                             <a href="/thread?<?= $latestTopic->content ?>">
-                            <b>Latest post</b> </a> by <a href="/profile?="><?= $latestAnswer->id_users ?>,
+                            <b>Latest post</b> </a> by <a href="/profile?="><?= $t->username ?>,
                              <?= $latestAnswer->publicationDate ?></a>
                         </div>
                     </div>

@@ -52,7 +52,10 @@ class Answers {
 
     public function getAnswer()
     {
-        $sql = 'SELECT * FROM  `a8yk4_topicanswers` ORDER BY `publicationDate` DESC LIMIT 1';
+        $sql = 'SELECT *,`u`.`username`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
+        FROM  `a8yk4_topicanswers` 
+        INNER JOIN `a8yk4_users` AS `u` ON `id_users` = `u`.`id`
+        ORDER BY `publicationDate` DESC';
         $req = $this->pdo->query($sql);
         return $req->fetch(PDO::FETCH_OBJ);
     }
@@ -61,12 +64,20 @@ class Answers {
     {
         $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 
         FROM `a8yk4_topicanswers`
-        INNER JOIN `a8yk4_users` ON `a8yk4_topicanswers`.`id_users` = `a8yk4_users`.`id`
-        WHERE `a8yk4_users`.`id` = :id';
+        INNER JOIN `a8yk4_users` ON `a8yk4_topicanswers`.`id_users` = `a8yk4_users`.`id`';
         $req = $this->pdo->prepare($sql);
-        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         $req->execute();
         return $req->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function getUserAnswer()
+    {
+        $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 
+        FROM `a8yk4_topicanswers`
+        INNER JOIN `a8yk4_users` ON `a8yk4_topicanswers`.`id_users` = `a8yk4_users`.`id`';
+        $req = $this->pdo->query($sql);
+        $req->execute();
+        return $req->fetch(PDO::FETCH_ASSOC);
     }
 
     public function getList()
@@ -76,8 +87,9 @@ class Answers {
         DATE_FORMAT(`a`.`updateDate`, "%d/%m/%y") AS `updateDate`,
         `u`.`username`, `a`.`id_users`, `a`.`id_topics`
         FROM `a8yk4_topicanswers` AS `a`
-        INNER JOIN `a8yk4_users` AS `u` ON `a`.`id_users` = `u`.`id`
-        INNER JOIN `a8yk4_topics` AS `t` ON `a`.`id_topics` = `t`.`id`';
+        INNER JOIN `a8yk4_users` AS `u` ON `id_users` = `u`.`id`
+        INNER JOIN `a8yk4_topics` AS `t` ON `id_topics` = `t`.`id`
+        ORDER BY `publicationDate` DESC';
         $req = $this->pdo->query($sql);
         return $req->fetchAll(PDO::FETCH_OBJ);
     }

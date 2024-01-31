@@ -197,7 +197,7 @@ a:hover,
 button:hover,
 .navbar button:hover {
     text-decoration: underline;
-    color: rgb(159, 57, 2);
+    color: rgb(255, 155, 100);
 }
 
 #logging {

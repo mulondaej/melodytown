@@ -117,14 +117,14 @@ class Users
 
     public function getUser()
     {
-        $sql = 'SELECT * FROM  `a8yk4_users` ORDER BY `registerDate` DESC LIMIT 1';
+        $sql = 'SELECT * FROM  `a8yk4_users` ORDER BY `registerDate` DESC';
         $req = $this->pdo->query($sql);
         return $req->fetch(PDO::FETCH_OBJ);
     }
 
     public function getList()
     {
-        $sql = 'SELECT `u`.`id`, `username`, `email`, `location`, DATE_FORMAT(`birthdate`, "%d/%m/%y") 
+        $sql = 'SELECT `u`.`id`, `u`.`username`, `email`, `location`, DATE_FORMAT(`birthdate`, "%d/%m/%y") 
         AS `birthdateFr`, `birthdate` , DATE_FORMAT(`registerDate`, "%M %Y") AS `registerDate`, `name` AS `roleName` 
         FROM `a8yk4_users` AS `u`
         INNER JOIN `a8yk4_usersroles` ON id_usersRoles = `a8yk4_usersroles`.`id`';

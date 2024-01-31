@@ -95,7 +95,7 @@ $postCount = count($answersList);
 
 $totalCount = $postCount + $topicCount;
 
-$title = 'forum';
+$title = 'Topics';
 
 require_once '../../views/parts/header.php';
 require_once '../../views/posts/topics.php';

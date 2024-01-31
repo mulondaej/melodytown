@@ -14,17 +14,19 @@ require_once '../utils/functions.php';
 
 session_start();
 
-// // Confirmation que l'utilisateur est bel et bien en ligne
+// Confirmation que l'utilisateur est bel et bien en ligne
 // if (!isset($_SESSION['user'])) {
 //     // Sinon, lui rediriger vers la page d'accueil ou de connexion
-//     header("Location: /connexion");
+//     header("Location: /accueil");
 //     exit();
-// }
+// } 
 
 $user = new Users;
 // $user->id = $_SESSION['user']['id'];
-$userAccount = $user->getList();
-$userCount = count($userAccount);
+$latestUser = $user->getUser();
+// $userAccount = $user->getById();
+$userDetails = $user->getList();
+$userCount = count($userDetails);
 
 $forums = new Forums;
 
@@ -36,10 +38,12 @@ $tagsList = $tags->getList();
 
 $topic = new Topics;
 $topicsList = $topic->getList();
+$latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
 
 $answers = new Answers;
 $answersList = $answers->getList();
+$latestAnswer = $answers->getAnswer();
 $postCount = count($answersList);
 
 $totalCount = $postCount + $topicCount;

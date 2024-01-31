@@ -35,7 +35,7 @@ $postCount = count($answersList);
 
 $totalCount = $postCount + $topicCount;
 
-$title = 'Posts';
+$title = 'Topics-List';
 
 //  var_dump($topicsList);
 

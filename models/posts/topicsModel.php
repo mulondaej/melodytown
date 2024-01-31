@@ -12,6 +12,8 @@ class Topics
     public int $id_categories;
     public int $id_tags;
 
+    public string $answers;
+
     public function __construct()
     {
         try {
@@ -111,13 +113,21 @@ class Topics
         DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` FROM `a8yk4_topics` 
         INNER JOIN `a8yk4_users` ON `a8yk4_topics`.`id_users` = `a8yk4_users`.`id` 
         INNER JOIN `a8yk4_categories` ON `a8yk4_topics`.`id_categories` = `a8yk4_categories`.`id`
-        INNER JOIN `a8yk4_tags` ON `a8yk4_topics`.`id_tags` = `a8yk4_tags`.`id` 
-        WHERE `id_users` = :id_users';
+        INNER JOIN `a8yk4_tags` ON `a8yk4_topics`.`id_tags` = `a8yk4_tags`.`id` ';
         $req = $this->pdo->prepare($sql);
-        $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
         $req->execute();
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function getUserTopics()
+    {
+        $sql = 'SELECT `t`.`title`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 
+        FROM `a8yk4_topics` AS `t`
+        INNER JOIN `a8yk4_users` ON `t`.`id_users` = `a8yk4_users`.`id`';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        return $req->fetch(PDO::FETCH_ASSOC);
+    } 
 
     public function getTopic()
     {

@@ -59,8 +59,6 @@ $topicsList = $topic->getList();
 $topicCount = count($topicsList);
 
 $totalCount = $postCount + $topicCount;
-// $counted = count($answersDetails);
-// var_dump($answersDetails);
 
 $title = 'Topic-Replies';
 
