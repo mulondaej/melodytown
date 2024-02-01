@@ -24,19 +24,19 @@ $userAccount = $user->getById();
 $userDetails = $user->getList();
 $userCount = count($userDetails);
 
-// if (!empty($_FILES['image'])) {
-//     $imageMessage = checkImage($_FILES['image']);
+if (!empty($_FILES['image'])) {
+    $imageMessage = checkImage($_FILES['image']);
 
-//     if ($imageMessage != '') {
-//         $errors['image'] = $imageMessage;
-//     } else {
-//         $userAccount->image = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+    if ($imageMessage != '') {
+        $errors['image'] = $imageMessage;
+    } else {
+        $userAccount->image = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 
-//         while(file_exists('../../assets/img/topics/' . $userAccount->image)) {
-//             $userAccount->image = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-//         }
-//     }
-// }
+        while(file_exists('../../assets/img/topics/' . $userAccount->image)) {
+            $userAccount->image = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+        }
+    }
+}
 
 $topic = new Topics;
 $topicsList = $topic->getList();

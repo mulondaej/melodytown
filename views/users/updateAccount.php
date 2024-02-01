@@ -5,12 +5,11 @@
 <main class="compteFlex">
     <form action="/modifier-mon-compte" method="post" id="logForm">
         
-
-        <!-- <label for="avatar">Avatar</label>
-        <input type="file" name="avatar" id="avatar" value=" $userAccount->avatar ?>">
-         if (isset($errors['avatar'])) { ?>
-            <p class="errorsMessage"> $errors['avatar'] ?></p>
-         } ?> -->
+        <label for="avatar">Avatar</label>
+        <input type="file" name="avatar" id="userAvatar" value="<?= $userAccount->avatar ?>" accept="image*/">
+        <?php if (isset($errors['avatar'])) { ?>
+            <p class="errorsMessage"><?= $errors['avatar'] ?></p>
+        <?php } ?>
 
         <label for="username">Nom d'utilisateur</label>
         <input type="text" name="username" id="username" placeholder="alfnzau" value="<?= $userAccount->username ?>">

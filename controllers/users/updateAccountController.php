@@ -105,6 +105,20 @@ if(isset($_POST['updatePassword'])) {
     }
 }
 
+if (!empty($_FILES['avatar'])) {
+    $avatarMessage = checkImage($_FILES['avatar']);
+
+    if ($avatarMessage != '') {
+        $errors['avatar'] = $avatarMessage;
+    } else {
+        $userAccount->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+
+        while(file_exists('../../assets/IMG/' . $userAccount->avatar)) {
+            $userAccount->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+        }
+    }
+}
+
 if(isset($_POST['deleteAccount'])) {
     if($user->delete()) {
         unset($_SESSION);
@@ -136,16 +150,3 @@ require_once '../../views/parts/footer.php';
     //     $errors['location'] = USERS_LOCATION_ERROR_EMPTY;
     // }
     
-    // if (!empty($_FILES['avatar'])) {
-    //     $imageMessage = checkImage($_FILES['avatar']);
-    
-    //     if ($imageMessage != '') {
-    //         $errors['avatar'] = $imageMessage;
-    //     } else {
-    //         $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-    
-    //         while(file_exists('../../assets/IMG/' . $user->avatar)) {
-    //             $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-    //         }
-    //     }
-    // }

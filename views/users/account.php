@@ -3,7 +3,7 @@
 <div class="comptePage">
 
     <h1 id="compteH1">Votre compte </h1><hr>
-        <img src="../assets/IMG/Avril23j.jpg" alt="User Avatar" id="avyCompte">
+        <img src="../../assets/IMG/<?= $userAccount->avatar ?>" alt="User Avatar" id="avyCompte">
 
     <div class="details">
         <P><b>Pseudo :</b> <?= $userAccount->username ?></P>

@@ -70,7 +70,7 @@
 
                     <div class="btn-group" id="menu-button">
                         <button type="button" class="btn btn-sm btn-tertiary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../assets/IMG/Avril23j.jpg" alt="User Avatar" id="avatar">
+                            <img src="../assets/IMG/<?= $userAccount->avatar ?>" alt="UserAvatar" id="avatar">
                         </button>
                         <ul class="dropdown-menu text-center dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
                             <li><a class="dropdown-item" type="button" href="/mon-compte">Mon compte</a></li>
