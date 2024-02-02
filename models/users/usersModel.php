@@ -9,7 +9,7 @@ class Users
     public string $location;
     public string $birthdate;
     public string $registerDate;
-    public string $avatar = '';
+    public string $avatar ;
     public int $id_usersRoles;
 
     public function __construct()
@@ -68,7 +68,8 @@ class Users
      */
     public function create()
     {
-        $sql = 'INSERT INTO `a8yk4_users`(`username`, `email`, `password`, `birthdate`, `registerDate`, `id_usersRoles`) VALUES (:username,:email,:password,:birthdate, NOW(), 1)'; // calling the specific table request
+        $sql = 'INSERT INTO `a8yk4_users`(`username`, `email`, `password`, `birthdate`, `registerDate`, `id_usersRoles`) 
+        VALUES (:username,:email,:password,:birthdate, NOW(), 1)'; // calling the specific table request
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->bindValue(':email', $this->email, PDO::PARAM_STR);
@@ -144,7 +145,9 @@ class Users
      */
     public function update() #`location` = :location,, `avatar`=:avatar
     {
-        $sql = 'UPDATE `a8yk4_users` SET `username`=:username,`email`=:email, `birthdate` = :birthdate, `avatar` = :avatar WHERE `id` = :id';
+        $sql = 'UPDATE `a8yk4_users` SET `username`=:username,`email`=:email,
+         `birthdate` = :birthdate, `avatar` = :avatar 
+        WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->bindValue(':email', $this->email, PDO::PARAM_STR);

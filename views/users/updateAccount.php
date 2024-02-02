@@ -3,13 +3,19 @@
             <p id="successMessage"><?= $success ?></p>
         <?php } ?>
 <main class="compteFlex">
-    <form action="/modifier-mon-compte" method="post" id="logForm">
+<form action="/modifier-mon-compte" method="post" id="logForm" >
         
         <label for="avatar">Avatar</label>
         <input type="file" name="avatar" id="userAvatar" value="<?= $userAccount->avatar ?>" accept="image*/">
         <?php if (isset($errors['avatar'])) { ?>
             <p class="errorsMessage"><?= $errors['avatar'] ?></p>
         <?php } ?>
+        <input type="submit" value="Modifier" name="updateAvatar">
+    </form>
+
+    <form action="/modifier-mon-compte" method="post" id="logForm" enctype="multipart/form-data">
+        
+        
 
         <label for="username">Nom d'utilisateur</label>
         <input type="text" name="username" id="username" placeholder="alfnzau" value="<?= $userAccount->username ?>">
@@ -23,12 +29,6 @@
             <p id=errorsMessage><?= $errors['email'] ?></p>
         <?php } ?>
 
-        <!-- <label for="location">Location</label>
-        <input type="text" name="location" id="location" value=" $userAccount->location ?>">
-         if (isset($errors['location'])) { ?
-            <p id=errorsMessage>$errors['location'] ?></p>
-         } ?> -->
-
         <label for="birthdate">Date de naissance</label>
         <input type="date" name="birthdate" id="birthdate" value="<?= $userAccount->birthdate ?>">
         <?php if (isset($errors['birthdate'])) { ?>
@@ -37,9 +37,9 @@
         <br>
         <input type="submit" value="Modifier" name="updateInfos">
 
-        
-    </form>
         <button id="openModalBtn"><a href="#delete">Supprimer ton compte</a></button>
+    </form>
+        
     <form action="/modifier-mon-compte" method="post" id="logForm">
 
         <label for="password">Nouveau mot de passe</label>

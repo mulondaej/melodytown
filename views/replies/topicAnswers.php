@@ -7,23 +7,18 @@
         <p class="successMessage"><?= $success ?></p>
     <?php } ?>
 
-    <?php if (isset($errors['answer'])) { ?>
-        <p class="errorsMessage"><?= $errors['answer'] ?></p>
+    <?php if (isset($errors['content'])) { ?>
+        <p class="errorsMessage"><?= $errors['content'] ?></p>
     <?php } ?>
-    <fieldset>
-    <div class="commentsArea"><div class="replies">
-    <div id="userCard"><div class="userImg"><img src="../../assets/IMG/logo.jpg" id="userAvy"><br>
-    <div class="username"><h5><a href="#user"> <?= $_GET['user']['username'] ?>
-    </a><br><p href="<?= $_GET['user']['location'] ?>"> <?= $_GET['user']['Rolename'] ?></p></h5>
-    <div class="pFlex"><p><a href="">200</a> likes</p><p><a href="">100</a> points</p></div></div>
-    </div></div>
-    </div></fieldset><br>
+    
 
-    <form action="/thread-<?= $_GET['id'] ?>" method="POST">
+    <form action="/thread?<?= $_GET['id'] ?>" method="POST">
         <label for="answer">Commenter</label>
         <textarea name="answer" id="answer"></textarea>
         <input type="submit" value="Post">
     </form>
 <?php } ?>
+
+    </div>
 
 

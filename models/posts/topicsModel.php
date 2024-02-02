@@ -97,12 +97,12 @@ class Topics
     {
         $sql = 'SELECT `tag`, `title`, `content`, 
         DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
-        FROM `a8yk4_topics`
-        INNER JOIN `a8yk4_users` ON `a8yk4_topics`.`id_users` = `a8yk4_users`.`id`
-        INNER JOIN `a8yk4_categories` ON `a8yk4_topics`.`id_categories` = `a8yk4_topics`.`id`
-        WHERE `a8yk4_users`.`id` = :id';
+        FROM `a8yk4_topics` AS `a`
+        INNER JOIN `a8yk4_users` AS `u` ON `id_users` = `u`.`id`
+        INNER JOIN `a8yk4_categories` AS `c` ON `id_categories` = `c.`id`
+        WHERE `a`.`id` = :id';
         $req = $this->pdo->prepare($sql);
-        $req->bindValue(':id', $this->id, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         $req->execute();
         return $req->fetch(PDO::FETCH_OBJ);
     }

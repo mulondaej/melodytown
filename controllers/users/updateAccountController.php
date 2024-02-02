@@ -17,9 +17,7 @@ if (!isset($_SESSION['user'])) {
 $user = new Users;
 $user->id = $_SESSION['user']['id'];
 
-if(isset($_POST['updateInfos'])) {
-
-    
+if (isset($_POST['updateInfos'])) {
 
     if (!empty($_POST['username'])) {
         if (preg_match($regex['name'], $_POST['username'])) {
@@ -47,8 +45,6 @@ if(isset($_POST['updateInfos'])) {
         $errors['email'] = USERS_EMAIL_ERROR_EMPTY;
     }
 
-    
-
     if (!empty($_POST['birthdate'])) {
         if (preg_match($regex['date'], $_POST['birthdate'])) {
             if (checkDateValidity($_POST['birthdate'])) {
@@ -62,11 +58,9 @@ if(isset($_POST['updateInfos'])) {
     } else {
         $errors['birthdate'] = USERS_BIRTHDATE_ERROR_EMPTY;
     }
-    
-    
-    
-    if(empty($errors)) {
-        if($user->update()){
+
+    if (empty($errors)) {
+        if ($user->update()) {
             $_SESSION['user']['username'] = $user->username;
             $_SESSION['user']['email'] = $user->email;
             $success = USERS_UPDATE_SUCCESS;
@@ -76,8 +70,8 @@ if(isset($_POST['updateInfos'])) {
     }
 }
 
-if(isset($_POST['updatePassword'])) {
-    
+if (isset($_POST['updatePassword'])) {
+
     if (!empty($_POST['password'])) {
         if (preg_match($regex['password'], $_POST['password'])) {
             if (!empty($_POST['password_confirm'])) {
@@ -96,8 +90,8 @@ if(isset($_POST['updatePassword'])) {
         $errors['password'] = USERS_PASSWORD_ERROR_EMPTY;
     }
 
-    if(empty($errors)) {
-        if($user->updatePassword()){
+    if (empty($errors)) {
+        if ($user->updatePassword()) {
             $success = USERS_PASSWORD_UPDATE_SUCCESS;
         } else {
             $errors['update'] = USERS_PASSWORD_UPDATE_ERROR;
@@ -105,22 +99,36 @@ if(isset($_POST['updatePassword'])) {
     }
 }
 
-if (!empty($_FILES['avatar'])) {
-    $avatarMessage = checkImage($_FILES['avatar']);
+if (isset($_POST['updateAvatar'])) {
+    if (!empty($_FILES['avatar'])) {
+        $avatarMessage = checkImage($_FILES['avatar']);
 
-    if ($avatarMessage != '') {
-        $errors['avatar'] = $avatarMessage;
-    } else {
-        $userAccount->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-
-        while(file_exists('../../assets/IMG/' . $userAccount->avatar)) {
+        if ($avatarMessage != '') {
+            $errors['avatar'] = $avatarMessage;
+        } else {
             $userAccount->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+
+            while (file_exists('../../assets/IMG/' . $userAccount->avatar)) {
+                $userAccount->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+            }
+        }
+
+        if (empty($errors)) {
+            if ($user->update()) {
+                $_SESSION['user']['avatar'] = $user->avatar;
+                $success = USERS_UPDATE_SUCCESS;
+            } else {
+                $errors['update'] = USERS_UPDATE_ERROR;
+            }
         }
     }
+
+    var_dump($_POST['updateAvatar']);
+    var_dump($userAccount->avatar);
 }
 
-if(isset($_POST['deleteAccount'])) {
-    if($user->delete()) {
+if (isset($_POST['deleteAccount'])) {
+    if ($user->delete()) {
         unset($_SESSION);
         session_destroy();
         header('Location: /compte-supprime');
@@ -136,17 +144,3 @@ $title = 'Account-update';
 require_once '../../views/parts/header.php';
 require_once '../../views/users/updateAccount.php';
 require_once '../../views/parts/footer.php';
-
-// if (!empty($_POST['location'])) {
-    //     if (preg_match($regex['location'], $_POST['location'])) {
-    //         $user->location = clean($_POST['location']);
-    //         if ($user->checkIfExistsByLocation() == 1 && $user->location != $_SESSION['user']['location']) {
-    //             $errors['location'] = USERS_LOCATION_ERROR_EXISTS;
-    //         }
-    //     } else {
-    //         $errors['location'] = USERS_LOCATION_ERROR_INVALID;
-    //     }
-    // } else {
-    //     $errors['location'] = USERS_LOCATION_ERROR_EMPTY;
-    // }
-    

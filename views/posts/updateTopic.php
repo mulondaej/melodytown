@@ -1,7 +1,7 @@
 <h1 id="compteH1">Modifier le topic</h1><hr>
 <main class="compteFlex">
 
-    <form action="/modifier-topic" method="post" id="logForm">
+    <form action="/modifier-topic" method="post" id="logForm" >
         <?php if (isset($success)) { ?>
             <p id="successMessage"><?= $success ?></p>
         <?php } ?>

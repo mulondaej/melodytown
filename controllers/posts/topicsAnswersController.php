@@ -10,12 +10,12 @@ require_once '../../utils/functions.php';
 
 session_start();
 
-// Confirmation que l'utilisateur est bel et bien en ligne
-if (!isset($_SESSION['user'])) {
-    // Sinon, lui rediriger vers la page d'accueil ou de connexion
-    header("Location: /connexion");
-    exit();
-}
+// // Confirmation que l'utilisateur est bel et bien en ligne
+// if (!isset($_SESSION['user'])) {
+//     // Sinon, lui rediriger vers la page d'accueil ou de connexion
+//     header("Location: /connexion");
+//     exit();
+// }
 
 $topic = new Topics();
 
