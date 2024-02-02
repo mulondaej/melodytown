@@ -814,7 +814,7 @@
                                     <a href="" id="topics"><?= $topicCount ?></a> Topics</span>
                             </div>
                             <div class="subforum-info subforum-column">
-                                <b><a href="">Last post</a></b> by <a href="/thread?"><?= $latestAnswer->username ?>, 
+                                <b><a href="">Last post</a></b> par <a href="/thread?"><?= $latestAnswer->username ?>, 
                                 <?= $latestAnswer->publicationDate ?></a>
                             </div>
                         </div>

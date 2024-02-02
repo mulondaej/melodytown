@@ -3,7 +3,7 @@
 require_once "../../models/posts/topicsModel.php";
 require_once "../../models/posts/topicsAnswersModel.php";
 // require_once "../../models/posts/categoriesModel.php";
-require_once "../../models/posts/tagsModel.php";
+// require_once "../../models/posts/tagsModel.php";
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
@@ -14,13 +14,11 @@ session_start();
 
 $topic = new Topics();
 
-$topic->id = $_GET['id'];
-if($topic->checkIfExistsById() == 0) {
-    header('Location: /topics');
-    exit;
-}
-
-$topicsDetails = $topic->getById();
+// $topic->id = $_GET['id'];
+// if($topic->checkIfExistsById() == 0) {
+//     header('Location: /topics');
+//     exit;
+// }
 
 $answers = new Answers();
 
@@ -49,7 +47,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $topic->title;
 }
 
-// $topicsList = $topic->getList();
+// $topicsDetails = $topic->getById();
+
+$topicsList = $topic->getList();
 // $answersList = $answers->getList();
 // $postCount = count($answersList);
 

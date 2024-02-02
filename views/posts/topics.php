@@ -22,12 +22,12 @@
                                 <h4><a href="/thread?<?= $t->id ?>">
                                         <?= $t->title ?>
                                     </a></h4>
-                                <p>  <?= $t->tag ?> to discuss </p>
+                                <p> Un topic <?= $t->tag ?> à discuter </p>
                             </ul>
                         </div>
                         <div class="subforum-stats subforum-column center">
                             <span><a href="" id="topicPost"> 
-                                <?php if(!empty($postCount)) { ?>
+                                <?php if(isset($answersList)) { ?>
                                     <?= $postCount ?> 
                                 <?php } else { ?>
 
@@ -35,8 +35,8 @@
                         </div>
                         <div class="subforum-info subforum-column">
                             <a href="/thread?<?= $latestTopic->content ?>">
-                            <b>Latest post</b> </a> by <a href="/profile?="><?= $t->username ?>,
-                             <?= $latestAnswer->publicationDate ?></a>
+                            <b>crée</b> </a> par <a href="/profile?="><?= $t->username ?>,
+                             <?= $t->publicationDate ?></a>
                         </div>
                     </div>
                 <?php } ?>

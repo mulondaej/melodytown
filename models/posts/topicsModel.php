@@ -95,8 +95,8 @@ class Topics
 
     public function getById()
     {
-        $sql = 'SELECT `tag`, `title`, `content`, 
-        DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
+        $sql = 'SELECT `a`.`tag`, `a`.`title`, `a`.`content`, 
+        DATE_FORMAT(`a`.`publicationDate`, "%d/%m/%y") AS `publicationDate`
         FROM `a8yk4_topics` AS `a`
         INNER JOIN `a8yk4_users` AS `u` ON `id_users` = `u`.`id`
         INNER JOIN `a8yk4_categories` AS `c` ON `id_categories` = `c.`id`
@@ -121,7 +121,7 @@ class Topics
 
     public function getUserTopics()
     {
-        $sql = 'SELECT `t`.`title`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 
+        $sql = 'SELECT `t`.`title`, DATE_FORMAT(`publicationDate`, "%d/%m/%Y") AS `publicationDate` 
         FROM `a8yk4_topics` AS `t`
         INNER JOIN `a8yk4_users` ON `t`.`id_users` = `a8yk4_users`.`id`';
         $req = $this->pdo->prepare($sql);

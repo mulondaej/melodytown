@@ -11,14 +11,18 @@
         <p class="errorsMessage"><?= $errors['content'] ?></p>
     <?php } ?>
     
+    
 
-    <form action="/thread?<?= $_GET['id'] ?>" method="POST">
-        <label for="answer">Commenter</label>
-        <textarea name="answer" id="answer"></textarea>
-        <input type="submit" value="Post">
+    <fieldset id="userPosting">
+    <form action="/thread?<?= $t->id ?>" method="POST" id="">
+      <div id="centered"><label for="comments"></label>
+        <textarea name="comments" id="comments"></textarea>
+        <br><input type="submit" value="post" id="commentBtn">
+      </div>
     </form>
+    </fieldset>
 <?php } ?>
 
-    </div>
+    </main>
 
 

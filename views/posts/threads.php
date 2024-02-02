@@ -69,12 +69,10 @@ ini_set('display_errors', 1);
     </fieldset>
   </main>';
 
-
   </nav>
 <?php } else { ?>
   <p id="messTxt"> Ce contenu n\'est pas disponible</p>
 <?php } ?>
-
 
 
   <?php var_dump($_GET) ?>

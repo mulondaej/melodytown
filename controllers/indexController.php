@@ -22,9 +22,9 @@ session_start();
 // } 
 
 $user = new Users;
-// $user->id = $_SESSION['user']['id'];
+$user->id = $_SESSION['user']['id'];
 $latestUser = $user->getUser();
-// $userAccount = $user->getById();
+
 $userDetails = $user->getList();
 $userCount = count($userDetails);
 
@@ -47,7 +47,7 @@ $latestAnswer = $answers->getAnswer();
 $postCount = count($answersList);
 
 $totalCount = $postCount + $topicCount;
-
+$userAccount = $user->getById();
 $title = 'MelodyTown';
 
  require_once('..//views/parts/header.php');
