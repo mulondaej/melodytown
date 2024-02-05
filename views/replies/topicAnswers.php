@@ -13,7 +13,8 @@
     
     
     <fieldset id="userPosting">
-    <form action="/thread?<?= $t->id ?>" method="POST" id="">
+    <form action="/thread?<?php foreach($topicsList as $t) { ?>
+        <?= $t->id ?> <?php } ?>" method="POST">
       <div id="centered"><label for="comments"></label>
         <textarea name="comments" id="comments"></textarea>
         <br><input type="submit" value="post" id="commentBtn">

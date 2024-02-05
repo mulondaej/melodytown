@@ -14,11 +14,11 @@ session_start();
 
 $topic = new Topics();
 
-// $topic->id = $_GET['id'];
-// if($topic->checkIfExistsById() == 0) {
-//     header('Location: /topics');
-//     exit;
-// }
+
+if($topic->checkIfExistsById() == 0) {
+    header('Location: /topics');
+    exit;
+}
 
 $answers = new Answers();
 
@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors['add'] = TOPICS_ANSWERS_ERROR;
         }
     }
-
+$topic->id = $_GET['id'];
     $title = $topic->title;
 }
 
