@@ -30,7 +30,7 @@
                     <input class="form-control me-1 btn-sm h-25" type="search" placeholder="Search" aria-label="Search" id="searchQuery">
                     <button class="btn btn-outline-success btn-sm mt-3 h-75" type="submit" id="sBtn">
                         <i class="fa fa-search"></i></button>
-                        <!-- <label for="categorie">Categorie:</label>
+                    <!-- <label for="categorie">Categorie:</label>
                         <input type="text" id="categorie" name="categorie">
 
                         <label for="tags">Tags:</label>
@@ -41,7 +41,7 @@
             <?php // si la personne n'est pas connécté
             if (empty($_SESSION['user'])) { ?>
 
-                <?php require_once 'navbar.php'; ?>
+                <?php require_once 'navs/navbar.php'; ?>
 
                 <button class="btn btn-secondary btn-sm" id="connect"><i class="fa-solid fa-right-to-bracket ">
                         <a href="/connexion"> Connexion</a></i></button>
@@ -51,22 +51,11 @@
 
                 <?php // si l'utilisateur est connécté alors la navbar change mais aussi si il se dirige vers son profile 
                 ?>
-                <?php if ($_SERVER['PHP_SELF'] == 'controllers/users/profileController.php') { ?>
-                    <div class="headerProfile">
-                        <h1>VOTRE PROFILE</h1>
-                        <div class="navbar">
-                            <a href="/forum"><i class="fa-solid fa-person-chalkboard"> FORUMS</i></a>
-                            <a href="/inbox"><i class="fa-solid fa-message"> Inbox</i></a>
-                            <a href="/alerts"><i class="fa-solid fa-bell"> Alerts</i></a>
-                            <a href="/mon-compte"><i class="fa-solid fa-bell"> Account settings</i></a>
-                            <button type="button" id="searchBtn"><i class="fa fa-search"></i></button>
-                        </div>
-
-                    </div>
-
+                <?php if ($_SERVER['PHP_SELF'] == '/controllers/users/profileController.php') { ?>
+                    <?php require_once 'navs/navProfile.php'; ?>
                 <?php  } else { ?>
 
-                    <?php require_once 'navMember.php'; ?>
+                    <?php require_once 'navs/navMember.php'; ?>
 
                     <div class="btn-group" id="menu-button">
                         <button type="button" class="btn btn-sm btn-tertiary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

@@ -112,7 +112,7 @@ class Users
         INNER JOIN `a8yk4_usersroles` ON id_usersRoles = `a8yk4_usersroles`.`id`
         WHERE `a8yk4_users`.`id`= :id';
         $req = $this->pdo->prepare($sql);
-        $req->bindValue(':id', $this->id, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         $req->execute();
         return $req->fetch(PDO::FETCH_OBJ);
     }

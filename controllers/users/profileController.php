@@ -1,9 +1,8 @@
 <?php
-/**
- *vérifier que l'utilisateur est connecté.
- */
+
+require_once "../../models/posts/statusModel.php";
+require_once "../../models/posts/commentsModel.php";
 require_once "../../models/posts/topicsAnswersModel.php" ;
-require_once "../../models/posts/commentsModel.php" ;
 require_once "../../models/posts/topicsModel.php";
 require_once '../../models/users/usersModel.php';
 require_once '../../utils/regex.php';
@@ -24,6 +23,10 @@ $userAccount = $user->getById();
 $userDetails = $user->getList();
 $userCount = count($userDetails);
 
+$status = new Status;
+
+$comments = new comments;
+
 if (!empty($_FILES['image'])) {
     $imageMessage = checkImage($_FILES['image']);
 
@@ -36,6 +39,57 @@ if (!empty($_FILES['image'])) {
             $userAccount->image = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
         }
     }
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['statusPost'])) {
+
+    if (!empty($_POST['content'])) {
+        if (!preg_match($regex['content'], $_POST['content'])) {
+            $status->content = trim($_POST['content']);
+        } else {
+            $errors['content'] = STATUS_ERROR;
+        }
+    } else {
+        $errors['content'] = STATUS_ERROR;
+    }
+
+
+    if (empty($errors)) {
+        $status->id_users = $_SESSION['user']['id'];
+        if ($status->create()) {
+            $success = STATUS_SUCCESS;
+        } else {
+            $errors['add'] = STATUS_ERROR;
+        }
+    } else {
+        $errors['add'] = STATUS_ERROR;
+    }
+     $statusPoster = $status->getById();
+}
+
+if($_SERVER['REQUEST_METHOD'] == 'comment') {
+    if(!empty($_POST['content'])) {
+        if(!preg_match($regex['content'], $_POST['content'])) {
+            $answers->content = $_POST['content'];
+        } else {
+            $errors['content'] = STATUS_COMMENTS_ERROR;
+        }
+    } else {
+        $errors['content'] = STATUS_COMMENTS_ERROR;
+    }
+   
+    $comments->id_status = $status->id;
+    $comments->id_users = $_SESSION['user']['id'];
+
+    if(empty($errors)) {
+        if($comments->create()) {
+            $success = STATUS_COMMENTS_SUCCESS;
+        } else {
+            $errors['add'] = STATUS_COMMENTS_ERROR;
+        }
+    }
+    
+    // $commentsPoster = $comments->getById();
 }
 
 $topic = new Topics;
@@ -51,6 +105,18 @@ $userAnswer = $answers->getUserAnswer();
 $latestAnswer = $answers->getAnswer();
 $postCount = count($answersList);
 $userTotalAnswer = count($userAnswer);
+
+
+$statusList = $status->getList();
+$latestStatus = $status->getStatus();
+$statusCount = count($statusList);
+
+
+$commentsList = $comments->getList();
+$latestComment = $comments->getComment();
+$commentsCount = count($commentsList);
+
+$statusTotalCount = $postCount + $statusCount;
 
 $title = 'Profile';
 

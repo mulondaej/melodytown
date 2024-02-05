@@ -47,32 +47,32 @@
         </aside>
          <main class="mainStatus"> 
             <div class="State">
-                <div class="post">
+                <form action="" method="POST" id="" class="post">
                     <textarea name="" id="PostHere" ></textarea>
-                    <button type="submit" id="Posted">Post</button>
-                </div>
+                    <button type="submit" id="Posted" name="statusPost">Post</button>
+                </form>
                 <div class="statusContainer">
                     <div class="status">
-                        <p>User Name: Lorem ipsum dolor sit amet.</p>
-                        <p>Status: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p><?= $statusPoster->username ?></p>
+                        <p><?= $statusPoster->content ?></p>
                         <button class="likeStatus">Like</button>
                         <button class="commentStatus">Comment</button>
                     </div>
                     <ul class="comments">
                         <!-- Comments go here -->
                         <li>
-                            <p>User Name: Lorem ipsum dolor sit amet.</p>
-                            <p>Comment: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p><?= $commentsPoster->id_users ?></p>
+                        <p><?= $commentsPoster->content ?></p>
                             <button class="likeComment">Like</button>
                             <button class="replyComment">Reply</button>
                         </li>
                         <!-- Add more comment entries as needed -->
                     </ul>
                     <!-- Reply form for status -->
-                    <div class="reply-form hidden">
+                    <form action="/topics" method="POST" class="reply-form hidden">
                         <textarea class="replyText" placeholder="Reply to this status..."></textarea>
-                        <button class="postReply">Reply</button>
-                    </div>
+                        <button class="postReply" name="comment">Reply</button>
+                    </form>
                 </div>
             </div>
         </main>

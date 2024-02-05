@@ -32,13 +32,13 @@ class Comments {
 
     public function create()
     {
-        $sql = 'INSERT INTO `a8yk4_comments`( `content`,`publicationDate`, `username`, `id_status`,`id_users` )
-        VALUES (:content, NOW(), :username, :id_users, :id_status)';
+        $sql = 'INSERT INTO `a8yk4_comments`(`content`,`publicationDate`, `updateDate`, `username`, `id_status`,`id_users` )
+        VALUES (:content, NOW(), NOW(), :username, :id_users, :id_status)';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
         $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
-        $req->bindValue(':id_status', $this->id_status, PDO::PARAM_INT);
+        $req->bindValue(':id_Comment', $this->id_status, PDO::PARAM_INT);
         $req->execute();
     }
 
@@ -54,8 +54,8 @@ class Comments {
     {
         $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, 
         DATE_FORMAT(`updateDate`, "%d/%m/%y") AS `updateDate`
-        FROM `a8yk4_topicComments`
-        INNER JOIN `a8yk4_users` ON `a8yk4_topicanswers`.`id_users` = `a8yk4_users`.`id`
+        FROM `a8yk4_status`
+        INNER JOIN `a8yk4_users` ON `a8yk4_comments`.`id_users` = `a8yk4_users`.`id`
         WHERE `a8yk4_users`.`id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id', $this->id, PDO::PARAM_STR);
@@ -74,6 +74,23 @@ class Comments {
         ORDER BY `publicationDate` DESC';
         $req = $this->pdo->query($sql);
         return $req->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function getUserComment()
+    {
+        $sql = 'SELECT `k`.`content`, DATE_FORMAT(`publicationDate`, "%d/%m/%Y") AS `publicationDate` 
+        FROM `a8yk4_comments` AS `k`
+        INNER JOIN `a8yk4_users` ON `k`.`id_users` = `a8yk4_users`.`id`';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        return $req->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getComment()
+    {
+        $sql = 'SELECT * FROM  `a8yk4_comments` ORDER BY `publicationDate` DESC LIMIT 1';
+        $req = $this->pdo->query($sql);
+        return $req->fetch(PDO::FETCH_OBJ);
     }
 
     public function update()

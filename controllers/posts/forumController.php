@@ -1,6 +1,7 @@
 <?php
 require_once "../../models/users/usersModel.php" ;
 require_once "../../models/forumModel.php" ;
+require_once "../../models/posts/statusModel.php";
 require_once "../../models/posts/topicsAnswersModel.php" ;
 require_once "../../models/posts/commentsModel.php" ;
 require_once "../../models/posts/topicsModel.php";
@@ -45,7 +46,12 @@ $answersList = $answers->getList();
 $latestAnswer = $answers->getAnswer();
 $postCount = count($answersList);
 
-$totalCount = $postCount + $topicCount;
+$status = new Status;
+$statusList = $status->getList();
+$latestStatus = $status->getStatus();
+$statusCount = count($statusList);
+
+$totalCount = $postCount + $topicCount + $statusCount;
 
 $title = 'MelodyTown';
 

@@ -14,15 +14,9 @@ require_once '../utils/functions.php';
 
 session_start();
 
-// Confirmation que l'utilisateur est bel et bien en ligne
-// if (!isset($_SESSION['user'])) {
-//     // Sinon, lui rediriger vers la page d'accueil ou de connexion
-//     header("Location: /accueil");
-//     exit();
-// } 
-
 $user = new Users;
-$user->id = $_SESSION['user']['id'];
+// $user->id = $_SESSION['user']['id'];
+// $userAccount = $user->getById();
 $latestUser = $user->getUser();
 
 $userDetails = $user->getList();
@@ -46,8 +40,13 @@ $answersList = $answers->getList();
 $latestAnswer = $answers->getAnswer();
 $postCount = count($answersList);
 
-$totalCount = $postCount + $topicCount;
-$userAccount = $user->getById();
+$status = new Status;
+$statusList = $status->getList();
+$latestStatus = $status->getStatus();
+$statusCount = count($statusList);
+
+$totalCount = $postCount + $topicCount + $statusCount ;
+
 $title = 'MelodyTown';
 
  require_once('..//views/parts/header.php');

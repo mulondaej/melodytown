@@ -12,7 +12,6 @@
     <?php } ?>
     
     
-
     <fieldset id="userPosting">
     <form action="/thread?<?= $t->id ?>" method="POST" id="">
       <div id="centered"><label for="comments"></label>

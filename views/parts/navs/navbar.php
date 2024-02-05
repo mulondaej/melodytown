@@ -1,11 +1,15 @@
-
-
 <div class="navbar">
+    
     <button class="btn btn-secondary btn-sm"><i class="fa-solid fa-house"></i><a href="/accueil"> Accueil</a></button>
     
     <div class="btn-group dropdown-center">
         <button class="btn btn-secondary btn-sm" type="button">
-            <i class="fa-brands fa-discourse" id="discuss"></i><a href="/forum"> Discuss</a></button>
+            <i class="fa-brands fa-discourse" id="discuss"></i>
+            <a href="/forum"><?php if (!empty($_SESSION['user'])) { ?>
+                Discuss 
+                <?php } else { ?>
+                    Forums
+                <?php } ?></a></button>
         <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="visually-hidden"></span>
         </button>
@@ -17,8 +21,8 @@
         </ul>
     </div>
 
-    <?php if ('Location: /forum') { ?>
-                
+    <?php if ($_SERVER['PHP_SELF'] == '/controllers/posts/forumController.php') { ?> 
+          
     <div class="btn-group dropdown-center">
         <button class="btn btn-secondary btn-sm" type="button">
             <i class="fa-sharp fa-solid fa-sailboat" id="discover"></i><a href="discover.php">

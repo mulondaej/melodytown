@@ -861,7 +861,7 @@
                 <li><b><a href="/thread?">Latest Thread: </b></a><span id="posts-posted">
                         <a href="/thread?"><?= $latestTopic->title ?> </a></span>
                 </li>
-                <li><b><a href="#thread">Latest Status: </b></a><span id="posts-posted"></li>
+                <li><b><a href="#thread">Latest Status: </b><?= $latestStatus->content ?></a><span id="posts-posted"></li>
                 <a href="#profile"></a></span>
                     <li><b><a href="#winners">Kings of posting: </b></a>
                         <span id="members-online"><a href="#profile">

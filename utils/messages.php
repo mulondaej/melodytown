@@ -70,8 +70,8 @@ define('TOPICS_ANSWERS_SUCCESS', 'Merci d\avoir respecté le norme');
 define('TOPICS_ANSWERS_ERROR', 'Veuillez redigez une phrase au moins, la case ne peut pas être vide');
 
 // COMMENTS
-define('TOPICS_COMMENTS_SUCCESS', 'Merci d\avoir respecté le norme');
-define('TOPICS_COMMENTS_ERROR', 'Veuillez redigez une phrase au moins, la case ne peut pas être vide');
+define('STATUS_COMMENTS_SUCCESS', 'Merci d\avoir respecté le norme');
+define('STATUS_COMMENTS_ERROR', 'Veuillez redigez une phrase au moins, la case ne peut pas être vide');
 
 // TAGS
 define('TOPICS_TAGS_ERROR_EMPTY', 'Le tag est requis');
@@ -85,3 +85,6 @@ define('TOPICS_CATEGORIES_ERROR_INVALID', 'Le tag est invalide');
 define('TOPICS_SUCCESS', 'Votre topic vient d\etre publié avec succes');
 define('TOPICS_ERROR', 'Il y a un eu un soucis: soit le titre;,le tag ou le contenu y manque');
 
+// STATUS
+define('STATUS_SUCCESS', 'Votre status vient d\etre publié avec succes');
+define('STATUS_ERROR', 'Il y a un eu un soucis: peut etre le contenu y manque');
