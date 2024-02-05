@@ -74,7 +74,7 @@ class Topics
     {
         $sql = 'INSERT INTO `a8yk4_topics`(`title`, `content`, `publicationDate`,
          `updateDate`, `id_users`, `id_categories`, `id_tags`) 
-        VALUES (:title,:content,NOW(),NOW(),:id_users,:id_categories, :id_tags)';
+        VALUES (:title,:content, NOW(), NOW(), :id_users, :id_categories, :id_tags)';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':title', $this->title, PDO::PARAM_STR);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
