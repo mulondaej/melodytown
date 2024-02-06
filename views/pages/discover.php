@@ -60,7 +60,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                         <p>Soyons respecteux dans la discussion</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
@@ -83,7 +83,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                         <p>Soyons respecteux dans la discussion</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
@@ -106,7 +106,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                         <p>Soyons respecteux dans la discussion</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
@@ -134,7 +134,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                         <p>Soyons respecteux dans la discussion</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
@@ -158,7 +158,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                         <p>Soyons respecteux dans la discussion</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
@@ -185,7 +185,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                         <p>Soyons respecteux dans la discussion</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
@@ -208,7 +208,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                         <p>Soyons respecteux dans la discussion</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
@@ -231,7 +231,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                         <p>Soyons respecteux dans la discussion</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">

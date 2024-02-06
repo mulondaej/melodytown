@@ -694,7 +694,7 @@ textarea {
     font-size: 13px;
     margin: 0 auto;
     text-align: center;
-    max-height: 70px;
+    height: max-content;
 }
 
 .center {
@@ -1906,14 +1906,13 @@ fieldset {
     .subforum-info {
         margin: auto;
         text-align: center;
-        font-size: 10px;
         margin: 0 auto;
         display: block;
         width: min-content;
     }
 
     .subforum-info a {
-        font-size: 11px;
+        font-size: 10px;
         display: block;
         padding: 0;
     }

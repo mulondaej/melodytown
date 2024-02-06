@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -126,7 +126,7 @@
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
@@ -154,7 +154,7 @@
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -182,7 +182,7 @@
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -210,7 +210,7 @@
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -237,7 +237,7 @@
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
-                    <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                    <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -268,7 +268,7 @@
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="/" id="topics"><?= $totalCount ?></a> Posts</span>
+                        <span><a href="/" id="topics"><?= $totalCount ?></a> posts</span>
                     </div>
                     <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -294,7 +294,7 @@
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                        <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                     </div>
                     <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -319,7 +319,7 @@
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                        <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                     </div>
                     <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -353,7 +353,7 @@
                             </div>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                            <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                            <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                         </div>
                         <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -381,7 +381,7 @@
                             </div>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                            <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                            <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                         </div>
                         <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -413,7 +413,7 @@
                             </div>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                            <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                            <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                         </div>
                         <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -447,7 +447,7 @@
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                        <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -477,7 +477,7 @@
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topics"> <?= $totalCount ?></a> Posts</span>
+                        <span><a href="" id="topics"> <?= $totalCount ?></a> posts</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post</a></b><a href="/thread?">
@@ -509,7 +509,7 @@
                                 <p>Restons poli dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
-                                <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                                <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                             </div>
                             <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -532,7 +532,7 @@
                                 <p>Tête à tête</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
-                                <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                                <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                             </div>
                             <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href="/thread?">
@@ -562,7 +562,7 @@
                             <p>Soyons respecteux dans la discussion</p>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                            <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                            <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                         </div>
                         <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href=""><?php if (!empty($_SESSION['user'])) { ?>
@@ -584,7 +584,7 @@
                             <p>Soyons respecteux dans la discussion</p>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                            <span><a href="" id="topics"><?= $totalCount ?></a> Posts</span>
+                            <span><a href="" id="topics"><?= $totalCount ?></a> posts</span>
                         </div>
                         <div class="subforum-info subforum-column">
                     <b><a href="">Last post</a></b><a href=""><?php if (!empty($_SESSION['user'])) { ?>
@@ -606,7 +606,7 @@
     <aside class="right-sidebar">
         
         <div class="updates">
-            <h2>Posts</h2>
+            <h2>posts</h2>
             <ul>
                 <?php if (!empty($_SESSION['user'])) { ?>
                     <li><b>Latest Post: </b><a href="/thread?"><?= $latestAnswer->content ?>
@@ -634,7 +634,7 @@
         <div class="updates">
             <h2>Forum stats</h2>
             <ul>
-                <li><b>Total Posts: </b><span id="posts-posted"><a href="/posts"><?= $totalCount ?></a></span></li>
+                <li><b>Total posts: </b><span id="posts-posted"><a href="/posts"><?= $totalCount ?></a></span></li>
                 <li><b>Guests Online : </b><span id="guests-online">0</span></li>
                 <?php if (!empty($_SESSION['user'])) { ?>
                     <li><b>Members Online : </b><a href=".#"> <?= $_SESSION['user']['username']  ?></a>
