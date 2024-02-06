@@ -15,8 +15,6 @@
 
     <form action="/modifier-mon-compte" method="post" id="logForm" enctype="multipart/form-data">
         
-        
-
         <label for="username">Nom d'utilisateur</label>
         <input type="text" name="username" id="username" placeholder="alfnzau" value="<?= $userAccount->username ?>">
         <?php if (isset($errors['username'])) { ?>

@@ -2,7 +2,7 @@
 
 ?>
 <div id="main">
-    <section class="forum" id="topicContainer">
+    <section class="forum" id="forum">
     <?php if (isset($categoriesList) == 0) { ?>
         <h1><?= $categories->name ?></h1><hr>
         <?php } ?>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="subforum-info subforum-column">
                             <a href="/thread?<?= $latestTopic->content ?>">
-                            <b>crée</b> </a> par <a href="/profile?="><?= $t->username ?>,
+                            <b>par</b> </a><a href="/profile?="><?= $t->username ?>,
                              <?= $t->publicationDate ?></a>
                         </div>
                     </div>

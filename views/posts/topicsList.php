@@ -19,19 +19,20 @@
                 </li>
             </ul>
         </nav>
+        
     <div class="topicsContainer">
         
         <?php foreach($topicsList as $t) { ?>
         <div class="topic">
             <div class="topicBottom">
-                <h2><b>Titre :</b> <?= $t->title ?> <br></h2>
+                <h2><b>Titre:</b> <?= $t->title ?> <br></h2>
                 <p>
-                    <b>Ecrit par :</b> <?= $t->username ?> <br>
-                    <b>Tags :</b> <?= $t->tag ?> <br>
-                    <b>Catégorie :</b> <?= $t->categorie ?> <br>
-                    <b>Publié :</b> <?= $t->publicationDate ?> <br>
-                    <b>Mis à jour :</b> <?= $t->updateDate ?>
-                </p><b>content :</b>
+                    <b>Ecrit par:</b> <?= $t->username ?> <br>
+                    <b>Tags:</b> <?= $t->tag ?> <br>
+                    <b>Catégorie:</b> <?= $t->categorie ?> <br>
+                    <b>Publié:</b> <?= $t->publicationDate ?> <br>
+                    <b>Mis à jour:</b> <?= $t->updateDate ?>
+                </p><b>content:</b>
                 <p class="topicContent"><?= strip_tags($t->content) ?><br>
                 </p>
                 <p><a href="/reponses"><b>Réponses :</b> <?= $postCount ?></a></p>

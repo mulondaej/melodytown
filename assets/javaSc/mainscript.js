@@ -1,19 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Les variables déclarés
-    const searchBtn = document.getElementById('searchBtn');
-    const sBtn = document.getElementById('sBtn');
-    const searched = document.getElementById('searching');
-    const avatar = document.getElementById("avatar");
-    const avyOverlay = document.getElementById("avy-overlay");
-    const fileInput = document.getElementById('fileUploadMedia');
-    const uploadButton = document.getElementById('uploadMediaBtn');
-    const mediaList = document.getElementById('media-list');
-    const editCoverButton = document.getElementById("editCover");
-    const avatarImageUpload = document.getElementById("avatarUpload");
-    const editAvatarButton = document.getElementById("editAvatar");
-    const mediaLink = document.getElementById('media-link');
-    const mediaFolder = document.getElementById('media-folder');
-    const lastUsernameEditTime = null; // Initialize lastUsernameEditTime
+
 
     searchBtn.addEventListener('click', function () {
         if (searched.style.display === 'none' || searched.style.display === '') {
@@ -312,6 +297,3 @@ document.addEventListener("DOMContentLoaded", function () {
         // Redirect to a search results page
         window.location.href = `/search?query=${searchQuery}&category=${category}&tags=${tags}`;
     });
-
-
-});

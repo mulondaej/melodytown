@@ -25,19 +25,6 @@
           
     <div class="btn-group dropdown-center">
         <button class="btn btn-secondary btn-sm" type="button">
-            <i class="fa-sharp fa-solid fa-sailboat" id="discover"></i><a href="discover.php">
-                Découvert</a></button>
-        <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="visually-hidden"></span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-dark text-center">
-            <li><a class="dropdown-item" href="#">Hottest</a></li>
-            <li><a class="dropdown-item" href="#">Latest show</a></li>
-            <li><a class="dropdown-item" href="#">Series</a></li>
-        </ul>
-    </div>
-    <div class="btn-group dropdown-center">
-        <button class="btn btn-secondary btn-sm" type="button">
             <i class="fa-solid fa-hands-bubbles" id="arena"></i><a href="/forum"> Arène</a>
         </button>
         <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">

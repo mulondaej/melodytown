@@ -119,7 +119,7 @@ class Users
 
     public function getUser()
     {
-        $sql = 'SELECT * FROM  `a8yk4_users` ORDER BY `registerDate` DESC';
+        $sql = 'SELECT * ,DATE_FORMAT(`registerDate`, "%d/%m/%y") AS `registerDate` FROM  `a8yk4_users` ORDER BY `registerDate` DESC';
         $req = $this->pdo->query($sql);
         return $req->fetch(PDO::FETCH_OBJ);
     }

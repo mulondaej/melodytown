@@ -169,7 +169,6 @@ body {
 
             }
 
-
         }
 
         .topicBottom a {
@@ -356,4 +355,50 @@ nav {
 
 * {
     box-sizing: border-box;
+}
+
+/* Smartphone styles */
+@media screen and (max-width: 767px)  {
+    
+    .topicsContainer {
+        display: inline-block;
+        grid-template-columns: none;
+        grid-template-rows: none;
+        gap: 1rem;
+    }
+
+    .topicBottom {
+        padding: 1rem;
+        width: max-content;
+        margin: 0 auto;
+        text-align: center;
+        background-color: #d7d8d8;
+        border-radius: 10px;
+    }
+
+    .topicContent {
+        background-color: #dee3e7de;
+        border-radius: 7px;
+    }
+
+    .topicBottom h2 {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .topic {
+        border: 1px solid dark;
+        margin: 15px;
+        width: 25rem;
+    }
+}
+
+/* Tablet styles */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    
+}
+
+/* PC styles */
+@media screen and (min-width: 1024px) {
+    
 }
