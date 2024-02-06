@@ -20,7 +20,7 @@
             <li><a class="dropdown-item" href="#">Afrostories</a></li>
         </ul>
     </div>
-
+    <?php if (!empty($_SESSION['user'])) { ?>          
     <?php if ($_SERVER['PHP_SELF'] == '/controllers/posts/forumController.php') { ?> 
           
     <div class="btn-group dropdown-center">
@@ -49,5 +49,6 @@
             <li><a class="dropdown-item" href="#">Vs Multiverse</a></li>
         </ul>
     </div>
+    <?php } ?>
     <?php } ?>
 </div>

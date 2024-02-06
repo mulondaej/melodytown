@@ -2,6 +2,7 @@
 
 require_once '../models/users/usersModel.php' ;
 require_once '../models/forumModel.php' ;
+require_once '../models/posts/statusModel.php';
 require_once '../models/posts/topicsAnswersModel.php' ;
 require_once '../models/posts/commentsModel.php' ;
 require_once '../models/posts/topicsModel.php';

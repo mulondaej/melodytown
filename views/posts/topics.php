@@ -4,7 +4,7 @@
 <div id="main">
     <section class="forum" id="topicContainer">
     <?php if (isset($categoriesList) == 0) { ?>
-        <h1><?= $categories ?></h1><hr>
+        <h1><?= $categories->name ?></h1><hr>
         <?php } ?>
         
         <div class="forumcontainer" id="forumcontainer">
@@ -27,7 +27,7 @@
                         </div>
                         <div class="subforum-stats subforum-column center">
                             <span><a href="" id="topicPost"> 
-                                <?php if(isset($answersList)) { ?>
+                                <?php if(isset($answersList )== 1) { ?>
                                     <?= $postCount ?> 
                                 <?php } else { ?>
 

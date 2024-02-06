@@ -32,7 +32,7 @@
                     <b>Publié :</b> <?= $t->publicationDate ?> <br>
                     <b>Mis à jour :</b> <?= $t->updateDate ?>
                 </p><b>content :</b>
-                <p class="topicContent">  <?= $t->content ?> <br>
+                <p class="topicContent"><?= strip_tags($t->content) ?><br>
                 </p>
                 <p><a href="/reponses"><b>Réponses :</b> <?= $postCount ?></a></p>
                 <a href="/thread?<?= $t->id ?>" class="cta">Lire la suite</a><br>

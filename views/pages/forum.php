@@ -845,10 +845,10 @@
             <div class="updates">
                 <h2>A venir</h2>
                 <ul>
-                    <li><a href="#news"><b>News:</b> </a><span id="members-online"><a href="#profile">0</a></span></li>
-                    <li><a href="#events"><b>Tournaments:</b> </a><span id="members-online"><a href="#profile">0</a></span>
+                    <li><b>News:</b> <a href="#news"></a><span id="members-online"><a href="#profile">0</a></span></li>
+                    <li><b>Tournaments:</b> <a href="#events"></a><span id="members-online"><a href="#profile">0</a></span>
                     </li>
-                    <li><a href="#events"><b>Events:</b> </a><span id="posts-posted"><a href="/topics">0</a></span></li>
+                    <li><b>Events:</b> <a href="#events"></a><span id="posts-posted"><a href="/topics">0</a></span></li>
                 </ul>
             </div>
         <?php } ?>
@@ -856,17 +856,24 @@
             <h2>Posts</h2>
             <ul>
                 <?php if (!empty($_SESSION['user'])) { ?>
-                <li><b><a href="/thread?">Latest Post: </b></a><span id="posts-posted">
-                        <a href="/thread?"> <?= $latestAnswer->content ?> </a></span></li>
-                <li><b><a href="/thread?">Latest Thread: </b></a><span id="posts-posted">
-                        <a href="/thread?"><?= $latestTopic->title ?> </a></span>
-                </li>
-                <li><b><a href="#thread">Latest Status: </b><?= $latestStatus->content ?></a><span id="posts-posted"></li>
-                <a href="#profile"></a></span>
-                    <li><b><a href="#winners">Kings of posting: </b></a>
+                    <li><b>Latest Post: </b><a href="/thread?"><?= $latestAnswer->content ?>
+                        </a><span id="posts-posted">by <a href="/thread?">
+                                <?= $latestAnswer->username ?>
+                            </a></span></li>
+                    <li><b>Latest Thread: </b><a href="/thread?"><?= $latestTopic->title ?></a>
+                        <span id="posts-posted">by <a href="/thread?">
+                                <?= $latestTopic->username ?>
+                            </a></span></li>
+                    <li><b>Latest Status: </b><a href="#profile"><?= $latestStatus->content ?>
+                        </a><span id="posts-posted"> by <a href="#profile">
+                                <?= $latestStatus->username ?>
+                            </a></span></li>
+                    <li><b>Kings of posting: </b><a href="#winners"></a>
                         <span id="members-online"><a href="#profile">
-                                <?= $userAccount->username ?></a></span>
-                    </li>
+                                <?php if ($userDetails == 0) { ?>
+                                    <?= $userDetails->username ?>
+                                <?php } ?>
+                            </a></span></li>
                 <?php } ?>
 
             </ul>

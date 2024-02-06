@@ -13,16 +13,14 @@
     
     
     <fieldset id="userPosting">
-    <form action="/thread?<?php foreach($topicsList as $t) { ?>
-        <?= $t->id ?> <?php } ?>" method="POST">
+    <form action="/thread?<?= $_GET['id'] ?>" method="POST">
       <div id="centered"><label for="comments"></label>
         <textarea name="comments" id="comments"></textarea>
-        <br><input type="submit" value="post" id="commentBtn">
+        <br><input type="submit" value="post" id="commentBtn" name="answer">
       </div>
     </form>
     </fieldset>
-<?php } ?>
-
+    <?php } ?>
     </main>
 
 

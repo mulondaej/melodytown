@@ -31,12 +31,10 @@ class Answers {
 
     public function create()
     {
-        $sql = 'INSERT INTO `a8yk4_topicanswers`( `content`,`publicationDate`,`updateDate`, 
-        `username`, `id_users`, `id_topics`) 
-        VALUES (:content, NOW(), NOW(), :username, :id_users, :id_topics)';
+        $sql = 'INSERT INTO `a8yk4_topicanswers`( `content`,`publicationDate`,`updateDate`, `id_users`, `id_topics`) 
+        VALUES (:content, NOW(), NOW(), :id_users, :id_topics)';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
-        $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
         $req->bindValue(':id_topics', $this->id_topics, PDO::PARAM_INT);
         $req->execute();
@@ -50,9 +48,20 @@ class Answers {
         return $req->execute();
     }
 
+
+    public function getById()
+    {
+        $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 
+        FROM `a8yk4_topicanswers` AS `t`
+        INNER JOIN `a8yk4_users` ON `t`.`id_users` = `a8yk4_users`.`id`';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        return $req->fetch(PDO::FETCH_OBJ);
+    } 
+    
     public function getAnswer()
     {
-        $sql = 'SELECT *,`u`.`username`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
+        $sql = 'SELECT *, `u`.`username`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
         FROM  `a8yk4_topicanswers` 
         INNER JOIN `a8yk4_users` AS `u` ON `id_users` = `u`.`id`
         ORDER BY `publicationDate` DESC';
@@ -60,21 +69,11 @@ class Answers {
         return $req->fetch(PDO::FETCH_OBJ);
     }
 
-    public function getById()
-    {
-        $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 
-        FROM `a8yk4_topicanswers`
-        INNER JOIN `a8yk4_users` ON `a8yk4_topicanswers`.`id_users` = `a8yk4_users`.`id`';
-        $req = $this->pdo->prepare($sql);
-        $req->execute();
-        return $req->fetch(PDO::FETCH_OBJ);
-    }
-
     public function getUserAnswer()
     {
         $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 
-        FROM `a8yk4_topicanswers`
-        INNER JOIN `a8yk4_users` ON `a8yk4_topicanswers`.`id_users` = `a8yk4_users`.`id`';
+        FROM `a8yk4_topicanswers` AS `t`
+        INNER JOIN `a8yk4_users` ON `t`.`id_users` = `a8yk4_users`.`id`';
         $req = $this->pdo->query($sql);
         $req->execute();
         return $req->fetch(PDO::FETCH_ASSOC);
@@ -87,8 +86,8 @@ class Answers {
         DATE_FORMAT(`a`.`updateDate`, "%d/%m/%y") AS `updateDate`,
         `u`.`username`, `a`.`id_users`, `a`.`id_topics`
         FROM `a8yk4_topicanswers` AS `a`
-        INNER JOIN `a8yk4_users` AS `u` ON `id_users` = `u`.`id`
-        INNER JOIN `a8yk4_topics` AS `t` ON `id_topics` = `t`.`id`
+        INNER JOIN `a8yk4_users` AS `u` ON `a`.`id_users` = `u`.`id`
+        INNER JOIN `a8yk4_topics` AS `t` ON `a`.`id_topics` = `t`.`id`
         ORDER BY `publicationDate` DESC';
         $req = $this->pdo->query($sql);
         return $req->fetchAll(PDO::FETCH_OBJ);
