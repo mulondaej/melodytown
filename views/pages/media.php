@@ -20,3 +20,5 @@
         </ul>
     </div>
 </main>
+
+<script src="../../assets/javaSc/profile.js"></script>

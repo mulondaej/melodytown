@@ -3,17 +3,17 @@
             <p id="successMessage"><?= $success ?></p>
         <?php } ?>
 <main class="compteFlex">
-<form action="/modifier-mon-compte" method="post" id="logForm" >
+    <form action="/modifier-mon-compte" method="post" id="logForm" enctype="multipart/form-data">
         
         <label for="avatar">Avatar</label>
-        <input type="file" name="avatar" id="userAvatar" value="<?= $userAccount->avatar ?>" accept="image*/">
-        <?php if (isset($errors['avatar'])) { ?>
-            <p class="errorsMessage"><?= $errors['avatar'] ?></p>
+        <input type="file" name="image" id="userAvatar" value="<?= $userAccount->avatar ?>" accept="image*/">
+        <?php if (isset($errors['image'])) { ?>
+            <p class="errorsMessage"><?= $errors['image'] ?></p>
         <?php } ?>
         <input type="submit" value="Modifier" name="updateAvatar">
     </form>
 
-    <form action="/modifier-mon-compte" method="post" id="logForm" enctype="multipart/form-data">
+    <form action="/modifier-mon-compte" method="post" id="logForm" >
         
         <label for="username">Nom d'utilisateur</label>
         <input type="text" name="username" id="username" placeholder="alfnzau" value="<?= $userAccount->username ?>">
@@ -65,4 +65,15 @@
         </div>
     </div>
 
+    <div id="modalContainer">
+        <div id="modal">
+            <span id="closeBtn">&times;</span>
+            <p id="modalText">Êtes-vous sûr de vouloir supprimer votre compte ?</p>
+            <form action="/modifier-mon-compte" method="POST" id="delete">
+                <input type="submit" value="Supprimer" name="deleteAccount">
+            </form>
+        </div>
+    </div>
+
 </main>
+<script src="../../assets/javaSc/account.js"></script>

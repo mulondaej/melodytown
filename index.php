@@ -58,9 +58,6 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6;"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <ul class="thread-list">
-                            <!-- Thread items go here -->
-                        </ul>
                         <h4><a href="/topics">Rules</a></h4>
                         <p>Les règles de forum à respecter </p>
                     </div>
@@ -91,7 +88,7 @@
                         <?php } else { ?>
                             <h4><a href="/topics?">News</a></h4>
                         <?php } ?>
-                        <p>Venez ici pour prendre des nouvelles du site ou forum</p>
+                        <p>Prenez des nouvelles du site ou forum</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
                         <span><a href="" id="topics"> <?= $totalCount ?></a> posts</span>
@@ -143,7 +140,7 @@
                         <span><a href="" id="topics"> <?= $totalCount ?></a> posts</span>
                         </div>
                         <div class="subforum-info subforum-column">
-                            <b><a href="">Last post:</a></b> <a href=""><?= $latestUser->username ?>,
+                            <b><a href="">Last post:</a></b> <a href="">
                                 <?= $latestUser->registerDate ?></a>
                         </div>
                     </div>
@@ -165,7 +162,6 @@
                         <h5><a href="/forum">One Piece</a></h5>
                         <h5><a href="/forum">Naruto</a></h5>
                         <h5><a href="/forum">Bleach</a></h5>
-                        <h5><a href="/forum">DBZ</a></h5>
                         <h5><a href="/forum">more</a></h5>
                     </div>
                 </div>
@@ -216,10 +212,9 @@
                 <div class="subforum-description subforum-column">
                     <h4><a href="/topics">Webtoon</a></h4>
                     <div>
-                        <h5><a href="/topics">Solo-Lvl</a></h5>
+                        <h5><a href="/topics">Solo-Leveling</a></h5>
                         <h5><a href="/topics">ToG</a></h5>
                         <h5><a href="/topics">GoH</a></h5>
-                        <h5><a href="/topics">Noblesse</a></h5>
                         <h5><a href="/topics">more</a></h5>
                     </div>
                 </div>
@@ -236,6 +231,7 @@
                 <?php } ?>
                 </div>
             </div>
+                
             <hr class="subforum-devider">
             <div class="subforum-row">
                 <div class="subforum-icon subforum-column ">
@@ -244,8 +240,7 @@
                 <div class="subforum-description subforum-column">
                     <h4><a href="/topics">Afrostories</a></h4>
                     <div>
-                        <h5><a href="/topics">Saturday A.M</a></h5>
-                        <h5><a href="/topics">Etani Comics</a></h5>
+                        <h5><a href="/topics">Sat. A.M</a></h5>
                         <h5><a href="/topics">Kibongatsho</a></h5>
                         <h5><a href="/topics">more</a></h5>
                     </div>
@@ -303,7 +298,7 @@
                     <div class="subforum-description subforum-column">
                         <h4><a href="/topics">Populaire</a></h4>
                         <div>
-                            <h5><a href="/topics">Sherlock Holmes</a></h5>
+                            <h5><a href="/topics">Sherlock</a></h5>
                             <h5><a href="/topics">GoT</a></h5>
                             <h5><a href="/topics">Harry Potter</a></h5>
                             <h5><a href="/topics">more</a></h5>
@@ -675,5 +670,7 @@
     </aside>
 </div>
 
+<script src="../../assets/javaSc/thread.js"></script>
 <?php
 $title = 'MelodyTown';
+?>

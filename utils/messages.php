@@ -53,6 +53,7 @@ define('IMAGE_ERROR_INVALID', 'L\'image est invalide');
 define('IMAGE_ERROR_EXTENSION', 'L\'image est invalide. Elle doit être au format jpg, jpeg, png, gif ou webp');
 define('IMAGE_ERROR_SIZE', 'L\'image est invalide. Elle doit faire moins de 1Mo');
 define('IMAGE_ERROR', 'Une erreur est survenue lors de l\'envoi de l\'image');
+define('IMAGE_SUCCESS', 'l\'envoi de l\'image est reussi');
 
 // TITRE
 define('TOPICS_TITLE_SUCCESS', 'Merci d\avoir respecté le norme');

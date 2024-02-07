@@ -63,10 +63,9 @@
                 <div class="subforum-description subforum-column">
                     <h4><a href="/topics">Bleach</a></h4>
                     <div>
-                        <h5><a href="/topics">Discussions</a></h5>
-                        <h5><a href="/topics">Théories</a></h5>
-                        <h5><a href="/topics">Versus</a></h5>
-                        <h5><a href="/topics">News</a></h5>
+                        <h6><a href="/topics">Discussions</a></h6>
+                        <h6><a href="/topics">Théories</a></h6>
+                        <h6><a href="/topics">Versus</a></h6>
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
@@ -91,10 +90,9 @@
                 <div class="subforum-description subforum-column">
                     <h4><a href="/topics">Naruto</a></h4>
                     <div>
-                        <h5><a href="/topics">Discussions</a></h5>
-                        <h5><a href="/topics">Théories</a></h5>
-                        <h5><a href="/topics">Versus</a></h5>
-                        <h5><a href="/topics">News</a></h5>
+                        <h6><a href="/topics">Discussions</a></h6>
+                        <h6><a href="/topics">Théories</a></h6>
+                        <h6><a href="/topics">Versus</a></h6>
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
@@ -119,10 +117,9 @@
                 <div class="subforum-description subforum-column">
                     <h4><a href="/topics">One Piece</a></h4>
                     <div>
-                        <h5><a href="/topics">Discussions</a></h5>
-                        <h5><a href="/topics">Théories</a></h5>
-                        <h5><a href="/topics">Versus</a></h5>
-                        <h5><a href="/topics">News</a></h5>
+                        <h6><a href="/topics">Discussions</a></h6>
+                        <h6><a href="/topics">Théories</a></h6>
+                        <h6><a href="/topics">Versus</a></h6>
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
@@ -147,10 +144,9 @@
                 <div class="subforum-description subforum-column">
                     <h4><a href="/topics">Hunter X Hunter</a></h4>
                     <div>
-                        <h5><a href="/topics">Discussions</a></h5>
-                        <h5><a href="/topics">Théories</a></h5>
-                        <h5><a href="/topics">Versus</a></h5>
-                        <h5><a href="/topics">News</a></h5>
+                        <h6><a href="/topics">Discussions</a></h6>
+                        <h6><a href="/topics">Théories</a></h6>
+                        <h6><a href="/topics">Versus</a></h6>
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
@@ -175,10 +171,10 @@
                 <div class="subforum-description subforum-column">
                     <h4><a href="/topics">Golden</a></h4>
                     <div>
-                        <h5><a href="/topics">DBZ</a></h5>
-                        <h5><a href="/topics">Saint Seiya</a></h5>
-                        <h5><a href="/topics">JoJo Bizarre</a></h5>
-                        <h5><a href="/topics">more</a></h5>
+                        <h6><a href="/topics">DBZ</a></h6>
+                        <h6><a href="/topics">Saint Seiya</a></h6>
+                        <h6><a href="/topics">JoJo Bizarre</a></h6>
+                        <h6><a href="/topics">Major</a></h6>
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
@@ -202,11 +198,11 @@
                 <div class="subforum-description subforum-column">
                     <h4><a href="/topics">New Gen</a></h4>
                     <div>
-                        <h5><a href="/topics">MHA</a></h5>
-                        <h5><a href="/topics">Kingdom</a></h5>
-                        <h5><a href="/topics">OPM</a></h5>
-                        <h5><a href="/topics">JJK</a></h5>
-                        <h5><a href="/topics">more</a></h5>
+                        <h6><a href="/topics">MHA</a></h6>
+                        <h6><a href="/topics">Kingdom</a></h6>
+                        <h6><a href="/topics">OPM</a></h6>
+                        <h6><a href="/topics">JJK</a></h6>
+                        <h6><a href="/topics">more</a></h6>
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
@@ -230,10 +226,10 @@
                 <div class="subforum-description subforum-column">
                     <h4><a href="/topics">Finished series</a></h4>
                     <div>
-                        <h5><a href="/topics">Reborn</a></h5>
-                        <h5><a href="/topics">Fairytail</a></h5>
-                        <h5><a href="/topics">AoT</a></h5>
-                        <h5><a href="/topics">more</a></h5>
+                        <h6><a href="/topics">Reborn</a></h6>
+                        <h6><a href="/topics">Fairytail</a></h6>
+                        <h6><a href="/topics">AoT</a></h6>
+                        <h6><a href="/topics">more</a></h6>
                     </div>
                 </div>
                 <div class="subforum-stats subforum-column ">
@@ -262,9 +258,8 @@
                     <div class="subforum-description subforum-column">
                         <h4><a href="/topics">Marvel</a></h4>
                         <div>
-                            <h5><a href="/topics">Comics</a></h5>
-                            <h5><a href="/topics">Animated series</a></h5>
-                            <h5><a href="/topics">Series/ Movies</a></h5>
+                            <h6><a href="/topics">Comics</a></h6>
+                            <h6><a href="/topics">Series/ Movies</a></h6>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -288,9 +283,8 @@
                     <div class="subforum-description subforum-column">
                         <h4><a href="/topics">D.C</a></h4>
                         <div>
-                            <h5><a href="/topics">Comics</a></h5>
-                            <h5><a href="/topics">Animated series</a></h5>
-                            <h5><a href="/topics">Series/ Movies</a></h5>
+                            <h6><a href="/topics">Comics</a></h6>
+                            <h6><a href="/topics">Series/ Movies</a></h6>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -314,8 +308,8 @@
                     <div class="subforum-description subforum-column">
                         <h4><a href="/topics">Other publishers</a></h4>
                         <div>
-                            <h5><a href="/topics">Invincible</a></h5>
-                            <h5><a href="/topics">other Series</a></h5>
+                            <h6><a href="/topics">Invincible</a></h6>
+                            <h6><a href="/topics">other series</a></h6>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -345,11 +339,10 @@
                         <div class="subforum-description subforum-column">
                             <h4><a href="/topics">Well-known</a></h4>
                             <div>
-                                <h5><a href="/topics">S.L</a></h5>
-                                <h5><a href="/topics">Noblesse</a></h5>
-                                <h5><a href="/topics">GoH</a></h5>
-                                <h5><a href="/topics">ToG</a></h5>
-                                <h5><a href="/topics">more</a></h5>
+                                <h6><a href="/topics">Solo-Lvl</a></h6>
+                                <h6><a href="/topics">Noblesse</a></h6>
+                                <h6><a href="/topics">GoH</a></h6>
+                                <h6><a href="/topics">ToG</a></h6>
                             </div>
                         </div>
                         <div class="subforum-stats subforum-column ">
@@ -374,10 +367,10 @@
                         <div class="subforum-description subforum-column">
                             <h4><a href="/topics">Explore more</a></h4>
                             <div>
-                                <h5><a href="/topics">Dr. Frost</a></h5>
-                                <h5><a href="/topics">Gosu</a></h5>
-                                <h5><a href="/topics">Dice</a></h5>
-                                <h5><a href="/topics">Others</a></h5>
+                                <h6><a href="/topics">Dr. Frost</a></h6>
+                                <h6><a href="/topics">Gosu</a></h6>
+                                <h6><a href="/topics">Dice</a></h6>
+                                <h6><a href="/topics">more</a></h6>
                             </div>
                         </div>
                         <div class="subforum-stats subforum-column ">
@@ -407,9 +400,9 @@
                         <div class="subforum-description subforum-column">
                             <h4><a href="/topics">Comics</a></h4>
                             <div>
-                                <h5><a href="/topics">X-TSHERS</a></h5>
-                                <h5><a href="/topics">UN-FAZE</a></h5>
-                                <h5><a href="/topics">more</a></h5>
+                                <h6><a href="/topics">X-TSHERS</a></h6>
+                                <h6><a href="/topics">UN-FAZE</a></h6>
+                                <h6><a href="/topics">more</a></h6>
                             </div>
                         </div>
                         <div class="subforum-stats subforum-column ">
@@ -440,10 +433,10 @@
                     <div class="subforum-description subforum-column">
                         <h4><a href="/topics">Populaire</a></h4>
                         <div>
-                            <h5><a href="/topics">Sherlock</a></h5>
-                            <h5><a href="/topics">GoT</a></h5>
-                            <h5><a href="/topics">Harry Potter</a></h5>
-                            <h5><a href="/topics">more</a></h5>
+                            <h6><a href="/topics">Sherlock</a></h6>
+                            <h6><a href="/topics">GoT</a></h6>
+                            <h6><a href="/topics">Harry Potter</a></h6>
+                            <h6><a href="/topics">more</a></h6>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -471,9 +464,9 @@
                     <div class="subforum-description subforum-column">
                         <h4><a href="/topics">Autres</a></h4>
                         <div>
-                            <h5><a href="/topics">The 100</a></h5>
-                            <h5><a href="/topics">Atlas</a></h5>
-                            <h5><a href="/topics">more</a></h5>
+                            <h6><a href="/topics">The 100</a></h6>
+                            <h6><a href="/topics">Atlas</a></h6>
+                            <h6><a href="/topics">more</a></h6>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -610,15 +603,15 @@
             <ul>
                 <?php if (!empty($_SESSION['user'])) { ?>
                     <li><b>Latest Post: </b><a href="/thread?"><?= $latestAnswer->content ?>
-                        </a><span id="posts-posted">by <a href="/thread?">
+                        </a><span id="posts-posted">par <a href="/thread?">
                                 <?= $latestAnswer->username ?>
                             </a></span></li>
                     <li><b>Latest Thread: </b><a href="/thread?"><?= $latestTopic->title ?></a>
-                        <span id="posts-posted">by <a href="/thread?">
+                        <span id="posts-posted">de <a href="/thread?">
                                 <?= $latestTopic->username ?>
                             </a></span></li>
                     <li><b>Latest Status: </b><a href="#profile"><?= $latestStatus->content ?>
-                        </a><span id="posts-posted"><a href="#profile">
+                        </a>de <span id="posts-posted"><a href="#profile">
                                 <?= $latestStatus->username ?>
                             </a></span></li>
                     <li><b>Kings of posting: </b><a href="#winners"></a>
@@ -650,3 +643,5 @@
         </div>
     </aside>
 </div>
+
+<script src="../../assets/javaSc/thread.js"></script>

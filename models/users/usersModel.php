@@ -146,13 +146,21 @@ class Users
     public function update() #`location` = :location,, `avatar`=:avatar
     {
         $sql = 'UPDATE `a8yk4_users` SET `username`=:username,`email`=:email,
-         `birthdate` = :birthdate, `avatar` = :avatar 
+         `birthdate` = :birthdate
         WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->bindValue(':email', $this->email, PDO::PARAM_STR);
         // $req->bindValue(':location', $this->location, PDO::PARAM_STR);
         $req->bindValue(':birthdate', $this->birthdate, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $req->execute();
+    }
+
+    public function updateAvatar()
+    {
+        $sql = 'UPDATE `a8yk4_users` SET `avatar`=:avatar WHERE `id` = :id';
+        $req = $this->pdo->prepare($sql);
         $req->bindValue(':avatar', $this->avatar, PDO::PARAM_STR);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();

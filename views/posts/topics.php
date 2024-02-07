@@ -19,7 +19,7 @@
                         </div>
                         <div class="subforum-description subforum-column" id="subDescript">
                             <ul class="topic-list">
-                                <h4><a href="/thread?<?= $t->id ?>">
+                                <h4><a href="/thread-<?= $t->id ?>">
                                         <?= $t->title ?>
                                     </a></h4>
                                 <p> Un topic <?= $t->tag ?> à discuter </p>
@@ -30,12 +30,11 @@
                                 <?php if(isset($answersList )== 1) { ?>
                                     <?= $postCount ?> 
                                 <?php } else { ?>
-
-                                    <?php } ?> </a>réponses </a></span>
+                                    <?php } ?> </a>rép.</span>
                         </div>
                         <div class="subforum-info subforum-column">
                             <a href="/thread?<?= $latestTopic->content ?>">
-                            <b>par</b> </a><a href="/profile?="><?= $t->username ?>,
+                            <b>par</b> </a><a href="/profile?<?= $t->id_users ?>"><?= $t->username ?>,
                              <?= $t->publicationDate ?></a>
                         </div>
                     </div>

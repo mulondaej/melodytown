@@ -63,7 +63,7 @@ header {
     align-items: center;
     padding: 10px 20px;
     justify-content: space-between;
-    height: 7rem;
+    height: 8rem;
     position: relative;
     text-align: center;
     /*background-image: url('../IMG/melodyTown3.jpg');*/
@@ -153,7 +153,7 @@ header a {
     top: 0;
     border: none;
     position: absolute;
-    margin-top: 1rem;
+    margin-top: 1.3rem;
 }
 
 #menu,
@@ -176,7 +176,7 @@ header a {
     justify-content: center;
     text-align: center;
     margin: 0 auto;
-    margin-top: 5rem;
+    margin-top: 6rem;
 }
 
 .navbar button {
@@ -675,7 +675,7 @@ textarea {
 .subforum-description p {
     margin: 0;
     font-size: 13px;
-    margin-top: 3px;
+    margin-top: 5px;
     text-align: center;
     margin-bottom: 5px;
 }
@@ -1198,7 +1198,7 @@ textarea {
 }
 
 #logForm input[type="submit"]:hover,
-#openModalBtn:hover {
+#openModalBtn:hover , #delete input:hover {
     background-color: #45a049;
 }
 
@@ -1224,6 +1224,12 @@ textarea {
     text-align: center;
 }
 
+.compteFlex {
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-evenly;
+}
+
 #openModalBtn {
     background-color: rgb(219, 30, 30);
     color: white;
@@ -1238,12 +1244,41 @@ textarea {
     height: max-content;
 }
 
-.compteFlex {
-    display: flex;
+#modalText, #delete {
+    text-align: center;
     margin: 0 auto;
-    justify-content: space-evenly;
+}
+/* modal styling */
+#modalContainer {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    margin: 0 auto;
 }
 
+#modal {
+    background-color: whitesmoke;
+    padding: 1rem;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 4rem;
+}
+
+#closeBtn {
+    cursor: pointer;
+    float: right;
+}
+
+#delete input {
+    background-color: rgb(219, 30, 30);
+    color: white;
+}
 
 /* comment section */
 .comment-area {
@@ -1266,32 +1301,6 @@ textarea {
 
 .comment-area input:hover {
     border: solid 1px #000000;
-}
-
-/* modal styling */
-#modalContainer {
-    background-color: rgba(0, 0, 0, 0.3);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-    margin: 0 auto;
-}
-
-#modal {
-    background-color: whitesmoke;
-    padding: 1rem;
-    width: 50%;
-    margin: 0 auto;
-}
-
-#closeBtn {
-    cursor: pointer;
-    float: right;
 }
 
 /* THREADS */
@@ -1742,7 +1751,7 @@ fieldset {
         align-items: center;
         padding: 8px;
         justify-content: space-evenly;
-        height: 7rem;
+        height: 8rem;
         position: relative;
         text-align: center;
         width: 100%;
@@ -1771,8 +1780,8 @@ fieldset {
         height: 45px;
         justify-content: left;
         position: absolute;
-        margin: 10px;
-        margin-top: 2rem;
+        margin: 15px;
+        margin-top: 2.1rem;
     }
 
     #menu-button {
@@ -1780,7 +1789,7 @@ fieldset {
         cursor: pointer;
         justify-content: right;
         position: absolute;
-        margin-top: 1rem;
+        margin-top: 1.4rem;
     }
 
     #idCorner {
@@ -1799,7 +1808,7 @@ fieldset {
         justify-content: space-around;
         text-align: center;
         margin: 0 auto;
-        margin-top: 4rem;
+        margin-top: 5rem;
     }
 
     .navbar button {
@@ -1835,7 +1844,7 @@ fieldset {
         margin: 0 auto;
         position: absolute;
         width: 50%;
-        margin-top: 1rem;
+        margin-top: 1.6rem;
     }
 
     .compteFlex {
@@ -1875,18 +1884,27 @@ fieldset {
     }
 
     .subforum-row {
-        width: 98%;
+        width: 98.8%;
         padding: 0;
+    }
+
+    .subforum-column {
     }
 
     .subforum-icon i {
-        margin: 0;
-        margin-top: 10px;
+        margin: 0 auto;
         width: fit-content;
-        padding: 0;
+        font-size: 25px;
     }
 
-    .subforum-description {}
+    .subforum-icon {
+        width: 100%;
+    }
+
+    .subforum-description {
+        width: 95%;
+        margin: 0 auto;
+    }
 
     .subforum-description p {
         margin: 0 auto;
@@ -1895,6 +1913,7 @@ fieldset {
     .subforum-description div {
         margin: 0 auto;
         display: flex;
+        width: fit-content;
     }
 
     .subforum-stats {

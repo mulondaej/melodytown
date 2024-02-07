@@ -16,10 +16,11 @@ RewriteRule ^compte-supprime$ index.php?deleteAccount=true
 RewriteRule ^topic-list$ /controllers/posts/topicsListController.php
 RewriteRule ^topics$ /controllers/posts/topicsController.php
 RewriteRule ^modifier-topic$ /controllers/posts/updateTopicController.php
+RewriteRule ^posts$ /controllers/posts/answersListController.php
 RewriteRule ^reponses$ /views/replies/tap.php
 RewriteRule ^forum$ /controllers/posts/forumController.php
 RewriteRule ^decouverte$ /controllers/posts/discoverController.php
-RewriteRule ^thread$ /controllers/posts/threadController.php
+RewriteRule ^thread-([0-9]+)$ /controllers/posts/threadController.php?id=$1
 RewriteRule ^arena$ /controllers/posts/forumController.php
 RewriteRule ^media$ /controllers/users/mediaController.php
 RewriteRule ^topic-supprime$ topicsList.php?deleteTopict=true

@@ -100,38 +100,63 @@ if (isset($_POST['updatePassword'])) {
 }
 
 if (isset($_POST['updateAvatar'])) {
-    if (!empty($_FILES['avatar'])) {
-        $avatarMessage = checkImage($_FILES['avatar']);
+    if (!empty($_FILES['image'])) {
+        $avatarMessage = checkImage($_FILES['image']);
 
         if ($avatarMessage != '') {
-            $errors['avatar'] = $avatarMessage;
+            $errors['image'] = $avatarMessage;
         } else {
-            $userAccount->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+            $user->avatar = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 
-            while (file_exists('../../assets/IMG/' . $userAccount->avatar)) {
-                $userAccount->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+            while (file_exists('../../assets/IMG/user/' . $user->avatar)) {
+                $user->avatar = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
             }
         }
 
-        if (empty($errors)) {
-            if ($user->update()) {
-                $_SESSION['user']['avatar'] = $user->avatar;
-                $success = USERS_UPDATE_SUCCESS;
+        if(empty($errors)) {
+            $user->id = $_SESSION['user']['id'];
+            if(move_uploaded_file($_FILES['image']['tmp_name'], '../../assets/IMG/user/' . $user->avatar)) {
+                if($user->updateAvatar()){
+                    $_SESSION['user']['avatar'] = $user->avatar;
+                    $success = IMAGE_SUCCESS;
+                } else {
+                    unlink('../../assets/IMG/user/' . $user->avatar);
+                    $errors['update'] = IMAGE_ERROR;
+                }
             } else {
-                $errors['update'] = USERS_UPDATE_ERROR;
+                $errors['update'] = IMAGE_ERROR;
             }
+    
         }
-    }
+        
+        // if (empty($errors)) {
+        //     if ($user->updateAvatar()) {
+        //         $_SESSION['user']['avatar'] = $user->avatar;
+        //         $success = IMAGE_SUCCESS;
+        //     } else {
+        //         $errors['update'] = IMAGE_ERROR;
+        //     }
+        // }
 
+    }
     var_dump($_POST['updateAvatar']);
-    var_dump($userAccount->avatar);
+}
+
+if (isset($_POST['transferData'])) {
+    if ($user->delete()) {
+        if ($user)
+        unset($_SESSION);
+        session_destroy();
+        header('Location: /accueil');
+        exit;
+}
 }
 
 if (isset($_POST['deleteAccount'])) {
     if ($user->delete()) {
         unset($_SESSION);
         session_destroy();
-        header('Location: /compte-supprime');
+        header('Location: /accueil');
         exit;
     }
 }
@@ -144,3 +169,5 @@ $title = 'Account-update';
 require_once '../../views/parts/header.php';
 require_once '../../views/users/updateAccount.php';
 require_once '../../views/parts/footer.php';
+?>
+
