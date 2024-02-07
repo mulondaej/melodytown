@@ -77,13 +77,3 @@
         <?php } ?>
     </div>
 </div>
-<!--toggled profile menu-->
-<div id="avy-overlay">
-    <ul>
-        <a href="/profile">Profile</a>
-        <a href="#">Muted</a>
-        <a href="#">Preferences</a>
-        <a href="#">Settings</a>
-        <a href="/deconnexion"><button type="submit">Déconnexion</button></a>
-    </ul>
-</div>

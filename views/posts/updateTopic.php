@@ -42,17 +42,18 @@
         
         <input type="submit" value="Modifier" name="updateInfos">
 
-        <button id="openModalBtn">Supprimer le post</button>
+        <button id="openModalBtn"><a href="#delete">Supprimer le post</a></button>
     </form>
 
     <div id="modalContainer">
         <div id="modal">
             <span id="closeBtn">&times;</span>
-            <p id="modalText">Êtes-vous sûr de vouloir supprimer votre compte ?</p>
-            <form action="/modifier-topic" method="POST">
+            <p id="modalText">Êtes-vous sûr de vouloir supprimer votre thread ?</p>
+            <form action="/modifier-topic" method="POST" id="delete">
                 <input type="submit" value="Supprimer" name="deletePost">
             </form>
         </div>
     </div>
 
 </main>
+<script src="../../assets/javaSc/modals.js"></script>

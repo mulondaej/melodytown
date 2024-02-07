@@ -2,7 +2,7 @@
 
 require_once "../../models/posts/statusModel.php";
 require_once "../../models/posts/commentsModel.php";
-require_once "../../models/posts/topicsAnswersModel.php" ;
+require_once "../../models/posts/topicsrepliesModel.php" ;
 require_once "../../models/posts/topicsModel.php";
 require_once '../../models/users/usersModel.php';
 require_once '../../utils/regex.php';
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['statusPost'])) {
 if($_SERVER['REQUEST_METHOD'] == 'comment') {
     if(!empty($_POST['content'])) {
         if(!preg_match($regex['content'], $_POST['content'])) {
-            $answers->content = $_POST['content'];
+            $replies->content = $_POST['content'];
         } else {
             $errors['content'] = STATUS_COMMENTS_ERROR;
         }
@@ -99,12 +99,12 @@ $topicCount = count($topicsList);
 $userPosts = $topic->getUserTopics();
 $userTotalPost = count($userPosts);
 
-$answers = new Answers;
-$answersList = $answers->getList();
-$userAnswer = $answers->getUserAnswer();
-$latestAnswer = $answers->getAnswer();
-$postCount = count($answersList);
-$userTotalAnswer = count($userAnswer);
+$replies = new Replies;
+$repliesList = $replies->getList();
+$userReply = $replies->getUserReply();
+$latestReply = $replies->getReply();
+$postCount = count($repliesList);
+$userTotalAnswer = count($userReply);
 
 
 $statusList = $status->getList();

@@ -36,10 +36,10 @@
                 <p class="topicContent"><?= strip_tags($t->content) ?><br>
                 </p>
                 <p><a href="/reponses"><b>Réponses :</b> <?= $postCount ?></a></p>
-                <a href="/thread?<?= $t->id ?>" class="cta">Lire la suite</a><br>
+                <a href="/thread-<?= $t->id ?>" class="cta">Lire la suite</a><br>
                 <div class="threads">
-                    <button type="submit" class="cta"><a href="/modifier-topic?<?= $t->id ?>">modifier</a></button>
-                    <button type="submit" class="cta"><a href="/modifier-topic?<?= $t->id ?>">supprimer</a></button>
+                    <button type="submit" class="cta"><a href="/modifier-topic-<?= $t->id ?>">modifier</a></button>
+                    <button type="submit" class="cta"><a href="/modifier-topic-<?= $t->id ?>">supprimer</a></button>
                 </div>
             </div>
         </div>

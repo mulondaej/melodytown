@@ -12,7 +12,7 @@ class Topics
     public int $id_categories;
     public int $id_tags;
 
-    public string $answers;
+    public string $replies;
 
     public function __construct()
     {
@@ -93,12 +93,13 @@ class Topics
 
     public function getById()
     {
-        $sql = 'SELECT `t`.`id`, `t`.`tag`, `t`.`title`, `t`.`content`, 
+        $sql = 'SELECT `t`.`id`, `g`.`name` AS `tag`, `t`.`title`, `t`.`content`, 
         DATE_FORMAT(`t`.`publicationDate`, "%d/%m/%y") AS `publicationDate`
         FROM `a8yk4_topics` AS `t`
         INNER JOIN `a8yk4_users` AS `u` ON `t`.`id_users` = `u`.`id`
-        INNER JOIN `a8yk4_categories` AS `c` ON `t`.`id_categories` = `c.`id`
-        WHERE `t`.`id` = :id';
+        INNER JOIN `a8yk4_tags` AS `g` ON `t`.`id_tags` = `g`.`id`
+        INNER JOIN `a8yk4_categories` AS `c` ON `t`.`id_categories` = `c`.`id`
+        WHERE `t`.id = :id ;';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         $req->execute();

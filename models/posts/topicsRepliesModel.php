@@ -1,6 +1,6 @@
 <?php 
 
-class Answers {
+class Replies {
 
     private $pdo;
     public int $id;
@@ -22,7 +22,7 @@ class Answers {
 
     public function checkIfExistsByContent()
         {
-            $sql = 'SELECT COUNT(content) FROM `a8yk4_topicanswers` WHERE `content` = :content';
+            $sql = 'SELECT COUNT(content) FROM `a8yk4_topicreplies` WHERE `content` = :content';
             $req = $this->pdo->prepare($sql);
             $req->bindValue(':content', $this->content, PDO::PARAM_STR);
             $req->execute();
@@ -31,7 +31,7 @@ class Answers {
 
     public function create()
     {
-        $sql = 'INSERT INTO `a8yk4_topicanswers`( `content`,`publicationDate`,`updateDate`, `id_users`, `id_topics`) 
+        $sql = 'INSERT INTO `a8yk4_topicreplies`( `content`,`publicationDate`,`updateDate`, `id_users`, `id_topics`) 
         VALUES (:content, NOW(), NOW(), :id_users, :id_topics)';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
@@ -42,7 +42,7 @@ class Answers {
 
     public function delete()
     {
-        $sql = 'DELETE FROM `a8yk4_topicanswers` WHERE `id`= :id';
+        $sql = 'DELETE FROM `a8yk4_topicreplies` WHERE `id`= :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
@@ -52,28 +52,28 @@ class Answers {
     public function getById()
     {
         $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 
-        FROM `a8yk4_topicanswers` AS `t`
-        INNER JOIN `a8yk4_users` ON `t`.`id_users` = `a8yk4_users`.`id`';
+        FROM `a8yk4_topicreplies` AS `r`
+        INNER JOIN `a8yk4_users` ON `r`.`id_users` = `a8yk4_users`.`id`';
         $req = $this->pdo->prepare($sql);
         $req->execute();
         return $req->fetch(PDO::FETCH_OBJ);
     } 
     
-    public function getAnswer()
+    public function getReply()
     {
         $sql = 'SELECT *, `u`.`username`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
-        FROM  `a8yk4_topicanswers` 
+        FROM  `a8yk4_topicreplies` 
         INNER JOIN `a8yk4_users` AS `u` ON `id_users` = `u`.`id`
         ORDER BY `publicationDate` DESC';
         $req = $this->pdo->query($sql);
         return $req->fetch(PDO::FETCH_OBJ);
     }
 
-    public function getUserAnswer()
+    public function getUserReply()
     {
         $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 
-        FROM `a8yk4_topicanswers` AS `t`
-        INNER JOIN `a8yk4_users` ON `t`.`id_users` = `a8yk4_users`.`id`';
+        FROM `a8yk4_topicreplies` AS `r`
+        INNER JOIN `a8yk4_users` ON `r`.`id_users` = `a8yk4_users`.`id`';
         $req = $this->pdo->query($sql);
         $req->execute();
         return $req->fetch(PDO::FETCH_ASSOC);
@@ -81,13 +81,13 @@ class Answers {
 
     public function getList()
     {
-        $sql = 'SELECT `a`.`id`, SUBSTR(`a`.`content`, 1, 500) AS `content`,
-        DATE_FORMAT(`a`.`publicationDate`, "%d/%m/%y") AS `publicationDate`,
-        DATE_FORMAT(`a`.`updateDate`, "%d/%m/%y") AS `updateDate`,
-        `u`.`username`, `a`.`id_users`, `a`.`id_topics`
-        FROM `a8yk4_topicanswers` AS `a`
-        INNER JOIN `a8yk4_users` AS `u` ON `a`.`id_users` = `u`.`id`
-        INNER JOIN `a8yk4_topics` AS `t` ON `a`.`id_topics` = `t`.`id`
+        $sql = 'SELECT `r`.`id`, SUBSTR(`r`.`content`, 1, 500) AS `content`,
+        DATE_FORMAT(`r`.`publicationDate`, "%d/%m/%y") AS `publicationDate`,
+        DATE_FORMAT(`r`.`updateDate`, "%d/%m/%y") AS `updateDate`,
+        `u`.`username`, `r`.`id_users`, `r`.`id_topics`
+        FROM `a8yk4_topicreplies` AS `r`
+        INNER JOIN `a8yk4_users` AS `u` ON `r`.`id_users` = `u`.`id`
+        INNER JOIN `a8yk4_topics` AS `t` ON `r`.`id_topics` = `t`.`id`
         ORDER BY `publicationDate` DESC';
         $req = $this->pdo->query($sql);
         return $req->fetchAll(PDO::FETCH_OBJ);
@@ -95,7 +95,7 @@ class Answers {
 
     public function update()
     {
-        $sql = 'UPDATE `a8yk4_topicanswers` SET `content`=:content , `publicationDate` = :publicationDate 
+        $sql = 'UPDATE `a8yk4_topicreplies` SET `content`=:content , `publicationDate` = :publicationDate 
         WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);

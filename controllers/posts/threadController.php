@@ -1,10 +1,12 @@
 <?php
 
 require_once "../../models/posts/topicsModel.php";
-require_once "../../models/posts/topicsAnswersModel.php";
+require_once "../../models/posts/topicsRepliesModel.php";
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
+$title = $topicDetails->title;
+
 
 session_start();
 
@@ -18,40 +20,38 @@ if($topic->checkIfExistsById() == 0) {
     exit;
 }
 
-$answers = new Answers();
+$replies = new replies();
 
 $topicsDetails = $topic->getById();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
     if(!empty($_POST['content'])) {
         if(!preg_match($regex['content'], $_POST['content'])) {
-            $answers->content = $_POST['content'];
+            $replies->content = $_POST['content'];
         } else {
-            $errors['content'] = TOPICS_ANSWERS_ERROR;
+            $errors['content'] = TOPICS_REPLIES_ERROR;
         }
     } else {
-        $errors['content'] = TOPICS_ANSWERS_ERROR;
+        $errors['content'] = TOPICS_REPLIES_ERROR;
     }
    
-    $answers->id_topics = $topic->id;
-    $answers->id_users = $_SESSION['user']['id'];
+    $replies->id_topics = $topic->id;
+    $replies->id_users = $_SESSION['user']['id'];
 
     if(empty($errors)) {
-        if($answers->create()) {
-            $success = TOPICS_ANSWERS_SUCCESS;
+        if($replies->create()) {
+            $success = TOPICS_REPLIES_SUCCESS;
         } else {
-            $errors['add'] = TOPICS_ANSWERS_ERROR;
+            $errors['add'] = TOPICS_REPLIES_ERROR;
         }
     }
     
-    $title = $topic->title;
 }
 
-
-$topicsList = $topic->getList();
+// $topicsList = $topic->getList();
 
 
 require_once '../../views/parts/header.php';
 require_once '../../views/posts/thread.php';
-require_once '../../views/replies/topicAnswers.php';
+require_once '../../views/replies/topicreplies.php';
 require_once '../../views/parts/footer.php';

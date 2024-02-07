@@ -19,20 +19,20 @@
         </nav>
     <div class="topicsContainer">
         
-        <?php foreach($answersList as $a) { ?>
+        <?php foreach($repliesList as $r) { ?>
         <div class="topic">
             <div class="topicBottom">
-                <h4 class="topicContent"><b></b> <?= $a->content ?> <br></h4>
+                <h4 class="topicContent"><b></b> <?= $r->content ?> <br></h4>
                 <p>
-                    <b>Ecrit par :</b> <?= $a->username ?> <br>
-                    <b>Topic répondu :</b> <?= $a->id ?> <br>
-                    <b>Publié :</b> <?= $a->publicationDate ?> <br>
-                    <b>Mis à jour :</b> <?= $a->updateDate ?>
+                    <b>Ecrit par :</b> <?= $r->username ?> <br>
+                    <b>Topic répondu :</b> <?= $r->id ?> <br>
+                    <b>Publié :</b> <?= $r->publicationDate ?> <br>
+                    <b>Mis à jour :</b> <?= $r->updateDate ?>
                  </p>
-            <a href="/thread" class="cta">Lire la suite</a>
+            <a href="/thread-<?= $r->$id ?>" class="cta">Lire la suite</a>
                 <div class="threads">
-                    <button type="submit" class="cta"><a href="/modifier-topic">modifier</a></button>
-                    <button type="submit" class="cta"><a href="/modifier-topic">supprimer</a></button>
+                    <button type="submit" class="cta"><a href="/modifier-topic-<?= $r->$id ?>">modifier</a></button>
+                    <button type="submit" class="cta"><a href="/modifier-topic-<?= $r->$id ?>">supprimer</a></button>
                 </div>
             </div>
         </div>

@@ -27,14 +27,14 @@
                         </div>
                         <div class="subforum-stats subforum-column center">
                             <span><a href="" id="topicPost"> 
-                                <?php if(isset($answersList )== 1) { ?>
+                                <?php if(isset($repliesList )== 1) { ?>
                                     <?= $postCount ?> 
                                 <?php } else { ?>
                                     <?php } ?> </a>rép.</span>
                         </div>
                         <div class="subforum-info subforum-column">
-                            <a href="/thread?<?= $latestTopic->content ?>">
-                            <b>par</b> </a><a href="/profile?<?= $t->id_users ?>"><?= $t->username ?>,
+                            <a href="/thread-<?= $latestTopic->content ?>">
+                            <b>par</b> </a><a href="/profile-<?= $t->id_users ?>"><?= $t->username ?>,
                              <?= $t->publicationDate ?></a>
                         </div>
                     </div>

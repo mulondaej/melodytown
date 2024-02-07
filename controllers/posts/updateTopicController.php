@@ -1,7 +1,7 @@
 <?php
 
 require_once "../../models/users/usersModel.php" ;
-require_once "../../models/posts/topicsAnswersModel.php" ;
+require_once "../../models/posts/topicsRepliesModel.php" ;
 require_once "../../models/posts/commentsModel.php" ;
 require_once "../../models/posts/topicsModel.php";
 require_once "../../models/posts/categoriesModel.php";
@@ -23,8 +23,6 @@ if (!isset($_SESSION['user'])) {
 $user = new Users;
 $user->id = $_SESSION['user']['id'];
 $userAccount = $user->getById();
-$userDetails = $user->getList();
-$userCount = count($userDetails);
 
 $topic = new Topics;
 
@@ -57,9 +55,9 @@ if(isset($_POST['updateInfos'])) {
     }
 
     if (!empty($_POST['categories'])) {
-        $categorie->id = $_POST['categories'];
+        $categories->id = $_POST['categories'];
         if ($categories->checkIfExistsById() == 1) {
-            $topic->id_categories = clean($_POST['categories']);
+            $topic->id_categories = $_POST['categories'];
         } else {
             $errors['categories'] = TOPIC_TAG_CATEGORIE_UPDATE_ERROR;
         }
@@ -70,7 +68,7 @@ if(isset($_POST['updateInfos'])) {
     if (!empty($_POST['tag'])) {
         $tags->id = $_POST['tag'];
         if ($tags->checkIfExistsById() == 1) {
-            $topic->id_tags = clean($_POST['tag']);
+            $topic->id_tags = $_POST['tag'];
         } else {
             $errors['tag'] = TOPIC_TAG_CATEGORIE_UPDATE_ERROR;
         }
@@ -90,21 +88,49 @@ if(isset($_POST['updateInfos'])) {
             $errors['update'] = TOPIC_UPDATE_ERROR;
         }
     }
- 
+
 }
 
 if(isset($_POST['delete'])) {
     if($topic->delete()) {
         unset($_SESSION);
         session_destroy();
-        header('Location: /topic-supprime');
+        header('Location: /topics');
         exit;
     }
+
+if(isset($_POST['updatePost'])) {
+
+    if (!empty($_POST['content'])) {
+        if (preg_match($regex['content'], $POST['content'])) {
+            $replies->content = clean($_POST['content']);
+            if ($replies->checkIfExistsByContent() == 1 ) {
+                $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
+            }
+        } else {
+            $errors['content'] = TOPIC_CONTENT_UPDATE_SUCCESS;
+        }
+    } else {
+        $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
+    }
+
+    if(empty($errors)) {
+        $replies->id_users = $_SESSION['user']['id'];
+        if($replies->update()){
+              $replies->content;
+            $success = TOPIC_UPDATE_SUCCESS;
+        } else {
+            $errors['update'] = TOPIC_UPDATE_ERROR;
+        }
+    }
+
+}
+
+
 }
 
 $topicsList = $topic->getList();
 $topicCount = count($topicsList);
-// var_dump();
 
 $title = 'Topic-update';
 

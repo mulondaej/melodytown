@@ -16,7 +16,7 @@
     <form action="/thread?<?= $_GET['id'] ?>" method="POST">
       <div id="centered"><label for="comments"></label>
         <textarea name="comments" id="comments"></textarea>
-        <br><input type="submit" value="post" id="commentBtn" name="answer">
+        <br><input type="submit" value="post" id="commentBtn" name="reply">
       </div>
     </form>
     </fieldset>

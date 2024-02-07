@@ -142,15 +142,15 @@ if (isset($_POST['updateAvatar'])) {
     var_dump($_POST['updateAvatar']);
 }
 
-if (isset($_POST['transferData'])) {
-    if ($user->delete()) {
-        if ($user)
-        unset($_SESSION);
-        session_destroy();
-        header('Location: /accueil');
-        exit;
-}
-}
+// if (isset($_POST['transferData'])) {
+//     if ($user->delete()) {
+//         if ($user)
+//         unset($_SESSION);
+//         session_destroy();
+//         header('Location: /accueil');
+//         exit;
+// }
+// }
 
 if (isset($_POST['deleteAccount'])) {
     if ($user->delete()) {

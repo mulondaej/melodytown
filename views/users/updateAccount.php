@@ -76,4 +76,4 @@
     </div>
 
 </main>
-<script src="../../assets/javaSc/account.js"></script>
+<script src="../../assets/javaSc/modals.js"></script>

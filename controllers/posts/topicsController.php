@@ -1,6 +1,6 @@
 <?php
 require_once "../../models/posts/topicsModel.php";
-require_once "../../models/posts/topicsAnswersModel.php";
+require_once "../../models/posts/topicsRepliesModel.php";
 require_once "../../models/posts/categoriesModel.php";
 require_once "../../models/posts/tagsModel.php";
 require_once '../../utils/regex.php';
@@ -25,7 +25,7 @@ $tagsList = $tags->getList();
 
 $topic = new Topics;
 
-$answers = new Answers;
+$replies = new Replies;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
 
@@ -89,9 +89,9 @@ $topicsList = $topic->getList();
 $latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
 
-$answersList = $answers->getList();
-$latestAnswer = $answers->getAnswer();
-$postCount = count($answersList);
+$repliesList = $replies->getList();
+$latestReply = $replies->getReply();
+$postCount = count($repliesList);
 
 $totalCount = $postCount + $topicCount;
 
