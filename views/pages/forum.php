@@ -1,13 +1,14 @@
 <div id="main">
     <section class="forum" id="forum">
         <!-- Thread creation form -->
-
+        <h1>Discuter avec plaisir et passion!</h1>
         <div class="forumcontainer">
-            <?php if (!empty($_SESSION['user'])) { ?>
-                    <h1>Discuter avec plaisir et passion!</h1>
-                    
-                <button type="button" id="newThread" value="thread">Nouveau topic</button>
-
+            <?php if (!empty($_SESSION['user'])) { ?> <!-- si l'utilisateur est connecté, alors il a acces au creation du topic  -->
+             
+            <button type="button" id="newThread" value="thread">Nouveau topic</button>
+            <div id="modalContainer">
+                <div id="modalThread">
+                    <span id="threadCloseBtn">&times;</span>
                 <form action="/topics" method="POST" id="threadForm">
                     <label for="tag">Tags:</label>
                     <select name="tag" id="tag">
@@ -42,14 +43,14 @@
                     <?php endif; ?>
 
                     <div class="send">
-                        <input type="submit" name="threadPost" value="Create" id=>
+                        <input type="submit" name="threadPost" value="Create">
                     </div>
                 </form>
-
+                </div>
+    </div>
                 <hr>
             <?php } ?>
 
-            
 
         <div class="subforum manga" id="manga">
             <div class="subforum-title">

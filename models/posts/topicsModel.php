@@ -93,7 +93,7 @@ class Topics
 
     public function getById()
     {
-        $sql = 'SELECT `t`.`id`, `g`.`name` AS `tag`, `t`.`title`, `t`.`content`, 
+        $sql = 'SELECT  `g`.`name` AS `tag`, `t`.`title`, `t`.`content`, 
         DATE_FORMAT(`t`.`publicationDate`, "%d/%m/%y") AS `publicationDate`
         FROM `a8yk4_topics` AS `t`
         INNER JOIN `a8yk4_users` AS `u` ON `t`.`id_users` = `u`.`id`
@@ -119,26 +119,6 @@ class Topics
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function getUserTopics()
-    {
-        $sql = 'SELECT `t`.`title`, DATE_FORMAT(`publicationDate`, "%d/%m/%Y") AS `publicationDate` 
-        FROM `a8yk4_topics` AS `t`
-        INNER JOIN `a8yk4_users` ON `t`.`id_users` = `a8yk4_users`.`id`';
-        $req = $this->pdo->prepare($sql);
-        $req->execute();
-        return $req->fetch(PDO::FETCH_ASSOC);
-    } 
-
-    public function getTopic()
-    {
-        $sql = 'SELECT *, `u`.`username`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
-        FROM  `a8yk4_topics` AS `t`
-        INNER JOIN `a8yk4_users` AS `u` ON `t`.`id_users` = `u`.`id`
-        ORDER BY `publicationDate` DESC';
-        $req = $this->pdo->query($sql);
-        return $req->fetch(PDO::FETCH_OBJ);
-    }
-
     public function getList()
     {
         $sql = 'SELECT `t`.`id`, `a8yk4_tags`.`name` AS `tag`, `a8yk4_categories`.`name` AS `categorie`,
@@ -154,6 +134,44 @@ class Topics
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function getUserTopics($id_users)
+    {
+        $sql = 'SELECT * FROM `a8yk4_topics` WHERE `id_users` = :id_users';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':id_users', $id_users);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getTopic()
+    {
+        $sql = 'SELECT *, `u`.`username`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
+        FROM  `a8yk4_topics` AS `t`
+        INNER JOIN `a8yk4_users` AS `u` ON `t`.`id_users` = `u`.`id`
+        ORDER BY `publicationDate` DESC';
+        $req = $this->pdo->query($sql);
+        return $req->fetch(PDO::FETCH_OBJ);
+    }
+    
+
+    // public function save()
+    // {
+    //     $sql = "UPDATE `a8yk4_topics` SET `username` = :username WHERE id = :id";
+    //     $req = $this->pdo->prepare($sql);
+    //     $req->bindParam(':username', $this->username, PDO::PARAM_STR);
+    //     $req->bindParam(':id', $this->id, PDO::PARAM_INT);
+    //     $req->execute();
+    // }
+
+    public function changeUsers()
+    {
+        $sql = "UPDATE `a8yk4_topics` SET `id_users` = :id_users WHERE id = :id";
+        $req = $this->pdo->prepare($sql);
+        $req->bindParam(':username', $this->username, PDO::PARAM_STR);
+        $req->bindParam(':id', $this->id, PDO::PARAM_INT);
+        $req->execute();
+    }
+
     public function update()
     {
         $sql = 'UPDATE `a8yk4_topics` SET `title`=:title,`content`=:content, `updateDate` = :updateDate,
@@ -167,4 +185,5 @@ class Topics
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
     }
+
 }

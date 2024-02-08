@@ -1,4 +1,6 @@
 <?php
+
+require_once '../../models/posts/topicsModel.php';
 require_once '../../models/users/usersModel.php';
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
@@ -16,6 +18,8 @@ if (!isset($_SESSION['user'])) {
 
 $user = new Users;
 $user->id = $_SESSION['user']['id'];
+
+$topic = new Topics;
 
 if (isset($_POST['updateInfos'])) {
 
@@ -142,24 +146,35 @@ if (isset($_POST['updateAvatar'])) {
     var_dump($_POST['updateAvatar']);
 }
 
-// if (isset($_POST['transferData'])) {
-//     if ($user->delete()) {
-//         if ($user)
-//         unset($_SESSION);
-//         session_destroy();
-//         header('Location: /accueil');
-//         exit;
-// }
-// }
 
-if (isset($_POST['deleteAccount'])) {
-    if ($user->delete()) {
-        unset($_SESSION);
-        session_destroy();
-        header('Location: /accueil');
-        exit;
-    }
+if (isset($_POST['transferData'])) {
+    // if ($user->delete()) {
+        if (empty($topic->getUserTopics($id_users))) {
+            // unset($_SESSION);
+            // session_destroy();
+            // header('Location: /accueil');
+            // exit;
+        } else {
+            // Transfer topics and posts to the user named 'testModif'
+            $topics = $topic->getUserTopics($id_users); // Retrieve topics by the user
+            foreach ($topics as $single_topic) {
+                $single_topic->id_users = 1;
+                $single_topic->changeUsers(); // Save the modified topic
+            }
+        }
+    // }
 }
+
+
+
+// if (isset($_POST['deleteAccount'])) {
+    // if ($user->delete()) {
+    //     unset($_SESSION);
+    //     session_destroy();
+    //     header('Location: /accueil');
+    //     exit;
+//     }
+// }
 
 
 $userAccount = $user->getById();

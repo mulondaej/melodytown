@@ -8,22 +8,20 @@
         <div class="avatarContainer text-center">
             <input type="file" id="avatarUpload" class="avatarChange" accept="image/*" style="display: none;">
             <img src="../assets/IMG/Avril23j.jpg" alt="User Avatar" id="profileAvy">
+            <h4>@<b><?= $userAccount->username ?></b></h4>
             <button id="editAvatar" class="overLay">change</button>
         </div>
         <button id="editCover">change</button>
     </div>
 
     <div class="userContainer">
-        <div class="username">
-            <h4>@<?= $userAccount->username ?>
-            <p>Location: <?= $userAccount->location ?></p></h4>
-        </div>
         <div class="infoUser">
-            <p>Joined since <?= $userAccount->registerDate ?></p>
-            <p>Posts: <span id="postCount"><?= $userTotalAnswer ?></span></p>
-            <p>Likes: <span id="likeCount">100</span></p>
-            <p>Rank: <span id="rank">Member</span></p>
-            <p>Points: <span id="points">500</span></p>
+            <p>from <b><?= $userAccount->location ?></b></p>
+            <p>Posts: <span id="postCount"><b></b></span></p>
+            <p>Likes: <span id="likeCount"><b>100</b></span></p>
+            <p>Rank: <span id="rank"><b><?= $userAccount->roleName?></b></span></p>
+            <p>Points: <span id="points"><b>500</b></span></p>
+            <p>Joined since <b><?= $userAccount->registerDate ?></b></p>
         </div>
     </div>
     <div class="mainContainer">
@@ -47,29 +45,28 @@
         </aside>
          <main class="mainStatus"> 
             <div class="State">
-                <form action="" method="POST" id="" class="post">
-                    <textarea name="" id="PostHere" ></textarea>
-                    <button type="submit" id="Posted" name="statusPost">Post</button>
+                <form action="#status" method="POST" id="postStatus">
+                    <textarea name="" id="postHere" ></textarea>
+                    <button type="submit" id="posted" value="status" name="statusPost">Post</button>
                 </form>
                 <div class="statusContainer">
-                    <div class="status">
-                        <p><?= $statusPoster->username ?></p>
-                        <p><?= $statusPoster->content ?></p>
+                    <div class="status" id="status">
+                        <p></p>
+                        <p></p>
                         <button class="likeStatus">Like</button>
                         <button class="commentStatus">Comment</button>
                     </div>
                     <ul class="comments">
                         <!-- Comments go here -->
                         <li>
-                        <p><?= $commentsPoster->id_users ?></p>
-                        <p><?= $commentsPoster->content ?></p>
+                        <p></p>
+                        <p></p>
                             <button class="likeComment">Like</button>
                             <button class="replyComment">Reply</button>
                         </li>
-                        <!-- Add more comment entries as needed -->
                     </ul>
                     <!-- Reply form for status -->
-                    <form action="/topics" method="POST" class="reply-form hidden">
+                    <form action="" method="POST" class="reply-form hidden">
                         <textarea class="replyText" placeholder="Reply to this status..."></textarea>
                         <button class="postReply" name="comment">Reply</button>
                     </form>

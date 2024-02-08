@@ -91,13 +91,14 @@ if(isset($_POST['updateInfos'])) {
 
 }
 
-if(isset($_POST['delete'])) {
+if(isset($_POST['deletePost'])) {
     if($topic->delete()) {
         unset($_SESSION);
         session_destroy();
         header('Location: /topics');
         exit;
     }
+}
 
 if(isset($_POST['updatePost'])) {
 
@@ -126,7 +127,13 @@ if(isset($_POST['updatePost'])) {
 
 }
 
-
+if(isset($_POST['deleteReply'])) {
+    if($topic->delete()) {
+        unset($_SESSION);
+        session_destroy();
+        header('Location: /topics');
+        exit;
+    }
 }
 
 $topicsList = $topic->getList();

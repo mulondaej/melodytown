@@ -92,13 +92,16 @@ if($_SERVER['REQUEST_METHOD'] == 'comment') {
     // $commentsPoster = $comments->getById();
 }
 
+//topic
 $topic = new Topics;
 $topicsList = $topic->getList();
 $latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
-$userPosts = $topic->getUserTopics();
-$userTotalPost = count($userPosts);
+// $userPosts = $topic->getUserTopics($username);
+// $username = $_GET['user']['username'];
+// $userTotalPost = count($userPosts);
 
+//replies
 $replies = new Replies;
 $repliesList = $replies->getList();
 $userReply = $replies->getUserReply();
@@ -106,23 +109,19 @@ $latestReply = $replies->getReply();
 $postCount = count($repliesList);
 $userTotalAnswer = count($userReply);
 
-
+//status
 $statusList = $status->getList();
 $latestStatus = $status->getStatus();
 $statusCount = count($statusList);
 
-
+//cooments
 $commentsList = $comments->getList();
 $latestComment = $comments->getComment();
 $commentsCount = count($commentsList);
 
-$statusTotalCount = $postCount + $statusCount;
+$totalCounting = $postCount + $statusCount;
 
 $title = 'Profile';
-
-// var_dump($userPosts);
-// var_dump($userTotalPost);
-// var_dump($userTotalAnswer);
 
 require_once '../../views/parts/header.php';
 require_once '../../views/pages/profile.php';

@@ -5,7 +5,7 @@ require_once "../../models/posts/topicsRepliesModel.php";
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
-$title = $topicDetails->title;
+// $title = $topicDetails->title;
 
 
 session_start();
@@ -20,11 +20,11 @@ if($topic->checkIfExistsById() == 0) {
     exit;
 }
 
-$replies = new replies();
+$replies = new Replies();
 
 $topicsDetails = $topic->getById();
 
-if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['reply'])) {
     if(!empty($_POST['content'])) {
         if(!preg_match($regex['content'], $_POST['content'])) {
             $replies->content = $_POST['content'];
@@ -53,5 +53,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
 
 require_once '../../views/parts/header.php';
 require_once '../../views/posts/thread.php';
-require_once '../../views/replies/topicreplies.php';
+require_once '../../views/replies/topicReplies.php';
 require_once '../../views/parts/footer.php';

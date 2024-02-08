@@ -18,8 +18,9 @@
 
         <label for="categories">Categorie: </label>
         <select id="categories" name="categories">
-                <?php foreach ($topicsList as $t) { ?>
-                    <option value="<?= $t->id ?>"><?= $t->categorie ?></option>
+                <?php foreach ($categoriesList as $c) { ?>
+                    <option value="<?= $c->id ?>"><?= ($topic->id_categories == $c->id) ? 'selected' : '' ?>
+                    <?= $c->name ?></option>
                 <?php } ?>
             </select>
         <?php if (isset($errors['categories'])) { ?>

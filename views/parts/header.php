@@ -53,6 +53,7 @@
                 ?>
                 <?php if ($_SERVER['PHP_SELF'] == '/controllers/users/profileController.php') { ?>
                     <?php require_once 'navs/navProfile.php'; ?>
+                    
                 <?php  } else { ?>
 
                     <?php require_once 'navs/navMember.php'; ?>

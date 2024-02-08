@@ -61,11 +61,12 @@
             <p id="modalText">Êtes-vous sûr de vouloir supprimer votre compte ?</p>
             <form action="/modifier-mon-compte" method="POST" id="delete">
                 <input type="submit" value="Supprimer" name="deleteAccount">
+                <input type="submit" value="Transfer-supprimer" name="transferData">
             </form>
         </div>
     </div>
 
-    <div id="modalContainer">
+    <!-- <div id="modalContainer">
         <div id="modal">
             <span id="closeBtn">&times;</span>
             <p id="modalText">Êtes-vous sûr de vouloir supprimer votre compte ?</p>
@@ -73,7 +74,7 @@
                 <input type="submit" value="Supprimer" name="deleteAccount">
             </form>
         </div>
-    </div>
+    </div> -->
 
 </main>
 <script src="../../assets/javaSc/modals.js"></script>

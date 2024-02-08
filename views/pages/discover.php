@@ -12,12 +12,11 @@ function fetchRSS($url) {
 
 // RSS feed URLs for series
 $series_feeds = array(
-    'Case closed' => 'https://aniwatch.to/case-closed-323.xtml',
-    'Series 2' => 'https://example.com/series2.rss',
-    // Add more series with their corresponding RSS feed URLs
+    'NEWS' =>'https://www.animenewsnetwork.com/all/rss.xml?ann-edition=us',
 );
 
 // Loop through each series feed
+
 foreach ($series_feeds as $series_name => $series_feed_url) {
     // Fetch the RSS feed
     $rss = fetchRSS($series_feed_url);
@@ -27,6 +26,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
 
     // Display episodes
     foreach ($rss->channel->item as $item) {
+        
         $episode_title = $item->title;
         $episode_description = $item->description;
         $episode_link = $item->link;
@@ -65,7 +65,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
                         <?php if (!empty($_SESSION['user'])) { ?>
-                            <?= $latestAnswer->username ?>, <?= $latestAnswer->publicationDate ?></a>
+                            <?= $latestReply->username ?>, <?= $latestReply->publicationDate ?></a>
                 <?php } else { ?>
                     <a href="/thread?">
                         <?php setlocale(LC_TIME, 'fr_FR.utf8');
@@ -88,7 +88,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
                         <?php if (!empty($_SESSION['user'])) { ?>
-                            <?= $latestAnswer->username ?>, <?= $latestAnswer->publicationDate ?></a>
+                            <?= $latestReply->username ?>, <?= $latestReply->publicationDate ?></a>
                 <?php } else { ?>
                     <a href="/thread?">
                         <?php setlocale(LC_TIME, 'fr_FR.utf8');
@@ -111,7 +111,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
                         <?php if (!empty($_SESSION['user'])) { ?>
-                            <?= $latestAnswer->username ?>, <?= $latestAnswer->publicationDate ?></a>
+                            <?= $latestReply->username ?>, <?= $latestReply->publicationDate ?></a>
                 <?php } else { ?>
                     <a href="/thread?">
                         <?php setlocale(LC_TIME, 'fr_FR.utf8');
@@ -139,7 +139,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
                         <?php if (!empty($_SESSION['user'])) { ?>
-                            <?= $latestAnswer->username ?>, <?= $latestAnswer->publicationDate ?></a>
+                            <?= $latestReply->username ?>, <?= $latestReply->publicationDate ?></a>
                 <?php } else { ?>
                     <a href="/thread?">
                         <?php setlocale(LC_TIME, 'fr_FR.utf8');
@@ -163,7 +163,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
                         <?php if (!empty($_SESSION['user'])) { ?>
-                            <?= $latestAnswer->username ?>, <?= $latestAnswer->publicationDate ?></a>
+                            <?= $latestReply->username ?>, <?= $latestReply->publicationDate ?></a>
                 <?php } else { ?>
                     <a href="/thread?">
                         <?php setlocale(LC_TIME, 'fr_FR.utf8');
@@ -190,7 +190,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
                         <?php if (!empty($_SESSION['user'])) { ?>
-                            <?= $latestAnswer->username ?>, <?= $latestAnswer->publicationDate ?></a>
+                            <?= $latestReply->username ?>, <?= $latestReply->publicationDate ?></a>
                 <?php } else { ?>
                     <a href="/thread?">
                         <?php setlocale(LC_TIME, 'fr_FR.utf8');
@@ -213,7 +213,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
                         <?php if (!empty($_SESSION['user'])) { ?>
-                            <?= $latestAnswer->username ?>, <?= $latestAnswer->publicationDate ?></a>
+                            <?= $latestReply->username ?>, <?= $latestReply->publicationDate ?></a>
                 <?php } else { ?>
                     <a href="/thread?">
                         <?php setlocale(LC_TIME, 'fr_FR.utf8');
@@ -236,7 +236,7 @@ foreach ($series_feeds as $series_name => $series_feed_url) {
                 <div class="subforum-info subforum-column">
                     <b><a href="">Last post:</a></b><a href="/thread?">
                         <?php if (!empty($_SESSION['user'])) { ?>
-                            <?= $latestAnswer->username ?>, <?= $latestAnswer->publicationDate ?></a>
+                            <?= $latestReply->username ?>, <?= $latestReply->publicationDate ?></a>
                 <?php } else { ?>
                     <a href="/thread?">
                         <?php setlocale(LC_TIME, 'fr_FR.utf8');

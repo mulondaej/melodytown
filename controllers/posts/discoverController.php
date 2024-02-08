@@ -2,7 +2,7 @@
 require_once "../../models/users/usersModel.php" ;
 require_once "../../models/forumModel.php" ;
 require_once "../../models/posts/statusModel.php";
-require_once "../../models/posts/topicsAnswersModel.php" ;
+require_once "../../models/posts/topicsRepliesModel.php" ;
 require_once "../../models/posts/commentsModel.php" ;
 require_once "../../models/posts/topicsModel.php";
 require_once "../../models/posts/categoriesModel.php";
@@ -41,10 +41,10 @@ $topicsList = $topic->getList();
 $latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
 
-$answers = new Answers;
-$answersList = $answers->getList();
-$latestAnswer = $answers->getAnswer();
-$postCount = count($answersList);
+$replies = new Replies;
+$repliesList = $replies->getList();
+$latestReply = $replies->getReply();
+$postCount = count($repliesList);
 
 $status = new Status;
 $statusList = $status->getList();
