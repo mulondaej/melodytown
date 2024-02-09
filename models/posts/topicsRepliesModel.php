@@ -48,7 +48,6 @@ class Replies {
         return $req->execute();
     }
 
-
     public function getById()
     {
         $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 
@@ -73,7 +72,8 @@ class Replies {
     {
         $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 
         FROM `a8yk4_topicreplies` AS `r`
-        INNER JOIN `a8yk4_users` ON `r`.`id_users` = `a8yk4_users`.`id`';
+        INNER JOIN `a8yk4_users` ON `r`.`id_users` = `a8yk4_users`.`id`
+        ORDER BY `publicationDate` DESC';
         $req = $this->pdo->query($sql);
         $req->execute();
         return $req->fetch(PDO::FETCH_ASSOC);

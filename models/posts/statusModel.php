@@ -50,7 +50,6 @@ class Status
 
     /**
      * Ajoute un utilisateur dans la bASe de données
-     * @param string $title Le titre du thread
      * @param string $content Le contenu ne contient pAS des discriminations ni explicites
      * @param string $publicationDate La date de la publication au format YYYY-MM-DD
      * @return bool
@@ -81,8 +80,7 @@ class Status
         DATE_FORMAT(`s`.`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`
         FROM `a8yk4_status` AS `s`
         INNER JOIN `a8yk4_users` AS `u` ON `s`.`id_users` = `u`.`id`
-        INNER JOIN `a8yk4_users` AS `u` ON `s`.`username` = `u`.`id`
-        WHERE `s`.`id` = :id';
+        WHERE `s`.id = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         $req->execute();
@@ -91,10 +89,11 @@ class Status
 
     public function getListByIdUsers()
     {
-        $sql = 'SELECT `content`, 
-        DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate` 
-        FROM `a8yk4_status` 
-        INNER JOIN `a8yk4_users` ON `a8yk4_status`.`id_users` = `a8yk4_users`.`id`';
+        $sql = 'SELECT `s`.`content`, 
+        DATE_FORMAT(`s`.`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`
+        FROM `a8yk4_status`  AS `s`
+        INNER JOIN `a8yk4_users` AS `u` ON `s`.`id_users` = `u`.`id`
+        ORDER BY `publicationDate` DESC';
         $req = $this->pdo->prepare($sql);
         $req->execute();
         return $req->fetchAll(PDO::FETCH_OBJ);
@@ -102,9 +101,10 @@ class Status
 
     public function getUserStatus()
     {
-        $sql = 'SELECT `s`.`content`, DATE_FORMAT(`publicationDate`, "%d/%m/%Y") AS `publicationDate` 
-        FROM `a8yk4_status` AS `s`
-        INNER JOIN `a8yk4_users` ON `s`.`id_users` = `a8yk4_users`.`id`';
+        $sql = 'SELECT s.content, u.username, DATE_FORMAT(s.publicationDate, "%d/%m/%Y") AS `publicationDate`, s.id_users
+        FROM a8yk4_status AS s
+        INNER JOIN a8yk4_users AS u ON s.id_users = u.id
+        ORDER BY `publicationDate` DESC';
         $req = $this->pdo->prepare($sql);
         $req->execute();
         return $req->fetch(PDO::FETCH_ASSOC);
@@ -112,7 +112,7 @@ class Status
 
     public function getStatus()
     {
-        $sql = 'SELECT *,`u`.`username`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
+        $sql = 'SELECT *, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`
         FROM  `a8yk4_status` 
         INNER JOIN `a8yk4_users` AS `u` ON `id_users` = `u`.`id`
         ORDER BY `publicationDate` DESC';

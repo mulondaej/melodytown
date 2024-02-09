@@ -27,32 +27,49 @@ $status = new Status;
 
 $comments = new comments;
 
-if (!empty($_FILES['image'])) {
-    $imageMessage = checkImage($_FILES['image']);
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateAvatar'])) {
+    if (!empty($_FILES['avatar'])) {
+        $avatarMessage = checkImage($_FILES['avatar']);
 
-    if ($imageMessage != '') {
-        $errors['image'] = $imageMessage;
-    } else {
-        $userAccount->image = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+        if ($avatarMessage != '') {
+            $errors['avatar'] = $avatarMessage;
+        } else {
+            $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
 
-        while(file_exists('../../assets/img/topics/' . $userAccount->image)) {
-            $userAccount->image = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            while (file_exists('../../assets/IMG/user/' . $user->avatar)) {
+                $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+            }
+        }
+
+        if(empty($errors)) {
+            $user->id = $_SESSION['user']['id'];
+            if(move_uploaded_file($_FILES['avatar']['tmp_name'], '../../assets/IMG/user/' . $user->avatar)) {
+                if($user->updateAvatar()){
+                    $_SESSION['user']['avatar'] = $user->avatar;
+                    $success = IMAGE_SUCCESS;
+                } else {
+                    unlink('../../assets/IMG/user/' . $user->avatar);
+                    $errors['update'] = IMAGE_ERROR;
+                }
+            } else {
+                $errors['update'] = IMAGE_ERROR;
+            }
         }
     }
+    var_dump($_POST['updateAvatar']);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['statusPost'])) {
 
-    if (!empty($_POST['content'])) {
-        if (!preg_match($regex['content'], $_POST['content'])) {
-            $status->content = trim($_POST['content']);
+    if (!empty($_POST['status'])) {
+        if (!preg_match($regex['status'], $_POST['status'])) {
+            $status->content = trim($_POST['status']);
         } else {
-            $errors['content'] = STATUS_ERROR;
+            $errors['status'] = STATUS_ERROR;
         }
     } else {
-        $errors['content'] = STATUS_ERROR;
+        $errors['status'] = STATUS_ERROR;
     }
-
 
     if (empty($errors)) {
         $status->id_users = $_SESSION['user']['id'];
@@ -64,18 +81,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['statusPost'])) {
     } else {
         $errors['add'] = STATUS_ERROR;
     }
-     $statusPoster = $status->getById();
+    
 }
 
-if($_SERVER['REQUEST_METHOD'] == 'comment') {
-    if(!empty($_POST['content'])) {
-        if(!preg_match($regex['content'], $_POST['content'])) {
-            $replies->content = $_POST['content'];
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['postComment'])) {
+    if(!empty($_POST['comment'])) {
+        if(!preg_match($regex['comment'], $_POST['comment'])) {
+            $comments->content = $_POST['comment'];
         } else {
-            $errors['content'] = STATUS_COMMENTS_ERROR;
+            $errors['comment'] = STATUS_COMMENTS_ERROR;
         }
     } else {
-        $errors['content'] = STATUS_COMMENTS_ERROR;
+        $errors['comment'] = STATUS_COMMENTS_ERROR;
     }
    
     $comments->id_status = $status->id;
@@ -97,9 +114,8 @@ $topic = new Topics;
 $topicsList = $topic->getList();
 $latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
-// $userPosts = $topic->getUserTopics($username);
-// $username = $_GET['user']['username'];
-// $userTotalPost = count($userPosts);
+$userPosts = $topic->getUserTopics($id_users);
+$userTotalPost = count($userPosts);
 
 //replies
 $replies = new Replies;
@@ -111,10 +127,12 @@ $userTotalAnswer = count($userReply);
 
 //status
 $statusList = $status->getList();
+$userOwnStatus = $status->getListByIdUsers();
 $latestStatus = $status->getStatus();
 $statusCount = count($statusList);
 
 //cooments
+$userOwnComments = $comments->getListByIdUsers();
 $commentsList = $comments->getList();
 $latestComment = $comments->getComment();
 $commentsCount = count($commentsList);

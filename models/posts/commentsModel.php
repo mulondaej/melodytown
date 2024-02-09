@@ -32,7 +32,8 @@ class Comments {
 
     public function create()
     {
-        $sql = 'INSERT INTO `a8yk4_comments`(`content`,`publicationDate`, `updateDate`, `username`, `id_status`,`id_users` )
+        $sql = 'INSERT INTO `a8yk4_comments`(`content`,`publicationDate`, 
+        `updateDate`, `username`, `id_status`,`id_users` )
         VALUES (:content, NOW(), NOW(), :username, :id_users, :id_status)';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
@@ -65,7 +66,8 @@ class Comments {
 
     public function getList()
     {
-        $sql = 'SELECT `k`.`id`, `k`.`content` AS `comments`, DATE_FORMAT(`k`.`publicationDate`, "%d/%m/%y") 
+        $sql = 'SELECT `k`.`id`, `k`.`content` AS `comments`, 
+        DATE_FORMAT(`k`.`publicationDate`, "%d/%m/%y") 
         AS `publicationDate`, DATE_FORMAT(`k`.`updateDate`, "%d/%m/%y") AS `updateDate`,
         `u`.`username` AS `username`, `k`.`id_users`, `k`.`id_status`
         FROM `a8yk4_comments` AS `k`
@@ -76,11 +78,25 @@ class Comments {
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function getUserComment()
+    public function getListByIdUsers()
     {
-        $sql = 'SELECT `k`.`content`, DATE_FORMAT(`publicationDate`, "%d/%m/%Y") AS `publicationDate` 
+        $sql = 'SELECT `k`.`content`, 
+        DATE_FORMAT(`k`.`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`
+        FROM `a8yk4_comments`  AS `k`
+        INNER JOIN `a8yk4_users` AS `u` ON `k`.`id_users` = `u`.`id`
+        ORDER BY `publicationDate` DESC';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function getUserComments()
+    {
+        $sql = 'SELECT `k`.`content`, 
+        DATE_FORMAT(`publicationDate`, "%d/%m/%Y") AS `publicationDate`, `u`.`username`
         FROM `a8yk4_comments` AS `k`
-        INNER JOIN `a8yk4_users` ON `k`.`id_users` = `a8yk4_users`.`id`';
+        INNER JOIN `a8yk4_users` AS `u` ON `k`.`id_users` = `u`.`id`
+        ORDER BY `publicationDate` DESC';
         $req = $this->pdo->prepare($sql);
         $req->execute();
         return $req->fetch(PDO::FETCH_ASSOC);

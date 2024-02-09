@@ -83,21 +83,11 @@ document.addEventListener("DOMContentLoaded", function () {
         fileInput.value = ''; // Clear the file input
     });
 
-    // searching 
-    // sBtn.addEventListener('click', () => {
-    //     // Retrieve values from input fields
-    //     const searchQuery = document.getElementById('searchQuery').value;
-    //     const category = document.getElementById('categorie').value;
-    //     const tags = document.getElementById('tags').value;
+    const likeBtn = document.getElementById("likeBtn");
 
-    //     // Perform search based on categories and tags
-    //     // You need to replace this with your actual search logic
-    //     console.log('Search Query:', searchQuery);
-    //     console.log('Categorie:', categorie);
-    //     console.log('Tags:', tags);
+    likeBtn.addEventListener('click', () => {
+        likeBtn.classList.toggle("changeColor");
+    });
 
-    //     // Redirect to a search results page
-    //     window.location.href = `/search?query=${searchQuery}&category=${category}&tags=${tags}`;
-    // });
 
 });

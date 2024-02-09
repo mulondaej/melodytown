@@ -104,22 +104,22 @@ if (isset($_POST['updatePassword'])) {
 }
 
 if (isset($_POST['updateAvatar'])) {
-    if (!empty($_FILES['image'])) {
-        $avatarMessage = checkImage($_FILES['image']);
+    if (!empty($_FILES['avatar'])) {
+        $avatarMessage = checkImage($_FILES['avatar']);
 
         if ($avatarMessage != '') {
-            $errors['image'] = $avatarMessage;
+            $errors['avatar'] = $avatarMessage;
         } else {
-            $user->avatar = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
 
             while (file_exists('../../assets/IMG/user/' . $user->avatar)) {
-                $user->avatar = uniqid() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
             }
         }
 
         if(empty($errors)) {
             $user->id = $_SESSION['user']['id'];
-            if(move_uploaded_file($_FILES['image']['tmp_name'], '../../assets/IMG/user/' . $user->avatar)) {
+            if(move_uploaded_file($_FILES['avatar']['tmp_name'], '../../assets/IMG/user/' . $user->avatar)) {
                 if($user->updateAvatar()){
                     $_SESSION['user']['avatar'] = $user->avatar;
                     $success = IMAGE_SUCCESS;
@@ -132,15 +132,6 @@ if (isset($_POST['updateAvatar'])) {
             }
     
         }
-        
-        // if (empty($errors)) {
-        //     if ($user->updateAvatar()) {
-        //         $_SESSION['user']['avatar'] = $user->avatar;
-        //         $success = IMAGE_SUCCESS;
-        //     } else {
-        //         $errors['update'] = IMAGE_ERROR;
-        //     }
-        // }
 
     }
     var_dump($_POST['updateAvatar']);

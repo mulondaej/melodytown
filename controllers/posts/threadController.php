@@ -25,14 +25,14 @@ $replies = new Replies();
 $topicsDetails = $topic->getById();
 
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['reply'])) {
-    if(!empty($_POST['content'])) {
-        if(!preg_match($regex['content'], $_POST['content'])) {
-            $replies->content = $_POST['content'];
+    if(!empty($_POST['reply'])) {
+        if(!preg_match($regex['reply'], $_POST['reply'])) {
+            $replies->content = $_POST['reply'];
         } else {
-            $errors['content'] = TOPICS_REPLIES_ERROR;
+            $errors['reply'] = TOPICS_REPLIES_ERROR;
         }
     } else {
-        $errors['content'] = TOPICS_REPLIES_ERROR;
+        $errors['reply'] = TOPICS_REPLIES_ERROR;
     }
    
     $replies->id_topics = $topic->id;

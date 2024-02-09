@@ -1,32 +1,33 @@
 <main class="mainbox">
     <div class="profileContainer ">
-        <input type="file" id="coverUpload" accept="image/*" style="display: none;">
+        <input type="file" id="coverUpload" value="<?= $userAccount->avatar ?>" accept="image*/" style="display: none;">
         <div class="coverContainer">
             <img src="../assets/IMG/asha-frozz.jpg" alt="Cover Picture" id="cover-picture">
         </div>
-
+    <button id="editCover">change</button>
         <div class="avatarContainer text-center">
-            <input type="file" id="avatarUpload" class="avatarChange" accept="image/*" style="display: none;">
-            <img src="../assets/IMG/Avril23j.jpg" alt="User Avatar" id="profileAvy">
-            <h4>@<b><?= $userAccount->username ?></b></h4>
-            <button id="editAvatar" class="overLay">change</button>
+            
+                <input type="file" id="avatarUpload" class="avatarChange" value="<?= $userAccount->avatar ?>" accept="image*/" style="display: none;">
+                <img src="/assets/IMG/Avril23j.jpg" alt="User Avatar" id="profileAvy">
+                <input type="submit" id="editAvatar" class="overLay" value="Modifier" name="updateAvatar">
+        
         </div>
-        <button id="editCover">change</button>
+        
     </div>
 
     <div class="userContainer">
+        <p>@<b><?= $userAccount->username ?></b>, <b><?= $userAccount->location ?></b></p>
         <div class="infoUser">
-            <p>from <b><?= $userAccount->location ?></b></p>
-            <p>Posts: <span id="postCount"><b></b></span></p>
+            <p>Posts: <span id="postCount"><b><?= $userTotalPost ?></b></span></p>
             <p>Likes: <span id="likeCount"><b>100</b></span></p>
-            <p>Rank: <span id="rank"><b><?= $userAccount->roleName?></b></span></p>
+            <p>Rank: <span id="rank"><b><?= $userAccount->roleName ?></b></span></p>
             <p>Points: <span id="points"><b>500</b></span></p>
             <p>Joined since <b><?= $userAccount->registerDate ?></b></p>
         </div>
     </div>
     <div class="mainContainer">
         <aside class="asideBar">
-            <h3>Your Media <i class="fa-solid fa-folder-open"></i></h3>
+            <h3>Media <i class="fa-solid fa-folder-open"></i></h3>
             <div class="Media">
                 <input type="file" id="mediaUpload" accept="image*/" style="display: none;">
                 <div class="disGallery">
@@ -45,30 +46,55 @@
         </aside>
          <main class="mainStatus"> 
             <div class="State">
-                <form action="#status" method="POST" id="postStatus">
-                    <textarea name="" id="postHere" ></textarea>
-                    <button type="submit" id="posted" value="status" name="statusPost">Post</button>
+                <form action="" method="POST" id="postStatus">
+                    
+                    <textarea name="status" id="postHere" ></textarea>
+                    <input type="submit" id="posted" value="post" name="statusPost">
+                    <?php if (isset($errors['status'])) : ?>
+                         <p class="errorsMessage"><?= $errors['status'] ?></p>
+                     <?php endif; ?><br>
                 </form>
+                
                 <div class="statusContainer">
+
+                    <?php if (count($userOwnStatus) == 0) { ?>
+                <p class="errorsMessage">No status available</p>
+                <?php } else { ?>
+                <?php foreach ($userOwnStatus as $ownStatus) { ?>
                     <div class="status" id="status">
-                        <p></p>
-                        <p></p>
-                        <button class="likeStatus">Like</button>
-                        <button class="commentStatus">Comment</button>
+                        <p><b><?= $ownStatus->username ?></b>: <?= $ownStatus->content ?></p>
+                        <button class="likeStatus" id="likeBtn">
+                            <i class="fa-solid fa-heart">Like</i></button>
+                        <button class="commentStatus"><a href="#commenting">Comment</a></button>
                     </div>
+                    <?php } ?>
+                <?php } ?>
+
                     <ul class="comments">
                         <!-- Comments go here -->
                         <li>
-                        <p></p>
-                        <p></p>
-                            <button class="likeComment">Like</button>
+                        <?php if (count($userOwnComments) == 0) { ?>
+                <p class="errorsMessage">No comments</p>
+                <?php } else { ?>
+                <?php foreach ($userOwnComments as $commentingUser) { ?>
+                    <p><b><?= $commentingUser->username ?></b>: <?= $commentingUser->content ?></p>
+                            <button class="likeComment" id="likeBtn">
+                                <i class="fa-solid fa-heart">Like</i></button>
                             <button class="replyComment">Reply</button>
                         </li>
+                        
+                    <?php } ?>
+                    <?php } ?>
                     </ul>
                     <!-- Reply form for status -->
                     <form action="" method="POST" class="reply-form hidden">
-                        <textarea class="replyText" placeholder="Reply to this status..."></textarea>
-                        <button class="postReply" name="comment">Reply</button>
+                        
+                        <textarea class="replyText" id="commenting"></textarea>
+                        <input type="submit" class="postReply" name="postComment" value="reply">
+                        <?php if (isset($errors['comment'])) : ?>
+                         <p class="errorsMessage"><?= $errors['comment'] ?></p>
+                     <?php endif; ?><br>
+
                     </form>
                 </div>
             </div>

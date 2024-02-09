@@ -6,9 +6,9 @@
     <form action="/modifier-mon-compte" method="post" id="logForm" enctype="multipart/form-data">
         
         <label for="avatar">Avatar</label>
-        <input type="file" name="image" id="userAvatar" value="<?= $userAccount->avatar ?>" accept="image*/">
-        <?php if (isset($errors['image'])) { ?>
-            <p class="errorsMessage"><?= $errors['image'] ?></p>
+        <input type="file" name="avatar" id="userAvatar" value="<?= $userAccount->avatar ?>" accept="image*/">
+        <?php if (isset($errors['avatar'])) { ?>
+            <p class="errorsMessage"><?= $errors['avatar'] ?></p>
         <?php } ?>
         <input type="submit" value="Modifier" name="updateAvatar">
     </form>

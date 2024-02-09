@@ -1,0 +1,321 @@
+/* RESPONSIVE */
+/* Smartphone styles */
+@media screen and (max-width: 767px) {
+  * {
+      box-sizing: content-box;
+      margin: 0;
+      padding: 0;
+  }
+
+  body {
+      overflow: scroll;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #b4b8bd;
+  }
+
+  header {
+      background-color: #333333d1;
+      color: #fff;
+      display: block;
+      align-items: center;
+      padding: 8px;
+      justify-content: space-evenly;
+      height: 8rem;
+      position: relative;
+      text-align: center;
+      width: 100%;
+  }
+
+  .siteLogo {
+      display: block;
+  }
+
+  .siteLogo h1 {
+      text-decoration: none;
+      justify-content: left;
+      left: 0;
+      top: 0;
+      position: absolute;
+      font-size: 20px;
+      font-weight: bolder;
+      font-style: italic;
+      margin-top: 0rem;
+      margin-left: 5px;
+      animation: bowAnimation 2s linear infinite;
+  }
+
+  #logo {
+      width: 45px;
+      height: 45px;
+      justify-content: left;
+      position: absolute;
+      margin: 15px;
+      margin-top: 2.1rem;
+  }
+
+  #menu-button {
+      padding: 1px;
+      cursor: pointer;
+      justify-content: right;
+      position: absolute;
+      margin-top: 1.4rem;
+  }
+
+  #idCorner {
+      justify-self: right;
+  }
+
+  #avatar {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      margin: 10px;
+  }
+
+  .navbar {
+      display: block;
+      justify-content: space-around;
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 5rem;
+  }
+
+  .navbar button {
+      margin-right: 3px;
+  }
+
+  .navbar a {
+      font-size: 10px;
+      height: max-content;
+      margin: 0;
+      font-weight: 1px;
+  }
+
+  #logging {
+      display: flex;
+      margin: 4px;
+      justify-content: right;
+      right: 0;
+      top: 0;
+      position: absolute;
+      margin-top: 0rem;
+      font-size: 14px;
+  }
+
+  #logging a {
+      margin: 5px;
+      right: 0;
+      justify-self: right;
+      margin-top: 0rem;
+  }
+
+  #searching {
+      margin: 0 auto;
+      position: absolute;
+      width: 50%;
+      margin-top: 1.6rem;
+  }
+
+  .compteFlex {
+      display: block;
+  }
+
+  .compteFlex form {
+      width: 85%;
+  }
+
+  #main {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+  }
+
+  #forum {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+  }
+
+  .forumcontainer {
+      width: 100%;
+      max-height: max-content;
+      padding: 0;
+      margin: 0;
+  }
+
+  .subforum {
+      margin-top: 15px;
+      text-decoration: none;
+      max-height: max-content;
+      width: 100%;
+      padding: 0;
+  }
+
+  .subforum-row {
+      width: 98.8%;
+      padding: 0;
+  }
+
+  .subforum-column {
+  }
+
+  .subforum-icon i {
+      margin: 0 auto;
+      width: fit-content;
+      font-size: 25px;
+  }
+
+  .subforum-icon {
+      width: 100%;
+  }
+
+  .subforum-description {
+      width: 95%;
+      margin: 0 auto;
+  }
+
+  .subforum-description p {
+      margin: 0 auto;
+  }
+
+  .subforum-description div {
+      margin: 0 auto;
+      display: flex;
+      width: fit-content;
+  }
+
+  .subforum-stats {
+      text-align: center;
+      display: block;
+      font-size: 12px;
+  }
+
+  .subforum-info {
+      margin: auto;
+      text-align: center;
+      margin: 0 auto;
+      display: block;
+      width: min-content;
+  }
+
+  .subforum-info a {
+      font-size: 10px;
+      display: block;
+      padding: 0;
+  }
+
+  .right-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 80%;
+  }
+
+  .updates {
+      margin: 0 auto;
+      display: block;
+      width: max-content;
+      margin-bottom: 10px;
+  }
+
+  .updates li a {
+      margin: 0 auto;
+  }
+
+  .footer {
+      padding: 10px;
+      text-align: center;
+      bottom: 0;
+      width: 100%;
+  }
+
+  .footer a {
+      margin: 0;
+      margin-right: 10px;
+      text-align: center;
+  }
+
+  .footer p {
+      margin: 15px;
+  }
+
+  /*  */
+  .topicsContainer {
+      display: inline-block;
+      grid-template-columns: none;
+      grid-template-rows: none;
+      gap: 1rem;
+  }
+
+  .topicBottom {
+      padding: 1rem;
+      width: max-content;
+      margin: 0 auto;
+  }
+
+  .topicContent {
+      background-color: #dee3e7de;
+      border-radius: 7px;
+  }
+
+  .topicBottom h2 {
+      width: fit-content;
+  }
+
+  .topic {
+      border: 1px solid dark;
+      margin: 15px;
+      width: max-content;
+  }
+
+  a.cta {
+      background-color: transparent;
+      border-radius: 3px;
+      margin: 0 auto;
+      padding: 0;
+      width: fit-content;
+  }
+
+  button.cta {
+      background-color: lightskyblue;
+      margin: 5px;
+      padding: 0;
+      width: fit-content;
+  }
+
+}
+
+/* Tablet styles */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .navbar {
+      margin-top: 5rem;
+  }
+
+  #searching {
+      width: 40%;
+  }
+
+  .right-sidebar {
+      width: 60%;
+      margin: 0 auto;
+  }
+}
+
+/* PC styles */
+@media screen and (min-width: 1024px) {
+  .navbar {
+      margin-top: 5rem;
+  }
+
+  #searching {
+      width: 25%;
+  }
+
+  .right-sidebar {
+      width: 40%;
+      margin: 0 auto;
+  }
+}

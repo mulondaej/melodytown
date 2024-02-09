@@ -121,14 +121,14 @@ class Topics
 
     public function getList()
     {
-        $sql = 'SELECT `t`.`id`, `a8yk4_tags`.`name` AS `tag`, `a8yk4_categories`.`name` AS `categorie`,
+        $sql = 'SELECT `t`.`id`, `g`.`name` AS `tag`, `c`.`name` AS `categorie`,
         `title`, SUBSTR(`content`, 1, 500) AS `content`, 
         DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, 
-        DATE_FORMAT(`updateDate`, "%d/%m/%y") AS `updateDate`, `a8yk4_users`.`username` AS `username`, `id_users`
+        DATE_FORMAT(`updateDate`, "%d/%m/%y") AS `updateDate`, `u`.`username` AS `username`, `id_users`
         FROM `a8yk4_topics` AS `t`
-        INNER JOIN `a8yk4_tags` ON `t`.`id_tags` = `a8yk4_tags`.`id`
-        INNER JOIN `a8yk4_categories` ON `t`.`id_categories` = `a8yk4_categories`.`id`
-        INNER JOIN `a8yk4_users` ON `t`.`id_users` = `a8yk4_users`.`id`
+        INNER JOIN `a8yk4_tags` AS `g` ON `t`.`id_tags` = `g`.`id`
+        INNER JOIN `a8yk4_categories` AS `c` ON `t`.`id_categories` = `c`.`id`
+        INNER JOIN `a8yk4_users` AS `u` ON `t`.`id_users` = `u`.`id`
         ORDER BY `publicationDate` DESC';
         $req = $this->pdo->query($sql);
         return $req->fetchAll(PDO::FETCH_OBJ);
@@ -136,7 +136,8 @@ class Topics
 
     public function getUserTopics($id_users)
     {
-        $sql = 'SELECT * FROM `a8yk4_topics` WHERE `id_users` = :id_users';
+        $sql = 'SELECT * FROM `a8yk4_topics` WHERE `id_users` = :id_users
+        ORDER BY `publicationDate` ASC LIMIT 1';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id_users', $id_users);
         $req->execute();

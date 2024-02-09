@@ -775,6 +775,8 @@ textarea {
 /* main */
 .mainbox {
     justify-content: center;
+    padding: 0;
+    margin: 0;
 }
 
 .profileContainer {
@@ -784,6 +786,7 @@ textarea {
     margin: 0 auto;
     padding: 0;
     justify-content: center;
+    width: 100%;
 }
 
 /* cover pictures */
@@ -806,6 +809,7 @@ textarea {
     top: 0;
     background-position: center;
     background-size: cover;
+    position: relative;
 }
 
 #editCover {
@@ -814,7 +818,8 @@ textarea {
     border: none;
     cursor: pointer;
     z-index: 3;
-    position: relative;
+    position: absolute;
+    top: 5rem;
     right: 90px;
     opacity: 1;
     background: rgb(0, 0, 0);
@@ -822,9 +827,10 @@ textarea {
 }
 
 .avatarContainer {
+    padding: 0;
     width: 90%;
     height: max-content;
-    margin-top: -190px;
+    margin-top: -200px;
     /* user info up to overlap cover */
     position: relative;
     z-index: 3;
@@ -837,15 +843,14 @@ textarea {
 }
 
 #profileAvy {
+    padding: 0;
     width: 150px;
     height: 150px;
-    margin: 0 auto;
+    margin: 5px;
     object-fit: cover;
     border-radius: 50%;
     cursor: pointer;
     justify-content: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
     animation: pulse 2s infinite;
 }
 
@@ -872,6 +877,7 @@ textarea {
     position: relative;
     justify-content: center;
     right: 126px;
+    margin-top: -5rem;
 }
 
 .overLay {
@@ -901,8 +907,13 @@ textarea {
     border-bottom-right-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
+    margin-top: 2.5rem;
     margin-bottom: 1.5rem;
     display: block;
+}
+
+.userContainer p {
+    text-align: center;
 }
 
 .infoUser {
@@ -1003,14 +1014,48 @@ textarea {
     position: relative;
 }
 
+.mainStatus a {
+    text-decoration: none;
+}
+
 .state {
+    display: inline-block;
     background-color: #fff;
     padding: 10px;
     border-radius: 5px;
     margin: 10px;
 }
 
+/* posting textarea & btn */
+#postStatus {
+    display: grid;
+    grid-template-columns: repeat(2, 0fr);
+    justify-content: space-evenly;
+    border-radius: 8px;
+    height: max-content;
+    width: max-content;
+    margin-top: 5px;
+    margin: 0 auto;
+}
+
+#postHere {
+    width: 25rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin: 0 auto;
+    height: max-content;
+}
+
+#posted {
+    margin: 0 auto;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*  */
 .statusContainer {
+    margin-top: 10px;
     margin: 0 auto;
     height: max-content;
     width: max-content;
@@ -1022,10 +1067,18 @@ textarea {
     border: 1px solid #ddd;
     border-radius: 5px;
     margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     text-align: center;
     justify-content: center;
 }
 
+#statusText {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    resize: vertical;
+}
 .likeStatus,
 .commentStatus {
     border: none;
@@ -1039,7 +1092,9 @@ textarea {
 .comments {
     list-style-type: none;
     padding: 0;
-    margin: 15px;
+    margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     height: max-content;
     width: max-content;
 }
@@ -1060,44 +1115,15 @@ textarea {
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    margin: 12px;
+    margin: 0 auto;
+    margin-top: 10px;
     text-align: center;
 }
 
-/* posting textarea & btn */
-#postStatus {
-    display: flex;
-    justify-content: space-between;
-    border-radius: 8px;
-    height: max-content;
-    width: max-content;
-    margin-top: 5px;
-    margin: 0 auto;
+.replyText {
+    width: 20rem;
+    height: 4rem;
 }
-
-#postHere {
-    width: 27rem;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    margin: 0 auto;
-    height: max-content;
-}
-
-#posted {
-    margin: 0 auto;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-
-#statusText {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    resize: vertical;
-}
-
 /* profile 's right sidebar */
 .activity {
     margin: 10px;
@@ -1114,68 +1140,6 @@ textarea {
 
 .activity li {
     margin: 10px 0;
-}
-
-/* CHATS */
-#inboxPt {
-    display: flex;
-    text-align: center;
-    justify-content: space-evenly;
-}
-
-.chatPop {
-    right: 0;
-    bottom: 0;
-    position: fixed;
-    justify-content: right;
-    display: inline-block;
-}
-
-#popUpChat {
-    margin-right: 20px;
-    border-radius: 49%;
-    padding: 8px 3px;
-    background-color: rgb(123, 146, 123);
-    color: white;
-}
-
-/* hidden chatbox */
-.dropup-content {
-    display: none;
-    position: absolute;
-    bottom: 50px;
-    background-color: #f1f1f1;
-    max-width: max-content;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    margin-right: 15px;
-    left: -120px;
-}
-
-.allChats {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 6px;
-}
-
-.dropup-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Show the dropup menu on hover */
-.chatPop:hover .dropup-content {
-    display: block;
-}
-
-.chatPop:hover #popUpChat {
-    background-color: #2980B9;
-}
-
-.dropup-content a:hover {
-    background-color: #ddd
 }
 
 /* LOGIN & SIGNUP FORMS */
@@ -1322,7 +1286,6 @@ fieldset {
     justify-content: center;
     margin: 0 auto;
 }
-
 
 #tag {
     margin-right: 50px;
@@ -1528,6 +1491,10 @@ fieldset {
     display: block;
 }
 
+#likeBtn {
+    background-color: transparent;
+}
+
 /* MEDIA's PAGE CARD */
 /*Media page styling*/
 .mainMedia {
@@ -1684,6 +1651,67 @@ fieldset {
     margin-bottom: 7px;
 }
 
+/* CHATS */
+#inboxPt {
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.chatPop {
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    justify-content: right;
+    display: inline-block;
+}
+
+#popUpChat {
+    margin-right: 20px;
+    border-radius: 49%;
+    padding: 8px 3px;
+    background-color: rgb(123, 146, 123);
+    color: white;
+}
+
+/* hidden chatbox */
+.dropup-content {
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    background-color: #f1f1f1;
+    max-width: max-content;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-right: 15px;
+    left: -120px;
+}
+
+.allChats {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 6px;
+}
+
+.dropup-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.chatPop:hover .dropup-content {/* Show the dropup menu on hover */
+    display: block;
+}
+
+.chatPop:hover #popUpChat {
+    background-color: #2980B9;
+}
+
+.dropup-content a:hover {
+    background-color: #ddd
+}
+
 /* FOOTER */
 .footer {
     background-color: #423d3db5;
@@ -1713,324 +1741,3 @@ fieldset {
     margin-top: 13px;
 }
 
-/* RESPONSIVE */
-/* Smartphone styles */
-@media screen and (max-width: 767px) {
-    * {
-        box-sizing: content-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        overflow: scroll;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #b4b8bd;
-    }
-
-    header {
-        background-color: #333333d1;
-        color: #fff;
-        display: block;
-        align-items: center;
-        padding: 8px;
-        justify-content: space-evenly;
-        height: 8rem;
-        position: relative;
-        text-align: center;
-        width: 100%;
-    }
-
-    .siteLogo {
-        display: block;
-    }
-
-    .siteLogo h1 {
-        text-decoration: none;
-        justify-content: left;
-        left: 0;
-        top: 0;
-        position: absolute;
-        font-size: 20px;
-        font-weight: bolder;
-        font-style: italic;
-        margin-top: 0rem;
-        margin-left: 5px;
-        animation: bowAnimation 2s linear infinite;
-    }
-
-    #logo {
-        width: 45px;
-        height: 45px;
-        justify-content: left;
-        position: absolute;
-        margin: 15px;
-        margin-top: 2.1rem;
-    }
-
-    #menu-button {
-        padding: 1px;
-        cursor: pointer;
-        justify-content: right;
-        position: absolute;
-        margin-top: 1.4rem;
-    }
-
-    #idCorner {
-        justify-self: right;
-    }
-
-    #avatar {
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        margin: 10px;
-    }
-
-    .navbar {
-        display: block;
-        justify-content: space-around;
-        text-align: center;
-        margin: 0 auto;
-        margin-top: 5rem;
-    }
-
-    .navbar button {
-        margin-right: 3px;
-    }
-
-    .navbar a {
-        font-size: 10px;
-        height: max-content;
-        margin: 0;
-        font-weight: 1px;
-    }
-
-    #logging {
-        display: flex;
-        margin: 4px;
-        justify-content: right;
-        right: 0;
-        top: 0;
-        position: absolute;
-        margin-top: 0rem;
-        font-size: 14px;
-    }
-
-    #logging a {
-        margin: 5px;
-        right: 0;
-        justify-self: right;
-        margin-top: 0rem;
-    }
-
-    #searching {
-        margin: 0 auto;
-        position: absolute;
-        width: 50%;
-        margin-top: 1.6rem;
-    }
-
-    .compteFlex {
-        display: block;
-    }
-
-    .compteFlex form {
-        width: 85%;
-    }
-
-    #main {
-        display: block;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    #forum {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-    }
-
-    .forumcontainer {
-        width: 100%;
-        max-height: max-content;
-        padding: 0;
-        margin: 0;
-    }
-
-    .subforum {
-        margin-top: 15px;
-        text-decoration: none;
-        max-height: max-content;
-        width: 100%;
-        padding: 0;
-    }
-
-    .subforum-row {
-        width: 98.8%;
-        padding: 0;
-    }
-
-    .subforum-column {
-    }
-
-    .subforum-icon i {
-        margin: 0 auto;
-        width: fit-content;
-        font-size: 25px;
-    }
-
-    .subforum-icon {
-        width: 100%;
-    }
-
-    .subforum-description {
-        width: 95%;
-        margin: 0 auto;
-    }
-
-    .subforum-description p {
-        margin: 0 auto;
-    }
-
-    .subforum-description div {
-        margin: 0 auto;
-        display: flex;
-        width: fit-content;
-    }
-
-    .subforum-stats {
-        text-align: center;
-        display: block;
-        font-size: 12px;
-    }
-
-    .subforum-info {
-        margin: auto;
-        text-align: center;
-        margin: 0 auto;
-        display: block;
-        width: min-content;
-    }
-
-    .subforum-info a {
-        font-size: 10px;
-        display: block;
-        padding: 0;
-    }
-
-    .right-sidebar {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        width: 80%;
-    }
-
-    .updates {
-        margin: 0 auto;
-        display: block;
-        width: max-content;
-        margin-bottom: 10px;
-    }
-
-    .updates li a {
-        margin: 0 auto;
-    }
-
-    .footer {
-        padding: 10px;
-        text-align: center;
-        bottom: 0;
-        width: 100%;
-    }
-
-    .footer a {
-        margin: 0;
-        margin-right: 10px;
-        text-align: center;
-    }
-
-    .footer p {
-        margin: 15px;
-    }
-
-    /*  */
-    .topicsContainer {
-        display: inline-block;
-        grid-template-columns: none;
-        grid-template-rows: none;
-        gap: 1rem;
-    }
-
-    .topicBottom {
-        padding: 1rem;
-        width: max-content;
-        margin: 0 auto;
-    }
-
-    .topicContent {
-        background-color: #dee3e7de;
-        border-radius: 7px;
-    }
-
-    .topicBottom h2 {
-        width: fit-content;
-    }
-
-    .topic {
-        border: 1px solid dark;
-        margin: 15px;
-        width: max-content;
-    }
-
-    a.cta {
-        background-color: transparent;
-        border-radius: 3px;
-        margin: 0 auto;
-        padding: 0;
-        width: fit-content;
-    }
-
-    button.cta {
-        background-color: lightskyblue;
-        margin: 5px;
-        padding: 0;
-        width: fit-content;
-    }
-
-}
-
-/* Tablet styles */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-    .navbar {
-        margin-top: 5rem;
-    }
-
-    #searching {
-        width: 40%;
-    }
-
-    .right-sidebar {
-        width: 60%;
-        margin: 0 auto;
-    }
-}
-
-/* PC styles */
-@media screen and (min-width: 1024px) {
-    .navbar {
-        margin-top: 5rem;
-    }
-
-    #searching {
-        width: 25%;
-    }
-
-    .right-sidebar {
-        width: 40%;
-        margin: 0 auto;
-    }
-}
