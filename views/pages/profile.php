@@ -1,4 +1,5 @@
 <main class="mainbox">
+
     <div class="profileContainer ">
         <input type="file" id="coverUpload" value="<?= $userAccount->avatar ?>" accept="image*/" style="display: none;">
         <div class="coverContainer">
@@ -6,17 +7,16 @@
         </div>
     <button id="editCover">change</button>
         <div class="avatarContainer text-center">
-            
                 <input type="file" id="avatarUpload" class="avatarChange" value="<?= $userAccount->avatar ?>" accept="image*/" style="display: none;">
                 <img src="/assets/IMG/Avril23j.jpg" alt="User Avatar" id="profileAvy">
                 <input type="submit" id="editAvatar" class="overLay" value="Modifier" name="updateAvatar">
-        
         </div>
         
     </div>
 
     <div class="userContainer">
-        <p>@<b><?= $userAccount->username ?></b>, <b><?= $userAccount->location ?></b></p>
+        <p>@<b><?= $userAccount->username ?></b>, <i class="fa-sharp fa-solid fa-location-dot fa-sm" style="color: white"></i>
+         <b><?= $userAccount->location ?></b></p>
         <div class="infoUser">
             <p>Posts: <span id="postCount"><b><?= $userTotalPost ?></b></span></p>
             <p>Likes: <span id="likeCount"><b>100</b></span></p>
@@ -25,6 +25,7 @@
             <p>Joined since <b><?= $userAccount->registerDate ?></b></p>
         </div>
     </div>
+
     <div class="mainContainer">
         <aside class="asideBar">
             <h3>Media <i class="fa-solid fa-folder-open"></i></h3>
@@ -44,7 +45,8 @@
                 <button id="open-archive"><a href="/media">Open</a></button>
             </div>
         </aside>
-         <main class="mainStatus"> 
+
+         <div class="mainStatus"> 
             <div class="State">
                 <form action="" method="POST" id="postStatus">
                     
@@ -65,7 +67,7 @@
                         <p><b><?= $ownStatus->username ?></b>: <?= $ownStatus->content ?></p>
                         <button class="likeStatus" id="likeBtn">
                             <i class="fa-solid fa-heart">Like</i></button>
-                        <button class="commentStatus"><a href="#commenting">Comment</a></button>
+                        <button class="commentStatus"><a href="#commenting">comment</a></button>
                     </div>
                     <?php } ?>
                 <?php } ?>
@@ -80,7 +82,7 @@
                     <p><b><?= $commentingUser->username ?></b>: <?= $commentingUser->content ?></p>
                             <button class="likeComment" id="likeBtn">
                                 <i class="fa-solid fa-heart">Like</i></button>
-                            <button class="replyComment">Reply</button>
+                            <button class="replyComment"><a href="#commenting">reply</a></button>
                         </li>
                         
                     <?php } ?>
@@ -98,7 +100,8 @@
                     </form>
                 </div>
             </div>
-        </main>
+        </div>
+
         <aside class="activ">
             <h3>Activity</h3>
             <div class="activity">
@@ -108,6 +111,8 @@
             </div>
         </aside>
     </div>
+    
 </main>
 
+<script src="../../assets/javaSc/ok.js"></script>
 <script src="../../assets/javaSc/profile.js"></script>

@@ -63,10 +63,24 @@ if (isset($_POST['updateInfos'])) {
         $errors['birthdate'] = USERS_BIRTHDATE_ERROR_EMPTY;
     }
 
+    if (!empty($_POST['location'])) {
+        if (preg_match($regex['name'], $_POST['location'])) {
+            $user->location = clean($_POST['location']);
+            if ($user->checkIfExistsByLocation() == 1 && $user->location != $_SESSION['user']['location']) {
+                $errors['location'] = USERS_LOCATION_ERROR_EXISTS;
+            }
+        } else {
+            $errors['location'] = USERS_LOCATION_ERROR_INVALID;
+        }
+    } else {
+        $errors['location'] = USERS_LOCATION_ERROR_EMPTY;
+    }
+
     if (empty($errors)) {
         if ($user->update()) {
             $_SESSION['user']['username'] = $user->username;
             $_SESSION['user']['email'] = $user->email;
+            $_SESSION['user']['location'] = $user->location;
             $success = USERS_UPDATE_SUCCESS;
         } else {
             $errors['update'] = USERS_UPDATE_ERROR;
@@ -103,9 +117,21 @@ if (isset($_POST['updatePassword'])) {
     }
 }
 
+// if (isset($_POST['updateLocation'])) {
+
+//     if (empty($errors)) {
+//         if ($user->updateLocation()) {
+//             $_SESSION['user']['location'] = $user->location;
+//             $success = USERS_LOCATION_UPDATE_SUCCESS;
+//         } else {
+//             $errors['update'] = USERS_LOCATION_UPDATE_ERROR;
+//         }
+//     }
+// }
+
 if (isset($_POST['updateAvatar'])) {
     if (!empty($_FILES['avatar'])) {
-        $avatarMessage = checkImage($_FILES['avatar']);
+        $avatarMessage = checkAvatar($_FILES['avatar']);
 
         if ($avatarMessage != '') {
             $errors['avatar'] = $avatarMessage;
@@ -155,8 +181,6 @@ if (isset($_POST['transferData'])) {
         }
     // }
 }
-
-
 
 // if (isset($_POST['deleteAccount'])) {
     // if ($user->delete()) {

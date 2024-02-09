@@ -118,11 +118,16 @@
       margin-top: 1.6rem;
   }
 
-  .compteFlex {
-      display: block;
+  .accountFlex {
+      display: grid;
+      grid-template-columns: repeat(1, 0fr);
   }
 
-  .compteFlex form {
+  #logForm {
+    width: max-content;
+  }
+
+  .accountFlex form {
       width: 85%;
   }
 

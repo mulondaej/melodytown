@@ -49,14 +49,14 @@ class Users
         return $req->fetch(PDO::FETCH_COLUMN);
     }
 
-    // public function checkIfExistsByLocation()
-    // {
-    //     $sql = 'SELECT COUNT(`location`) FROM `a8yk4_users` WHERE `location` = :location';
-    //     $req = $this->pdo->prepare($sql);
-    //     $req->bindValue(':location', $this->location, PDO::PARAM_STR);
-    //     $req->execute();
-    //     return $req->fetch(PDO::FETCH_COLUMN);
-    // }
+    public function checkIfExistsByLocation()
+    {
+        $sql = 'SELECT COUNT(`location`) FROM `a8yk4_users` WHERE `location` = :location';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':location', $this->location, PDO::PARAM_STR);
+        $req->execute();
+        return $req->fetch(PDO::FETCH_COLUMN);
+    }
 
     /**
      * Ajoute un utilisateur dans la base de données
@@ -143,16 +143,25 @@ class Users
      * @param string $birthdate La date de naissance au format YYYY-MM-DD
      * @return objet
      */
-    public function update() #`location` = :location,, `avatar`=:avatar
+    public function update() 
     {
         $sql = 'UPDATE `a8yk4_users` SET `username`=:username,`email`=:email,
-         `birthdate` = :birthdate
+         `birthdate` = :birthdate, `location` =:location
         WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->bindValue(':email', $this->email, PDO::PARAM_STR);
-        // $req->bindValue(':location', $this->location, PDO::PARAM_STR);
         $req->bindValue(':birthdate', $this->birthdate, PDO::PARAM_STR);
+        $req->bindValue(':location', $this->location, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $req->execute();
+    }
+
+    public function updateLocation()
+    {
+        $sql = 'UPDATE `a8yk4_users` SET `location`=:location WHERE `id` = :id';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':location', $this->location, PDO::PARAM_STR);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
     }

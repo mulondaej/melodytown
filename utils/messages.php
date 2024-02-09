@@ -31,6 +31,9 @@ define('USERS_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de
 define('USERS_PASSWORD_UPDATE_SUCCESS', 'Votre mot de passe a bien été mis à jour');
 define('USERS_PASSWORD_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre mot de passe');
 
+define('USERS_LOCATION_UPDATE_SUCCESS', 'Votre location a bien été mis à jour');
+define('USERS_LOCATION_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre location');
+
 //MIS A JOUR TOPICS
 define('TOPIC_UPDATE_SUCCESS', 'Votre compte a bien été mis à jour');
 define('TOPIC_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre compte');

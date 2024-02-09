@@ -2,7 +2,7 @@
 <?php if (isset($success)) { ?>
             <p id="successMessage"><?= $success ?></p>
         <?php } ?>
-<main class="compteFlex">
+<div class="accountFlex">
     <form action="/modifier-mon-compte" method="post" id="logForm" enctype="multipart/form-data">
         
         <label for="avatar">Avatar</label>
@@ -12,6 +12,13 @@
         <?php } ?>
         <input type="submit" value="Modifier" name="updateAvatar">
     </form>
+
+    <!-- <form action="/modifier-mon-compte" method="post" id="logForm" >
+        
+        
+
+        <input type="submit" value="Modifier" name="updateLocation">
+    </form> -->
 
     <form action="/modifier-mon-compte" method="post" id="logForm" >
         
@@ -32,6 +39,13 @@
         <?php if (isset($errors['birthdate'])) { ?>
             <p id=errorsMessage><?= $errors['birthdate'] ?></p>
         <?php } ?>
+
+        <label for="location">Location</label>
+        <input type="text" name="location" id="location" placeholder="..." value="<?= $userAccount->location ?>">
+        <?php if (isset($errors['location'])) { ?>
+            <p id=errorsMessage><?= $errors['location'] ?></p>
+        <?php } ?>
+
         <br>
         <input type="submit" value="Modifier" name="updateInfos">
 
@@ -76,5 +90,5 @@
         </div>
     </div> -->
 
-</main>
+        </div>
 <script src="../../assets/javaSc/modals.js"></script>

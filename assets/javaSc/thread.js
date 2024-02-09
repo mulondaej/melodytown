@@ -1,4 +1,4 @@
-    //faire apparaître le formulaire du creation du thread en cliquant sur le button "newThread"
+//faire apparaître le formulaire du creation du thread en cliquant sur le button "newThread"
 const newThread = document.getElementById('newThread');
 const modalContainer = document.getElementById('modalContainer');
 const threadCloseBtn = document.getElementById('threadCloseBtn');
@@ -25,55 +25,49 @@ modalContainer.addEventListener("click", (e) => {
         modalContainer.style.display = "none"
     }
 })
-    
-    // newThread.addEventListener("click", () => {
-    //     if (threadForm.style.display === 'none' || threadForm.style.display === '') {
-    //         threadForm.style.display = 'block';
-    //     } else {
-    //         threadForm.style.display = 'none';
-    //     }
-    // })
-    
-    // lq creation du thread 
-    const threads = JSON.parse(localStorage.getItem('threads')) || [];
 
-    let users = ($_SESSION['user'] && $_SESSION['user']['username']) ? $_SESSION['user']['username'] : '';
 
-    let score = 0;
 
-    const createThread = document.getElementById('createThread');
-    const newThreadForm = document.getElementById('threadForm');
-    const forumContainer = document.getElementById('forumcontainer');
+// la creation du thread 
+const threads = JSON.parse(localStorage.getItem('threads')) || [];
 
-    createThread.addEventListener('click', () => {
-        score = +1;
-        let timestamp = new Date().toLocaleString();
-        const newThread = {
-            tag: document.getElementById('tag').value,
-            title: document.getElementById('title').value,
-            content: document.getElementById('content').value,
-            timestamp,
-            user: users,
-        };
+let users = ($_SESSION['user'] && $_SESSION['user']['username']) ? $_SESSION['user']['username'] : '';
 
-        threads.push(newThread);
-        localStorage.setItem('threads', JSON.stringify(threads));
+let score = 0;
 
-        displayThreads();
-    });
+const createThread = document.getElementById('createThread');
+const newThreadForm = document.getElementById('threadForm');
+const forumContainer = document.getElementById('forumcontainer');
 
-    function displayThreads() {
-        forumContainer.innerHTML = '';
+createThread.addEventListener('click', () => {
+    score = +1;
+    let timestamp = new Date().toLocaleString();
+    const newThread = {
+        tag: document.getElementById('tag').value,
+        title: document.getElementById('title').value,
+        content: document.getElementById('content').value,
+        timestamp,
+        user: users,
+    };
 
-        for (let i = 0; i < threads.length; i++) {
-            const threadLink = document.createElement('a');
-            threadLink.href = `thread.php?threadId=${i}`;
-            threadLink.innerHTML = `<h4>${threads[i].title}</h4>
+    threads.push(newThread);
+    localStorage.setItem('threads', JSON.stringify(threads));
+
+    displayThreads();
+});
+
+function displayThreads() {
+    forumContainer.innerHTML = '';
+
+    for (let i = 0; i < threads.length; i++) {
+        const threadLink = document.createElement('a');
+        threadLink.href = `thread.php?threadId=${i}`;
+        threadLink.innerHTML = `<h4>${threads[i].title}</h4>
               <p> An interesting ${threads[i].tag}'s topic to discuss </p>`;
 
-            const threadDiv = document.createElement('div');
-            threadDiv.classList.add('subforum-row');
-            threadDiv.innerHTML = `
+        const threadDiv = document.createElement('div');
+        threadDiv.classList.add('subforum-row');
+        threadDiv.innerHTML = `
               <div class="subforum-icon subforum-column center" id="icon">
                   <i class="fa-regular fa-comment" style="color: #e0e9f6;"></i>
               </div>
@@ -93,67 +87,67 @@ modalContainer.addEventListener("click", (e) => {
               </div>
           `;
 
-            forumContainer.appendChild(threadDiv);
-        }
+        forumContainer.appendChild(threadDiv);
     }
+}
 
-    newThreadForm.addEventListener("click", () => {
-        if (threadForm.style.display === 'none' || threadForm.style.display === '') {
-            threadForm.style.display = 'block';
-        } else {
-            threadForm.style.display = 'none';
-        }
-    });
+newThreadForm.addEventListener("click", () => {
+    if (threadForm.style.display === 'none' || threadForm.style.display === '') {
+        threadForm.style.display = 'block';
+    } else {
+        threadForm.style.display = 'none';
+    }
+});
 
-    threadCloseBtn.addEventListener("click", () => {
-        modalContainer.style.display = 'none';
-    });
+threadCloseBtn.addEventListener("click", () => {
+    modalContainer.style.display = 'none';
+});
 
-    modalContainer.addEventListener("click", (e) => {
-        modalContainer.style.display = 'none';
-    });
+modalContainer.addEventListener("click", (e) => {
+    modalContainer.style.display = 'none';
+});
 
-    const contents = document.getElementById('threadContent');
-    const commentBtn = document.getElementById('commentBtn');
-    const likeBtn = document.getElementById('likeBtn');
-    const quoteBtn = document.getElementById('quoteBtn');
+const contents = document.getElementById('threadContent');
+const commentBtn = document.getElementById('commentBtn');
+const likeBtn = document.getElementById('likeBtn');
+const quoteBtn = document.getElementById('quoteBtn');
 
-    const quotedHere = document.getElementById('comments');
-    let commentbox = document.querySelector('.commentsArea');
-    let replied = document.querySelector('.replies');
+const quotedHere = document.getElementById('comments');
+let commentbox = document.querySelector('.commentsArea');
+let replied = document.querySelector('.replies');
 
-    const replies = [];
+const replies = [];
 
-    score = 0;
+score = 0;
 
-    commentBtn.addEventListener('click', () => {
-        let commento = document.getElementById('comments').value;
+commentBtn.addEventListener('click', () => {
+    let commento = document.getElementById('comments').value;
 
-        replies.push(commento);
-        displayReplies();
-    });
+    replies.push(commento);
+    displayReplies();
+});
 
-    function displayReplies() {
-        let timestamp = new Date().toLocaleString();
-        commentbox.innerHTML = '';
+function displayReplies() {
+    let timestamp = new Date().toLocaleString();
+    commentbox.innerHTML = '';
 
-        for (let reply of replies) {
-            let replyDiv = `<br><div class="replies"><p id="replied">${reply}<p>
+    for (let reply of replies) {
+        let replyDiv = `<br><div class="replies"><p id="replied">${reply}<p>
           <br><p id=timed>${timestamp}</p><br>
           <button id="likedBtn"><i class="fa-solid fa-heart"></i></button>
           <button id="replyBtn"><a href="#comments">Reply</a></button>
           <button id="quotedBtn">+Quote</button></div>
           <hr>
           `;
-            commentbox.innerHTML += replyDiv;
-            console.log(replyDiv);
-        }
+        commentbox.innerHTML += replyDiv;
+        console.log(replyDiv);
     }
+}
 
-    likeBtn.addEventListener('click', () => {
-        likeBtn.classList.toggle("changeColor");
-    });
+likeBtn.addEventListener('click', () => {
+    likeBtn.classList.toggle("changeColor");
+});
 
-    quoteBtn.addEventListener('click', () => {
-        quotedHere.value += '" ' + content + '\n\n' + '"';
-    });
+quoteBtn.addEventListener('click', () => {
+    quotedHere.value += '" ' + content + '\n\n' + '"';
+});

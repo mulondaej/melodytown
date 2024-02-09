@@ -1,0 +1,514 @@
+/*...*/
+/* CREATE BTNS */
+#threadForm {
+    max-width: 310px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ccdde2e1;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(82, 85, 86, 0.1);
+    display: block;
+}
+
+label {
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+select,
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+#threadForm option {
+    font-size: 17px;
+}
+
+select {
+    height: 36px;
+}
+
+textarea {
+    height: 150px;
+}
+
+.threadPosted p,
+.threadPosted h2 {
+    text-align: center;
+    margin: 0 auto;
+    color: #ffffff;
+    /* Red color for error messages */
+}
+
+.send {
+    text-align: center;
+}
+
+#newThread {
+    justify-content: center;
+    margin: 0 auto;
+    /* background-color: transparent; */
+    margin-bottom: 12px;
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#newThread:hover, #threadCloseBtn:hover {
+    color: rgb(255, 242, 169);
+}
+
+#ToCreate {
+    border: transparent;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 6px 8px;
+}
+
+#modalThread {
+    background-color: transparent;
+    padding: 1rem;
+    width: 50%;
+    height: max-content;
+    margin: 0 auto;
+    margin-top: 0rem;
+}
+
+#threadCloseBtn {
+    cursor: pointer;
+    float: right;
+    color: red;
+    font-size: 31px;
+}
+
+
+/* MAIN SECTION FORUM*/
+#main {
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    justify-content: space-evenly;
+    display: flex;
+}
+
+#mainDiscover {
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    justify-content: space-evenly;
+    display: block;
+}
+
+#topicContainer {
+    width: 80%;
+    padding: 10px;
+    background-color: #f8fffde3;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    margin: 0 auto;
+}
+
+#forum {
+    width: 70%;
+    padding: 20px;
+    background-color: #f8fffde3;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.forum h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.thread-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* subforum threads styling*/
+.forumcontainer {
+    margin: 5px;
+    padding: 12px;
+    max-height: max-content;
+}
+
+.subforum {
+    margin-top: 15px;
+    text-decoration: none;
+    max-height: max-content;
+}
+
+.subforum a {
+    font-style: italic;
+    font-size: 18px;
+    color: #f2f2f2;
+    margin: 0;
+}
+
+.subforum a:hover {
+    text-decoration: underline;
+    color: gold;
+}
+
+.subforum-title {
+    color: white;
+    background-color: #4b8d95;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 4px;
+}
+
+.subforum-row {
+    display: grid;
+    grid-template-columns: 8% 65% 12% 15%;
+    margin-bottom: 6px;
+    max-height: 70px;
+}
+
+.subforum-column {
+    color: white;
+    padding: 8px;
+    margin: 4px;
+    border-radius: 5px;
+    background-color: #51686a;
+    margin-bottom: 3px;
+    margin-top: 2px;
+    max-height: 70px;
+}
+
+.subforum-column h4 {
+    text-align: center;
+    text-decoration: none;
+}
+
+.subforum-column h4 a {
+    color: rgb(255, 221, 176);
+    text-decoration: none;
+}
+
+.subforum-column div {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5px;
+}
+
+.subforum-column a {
+    color: #d8f4fc;
+}
+
+.subforum-column div a {
+    font-size: 14px;
+    color: rgb(30, 20, 13);
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.subforum-description * {
+    margin-block: 0;
+}
+
+.subforum-description p {
+    margin: 0;
+    font-size: 13px;
+    margin-top: 5px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.subforum-info {
+    text-align: center;
+    font-size: 13px;
+}
+
+.subforum-info a {
+    font-size: 13px;
+}
+
+.subforum-stats span,
+.subforum-stats a {
+    font-size: 13px;
+    margin: 0 auto;
+    text-align: center;
+    height: max-content;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subforum-icon i {
+    margin: 0 auto;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.subforum-icon {
+    width: fit-content;
+}
+
+.subforum-devider {
+    display: none;
+    margin-bottom: 8px;
+}
+
+/* THREADS */
+#threadMain {
+    margin: 0 auto;
+    width: 95%;
+}
+
+fieldset {
+    border-radius: 8px;
+    background-color: rgb(238, 228, 228);
+    justify-content: center;
+    margin: 0 auto;
+}
+
+#threadContains {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#threadTheader {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+#threadTitle {
+    display: flex;
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+#tag {
+    margin-right: 50px;
+    color: rgb(52, 85, 64);
+}
+
+#backArrow {
+    text-align: left;
+    justify-content: left;
+    top: 0;
+    left: 0;
+    position: relative;
+}
+
+#backBtn {
+    background-color: transparent;
+    border: none;
+}
+
+#threadContent {
+    width: 80%;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 0 auto;
+    justify-content: center;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(71, 72, 72, 0.2);
+}
+
+#contents {
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#userCard {
+    display: inline-block;
+    height: max-content;
+    width: 20%;
+    background-color: cornsilk;
+    border-radius: 7px;
+    box-shadow: 0 0 10px rgba(71, 72, 72, 0.2);
+    position: relative;
+}
+
+#userCard a,
+#userCard p,
+.usernameMedia a,
+.userMedia a {
+    text-decoration: none;
+    color: #507b97;
+}
+
+.username {
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+.pFlex {
+    display: flex;
+    justify-content: space-evenly;
+    bottom: 0;
+    position: relative;
+}
+
+.userImg {
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#userAvy {
+    width: 89px;
+    height: 89px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    justify-content: center;
+    position: relative;
+    margin: 7px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.interact {
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    width: 30%;
+}
+
+.interact button {
+    justify-content: center;
+    margin: 0 auto;
+    border: none;
+    background-color: transparent;
+    margin-right: 1px;
+}
+
+.interact button a,
+.replies button a {
+    color: black;
+}
+
+.interact button:hover {
+    color: rgb(235, 90, 70);
+}
+
+#timed p {
+    justify-content: center;
+    text-align: center;
+    font-size: 12px;
+    margin: 8px;
+}
+
+#userPosting {
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#comments {
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+#centered {
+    margin-top: -15px;
+    width: 60%;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+#messTxt,
+#compteH1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* REPLIES, COMMENTS */
+.quoted {
+    background-color: grey;
+}
+
+.commentsArea {
+    display: block;
+}
+
+.replies {
+    margin-top: -20px;
+    border-radius: 8px;
+    background-color: rgb(238, 228, 228);
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.replies button {
+    justify-content: right;
+    margin: 0 auto;
+    border: none;
+    background-color: transparent;
+    margin-right: 8px;
+    text-align: right;
+}
+
+.replies button:hover,
+#commentBtn:hover {
+    color: rgb(235, 90, 70);
+}
+
+#replied {
+    margin-top: 20px;
+}
+
+#commentBtn {
+    max-width: max-content;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 5px 12px;
+    background-color: #6b97b4;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#commentBtn:hover {
+    background-color: rgb(144, 255, 80);
+}
+
+/* switching colors */
+.changeColor {
+    color: green;
+    display: block;
+}
+
+#likeBtn {
+    background-color: transparent;
+}

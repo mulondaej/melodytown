@@ -83,7 +83,13 @@ document.addEventListener("DOMContentLoaded", function () {
         fileInput.value = ''; // Clear the file input
     });
 
-   
+    
 
 
 });
+
+const likeBtn = document.getElementById("likeBtn");
+
+    likeBtn.addEventListener('click', function () {
+        likeBtn.classList.toggle("changeColor");
+    });

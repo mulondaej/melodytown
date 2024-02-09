@@ -59,3 +59,37 @@ function checkImage($image) {
 
     return $errors['image'];
 }
+
+function checkAvatar($avatar) {
+    $errors['avatar'] = '';
+
+    if($avatar['error'] != 4) {
+        if($avatar['error'] != 1 &&  $avatar['size'] > 0 && $avatar['size'] <= 1000000) {
+            if($avatar['error'] == 0) {
+
+                $extensionArray = [
+                    'jpg' => 'image/jpeg', 
+                    'jpeg' => 'image/jpeg', 
+                    'png' => 'image/png', 
+                    'gif' => 'image/gif', 
+                    'webp' => 'image/webp',
+                ];
+
+                $imgExtension = pathinfo($avatar['name'], PATHINFO_EXTENSION);
+
+                if(!array_key_exists($imgExtension, $extensionArray) || mime_content_type($avatar['tmp_name']) != $extensionArray[$imgExtension]) {
+                    $errors['avatar'] = IMAGE_ERROR_EXTENSION;
+                }
+
+            } else {
+                $errors['avatar'] = IMAGE_ERROR;
+            }
+        } else {
+            $errors['avatar'] = IMAGE_ERROR_SIZE;
+        }
+    } else {
+        $errors['avatar'] = IMAGE_ERROR_EMPTY;
+    }
+
+    return $errors['avatar'];
+}

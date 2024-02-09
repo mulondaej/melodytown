@@ -29,7 +29,7 @@ $comments = new comments;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateAvatar'])) {
     if (!empty($_FILES['avatar'])) {
-        $avatarMessage = checkImage($_FILES['avatar']);
+        $avatarMessage = checkAvatar($_FILES['avatar']);
 
         if ($avatarMessage != '') {
             $errors['avatar'] = $avatarMessage;
