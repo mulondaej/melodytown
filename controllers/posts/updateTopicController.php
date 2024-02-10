@@ -102,17 +102,17 @@ if(isset($_POST['deletePost'])) {
 
 if(isset($_POST['updatePost'])) {
 
-    if (!empty($_POST['content'])) {
-        if (preg_match($regex['content'], $POST['content'])) {
-            $replies->content = clean($_POST['content']);
+    if (!empty($_POST['reply'])) {
+        if (preg_match($regex['reply'], $POST['reply'])) {
+            $replies->content = clean($_POST['reply']);
             if ($replies->checkIfExistsByContent() == 1 ) {
-                $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
+                $errors['reply'] = TOPIC_REPLIES_UPDATE_ERROR;
             }
         } else {
-            $errors['content'] = TOPIC_CONTENT_UPDATE_SUCCESS;
+            $errors['reply'] = TOPIC_REPLIES_UPDATE_SUCCESS;
         }
     } else {
-        $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
+        $errors['reply'] = TOPIC_REPLIES_UPDATE_ERROR;
     }
 
     if(empty($errors)) {

@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const fileInput = document.getElementById('fileUploadMedia');
     const uploadButton = document.getElementById('uploadMediaBtn');
     const mediaList = document.getElementById('media-list');
-    
+
     uploadButton.addEventListener('click', function () {
         fileInput.click();
     });
@@ -83,13 +83,24 @@ document.addEventListener("DOMContentLoaded", function () {
         fileInput.value = ''; // Clear the file input
     });
 
-    
+
 
 
 });
 
 const likeBtn = document.getElementById("likeBtn");
 
-    likeBtn.addEventListener('click', function () {
-        likeBtn.classList.toggle("changeColor");
-    });
+likeBtn.addEventListener('click', function () {
+    likeBtn.classList.toggle("changeColor");
+});
+
+const editForm = document.getElementById('editModal');
+const formEdit = document.getElementById('logFormEdit');
+
+editForm.addEventListener("click", () => {
+    if (formEdit.style.display === 'none' || formEdit.style.display === '') {
+        formEdit.style.display = 'block';
+    } else {
+        formEdit.style.display = 'none';
+    }
+});

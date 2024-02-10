@@ -136,8 +136,8 @@ class Topics
 
     public function getUserTopics($id_users)
     {
-        $sql = 'SELECT * FROM `a8yk4_topics` WHERE `id_users` = :id_users
-        ORDER BY `publicationDate` ASC LIMIT 1';
+        $sql = 'SELECT * FROM `a8yk4_topics` WHERE id_users = :id_users
+        ORDER BY `publicationDate` ';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id_users', $id_users);
         $req->execute();

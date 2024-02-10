@@ -1,6 +1,6 @@
 <?php
 require_once "../../models/posts/topicsModel.php";
-require_once "../../models/posts/topicsAnswersModel.php";
+require_once "../../models/posts/topicsRepliesModel.php";
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
@@ -20,18 +20,17 @@ $topicsList = $topic->getList();
 $latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
 
-$answers = new Answers;
-$answersList = $answers->getList();
-$latestAnswer = $answers->getAnswer();
-$postCount = count($answersList);
+$replies = new Replies;
+$repliesList = $replies->getList();
+$latestReply = $replies->getReply();
+$postCount = count($repliesList);
 
 $totalCount = $postCount + $topicCount;
 
 $title = 'Topics-List';
 
-//  var_dump($topicsList);
 
-require_once '../../views/parts/header.php';
-require_once '../../views/replies/TopicAnswersList.php';
+require_once '../../views/parts/header.php'; 
+require_once '../../views/replies/TopicRepliesList.php';
 require_once '../../views/parts/footer.php';
 ?>

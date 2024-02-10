@@ -48,6 +48,15 @@
 
          <div class="mainStatus"> 
             <div class="State">
+                <?php if (!isset($_SESSION['user'])) { ?>
+                    <p class="errorsContainer">Vous devez être connecté pour ajouter un commentaire</p>
+                        <a href="/connexion" class="cta">Se connecter</a>
+                        <a href="/inscription" class="cta">S'inscrire</a>
+                    <?php } else { ?>
+                    <?php if (isset($success)) { ?>
+                        <p class="successContainer" id="successMessage"><?= $success ?></p>
+                    <?php } ?>
+
                 <form action="" method="POST" id="postStatus">
                     
                     <textarea name="status" id="postHere" ></textarea>
@@ -56,46 +65,89 @@
                          <p class="errorsMessage"><?= $errors['status'] ?></p>
                      <?php endif; ?><br>
                 </form>
-                
+
                 <div class="statusContainer">
 
                     <?php if (count($userOwnStatus) == 0) { ?>
-                <p class="errorsMessage">No status available</p>
-                <?php } else { ?>
+                        <p class="errorsMessage">No status available</p>
+                    <?php } else { ?>
                 <?php foreach ($userOwnStatus as $ownStatus) { ?>
+
                     <div class="status" id="status">
                         <p><b><?= $ownStatus->username ?></b>: <?= $ownStatus->content ?></p>
-                        <button class="likeStatus" id="likeBtn">
-                            <i class="fa-solid fa-heart">Like</i></button>
+                        <button class="likeStatus" id="likeBtn"><i class="fa-solid fa-heart">Like</i></button>
                         <button class="commentStatus"><a href="#commenting">comment</a></button>
+                        <button type="submit" value="edit" id="editModal">edit</button>
+                        <button type="submit" id="profiModalBtn">delete</button>
                     </div>
+
+                    <div id="logFormEdit">
+                            <form action="" method="POST"id="editForm">
+                                <textarea class="replyText" value="<?= $ownStatus->content ?>" ></textarea>
+                                <input type="submit" class="postReply" name="updateStatus" value="edit">
+                                <?php if (isset($errors['status'])) : ?>
+                                    <p class="errorsMessage"><?= $errors['status'] ?></p>
+                                <?php endif; ?><br>
+                            </form>
+                        </div>
+
+                    <div id="modalContainer">
+                        <div id="modal">
+                            <span id="closeBtn">&times;</span>
+                            <p id="modalText">Vouliez-vous le supprimer?</p>
+                            <form action="" method="POST" id="delete">
+                                <input type="submit" value="supprimer" name="deleteStatus">
+                            </form>
+                        </div>
+                    </div>
+
                     <?php } ?>
                 <?php } ?>
 
-                    <ul class="comments">
-                        <!-- Comments go here -->
+                    <ul class="comments"><!-- Comments go here -->
                         <li>
                         <?php if (count($userOwnComments) == 0) { ?>
-                <p class="errorsMessage">No comments</p>
-                <?php } else { ?>
-                <?php foreach ($userOwnComments as $commentingUser) { ?>
-                    <p><b><?= $commentingUser->username ?></b>: <?= $commentingUser->content ?></p>
-                            <button class="likeComment" id="likeBtn">
-                                <i class="fa-solid fa-heart">Like</i></button>
+                            <p class="errorsMessage">No comments</p>
+                        <?php } else { ?>
+                     <?php foreach ($userOwnComments as $commentingUser) { ?>
+                            <p><b><?= $commentingUser->username ?></b>: <?= $commentingUser->content ?></p>
+                            <button class="likeComment" id="likeBtn"><i class="fa-solid fa-heart">Like</i></button>
                             <button class="replyComment"><a href="#commenting">reply</a></button>
+                            <button type="submit" value="edit" id="editModal">edit</button>
+                            <button type="submit" value="delete" id="commentModalBtn">delete</button>
                         </li>
+                        <div id="logFormEdits">
+                            <form action="" method="POST"id="editForme">
+                                <textarea class="replyText" ></textarea>
+                                <input type="submit" class="postReply" name="updateComment" value="edit">
+                                <?php if (isset($errors['comment'])) : ?>
+                                    <p class="errorsMessage"><?= $errors['comment'] ?></p>
+                                <?php endif; ?><br>
+                            </form>
+                        </div>
                         
+                        <div id="modalContainer">
+                        <div id="modal">
+                            <span id="closeBtn">&times;</span>
+                            <p id="modalText">Vouliez-vous supprimer le commentaire?</p>
+                            <form action="" method="POST" id="delete">
+                                <input type="submit" value="supprimer" name="deleteComment">
+                            </form>
+                        </div>
+                    </div>
+                        <?php } ?>
                     <?php } ?>
-                    <?php } ?>
+
                     </ul>
                     <!-- Reply form for status -->
-                    <form action="" method="POST" class="reply-form hidden">
-                        
+
+                    <form action="" method="POST" class="replying">
                         <textarea class="replyText" id="commenting"></textarea>
                         <input type="submit" class="postReply" name="postComment" value="reply">
                         <?php if (isset($errors['comment'])) : ?>
-                         <p class="errorsMessage"><?= $errors['comment'] ?></p>
-                     <?php endif; ?><br>
+                            <p class="errorsMessage"><?= $errors['comment'] ?></p>
+                        <?php endif; ?><br>
+                     <?php } ?>
 
                     </form>
                 </div>
@@ -111,8 +163,8 @@
             </div>
         </aside>
     </div>
-    
+
 </main>
 
-<script src="../../assets/javaSc/ok.js"></script>
+<script src="../../assets/javaSc/profileModal.js"></script>
 <script src="../../assets/javaSc/profile.js"></script>

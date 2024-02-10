@@ -45,7 +45,11 @@ button {
 button:hover,
 #uploadMediaBtn:hover,
 #createThread:hover,
-#ToCreate:hover {
+#ToCreate:hover , 
+#posted:hover, 
+#editAvatar:hover, 
+#editCover:hover,
+.searchContainer button:hover {
     background-color: #6ca4ca;
     text-decoration: none;
 }
@@ -62,7 +66,7 @@ header {
     display: flex;
     align-items: center;
     padding: 10px 20px;
-    justify-content: space-between;
+    justify-content: space-evenly;
     height: 8rem;
     position: relative;
     text-align: center;
@@ -160,14 +164,14 @@ header a {
 #connect {
     background-color: transparent;
     border: transparent;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 #idCorner {
     right: 0;
     top: 0;
     justify-self: right;
-    color: rgb(161, 255, 247);
+    color: rgb(151, 172, 195);
 }
 
 /* NAVBAR */
@@ -336,33 +340,46 @@ button:hover,
 }
 
 /* SEARCHBAR */
-#searching {
-    justify-content: space-evenly;
-    margin: 0 auto;
-    text-align: center;
-    right: 0;
-    left: 0;
+.searchContainer {
+    display: flex;
+    gap: 0.2rem;
+    justify-content: center;
     top: 0;
+    margin: 0 auto;
+    margin-top: 2rem;
     position: absolute;
-    width: 25%;
-}
-
-#sBtn {
+    height: 20%;
+  }
+  
+  .searchContainer input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .searchContainer button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #606d75;
+    color: #f5f9ff;
+    border: none;
+    border-radius: 0 5px 5px 0;
     cursor: pointer;
-}
+    text-align: center;
+    width: max-content;
+  }
+ 
+  #searchResults {
+    margin-top: 20px;
+  }
+  
 
-#searchQuery {
-    height: 4rem;
-}
-
-#sBtn:hover {
-    text-decoration: underline;
-    background-color: rgb(127, 210, 108);
+/* modal styling */
+#profiModalBtn {
     color: black;
 }
 
-
-/* modal styling */
 #openModalBtn {
     background-color: rgb(219, 30, 30);
     color: white;
@@ -620,12 +637,13 @@ button:hover,
     border-bottom-right-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
-    margin-top: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
     display: block;
 }
 
 .userContainer p {
+    margin: 10px;
     text-align: center;
     color: #c8d6de;
 }
@@ -635,10 +653,6 @@ button:hover,
     justify-content: space-evenly;
     color: white;
     position: relative;
-}
-
-.infoUser p {
-    margin: 1rem;
 }
 
 .mainContainer {
@@ -744,6 +758,7 @@ button:hover,
 #postStatus {
     display: grid;
     grid-template-columns: repeat(2, 0fr);
+    gap: 0.1rem;
     justify-content: space-evenly;
     border-radius: 8px;
     height: max-content;
@@ -765,6 +780,7 @@ button:hover,
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    background-color: #507b97;
 }
 
 /*  */
@@ -793,15 +809,6 @@ button:hover,
     border-radius: 5px;
     resize: vertical;
 }
-.likeStatus,
-.commentStatus {
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 12px;
-    text-align: center;
-}
 
 .comments {
     list-style-type: none;
@@ -822,6 +829,16 @@ button:hover,
     position: relative;
 }
 
+.comments button, #status button {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 12px;
+    text-align: center;
+    background-color: transparent;
+}
+
 .likeComment,
 .replyComment,
 .postReply {
@@ -832,12 +849,39 @@ button:hover,
     margin: 0 auto;
     margin-top: 10px;
     text-align: center;
+    background-color: #507b97;
 }
 
 .replyText {
     width: 20rem;
     height: 4rem;
 }
+
+.replying {
+    display: grid;
+    grid-template-columns: repeat(2, 0fr);
+    gap: 0.1rem;
+}
+
+/* form hidden */
+#logFormEdit, #logFormEdits {
+    display: none;
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+}
+
+#editForm, #editForme {
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 0fr);
+    gap: 0.1rem;
+}
+
+/*  */
+
 /* profile 's right sidebar */
 .activity {
     margin: 10px;
@@ -856,11 +900,9 @@ button:hover,
     margin: 10px 0;
 }
 
-
-
 /* # */
 #successMessage {
-    color: #23ff6d;
+    color: #209045;
     text-align: center;
     justify-content: center;
     margin: 0 auto;

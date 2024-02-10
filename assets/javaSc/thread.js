@@ -91,14 +91,6 @@ function displayThreads() {
     }
 }
 
-newThreadForm.addEventListener("click", () => {
-    if (threadForm.style.display === 'none' || threadForm.style.display === '') {
-        threadForm.style.display = 'block';
-    } else {
-        threadForm.style.display = 'none';
-    }
-});
-
 threadCloseBtn.addEventListener("click", () => {
     modalContainer.style.display = 'none';
 });

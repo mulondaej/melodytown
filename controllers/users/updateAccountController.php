@@ -156,10 +156,9 @@ if (isset($_POST['updateAvatar'])) {
             } else {
                 $errors['update'] = IMAGE_ERROR;
             }
-    
         }
-
     }
+    
     var_dump($_POST['updateAvatar']);
 }
 

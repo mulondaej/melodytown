@@ -84,7 +84,7 @@ class Replies {
         $sql = 'SELECT `r`.`id`, SUBSTR(`r`.`content`, 1, 500) AS `content`,
         DATE_FORMAT(`r`.`publicationDate`, "%d/%m/%y") AS `publicationDate`,
         DATE_FORMAT(`r`.`updateDate`, "%d/%m/%y") AS `updateDate`,
-        `u`.`username`, `r`.`id_users`, `r`.`id_topics`
+        `u`.`username`, `r`.`id_users`, `id_topics`
         FROM `a8yk4_topicreplies` AS `r`
         INNER JOIN `a8yk4_users` AS `u` ON `r`.`id_users` = `u`.`id`
         INNER JOIN `a8yk4_topics` AS `t` ON `r`.`id_topics` = `t`.`id`

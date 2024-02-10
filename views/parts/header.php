@@ -27,13 +27,13 @@
                 </a>
             </div>
 
-            <div id="searching" class="searching">
-                <form class="d-flex mt-1 h-25" role="search" id="searchForm">
-                    <input class="form-control me-1 btn-sm h-25" type="search" placeholder="Search" aria-label="Search" >
-                    <button class="btn btn-outline-success btn-sm mt-3 h-75" type="submit" id="sBtn">
-                        <i class="fa fa-search"></i></button>
-                </form>
+            <div class="searchContainer">
+                <input type="text" id="searchInput" placeholder="..Search...">
+                <button onclick="search()">
+                <i class="fa-solid fa-magnifying-glass fa-sm"></i></button>
             </div>
+            <div id="searchResults"></div>
+  
 
             <?php // si la personne n'est pas connécté
             if (empty($_SESSION['user'])) { ?>
@@ -73,11 +73,12 @@
                             <a href="/profile" id="idCorner">@<?= $_SESSION['user']['username'] ?></a>
                         <?php }
                         if ($_SESSION['user']['id_usersRoles'] == 142) { ?>
-                            <a href="/dashboard">Moderateur</a></li>
+                            <a href="/profile" id="idCorner">@<?= $_SESSION['user']['username'] ?></a>
+                            <a href="/dashboard" style="color: rgb(130, 182, 195);">Moderation</a></li>
                         <?php }
                         if ($_SESSION['user']['id_usersRoles'] == 258) { ?>
                             <a href="/profile" id="idCorner">@<?= $_SESSION['user']['username'] ?></a>
-                            <a href="/dashboard">Admin</a>
+                            <a href="/dashboard" style="color: darkgreen;">Admin</a>
                         <?php } ?>
                         <a href="/deconnexion">Déconnexion</a>
                     </div>

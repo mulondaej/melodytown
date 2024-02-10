@@ -92,7 +92,6 @@ textarea {
     font-size: 31px;
 }
 
-
 /* MAIN SECTION FORUM*/
 #main {
     width: 100%;
@@ -511,4 +510,6 @@ fieldset {
 
 #likeBtn {
     background-color: transparent;
+    font-size: 12px;
 }
+

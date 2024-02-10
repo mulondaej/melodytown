@@ -78,7 +78,7 @@
     .siteLogo,
     .siteLogo h1,
     #logo,
-    #searching {
+    .searchContainer {
         display: none;
     }
 

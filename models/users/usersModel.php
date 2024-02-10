@@ -157,7 +157,8 @@ class Users
         return $req->execute();
     }
 
-    public function updateLocation()
+    // les functions sql updates de location, password et avatar
+    public function updateLocation() 
     {
         $sql = 'UPDATE `a8yk4_users` SET `location`=:location WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);

@@ -7,8 +7,8 @@
         <p class="successMessage"><?= $success ?></p>
     <?php } ?>
 
-    <?php if (isset($errors['content'])) { ?>
-        <p class="errorsMessage"><?= $errors['content'] ?></p>
+    <?php if (isset($errors['reply'])) { ?>
+        <p class="errorsMessage"><?= $errors['reply'] ?></p>
     <?php } ?>
     
     

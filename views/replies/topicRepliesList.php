@@ -29,10 +29,10 @@
                     <b>Publié :</b> <?= $r->publicationDate ?> <br>
                     <b>Mis à jour :</b> <?= $r->updateDate ?>
                  </p>
-            <a href="/thread-<?= $r->$id ?>" class="cta">Lire la suite</a>
+                <a href="/thread-<?= $r->$id_topics ?>" class="cta">Lire la suite</a>
                 <div class="threads">
-                    <button type="submit" class="cta"><a href="/modifier-topic-<?= $r->$id ?>">modifier</a></button>
-                    <button type="submit" class="cta"><a href="/modifier-topic-<?= $r->$id ?>">supprimer</a></button>
+                    <button type="submit" class="cta"><a href="/modifier-topic-<?= $r->$id_topics ?>">modifier</a></button>
+                    <button type="submit" class="cta"><a href="/modifier-topic-<?= $r->$id_topics ?>">supprimer</a></button>
                 </div>
             </div>
         </div>

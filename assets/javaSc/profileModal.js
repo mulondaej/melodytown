@@ -1,6 +1,7 @@
 //Modal
 // Récupération des DOM
-const openModalBtn = document.getElementById('openModalBtn');
+const profiModalBtn = document.getElementById('profiModalBtn');
+const comModalBtn = document.getElementById('commentModalBtn');
 const modalContainer = document.getElementById('modalContainer');
 const closeBtn = document.getElementById('closeBtn');
 
@@ -15,7 +16,8 @@ function closeModal() {
 }
 
 // le bouton "Supprimer" par un clic
-openModalBtn.addEventListener('click', openModal);
+profiModalBtn.addEventListener('click', openModal);
+comModalBtn.addEventListener('click', openModal);
 
 // le button "fermer" par un clic
 closeBtn.addEventListener('click', closeModal);
@@ -26,3 +28,10 @@ modalContainer.addEventListener("click", (e) => {
         modalContainer.style.display = "none"
     }
 })
+
+function search() {
+    var searchTerm = document.getElementById("searchInput").value;
+    // Perform search logic here (this is just a placeholder)
+    document.getElementById("searchResults").innerHTML = "<p>Search results for: " + searchTerm + "</p>";
+  }
+  

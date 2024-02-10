@@ -20,7 +20,7 @@ class Comments {
         }
     }
 
-    public function checkIfExistsByReply()
+    public function checkIfExistsByContent()
         {
             $sql = 'SELECT COUNT(content) FROM `a8yk4_comments` WHERE `reply` = :reply';
             $req = $this->pdo->prepare($sql);
