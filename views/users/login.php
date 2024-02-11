@@ -1,24 +1,42 @@
 <section>
     <?php if (isset($success)) { ?>
-        <p id="successMessage"><?= $success ?></p>
+        <!-- Si la connexion est une reussite, afficher le message de succes -->
+        <p id="successMessage">
+            <?= $success ?>
+        </p>
     <?php } ?>
+        
     <form action="/connexion" method="POST" id="logForm">
         <h1>Connexion</h1>
-        <label for="email">Adresse mail</label>
+
+        <label for="email">Adresse mail</label><!-- Champ de l'adresse mail -->
         <input type="email" name="email" id="email" placeholder="alf.nzau243@mail.fr" value="<?= @$_COOKIE['email'] ?>">
+
         <?php if (isset($errors['email'])) { ?>
-            <p class="errorsMessage"><?= $errors['email'] ?></p>
+            <!-- afficher l'erreur si il y en a dans le champ email -->
+            <p class="errorsMessage">
+                <?= $errors['email'] ?>
+            </p>
         <?php } ?>
 
-        <label for="password">Mot de passe</label>
-        <input type="password" name="password" id="password" placeholder="Liproto0!" value="<?= @$_COOKIE['password'] ?>">
+        <label for="password">Mot de passe</label><!-- Champ de mot de passe -->
+        <input type="password" name="password" id="password" placeholder="Liproto0!"
+            value="<?= @$_COOKIE['password'] ?>">
+
         <?php if (isset($errors['password'])) { ?>
-            <p class="errorsMessage"><?= $errors['password'] ?></p>
+            <!-- afficher l'erreur si il y en a dans le champ password -->
+            <p class="errorsMessage">
+                <?= $errors['password'] ?>
+            </p>
         <?php } ?>
-        <div>
+
+        <div><!-- Case à cocher pour se souvenir du mot de passe -->
             <input type="checkbox" name="remember" id="remember"><label for="remember">Se souvenir de moi</label>
         </div>
-        <input type="submit" value="Se connecter">
+
+        <input type="submit" value="Se connecter"><!-- Bouton de la connexion -->
+
+        <!-- Lien pour s'enregistrer -->
         <hr> Ou <a href="/inscription"><i class="fa-solid fa-circle-arrow-right"> S'enregistrer </i></a>
     </form>
 </section>

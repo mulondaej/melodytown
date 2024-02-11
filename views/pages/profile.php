@@ -16,7 +16,7 @@
 
     <div class="userContainer">
         <p>@<b><?= $userAccount->username ?></b>, <i class="fa-sharp fa-solid fa-location-dot fa-sm" style="color: white"></i>
-         <b><?= $userAccount->location ?></b></p>
+         <b><?= $userAccount->location ?></b><small><a href="/modifier-mon-compte"> edit your infos </a></small></p> 
         <div class="infoUser">
             <p>Posts: <span id="postCount"><b><?= $userTotalPost ?></b></span></p>
             <p>Likes: <span id="likeCount"><b>100</b></span></p>
