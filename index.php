@@ -63,11 +63,11 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6;"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics">Rules</a></h4>
+                        <h4><a href="/rules">Rules</a></h4>
                         <p>Les règles de forum à respecter </p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="topics"> <?= $totalCount ?></a> posts</span>
+                        <span><a href="/rules" id="topics"> 1 </a> posts</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href=""><?php if (!empty($_SESSION['user'])) { ?>

@@ -3,9 +3,9 @@
 
 <footer class="footer">
     <div class="footer-links">
-        <a href="#">Help</a>
+        <a href="/contact">Help</a>
         <a href="#">Credits</a>
-        <a href="#">Terms</a>
+        <a href="/termes">Terms</a>
     </div>
     <p>&copy; Melodytown</p>
 </footer>

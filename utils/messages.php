@@ -34,6 +34,9 @@ define('USERS_PASSWORD_UPDATE_ERROR', 'Une erreur est survenue lors de la mise �
 define('USERS_LOCATION_UPDATE_SUCCESS', 'Votre location a bien été mis à jour');
 define('USERS_LOCATION_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre location');
 
+define('CONTACT_UPDATE_SUCCESS', 'Votre location a bien été mis à jour');
+define('CONTACT_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre location');
+
 //MIS A JOUR TOPICS
 define('TOPIC_UPDATE_SUCCESS', 'Votre compte a bien été mis à jour');
 define('TOPIC_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre compte');
@@ -99,3 +102,7 @@ define('TOPICS_ERROR', 'Il y a un eu un soucis: soit le titre;,le tag ou le cont
 // STATUS
 define('STATUS_SUCCESS', 'Status publié avec succes');
 define('STATUS_ERROR', 'Il y a un eu un soucis: peut etre le contenu y manque');
+
+// CONTACT
+define('CONTACT_SUCCESS', 'le message est publié avec succes');
+define('CONTACT_ERROR', 'Il y a un eu un soucis: peut etre le contenu y manque');

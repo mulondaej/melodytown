@@ -35,29 +35,18 @@ section {
 }
 
 /* .... */
-button {
+button { 
     cursor: pointer;
     background-color: #708390;
     text-decoration: none;
     border-radius: 7px;
 }
 
-button:hover,
-#uploadMediaBtn:hover,
-#createThread:hover,
-#ToCreate:hover , 
-#posted:hover, 
-#editAvatar:hover, 
-#editCover:hover,
-.searchContainer button:hover {
-    background-color: #6ca4ca;
-    text-decoration: none;
-}
-
 a {
     text-decoration: none;
     color: rgb(182, 200, 215);
 }
+
 
 /* HEADER */
 header {
@@ -175,7 +164,7 @@ header a {
 }
 
 /* NAVBAR */
-.navbar {
+.navbar { /* les liens et icons sont en flex */
     display: flex;
     justify-content: center;
     text-align: center;
@@ -184,7 +173,7 @@ header a {
 }
 
 .navbar button {
-    background-color: transparent;
+    background-color: transparent; /* trqsnpqrent pour ne pas trop gener */
     border: transparent;
     margin-right: 8px;
 }
@@ -198,14 +187,9 @@ header a {
     font-family: Georgia, Times, 'Times New Roman', serif;
 }
 
-.navbar a:hover,
-a:hover,
-button:hover,
-.navbar button:hover {
-    text-decoration: underline;
-    color: rgb(255, 155, 100);
-}
 
+
+/* les liens de profile et la deconnexion est centré à droite en haut du navbar */
 #logging {
     display: flex;
     margin: 4px;
@@ -224,7 +208,7 @@ button:hover,
 }
 
 /* COMPTE */
-#avatar {
+#avatar { /* la photo de profile ou du compte est centré et au dessus des détails */
     width: 60px;
     height: 60px;
     object-fit: cover;
@@ -239,7 +223,8 @@ button:hover,
     box-shadow: 0 0 10px rgba(225, 228, 231, 0.2);
 }
 
-.comptePage {
+/* pour la centrification de la page de compte */
+.comptePage { 
     margin: 0 auto;
     margin-top: 10px;
     text-align: center;
@@ -250,6 +235,30 @@ button:hover,
     background-color: #b7c2c5d9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(82, 83, 83, 0.2);
+}
+
+.compteH1, #compteH1 { /* le h1 sera centré */
+    text-align: center;
+}
+
+.terms { /* pour la centrification de la page de termes, help et autres */
+    margin: 0 auto;
+    margin-top: 10px;
+    justify-content: center;
+    display: block;
+    height: max-content;
+    width: 60%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(82, 83, 83, 0.2);
+}
+
+.terms div {
+    margin: 10px;
+}
+
+#messTxt, .terms div p {
+    text-align: center;
+    margin: 20px;
 }
 
 #avyCompte {
@@ -529,7 +538,7 @@ button:hover,
     top: 0;
     padding: 0;
     margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* un peu d'ombrage pour stylé les bloques balisés */
 }
 
 #coverPicture {
@@ -635,7 +644,7 @@ button:hover,
     width: 100%;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* un peu d'ombrage pour stylé les bloques balisés */
     margin: 0 auto;
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -679,7 +688,7 @@ button:hover,
     background-color: rgb(251, 253, 255);
     border-radius: 5px;
     height: max-content;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* un peu d'ombrage pour stylé les bloques balisés */
     justify-content: center;
     margin: 5px;
 }
@@ -710,7 +719,7 @@ button:hover,
 .Media,
 .Archive {
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* un peu d'ombrage pour stylé les bloques balisés */
     margin: 4px;
     display: block;
     justify-content: center;
@@ -735,7 +744,7 @@ button:hover,
 .mainStatus {
     background-color: rgb(247, 251, 255);
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* un peu d'ombrage pour stylé les bloques balisés */
     height: max-content;
     width: max-content;
     margin: 5px;
@@ -972,10 +981,12 @@ button:hover,
 }
 
 .usernameMedia {
+    /* le container des images d'utilisateur s'aggrandisse par rapport aux tailles et nombres des images
+    téléchargés */
     color: gold;
     display: flex;
     justify-content: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* un peu d'ombrage pour stylé les bloques balisés */ 
     text-align: center;
     max-height: fit-content;
     margin-top: 19px;
@@ -983,7 +994,7 @@ button:hover,
     background-color: #333;
     padding: 10px 25px;
     margin-left: 10px;
-    width: max-content;
+    width: max-content; /* la taille depend des contenus téléchargés */
     border-radius: 8px;
 }
 
@@ -1005,7 +1016,8 @@ button:hover,
     display: none;
 }
 
-#uploadMediaBtn {
+#uploadMediaBtn { 
+    /* le bouton pour uploqd sur la page media sera marginé de 5pixels et en padding de 8pixels */
     color: #fff;
     padding: 8px 8px;
     border-radius: 7px;
@@ -1032,6 +1044,7 @@ button:hover,
 
 /* RIGHT SIDEBAR */
 .right-sidebar {
+    /* le sidebar ou se trouve les stats du forum ) à droite de main body */
     height: max-content;
     max-width: 28%;
     padding: 15px;
@@ -1041,6 +1054,7 @@ button:hover,
 }
 
 .updates {
+    /* les stats du forum sera mis dans un block sticky */
     height: max-content;
     width: 100%;
     background-color: #f2f2f2;
@@ -1054,10 +1068,6 @@ button:hover,
 
 .updates a {
     text-decoration: none;
-}
-
-.updates a:hover {
-    text-decoration: underline;
 }
 
 .updates ul {
@@ -1119,18 +1129,6 @@ button:hover,
     display: block;
 }
 
-.chatPop:hover .dropup-content {/* Show the dropup menu on hover */
-    display: block;
-}
-
-.chatPop:hover #popUpChat {
-    background-color: #2980B9;
-}
-
-.dropup-content a:hover {
-    background-color: #ddd
-}
-
 .chatPop {
     right: 0;
     bottom: 0;
@@ -1148,7 +1146,8 @@ button:hover,
 }
 
 /* FOOTER */
-.footer {
+.footer { 
+    /* le footer en bas du site dans une couleur grise avec des liens centré au centre */
     background-color: #423d3db5;
     color: #fff;
     display: flex;
@@ -1167,7 +1166,7 @@ button:hover,
     text-align: center;
 }
 
-.footer a:hover {
+.footer a:hover, .updates a:hover {
     text-decoration: underline;
 }
 
@@ -1176,3 +1175,45 @@ button:hover,
     margin-top: 13px;
 }
 
+/* HOVERS */
+/* les hovers de boutons, liens et autres seront sans souligne ou avec un couleur differents*/
+button:hover,
+#uploadMediaBtn:hover,
+#createThread:hover,
+#ToCreate:hover , 
+#posted:hover, 
+#editAvatar:hover, 
+#editCover:hover,
+.searchContainer button:hover {
+    background-color: #6ca4ca;
+    text-decoration: none;
+}
+
+.navbar a:hover,
+a:hover,
+button:hover,
+.navbar button:hover {
+    text-decoration: underline;
+    color: rgb(255, 155, 100);
+}
+
+.chatPop:hover .dropup-content {/* Shows up  on hover */
+    display: block;
+}
+
+.chatPop:hover #popUpChat {
+    background-color: #2980B9;
+}
+
+.dropup-content a:hover {
+    background-color: #ddd
+}
+
+#commentBtn:hover {
+    background-color: rgb(144, 255, 80);
+}
+
+.replies button:hover,
+#commentBtn:hover, .interact button:hover {
+    color: rgb(235, 90, 70);
+}

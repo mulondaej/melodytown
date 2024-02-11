@@ -31,6 +31,10 @@ RewriteRule ^search$ /controllers/users/searchController.php
 
 #ADMIN
 RewriteRule ^dashboard$ /controllers/users/adminController.php
+RewriteRule ^rules$ /utils/rules.php
+RewriteRule ^termes$ /utils/terms.php
+RewriteRule ^help$ /utils/help.php
+RewriteRule ^contact$ /controllers/users/contactController.php
 
 #ERRORS
 RewriteRule ^errors$ /controllers/errors/errorsController.php

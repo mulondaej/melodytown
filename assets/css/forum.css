@@ -414,10 +414,6 @@ fieldset {
     color: black;
 }
 
-.interact button:hover {
-    color: rgb(235, 90, 70);
-}
-
 #timed p {
     justify-content: center;
     text-align: center;
@@ -442,12 +438,6 @@ fieldset {
     width: 60%;
     justify-content: center;
     margin: 0 auto;
-}
-
-#messTxt,
-#compteH1 {
-    text-align: center;
-    margin-bottom: 10px;
 }
 
 /* REPLIES, COMMENTS */
@@ -477,11 +467,6 @@ fieldset {
     text-align: right;
 }
 
-.replies button:hover,
-#commentBtn:hover {
-    color: rgb(235, 90, 70);
-}
-
 #replied {
     margin-top: 20px;
 }
@@ -496,10 +481,6 @@ fieldset {
     font-size: 16px;
     margin-top: 8px;
     margin-bottom: 8px;
-}
-
-#commentBtn:hover {
-    background-color: rgb(144, 255, 80);
 }
 
 /* switching colors */

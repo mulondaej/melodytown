@@ -136,7 +136,7 @@ class Users
     }
 
     /**
-     * Mettre à jour le nom d'utilisateur; l'adresse ,qil et la date de naissance 
+     * Mettre à jour le nom d'utilisateur, l'adresse ,le mail et la date de naissance 
      * @param string $username Le nom d'utilisateur
      * @param string $email L'adresse email
      * @param int $id le id de l'utilisateur
