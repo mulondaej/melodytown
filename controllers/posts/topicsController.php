@@ -1,4 +1,6 @@
 <?php
+
+// les models de site et les utils
 require_once "../../models/posts/topicsModel.php";
 require_once "../../models/posts/topicsRepliesModel.php";
 require_once "../../models/posts/categoriesModel.php";
@@ -17,6 +19,7 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
+// établissement des variables pour accéder aux données des modèles 
 $categories = new Categories;
 $categoriesList = $categories->getList();
 
@@ -27,18 +30,21 @@ $topic = new Topics;
 
 $replies = new Replies;
 
+// si la requete est de type POST (envoi du formulaire), on l'execute
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
 
-    if (!empty($_POST['title'])) {
-        if (preg_match($regex['title'], $_POST['title'])) {
-            $topic->title = clean($_POST['title']);
+    // on récupère les données du formulaire
+    if (!empty($_POST['title'])) { // si le titre n'est pas vide
+        if (preg_match($regex['title'], $_POST['title'])) { // si le titre n'est pas vide
+            $topic->title = clean($_POST['title']); // on récupère le titre en le nettoyant
         } else {
-            $errors['title'] = TOPICS_TITLE_ERROR_INVALID;
+            $errors['title'] = TOPICS_TITLE_ERROR_INVALID; // sinon, afficher le message d'erreur invalid
         }
     } else {
-        $errors['title'] = TOPICS_TITLE_ERROR;
+        $errors['title'] = TOPICS_TITLE_ERROR; // sinon, afficher le message d'erreur 
     }
 
+    // même logique de titre pour le contenu mais avec une regex plus large
     if (!empty($_POST['content'])) {
         if (!preg_match($regex['content'], $_POST['content'])) {
             $topic->content = trim($_POST['content']);
@@ -49,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
         $errors['content'] = TOPICS_CONTENT_ERROR;
     }
 
-
+    // même logique pour les catégories 
     if (!empty($_POST['categories'])) {
         $categories->id = $_POST['categories'];
         if ($categories->checkIfExistsById() == 1) {
@@ -60,7 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
     } else {
         $errors['categories'] = TOPICS_CATEGORIES_ERROR_EMPTY;
     }
-
+    
+    // même logique pour les tags
     if (!empty($_POST['tag'])) {
         $tags->id = $_POST['tag'];
         if ($tags->checkIfExistsById() == 1) {
@@ -72,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
         $errors['tag'] = TOPICS_TAGS_ERROR_EMPTY;
     }
 
+    // si les erreurs sont vides, alors on ajoute le topic
     if (empty($errors)) {
         $topic->id_users = $_SESSION['user']['id'];
         if ($topic->create()) {
@@ -84,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
     }
 }
 
-
+//  
 $topicsList = $topic->getList();
 $latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
@@ -95,8 +103,9 @@ $postCount = count($repliesList);
 
 $totalCount = $postCount + $topicCount;
 
-$title = 'Topics';
+$title = 'Topics';// Titre de la page
 
+//  Inclusion des fichiers: header, du view et du footer
 require_once '../../views/parts/header.php';
 require_once '../../views/posts/topics.php';
 require_once '../../views/parts/footer.php';

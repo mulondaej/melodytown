@@ -1,5 +1,6 @@
 <?php
 
+// les models de site et les utils
 require_once '../models/users/usersModel.php' ;
 require_once '../models/forumModel.php' ;
 require_once '../models/posts/statusModel.php';
@@ -15,9 +16,10 @@ require_once '../utils/functions.php';
 
 session_start();
 
+// établissement des variables pour accéder aux données des modèles 
 $user = new Users;
-// $user->id = $_SESSION['user']['id'];
-// $userAccount = $user->getById();
+//// $user->id = $_SESSION['user']['id'];
+//// $userAccount = $user->getById();
 $latestUser = $user->getUser();
 
 $userDetails = $user->getList();
@@ -46,10 +48,11 @@ $statusList = $status->getList();
 $latestStatus = $status->getStatus();
 $statusCount = count($statusList);
 
-$totalCount = $postCount + $topicCount + $statusCount ;
+$totalCount = $postCount + $topicCount + $statusCount ; // total count de tous les publications : status; topics et replies 
 
-$title = 'MelodyTown';
+$title = 'MelodyTown'; // Titre de la page
 
+//  Inclusion des fichiers: header, du view et du footer
  require_once('..//views/parts/header.php');
  require_once('..//index.php');
  require_once('..//views/parts/footer.php'); ?>

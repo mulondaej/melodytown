@@ -1,5 +1,6 @@
 <?php
 
+// les models de site et les utils
 require_once "../../models/users/usersModel.php" ;
 require_once "../../models/posts/topicsRepliesModel.php" ;
 require_once "../../models/posts/commentsModel.php" ;
@@ -19,28 +20,31 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-
+// établissement des variables pour accéder aux données des modèles 
 $user = new Users;
 $user->id = $_SESSION['user']['id'];
 $userAccount = $user->getById();
 
 $topic = new Topics;
 
-if(isset($_POST['updateInfos'])) {
+// si l'envoi de $_POST variable existe
+if(isset($_POST['updateInfos'])) { // si le formulaire est envoyé
 
-    if (!empty($_POST['title'])) {
-        if (preg_match($regex['title'], $_POST['title'])) {
-            $topic->title = clean($_POST['title']);
-            if ($topic->checkIfExistsByTitle() == 1) {
-                $errors['title'] = TOPIC_TITLE_UPDATE_ERROR;
+    if (!empty($_POST['title'])) { // si le titre n'est pas vide
+        if (preg_match($regex['title'], $_POST['title'])) { // si le titre est valide
+            $topic->title = clean($_POST['title']); // on récupère le nouveau titre en le nettoyant
+            if ($topic->checkIfExistsByTitle() == 1) { // si le titre existe déjà dans la BDD
+                $errors['title'] = TOPIC_TITLE_UPDATE_ERROR;  // afficher le message d'erreur
             }
         } else {
-            $errors['title'] = TOPIC_TITLE_UPDATE_SUCCESS;
+            $errors['title'] = TOPIC_TITLE_UPDATE_SUCCESS; // sinon, afficher le message de succes
         }
     } else {
-        $errors['title'] = TOPIC_TITLE_UPDATE_ERROR;
+        $errors['title'] = TOPIC_TITLE_UPDATE_ERROR; // sinon, afficher le message d'erreur
     }
 
+
+    // Même logique que pour la case de titre mais pour le contenu
     if (!empty($_POST['content'])) {
         if (preg_match($regex['content'], $POST['content'])) {
             $topic->content = clean($_POST['content']);
@@ -54,17 +58,18 @@ if(isset($_POST['updateInfos'])) {
         $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
     }
 
-    if (!empty($_POST['categories'])) {
+    if (!empty($_POST['categories'])) { // si la catégorie n'est pas vide
         $categories->id = $_POST['categories'];
-        if ($categories->checkIfExistsById() == 1) {
+        if ($categories->checkIfExistsById() == 1) { // si la catégorie existe déjà dans la BDD
             $topic->id_categories = $_POST['categories'];
         } else {
-            $errors['categories'] = TOPIC_TAG_CATEGORIE_UPDATE_ERROR;
+            $errors['categories'] = TOPIC_TAG_CATEGORIE_UPDATE_ERROR; // sinon, afficher le message d'erreur
         }
     } else {
-        $errors['categories'] = TOPIC_TAG_CATEGORIE_UPDATE_ERROR;
+        $errors['categories'] = TOPIC_TAG_CATEGORIE_UPDATE_ERROR; // sinon, afficher le message d'erreur
     }
 
+    // Même logique que pour la case de catégories mais pour les tags
     if (!empty($_POST['tag'])) {
         $tags->id = $_POST['tag'];
         if ($tags->checkIfExistsById() == 1) {
@@ -76,6 +81,7 @@ if(isset($_POST['updateInfos'])) {
         $errors['tag'] = TOPIC_TAG_CATEGORIE_UPDATE_ERROR;
     }
 
+    // si les erreurs sont vides, alors mets les informations du topic à jour
     if(empty($errors)) {
         $topic->id_users = $_SESSION['user']['id'];
         if($topic->update()){
@@ -91,6 +97,7 @@ if(isset($_POST['updateInfos'])) {
 
 }
 
+// si l'envoi de delete est déclenche, le topic sera supprimé
 if(isset($_POST['deletePost'])) {
     if($topic->delete()) {
         unset($_SESSION);
@@ -100,8 +107,10 @@ if(isset($_POST['deletePost'])) {
     }
 }
 
+// si l'envoi de $_POST variable existe, alors mets les contenus du reponse à jour
 if(isset($_POST['updatePost'])) {
 
+    // Même logique que pour la case de titre mais pour les réponses ou commentaires
     if (!empty($_POST['reply'])) {
         if (preg_match($regex['reply'], $POST['reply'])) {
             $replies->content = clean($_POST['reply']);
@@ -115,6 +124,7 @@ if(isset($_POST['updatePost'])) {
         $errors['reply'] = TOPIC_REPLIES_UPDATE_ERROR;
     }
 
+    // si les erreurs sont vides, alors mets le contenu du réponse à jour
     if(empty($errors)) {
         $replies->id_users = $_SESSION['user']['id'];
         if($replies->update()){
@@ -127,6 +137,7 @@ if(isset($_POST['updatePost'])) {
 
 }
 
+// Même logique pour la suppression des topics
 if(isset($_POST['deleteReply'])) {
     if($topic->delete()) {
         unset($_SESSION);
@@ -136,11 +147,12 @@ if(isset($_POST['deleteReply'])) {
     }
 }
 
-$topicsList = $topic->getList();
-$topicCount = count($topicsList);
+$topicsList = $topic->getList(); // get all topics
+$topicCount = count($topicsList); // get the number of topics in the list
 
-$title = 'Topic-update';
+$title = 'Topic-update'; // Titre de la page
 
+//  Inclusion des fichiers: header, du view et du footer
 require_once '../../views/parts/header.php';
 require_once '../../views/posts/updateTopic.php';
 require_once '../../views/parts/footer.php';

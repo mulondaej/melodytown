@@ -1,31 +1,29 @@
 <?php
 /**
- *vérifier que l'utilisateur est connecté.
+ *
  */
 require_once '../../models/users/usersModel.php';
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
 
-session_start();
+session_start(); // démarrage de la session
 
-if(empty($_SESSION['user'])){
-    header('Location: /connexion');
+if(empty($_SESSION['user'])){ // si l'utilisateur n'est pas en ligne
+    header('Location: /connexion'); // le rediriger vers la page d'accueil
     exit;
 }
 
-
+// établissement des variables de session pour users
 $user = new Users;
 $user->id = $_SESSION['user']['id'];
 $userAccount = $user->getById();
 // $userAccount->avatar;
 
-$title = 'Account';
+$title = 'Account'; // Titre de la page
 
-// var_dump($userAccount);
-// var_dump('----');
-// var_dump($user);
 
+//  Inclusion des fichiers: header, du view et du footer
 require_once '../../views/parts/header.php';
 require_once '../../views/users/account.php';
 require_once '../../views/parts/footer.php';

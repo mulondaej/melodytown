@@ -27,7 +27,7 @@
             <p id=errorsMessage><?= $errors['email'] ?></p>
         <?php } ?>
 
-        <label for="birthdate">Date de naissance</label><!-- champ pour modifier le password -->
+        <label for="birthdate">Date de naissance</label><!-- champ pour modifier la daite de naissance -->
         <input type="date" name="birthdate" id="birthdate" value="<?= $userAccount->birthdate ?>">
         <?php if (isset($errors['birthdate'])) { ?>
             <p id=errorsMessage><?= $errors['birthdate'] ?></p>
@@ -47,13 +47,13 @@
         
     <form action="/modifier-mon-compte" method="post" id="logForm">
             <!--  -->
-        <label for="password">Nouveau mot de passe</label><!-- champ pour modifier  -->
+        <label for="password">Nouveau mot de passe</label><!-- champ pour le nouveau mot de passe -->
         <input type="password" name="password" id="password" placeholder="Liproto0!">
         <?php if (isset($errors['password'])) { ?>
             <p id=errorsMessage><?= $errors['password'] ?></p>
         <?php } ?>
 
-        <label for="password_confirm">Confirmation du nouveau mot de passe</label><!-- champ pour modifier  -->
+        <label for="password_confirm">Confirmation du nouveau mot de passe</label><!-- champ pour confirmer le nouveau mot de passe -->
         <input type="password" name="password_confirm" id="password_confirm" placeholder="Liproto0!">
         <?php if (isset($errors['password_confirm'])) { ?>
             <p id=errorsMessage><?= $errors['password_confirm'] ?></p>
