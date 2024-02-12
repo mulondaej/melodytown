@@ -246,23 +246,78 @@
       margin: 0 auto;
   }
 
+  /* profile */
   .mainbox {
+    padding: 0;
+    margin: 0;
     display: block;
   }
 
-  .mainStatus {
-    display: block;
-    width: 50%;
-}
-
-#posted, #postHere {
-
-}
-
-.state, #postStatus, #status {
+  .mainContainer {
+    display: flex;
+    /* flex-basis: 100%;
+    flex-wrap: wrap;
+    flex-direction: column; */
     width: 50%;
     margin: 0 auto;
     padding: 0;
+  }
+
+  .asideBar,
+.activ {
+    flex-basis: 100%;
+    display: none;
+}
+
+  .mainStatus {
+    flex-direction: column;
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+}
+
+#postStatus {
+    display: grid;
+    grid-template-columns: repeat(2, 0fr);
+    gap: 0.1rem;
+    justify-content: space-evenly;
+    border-radius: 8px;
+    height: max-content;
+    width: max-content;
+    margin: 7px;
+}
+
+#postHere {
+    width: 21rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin: 7px;
+    height: max-content;
+}
+
+#posted {
+    width: max-content;
+    margin: 0 auto;
+    padding: 0px 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #507b97;
+}
+
+.state, #status {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.replying {
+    display: grid;
+    grid-template-columns: repeat(2, 0fr);
+    gap: 0.1rem;
+    margin: 0 auto;
+    margin: 5px;
 }
 
 .userContainer {
@@ -273,12 +328,84 @@
 }
 .userContainer p {
     margin: 4px;
-    font-size: 14px;
+    font-size: 11px;
 }
 
+/* pictures : cover et avatar */
+.coverContainer {
+    position: relative;
+    width: 100%;
+    max-height: 150px;
+    overflow: hidden;
+    background-color: none;
+    top: 0;
+    padding: 0;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    /* un peu d'ombrage pour stylé les bloques balisés */
+}
 
+#coverPicture {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    top: 0;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
 
-  /*  */
+.avatarContainer {
+    padding: 0;
+    width: 90%;
+    height: max-content;
+    margin-top: -9rem;
+    position: relative;
+    z-index: 3;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    margin-bottom: 0;
+    justify-content: center;
+    text-align: center;
+}
+
+#profileAvy {
+    padding: 0;
+    width: 97px;
+    height: 97px;
+    margin: 5px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    justify-content: center;
+    animation: pulse 2s infinite;
+}
+
+#editAvatar {
+    width: max-content;
+    padding: 5px 22px;
+    border: none;
+    cursor: pointer;
+    z-index: 3;
+    position: relative;
+    justify-content: center;
+    right: 126px;
+    margin-top: -5rem;
+}
+
+.overLay {
+    position: relative;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
+    transition: .5s ease;
+    opacity: 0;
+    display: inline;
+    border-radius: 15px;
+    justify-content: center;
+}
+
+  /* topics  */
   .topicsContainer {
       display: inline-block;
       grid-template-columns: none;
@@ -338,7 +465,7 @@
   .footer p {
       margin: 15px;
   }
-  
+
 }
 
 /* Tablet styles */

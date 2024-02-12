@@ -232,7 +232,7 @@ header a {
     text-align: center;
     justify-content: center;
     display: block;
-    height: max-content;
+    height: 100%;
     width: 60%;
     background-color: #b7c2c5d9;
     border-radius: 8px;
@@ -324,6 +324,7 @@ header a {
     grid-template-columns: repeat(3, 1fr);
     margin: 0 auto;
     justify-content: space-evenly;
+    height: 100%;
 }
 
 /* NOTIFICATIONS */
@@ -714,9 +715,9 @@ header a {
     background-color: rgb(247, 251, 255);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* un peu d'ombrage pour stylé les bloques balisés */
-    height: max-content;
+    height: 100%;
     width: max-content;
-    margin: 5px;
+    margin: 7px;
     position: relative;
 }
 
@@ -727,9 +728,11 @@ header a {
 .state {
     display: inline-block;
     background-color: #fff;
-    padding: 10px;
+    padding: 10px 15px;
     border-radius: 5px;
-    margin: 10px;
+    margin: 0 auto;
+    justify-content: center;
+
 }
 
 /* posting textarea & btn */
@@ -860,7 +863,6 @@ header a {
 }
 
 /*  */
-
 /* profile's left asidebar */
 .asideBar,
 .activ {
@@ -889,6 +891,7 @@ header a {
 .Archive a {
     text-decoration: none;
     color: white;
+    text-align: center;
 }
 
 .asideBar h3,
@@ -904,20 +907,20 @@ header a {
     margin: 4px;
     display: block;
     justify-content: center;
-    margin: 0 auto;
 }
 
-.disGallery,
-.Archive img {
+.disGallery {
     display: grid;
-    margin: 5px;
+    gap: 0.2rem;
+    margin: 10px;
+    text-align: center;
 }
 
 #gallery,
 .Archive img {
     display: flex;
     width: 40%;
-    margin: 5px;
+    margin: 0 auto;
     justify-content: center;
 }
 
