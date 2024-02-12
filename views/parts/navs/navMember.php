@@ -1,5 +1,7 @@
 
+<!-- le navbar affiché si l'utilisateur est connecté -->
 <div class="navbar">
+    <!-- le button de forums -->
     <div class="btn-group dropdown-center">
         <button class="btn btn-secondary btn-sm" type="button">
             <i class="fa-brands fa-discourse" id="discuss"></i><a href="/forum"> Forums</a></button>
@@ -13,6 +15,7 @@
             <li><a class="dropdown-item" href="#afrostories">Afrostories</a></li>
         </ul>
     </div>
+    <!-- le button de discover (découverte) -->
     <div class="btn-group dropdown-center">
         <button class="btn btn-secondary btn-sm" type="button">
             <i class="fa-sharp fa-solid fa-sailboat" id="discover"></i><a href="/decouverte">
@@ -27,6 +30,7 @@
         </ul>
     </div>
 
+    <!-- le button de inbox -->
     <div class="btn-group dropdown-center">
         <button class="btn btn-secondary btn-sm notification" type="button">
             <i class="fa-solid fa-message" id="chats"></i><a href="/inbox"> Inbox
@@ -42,10 +46,12 @@
             </div>
             <li>
                 <div id="messages">
-                    <p class="dropdown-item" href="#">Private</p>
+                    <p class="dropdown-item" href="/inbox">Private</p>
                 </div>
         </ul>
     </div>
+
+    <!-- le button des alertes -->
     <div class="btn-group dropdown-center">
         <button class="btn btn-secondary btn-sm notification" type="button">
             <i class="fa-solid fa-bell " id="alertsBtn"></i><a href="/alerts"> Alerts
@@ -54,7 +60,8 @@
         <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="visually-hidden"></span>
         </button>
-        <?php if ($_SESSION['user']['id_userRoles'] = 258) { ?>
+        <!-- si l'utilisateur est un admin ou modérateur, ses alertes seront differents -->
+        <?php if ($_SESSION['user']['id_userRoles'] = 258) {  ?> 
             <ul class="dropdown-menu dropdown-menu-dark text-center">
                 <li><a class="dropdown-item" href="#">
                         <i class="fa-solid fa-envelope"></i> 5 nouveaux messages</a></li>

@@ -17,7 +17,7 @@ $userAccount = $user->getById();
 
 
 
-$title = 'Media'; // le titre de la page
+$title = 'inbox'; // le titre de la page
 
 //  Inclusion des fichiers: header, du view et du footer
 require_once '../../views/parts/header.php';

@@ -1,5 +1,6 @@
 <div class="navbar">
     
+<!-- <nav> -->
     <button class="btn btn-secondary btn-sm"><i class="fa-solid fa-house"></i><a href="/accueil"> Accueil</a></button>
     
     <div class="btn-group dropdown-center">
@@ -20,6 +21,8 @@
             <li><a class="dropdown-item" href="#">Afrostories</a></li>
         </ul>
     </div>
+
+    <!-- si l'utilisateur en ligne est sur la page de forum, alors ses navs changent -->
     <?php if (!empty($_SESSION['user'])) { ?>          
     <?php if ($_SERVER['PHP_SELF'] == '/controllers/posts/forumController.php') { ?> 
           

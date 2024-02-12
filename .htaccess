@@ -8,8 +8,8 @@ RewriteRule ^deconnexion$ /controllers/users/logoutController.php
 RewriteRule ^mon-compte$ /controllers/users/accountController.php
 RewriteRule ^modifier-mon-compte$ /controllers/users/updateAccountController.php
 RewriteRule ^profile-([0-9]+)$ profile.php?id=true
-RewriteRule ^profile$ /controllers/users/profileController.php?
-RewriteRule ^inbox$ /views/pages/inbox.php
+RewriteRule ^profile$ /controllers/users/profileController.php
+RewriteRule ^inbox$ /controllers/users/inboxController.php
 RewriteRule ^contact$ /controllers/users/contactController.php
 RewriteRule ^compte-supprime$ index.php?deleteAccount=true
 

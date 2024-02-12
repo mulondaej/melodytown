@@ -27,7 +27,8 @@
                 </a>
             </div>
 
-            <div class="searchContainer">
+            <!-- affiche de la barre de recherche -->
+            <div class="searchContainer"> 
                 <input type="text" id="searchInput" placeholder="..Search...">
                 <button onclick="search()">
                 <i class="fa-solid fa-magnifying-glass fa-sm"></i></button>
@@ -54,16 +55,15 @@
                 <?php  } else { ?>
 
                     <?php require_once 'navs/navMember.php'; ?>
-
-                    <div class="btn-group" id="menu-button">
+                    <!-- l'avatar dans un menu bouton pour afficher ces liens -->
+                    <div class="btn-group" id="menu-button"> 
                         <button type="button" class="btn btn-sm btn-tertiary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="../assets/IMG/" alt="UserAvatar" id="avatar">
                         </button>
                         <ul class="dropdown-menu text-center dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
                             <li><a class="dropdown-item" type="button" href="/mon-compte">Mon compte</a></li>
                             <li><a class="dropdown-item" type="button" href="/posts">Posts</a></li>
-                            <li><a class="dropdown-item" type="button" href="../pages/events.php">What's New</a></li>
-                            <li><a class="dropdown-item" type="button" href="../pages/donate.php">Donate</a></li>
+                            <li><a class="dropdown-item" type="button" href="/events">What's New</a></li>
                         </ul>
                     </div>
 

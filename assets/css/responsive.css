@@ -111,11 +111,23 @@
       margin-top: 0rem;
   }
 
-  #searchContainer {
+  .searchContainer {
       margin: 0 auto;
       position: absolute;
       width: 50%;
-      margin-top: 1.6rem;
+      margin-top: 2.3rem;
+      top: 0;
+      right: 0;
+      left: 0;
+  }
+
+  .searchContainer button {
+    width: 10%;
+  }
+
+  .searchContainer button i {
+    margin: 0 auto;
+    text-align: center;
   }
 
   .accountFlex {
