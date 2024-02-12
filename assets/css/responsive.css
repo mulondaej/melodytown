@@ -246,6 +246,36 @@
       margin: 0 auto;
   }
 
+  .mainbox {
+    display: block;
+  }
+
+  .mainStatus {
+    display: block;
+    width: 50%;
+}
+
+#posted, #postHere {
+
+}
+
+.state, #postStatus, #status {
+    width: 50%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.userContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.userContainer p {
+    margin: 4px;
+    font-size: 14px;
+}
+
   .footer {
       padding: 10px;
       text-align: center;

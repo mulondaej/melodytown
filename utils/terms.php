@@ -9,6 +9,7 @@ require_once '../views/parts/header.php';
 
 ?>
 
+<!-- les termes et conditions du forum -->
 <h1 class="compteH1">Les Termes et Conditions : </h1> 
 <div class="terms"><hr>
 
@@ -29,9 +30,9 @@ Pour plus d'informations sur la traite de vos données, veuillez consulter notre
 </div>
 
 </div>
+<?php 
 
-<?php
-$title = 'Terms';
+$title = 'Terms'; 
 
 require_once '../views/parts/footer.php';
 ?>

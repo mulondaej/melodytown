@@ -5,6 +5,7 @@
         <div class="forumcontainer">
             <?php if (!empty($_SESSION['user'])) { ?> <!-- si l'utilisateur est connecté, alors il a acces au creation du topic  -->
              
+            <!-- button qui ouvre le modal du formulaire pour creer un nouveau topic -->    
             <button type="button" id="newThread" value="thread">Nouveau topic</button>
             <div id="modalContainer">
                 <div id="modalThread">
@@ -47,7 +48,7 @@
                     </div>
                 </form>
                 </div>
-    </div>
+            </div>
                 <hr>
             <?php } ?>
 

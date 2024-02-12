@@ -103,6 +103,7 @@ class Users
         return $req->execute();
     }
 
+
     public function getById()
     {
         $sql = 'SELECT `username`, `email`, `location`, DATE_FORMAT(`birthdate`, "%d/%m/%y") 

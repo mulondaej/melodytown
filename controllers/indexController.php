@@ -35,7 +35,7 @@ $tagsList = $tags->getList();
 
 $topic = new Topics;
 $topicsList = $topic->getList();
-$topicsDetails = $topic->getById();
+// $topicsDetails = $topic->getById();
 $latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
 

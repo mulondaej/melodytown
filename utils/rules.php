@@ -8,7 +8,7 @@ require_once '../utils/functions.php';
 require_once '../views/parts/header.php';
 
 ?>
-
+<!-- page des règles -->
 <h1 class="compteH1">Les règles à respecter : </h1> 
 <div class="terms"><hr>
 <div>
@@ -31,6 +31,10 @@ require_once '../views/parts/header.php';
 <p><b>Protection des Données :</b> <br>Ne partagez jamais les informations personnelles sensibles sur le forum car chez nous, la confidentialité et la sécurité des membres sont importantes.</p>
 
 <p><b>Signalement des Violations :</b> <br>Veuillez signaler aux modérateurs si vous remarquez une violation des règles SVP, merci !</p>
+
+<p><b>Bans: <br> Toute forme de discrimination est puni de 6 mois de ban et par en suite un ban definitive au cas d'une répétition.
+<br> Pour les spams: cela peut varier entre 3 jours à 1 semaine ou même des mois
+<br> Pour l'harcelement : l'utilisateur sera banni de 1 mois ou 3 mois ou 6 mois, et au pire de cas, ça sera defintive.</b></p>
 <br>
 </div>
 

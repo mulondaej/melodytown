@@ -37,7 +37,7 @@
         <br>
         <textarea type="text" name="content" id="content" value="<?= $t->content ?>"></textarea>
         <?php if (isset($errors['content'])) { ?>
-            <p id=errorsMessage><?= $errors['content'] ?></p>
+            <p class=errorsMessage><?= $errors['content'] ?></p>
         <?php } ?>
 
         

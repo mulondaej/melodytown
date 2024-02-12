@@ -34,9 +34,14 @@
             <input type="checkbox" name="remember" id="remember"><label for="remember">Se souvenir de moi</label>
         </div>
 
+        <!-- <div class="g-recaptcha" data-sitekey="reCAPTCHA_site_key"></div> -->
+
         <input type="submit" value="Se connecter"><!-- Bouton de la connexion -->
 
         <!-- Lien pour s'enregistrer -->
         <hr> Ou <a href="/inscription"><i class="fa-solid fa-circle-arrow-right"> S'enregistrer </i></a>
     </form>
 </section>
+
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer></script>

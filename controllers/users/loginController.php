@@ -65,16 +65,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
              * Je peux également utiliser la session pour stocker des informations qui ne sont pas propres à l'utilisateur (par exemple, le panier d'un utilisateur non connecté).
              */
             $_SESSION['user'] = $user->getInfosByEmail();
-            //var_dump($_SESSION['user']);
-            // header('Location: /mon-compte');
-            // exit;
+    
         }
+
+
+        // $recaptcha_secret = "YOUR_SECRET_KEY";
+        // $recaptcha_response = $_POST['g-recaptcha-response'];
+
+        // $verify_response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$recaptcha_secret}&response={$recaptcha_response}");
+        // $response_data = json_decode($verify_response);
+
+        // if (!$response_data->success) {
+        //     // si la verification de reCAPTCHA verification échoue, 
+        //     exit("le reCAPTCHA a échoué; veuillez recommencer svp.");
+        // }
+
         if($user->getInfosByEmail() && $user->getPassword()) {
-            $success = 'Vous êtes connecté !';
+            $success = '<p id=successMessage">Vous êtes connecté !</p>';
             header('Location: /accueil');
             exit;
         }
     }
+
     
 }
 
