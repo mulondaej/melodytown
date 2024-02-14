@@ -1,7 +1,9 @@
 <?php 
 session_start();
 
-require_once '../models/users/usersModel.php';
+$title = 'Règles';
+
+require_once '../models/usersModel.php';
 require_once '../utils/regex.php';
 require_once '../utils/messages.php';
 require_once '../utils/functions.php';
@@ -41,7 +43,6 @@ require_once '../views/parts/header.php';
 </div>
 
 <?php
-$title = 'Rules';
 
 require_once '../views/parts/footer.php';
 ?>

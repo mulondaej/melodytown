@@ -1,7 +1,8 @@
 <?php 
 session_start();
 
-require_once '../models/users/usersModel.php';
+$title = 'Termes'; 
+require_once '../models/usersModel.php';
 require_once '../utils/regex.php';
 require_once '../utils/messages.php';
 require_once '../utils/functions.php';
@@ -32,7 +33,6 @@ Pour plus d'informations sur la traite de vos données, veuillez consulter notre
 </div>
 <?php 
 
-$title = 'Terms'; 
 
 require_once '../views/parts/footer.php';
 ?>

@@ -1,12 +1,11 @@
 <?php
 
 // les modèles de site appélés
-require_once "../../models/posts/statusModel.php";
-require_once "../../models/posts/commentsModel.php";
-require_once "../../models/posts/topicsRepliesModel.php";
-require_once "../../models/posts/topicsModel.php";
-require_once '../../models/users/usersModel.php';
-////require_once "../../controllers/posts/updateStatusController.php" ;
+require_once "../../models/statusModel.php";
+require_once "../../models/commentsModel.php";
+require_once "../../models/topicsRepliesModel.php";
+require_once "../../models/topicsModel.php";
+require_once '../../models/usersModel.php';
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
@@ -23,12 +22,6 @@ if (empty($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
 $user = new Users;
 $user->id = $_SESSION['user']['id'];
 $userAccount = $user->getById();
-$userDetails = $user->getList();
-$userCount = count($userDetails);
-
-$status = new Status;
-
-$comments = new comments;
 
 // si la requête est une méthode POST et le POST variable esy déclenché, on traite les données du formulaire
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateAvatar'])) {
@@ -64,20 +57,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateAvatar'])) {
             }
         }
     }
-    var_dump($_POST['updateAvatar']);
 }
 
-// si la requête est une méthode POST et le POST variable est déclenché, on traite les données du formulaire
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['statusPost'])) {
+$status = new Status;
 
-    if (!empty($_POST['status'])) { // si le message n'est pas vide
-        if (!preg_match($regex['status'], $_POST['status'])) {  // si le message n'est pas conforme à la regex
-            $status->content = trim($_POST['status']); // on récupère le message en le trimmant
+
+$status->id_users = $_SESSION['user']['id'];
+
+// si la requête est une méthode POST et le POST variable est déclenché, on traite les données du formulaire
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addStatus'])) {
+
+    if (!empty($_POST['content'])) { // si le message n'est pas vide
+        if (!preg_match($regex['content'], $_POST['content'])) {  // si le message n'est pas conforme à la regex
+            $status->content = trim($_POST['content']); // on récupère le message en le trimmant
         } else {
-            $errors['status'] = STATUS_ERROR; // sinon, afficher le message d'erreur
+            $errors['content'] = STATUS_ERROR; // sinon, afficher le message d'erreur
         }
     } else {
-        $errors['status'] = STATUS_ERROR; // sinon, afficher le message d'erreur
+        $errors['content'] = STATUS_ERROR; // sinon, afficher le message d'erreur
     }
 
     // si les erreurs sont vides, les status seront ajoutés dans la BDD
@@ -94,43 +91,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['statusPost'])) {
 
 }
 
-// même logique pour les commentaires que pour les status
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['postComment'])) {
-    if (!empty($_POST['comment'])) {
-        if (!preg_match($regex['comment'], $_POST['comment'])) {
-            $comments->content = $_POST['comment'];
-        } else {
-            $errors['comment'] = STATUS_COMMENTS_ERROR;
-        }
-    } else {
-        $errors['comment'] = STATUS_COMMENTS_ERROR;
-    }
-
-    $comments->id_status = $status->id;
-    $comments->id_users = $_SESSION['user']['id'];
-
-    if (empty($errors)) {
-        if ($comments->create()) {
-            $success = STATUS_COMMENTS_SUCCESS;
-        } else {
-            $errors['add'] = STATUS_COMMENTS_ERROR;
-        }
-    }
-}
-
 // les mis à jour et la suppression des status et des commentaires sont gérées ici.
 if (isset($_POST['updateStatus'])) { // si est déclenché le POST variable updateStatus
 
-    if (!empty($_POST['status'])) { // si le status n'est pas vide
-        if (preg_match($regex['status'], $POST['status'])) {
-            $status->content = clean($_POST['status']); // on récupère le message en le nettoyant
+    if (!empty($_POST['content'])) { // si le status n'est pas vide
+        if (preg_match($regex['content'], $POST['content'])) {
+            $status->content = clean($_POST['content']); // on récupère le message en le nettoyant
             if ($status->checkIfExistsByContent() == 1) {  // si le statut existe déjà dans la BDD, on ne peut pas le mettre à jour
-                $errors['status'] = STATUS_UPDATE_ERROR; // afficher le message d'erreur
+                $errors['content'] = STATUS_UPDATE_ERROR; // afficher le message d'erreur
             } else {
-                $errors['status'] = STATUS_UPDATE_SUCCESS; // sinon, on met à jour le statut dans la BDD
+                $errors['content'] = STATUS_UPDATE_SUCCESS; // sinon, on met à jour le statut dans la BDD
             }
         } else {
-            $errors['status'] = STATUS_UPDATE_ERROR; // sinon, afficher le message d'erreur
+            $errors['content'] = STATUS_UPDATE_ERROR; // sinon, afficher le message d'erreur
         }
 
 
@@ -148,11 +121,38 @@ if (isset($_POST['updateStatus'])) { // si est déclenché le POST variable upda
 }
 
 if (isset($_POST['deleteStatus'])) { // si est déclenché le POST variable deleteStatus
-    if (isset($_POST['status'])) { // si le status existe ; on le supprime
+    if (isset($_POST['content'])) { // si le status existe ; on le supprime
         if ($status->delete()) {
-            unset($_POST);
-            header('Location: /profile'); // on redirige vers la page de profil
+            header('Location: /profil'); // on redirige vers la page de profil
             exit;
+        }
+    }
+}
+
+$comments = new Comments;
+
+$comments->id_status = (int)$_GET['id']; // on récupère l'id du commentaire 
+
+// même logique pour creer les commentaires que pour les status
+if (isset($_POST['addComment'])) {
+    if (!empty($_POST['comment'])) {
+        if (!preg_match($regex['content'], $_POST['comment'])) {
+            $comments->content = $_POST['comment'];
+        } else {
+            $errors['comment'] = STATUS_COMMENTS_ERROR;
+        }
+    } else {
+        $errors['comment'] = STATUS_COMMENTS_ERROR;
+    }
+
+    $comments->id_status = $status->id;
+    $comments->id_users = $_SESSION['user']['id'];
+    
+    if (empty($errors)) {
+        if ($comments->create()) {
+            $success = STATUS_COMMENTS_SUCCESS;
+        } else {
+            $errors['add'] = STATUS_COMMENTS_ERROR;
         }
     }
 }
@@ -161,8 +161,8 @@ if (isset($_POST['deleteStatus'])) { // si est déclenché le POST variable dele
 if (isset($_POST['updateComment'])) {
 
     if (!empty($_POST['comment'])) {
-        if (preg_match($regex['comment'], $POST['comment'])) {
-            $comments->content = clean($_POST['comment']);
+        if (preg_match($regex['content'], $POST['comment'])) {
+            $comments->content = clean($_POST['content']);
             if ($comments->checkIfExistsByContent() == 1) {
                 $errors['comment'] = STATUS_COMMENTS_UPDATE_ERROR;
             }
@@ -185,10 +185,9 @@ if (isset($_POST['updateComment'])) {
 }
 
 if (isset($_POST['deleteComment'])) {
-    if (isset($_POST['status'])) {
+    if (isset($_POST['comment'])) {
         if ($comments->delete()) {
-            unset($_POST['comment']);
-            header('Location: /profile');
+            header('Location: /profil');
             exit;
         }
     }
@@ -197,38 +196,42 @@ if (isset($_POST['deleteComment'])) {
 // établissement des variables pour accéder aux données des modèles 
 //topics
 $topic = new Topics;
-$topicsList = $topic->getList();
-$latestTopic = $topic->getTopic();
-$topicCount = count($topicsList);
-$userPosts = $topic->getUserTopics($id_users);
-$userTotalPost = count($userPosts);
+$topic->id_users = $_SESSION['user']['id'];
+$userTopics = $topic->getUserTopics();
+$userTotalTopics = count($userTopics);
+
+if(count($userTopics) > 0) {
+    $latestPost = $userTopics[0];
+}
 
 //replies
 $replies = new Replies;
-$repliesList = $replies->getList();
+
+foreach($userTopics as $key => $post) {  
+    $replies->id_topics =  $post['id'];
+    $userTopics[$key]['content'] = $replies->getRepliesByTopics();
+}
+
 $userReply = $replies->getUserReply();
 $latestReply = $replies->getReply();
-$postCount = count($repliesList);
 $userTotalAnswer = count($userReply);
 
 //status
-$statusList = $status->getList();
 $userOwnStatus = $status->getListByIdUsers();
-$latestStatus = $status->getStatus();
-$statusCount = count($statusList);
+$latestStatus = $userOwnStatus[0];
 
 //comments
+$comments->id_users = $_SESSION['user']['id'];
 $userOwnComments = $comments->getListByIdUsers();
-$commentsList = $comments->getList();
 $latestComment = $comments->getComment();
-$commentsCount = count($commentsList);
 
-$totalCounting = $postCount + $statusCount;
+$totalCounting = $userTotalAnswer + $userTotalTopics;
 
 $title = 'Profile'; // titre de la page
 
 //  Inclusion des fichiers: header, du view et du footer
 require_once '../../views/parts/header.php';
-require_once '../../views/pages/profile.php';
+require_once '../../views/users/profile.php';
 require_once '../../views/parts/footer.php';
+
 ?>

@@ -1,42 +1,33 @@
 RewriteEngine On
+
+#PAGES
+RewriteRule ^$ /controllers/pages/indexController.php
+RewriteRule ^accueil$ /controllers/pages/indexController.php
+RewriteRule ^contact$ /controllers/pages/contactController.php
+
 #USERS
-RewriteRule ^$ /controllers/indexController.php
-RewriteRule ^accueil$ /controllers/indexController.php
 RewriteRule ^inscription$ /controllers/users/registerController.php
 RewriteRule ^connexion$ /controllers/users/loginController.php
 RewriteRule ^deconnexion$ /controllers/users/logoutController.php
 RewriteRule ^mon-compte$ /controllers/users/accountController.php
 RewriteRule ^modifier-mon-compte$ /controllers/users/updateAccountController.php
-RewriteRule ^profile-([0-9]+)$ profile.php?id=true
-RewriteRule ^profile$ /controllers/users/profileController.php
-RewriteRule ^inbox$ /controllers/users/inboxController.php
-RewriteRule ^contact$ /controllers/users/contactController.php
+RewriteRule ^profil-([0-9]+)$ /controllers/users/profileController.php?id=$1
+RewriteRule ^profil$ /controllers/users/profileController.php
 RewriteRule ^compte-supprime$ index.php?deleteAccount=true
 
-#POSTS
-RewriteRule ^topic-list$ /controllers/posts/topicsListController.php
-RewriteRule ^topics$ /controllers/posts/topicsController.php
-RewriteRule ^modifier-topic$ /controllers/posts/updateTopicController.php
-RewriteRule ^modifier-topic-([0-9]+)$ /controllers/posts/updateTopicController.php?id=$1 [L]
-RewriteRule ^posts$ /controllers/posts/repliesListController.php
-RewriteRule ^forum$ /controllers/posts/forumController.php
-RewriteRule ^decouverte$ /controllers/posts/discoverController.php
-RewriteRule ^thread-([0-9]+)$ /controllers/posts/threadController.php?id=true
-RewriteRule ^arena$ /controllers/posts/forumController.php
-RewriteRule ^media$ /controllers/users/mediaController.php
-RewriteRule ^topic-supprime$ topicsList.php?deleteTopict=true
-
-
-RewriteRule ^search$ /controllers/users/searchController.php
+#TOPICS
+RewriteRule ^liste-topics$ /controllers/topics/topicsListController.php
+RewriteRule ^liste-topics-par-categories$ /controllers/topics/topicsListByCategoriesController.php
+RewriteRule ^modifier-topic-([0-9]+)$ /controllers/topics/updateTopicController.php?id=$1 [L]
+RewriteRule ^forum$ /controllers/topics/forumController.php
+RewriteRule ^topic-([0-9]+)$ /controllers/topics/topicController.php?id=$1
+RewriteRule ^topic-supprime$ topicsList.php?deleteTopic=true
 
 #ADMIN
 RewriteRule ^dashboard$ /controllers/users/adminController.php
-RewriteRule ^rules$ /utils/rules.php
+RewriteRule ^regles$ /utils/rules.php
 RewriteRule ^termes$ /utils/terms.php
 RewriteRule ^credits$ /utils/credits.php
-RewriteRule ^help$ /utils/help.php
-RewriteRule ^contact$ /controllers/users/contactController.php
 
 #ERRORS
-RewriteRule ^errors$ /controllers/errors/errorsController.php
-RewriteRule ^error404$ /controllers/errors/404Controller.php
+ErrorDocument 404 /controllers/errors/404Controller.php

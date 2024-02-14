@@ -1,6 +1,7 @@
 
 <!-- le navbar affiché si l'utilisateur est connecté -->
 <div class="navbar">
+    <button class="btn btn-secondary btn-sm"><i class="fa-solid fa-house"></i><a href="/accueil"> Accueil</a></button>
     <!-- le button de forums -->
     <div class="btn-group dropdown-center">
         <button class="btn btn-secondary btn-sm" type="button">

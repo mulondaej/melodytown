@@ -1,13 +1,12 @@
 
 <?php
-require_once '../../models/users/adminModel.php';
-require_once '../../models/users/usersModel.php';
+require_once '../../models/usersModel.php';
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
 
 session_start();
-if(empty($_SESSION['user']) && $_SESSION['user']['role'] = 258){ // si l'utilisateur n'est pas en ligne et n'est pas admin
+if(empty($_SESSION['user']) && $_SESSION['user']['role'] == 258){ // si l'utilisateur n'est pas en ligne et n'est pas admin
     header('Location: /accueil'); // le rediriger vers la page d'accueil
     exit;
 }

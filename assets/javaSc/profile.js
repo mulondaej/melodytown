@@ -94,13 +94,3 @@ likeBtn.addEventListener('click', function () {
     likeBtn.classList.toggle("changeColor");
 });
 
-const editForm = document.getElementById('editModal');
-const formEdit = document.getElementById('logFormEdit');
-
-editForm.addEventListener("click", () => {
-    if (formEdit.style.display === 'none' || formEdit.style.display === '') {
-        formEdit.style.display = 'block';
-    } else {
-        formEdit.style.display = 'none';
-    }
-});

@@ -274,18 +274,13 @@ textarea {
 #threadMain {
     margin: 0 auto;
     width: 95%;
-}
-
-fieldset {
-    border-radius: 8px;
-    background-color: rgb(238, 228, 228);
     justify-content: center;
-    margin: 0 auto;
+    display: block;
 }
 
 #threadContains {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 #threadTheader {
@@ -297,16 +292,18 @@ fieldset {
 
 #threadTitle {
     display: flex;
-    font-size: 30px;
+    font-size: 35px;
     margin-bottom: 20px;
     text-align: center;
     justify-content: center;
     margin: 0 auto;
+    text-transform: uppercase;
 }
 
 #tag {
     margin-right: 50px;
     color: rgb(52, 85, 64);
+    border: 1px black solid;
 }
 
 #backArrow {
@@ -323,13 +320,14 @@ fieldset {
 }
 
 #threadContent {
-    width: 80%;
+    width: 75%;
     border-radius: 5px;
     display: inline-block;
     margin: 0 auto;
     justify-content: center;
     border-radius: 2px;
     box-shadow: 0 0 10px rgba(71, 72, 72, 0.2);
+    background-color: #f2ebe2;
 }
 
 #contents {
@@ -354,9 +352,7 @@ fieldset {
 }
 
 #userCard a,
-#userCard p,
-.usernameMedia a,
-.userMedia a {
+#userCard p {
     text-decoration: none;
     color: #507b97;
 }
@@ -365,6 +361,7 @@ fieldset {
     display: block;
     margin: 0 auto;
     font-size: 16px;
+    text-align: center;
 }
 
 .pFlex {
@@ -417,7 +414,7 @@ fieldset {
 #timed p {
     justify-content: center;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     margin: 8px;
 }
 
@@ -425,6 +422,9 @@ fieldset {
     justify-content: center;
     margin: 0 auto;
     text-align: center;
+    background-color: #f2ebe2;
+    width: 90%;
+    border-radius: 8px;
 }
 
 #comments {
@@ -445,37 +445,33 @@ fieldset {
     background-color: grey;
 }
 
-.commentsArea {
-    display: block;
-}
-
-.replies {
-    margin-top: -20px;
-    border-radius: 8px;
-    background-color: rgb(238, 228, 228);
+#repliesContains {
+    width: 90%;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 0 auto;
     justify-content: center;
-    margin: 0 auto;
-    text-align: center;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.replies button {
-    justify-content: right;
-    margin: 0 auto;
-    border: none;
-    background-color: transparent;
-    margin-right: 8px;
-    text-align: right;
+#repliesContains #threadContent {
+    background-color: #f2ebe2;
+    width: 75%;
 }
 
-#replied {
-    margin-top: 20px;
+#repliesContains #userCard {
+    background-color: rgb(255, 251, 240);
+    border-radius: 8px;
+    margin: 10px;
 }
 
 #commentBtn {
     max-width: max-content;
     justify-content: center;
     margin: 0 auto;
-    padding: 5px 12px;
+    padding: 8px 12px;
     background-color: #6b97b4;
     border-radius: 8px;
     font-size: 16px;
@@ -489,8 +485,10 @@ fieldset {
     display: block;
 }
 
-#likeBtn {
+#likeBtn, #replyBtn, #replyRepliesBtn #replyLikeBtn, #replyModalBtn, #editModal {
     background-color: transparent;
-    font-size: 12px;
+    font-size: 15px;
+    text-decoration: none;
 }
+
 

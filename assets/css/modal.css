@@ -1,0 +1,104 @@
+/* modal styling */
+#profiModalBtn {
+    color: black;
+}
+
+#openModalBtn {
+    background-color: rgb(219, 30, 30);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    justify-content: center;
+    margin: 12px;
+    width: max-content;
+    height: max-content;
+}
+
+#modalText, #delete {
+    text-align: center;
+    margin: 0 auto;
+}
+
+#modalContainer {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    margin: 0 auto;
+}
+
+#modal {
+    background-color: whitesmoke;
+    padding: 1rem;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 4rem;
+}
+
+#closeBtn {
+    cursor: pointer;
+    float: right;
+}
+
+#delete input {
+    background-color: rgb(219, 30, 30);
+    color: white;
+}
+
+#openModalBtn {
+    background-color: rgb(219, 30, 30);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    justify-content: center;
+    margin: 12px;
+    width: max-content;
+    height: max-content;
+}
+
+#replyModalText, #replyDelete {
+    text-align: center;
+    margin: 0 auto;
+}
+
+#replyModalContainer {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    margin: 0 auto;
+}
+
+#replyModal {
+    background-color: whitesmoke;
+    padding: 1rem;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 4rem;
+}
+
+#replyCloseBtn {
+    cursor: pointer;
+    float: right;
+}
+
+#replyDelete input {
+    background-color: rgb(219, 30, 30);
+    color: white;
+}

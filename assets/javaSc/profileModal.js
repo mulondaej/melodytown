@@ -29,9 +29,16 @@ modalContainer.addEventListener("click", (e) => {
     }
 })
 
-function search() {
-    var searchTerm = document.getElementById("searchInput").value;
-    // Perform search logic here (this is just a placeholder)
-    document.getElementById("searchResults").innerHTML = "<p>Search results for: " + searchTerm + "</p>";
-  }
+const editForm = document.getElementById('editModal');
+const formEdit = document.getElementById('logFormEdits');
+
+editForm.addEventListener("click", () => {
+    if (formEdit.style.display === 'none' || formEdit.style.display === '') {
+        formEdit.style.display = 'block';
+    } else {
+        formEdit.style.display = 'none';
+    }
+});
+
+
   
