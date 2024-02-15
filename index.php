@@ -10,44 +10,45 @@
              <button type="button" id="newThread" value="topic">Nouveau topic</button>
              <div id="modalContainer">
                  <div id="modaltopic">
-                     <span id="threadCloseBtn">&times;</span>
-                     <form action="/liste-topics-par-categories" method="POST" id="threadForm">
-                    <label for="tag">Tags:</label>
-                    <select name="tag" id="tag">
-                        <?php foreach ($tagsList as $t) { ?>
-                            <option value="<?= $t->id ?>"><?= $t->name ?></option>
-                        <?php } ?>
-                    </select>
-                    <?php if (isset($errors['tag'])) : ?>
-                        <p><?= $errors['tag'] ?></p>
-                    <?php endif; ?>
+                    <span id="threadCloseBtn">&times;</span>
+                    <form action="/liste-topics-par-categories" method="POST" id="threadForm" >
+                    
+                        <label for="tag">Tags:</label>
+                        <select name="tag" id="tag" value="<?= @$_POST['tag'] ?>">
+                            <?php foreach ($tagsList as $t) { ?>
+                                <option value="<?= $t->id ?>"><?= $t->name ?></option>
+                            <?php } ?>
+                        </select>
+                        <?php if (isset($errors['tag'])) : ?>
+                            <p><?= $errors['tag'] ?></p>
+                        <?php endif; ?>
 
-                    <label for="categories">Categories</label>
-                    <select id="categories" name="categories">
-                        <?php foreach ($categoriesList as $c) { ?>
-                            <option value="<?= $c->id ?>"><?= $c->name ?></option>
-                        <?php } ?>
-                    </select>
-                    <?php if (isset($errors['categories'])) : ?>
-                        <p><?= $errors['categories'] ?></p>
-                    <?php endif; ?>
+                        <label for="categories">Categories</label>
+                        <select id="categories" name="categories" value="<?= @$_POST['categories'] ?>">
+                            <?php foreach ($categoriesList as $c) { ?>
+                                <option value="<?= $c->id ?>"><?= $c->name ?></option>
+                            <?php } ?>
+                        </select>
+                        <?php if (isset($errors['categories'])) : ?>
+                            <p><?= $errors['categories'] ?></p>
+                        <?php endif; ?>
 
-                    <label for="title">Title:</label>
-                    <input type="text" id="title" name="title">
-                    <?php if (isset($errors['title'])) : ?>
-                        <p><?= $errors['title'] ?></p>
-                    <?php endif; ?>
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" name="title" value="<?= @$_POST['title'] ?>">
+                        <?php if (isset($errors['title'])) : ?>
+                            <p><?= $errors['title'] ?></p>
+                        <?php endif; ?>
 
-                    <label for="content">Content:</label>
-                    <textarea id="content" name="content"></textarea>
-                    <?php if (isset($errors['content'])) : ?>
-                        <p><?= $errors['content'] ?></p>
-                    <?php endif; ?>
+                        <label for="content">Content:</label>
+                        <textarea id="content" name="content"></textarea value="<?= @$_POST['content'] ?>">
+                        <?php if (isset($errors['content'])) : ?>
+                            <p><?= $errors['content'] ?></p>
+                        <?php endif; ?>
 
-                    <div class="send">
-                        <input type="submit" name="threadPost" value="Create">
-                    </div>
-                </form>
+                        <div class="send">
+                            <input type="submit" name="threadPost" value="create">
+                        </div>
+                    </form>
                 </div>
             </div>
             <hr>
@@ -142,13 +143,34 @@
                             <p>Chaleureux accueil pour les nouveaux membres</p>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="liste-topics-par-categories"> <?= $totalCount ?></a> posts</span>
+                        <span><a href="" id="liste-topics-par-categories"> 0</a> posts</span>
                         </div>
                         <div class="subforum-info subforum-column">
                             <b><a href="">Last post:</a></b> <a href="/topic-<?= $latestTopic->id ?>">
-                                <?= $latestUser->registerDate ?></a>
+                            <?= $latestUser->username ?>, <?= $latestUser->registerDate ?></a>
                         </div>
                     </div>
+                    <div class="subforum-row">
+                    <div class="subforum-icon subforum-column ">
+                        <i class="fa-regular fa-comment" style="color: #e0e9f6;"></i>
+                    </div>
+                    <div class="subforum-description subforum-column">
+                        <h4><a href="/help">HELP!</a></h4>
+                        <p>les messages</p>
+                    </div>
+                    <div class="subforum-stats subforum-column ">
+                        <span><a href="/help" id="liste-topics-par-categories"> 1 </a> posts</span>
+                    </div>
+                    <div class="subforum-info subforum-column">
+                        <b><a href="">Last post:</a></b> <a href="/topic-<?= $latestTopic->id ?>"><?php if (!empty($_SESSION['user'])) { ?>
+                                <?= $latestContact->username ?>, <?= $latestContact->publicationDate ?></a>
+                    <?php } else { ?>
+                        <a href="/topic-<?= $latestContact->id ?>">
+                            <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                            echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?></a>
+                    <?php } ?>
+                    </div>
+                </div>
             </div>
         <?php } ?>
 
@@ -584,7 +606,7 @@
                     <?php if (!empty($_SESSION['user'])) { ?>
                         <div class="subforum-row">
                             <div class="subforum-icon subforum-column ">
-                                <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                            <i class="fa-solid fa-dumpster" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
                                 <h4><a href="/liste-topics-par-categories">Archives</a></h4>

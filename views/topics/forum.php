@@ -10,9 +10,10 @@
             <div id="modalContainer">
                 <div id="modalThread">
                     <span id="threadCloseBtn">&times;</span>
-                <form action="/liste-topics-par-categories" method="POST" id="threadForm">
+                    
+                <form action="/liste-topics-par-categories" method="POST" id="threadForm" >
                     <label for="tag">Tags:</label>
-                    <select name="tag" id="tag">
+                    <select name="tag" id="tag" value="<?= @$_POST['tag'] ?>">
                         <?php foreach ($tagsList as $t) { ?>
                             <option value="<?= $t->id ?>"><?= $t->name ?></option>
                         <?php } ?>
@@ -22,7 +23,7 @@
                     <?php endif; ?>
 
                     <label for="categories">Categories</label>
-                    <select id="categories" name="categories">
+                    <select id="categories" name="categories" value="<?= @$_POST['categories'] ?>">
                         <?php foreach ($categoriesList as $c) { ?>
                             <option value="<?= $c->id ?>"><?= $c->name ?></option>
                         <?php } ?>
@@ -32,13 +33,13 @@
                     <?php endif; ?>
 
                     <label for="title">Title:</label>
-                    <input type="text" id="title" name="title">
+                    <input type="text" id="title" name="title" value="<?= @$_POST['title'] ?>">
                     <?php if (isset($errors['title'])) : ?>
                         <p><?= $errors['title'] ?></p>
                     <?php endif; ?>
 
                     <label for="content">Content:</label>
-                    <textarea id="content" name="content"></textarea>
+                    <textarea id="content" name="content"></textarea value="<?= @$_POST['content'] ?>">
                     <?php if (isset($errors['content'])) : ?>
                         <p><?= $errors['content'] ?></p>
                     <?php endif; ?>

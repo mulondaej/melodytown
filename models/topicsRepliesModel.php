@@ -87,7 +87,9 @@ class Replies {
     
     public function getRepliesByTopics()
     {
-        $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`, `id_users`
+        $sql = 'SELECT `content`, 
+        DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, 
+        `u`.`username`, `id_users`
         FROM `a8yk4_topicreplies` AS `r`
         INNER JOIN `a8yk4_users` AS `u` ON `r`.`id_users` = `u`.`id`
         WHERE `id_topics` = :id_topics
@@ -114,11 +116,10 @@ class Replies {
 
     public function update()
     {
-        $sql = 'UPDATE `a8yk4_topicreplies` SET `content`=:content , `publicationDate` = :publicationDate 
+        $sql = 'UPDATE `a8yk4_topicreplies` SET `content`=:content , `updateDate` = NOW() 
         WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
-        $req->bindValue(':publicationDate', $this->publicationDate, PDO::PARAM_STR);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
     }

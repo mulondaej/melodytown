@@ -28,6 +28,7 @@ RewriteRule ^dashboard$ /controllers/users/adminController.php
 RewriteRule ^regles$ /utils/rules.php
 RewriteRule ^termes$ /utils/terms.php
 RewriteRule ^credits$ /utils/credits.php
+RewriteRule ^help$ /utils/help.php
 
 #ERRORS
 ErrorDocument 404 /controllers/errors/404Controller.php

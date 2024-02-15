@@ -41,8 +41,8 @@
         <?php } ?>
 
         <?php if($_SESSION['user']['id'] == $topicsDetails->id_users){ ?>
-            <input type="submit" value="Modifier" name="updateTopic">
-            <button id="openModalBtn"><a href="#delete">Supprimer</a></button>
+            <button type="submit" value="Modifier" name="updateTopic"><i class="fa-solid fa-pen-to-square"></i> modifier</button>
+            <button id="openModalBtn"><i class="fa-solid fa-trash-can"></i> <a href="#delete">supprimer</a></button>
         <?php } ?>
     </form>
 

@@ -34,14 +34,14 @@
           
           <div id="logFormEdits">
             <form action="#" method="POST" id="editForme">
-              <textarea class="replyText"><?= $topicsDetails->content ?> </textarea>
+              <textarea class="replyText" value="<?= $_POST['content'] ?>"><?= $topicsDetails->content ?> </textarea>
               <input type="submit" class="postReply" name="updateContent" value="edit">
               <?php if (isset($errors['content'])): ?>
                 <p class="errorsMessage"><?= $errors['content'] ?></p>
               <?php endif; ?><br>
             </form>
           </div>
-          <button id="openModalBtn" style="background-color: transparent;"><a href="#delete">supprimer</a></button>
+          <button id="openModalBtn" style="background-color: transparent;"><a href="#delete"><i class="fa-solid fa-trash-can"></i></a></button>
         <?php } ?>
         </div>
       </div>
@@ -76,7 +76,7 @@
                 
                 <div id="logFormEdits">
                   <form action="#" method="POST" id="editForme">
-                    <textarea class="replyText"><?= $r->content ?> </textarea>
+                    <textarea class="replyText" value="<?= $_POST['content'] ?>"><?= $r->content ?> </textarea>
                       <input type="submit" class="postReply" name="updateContent" value="edit">
                       <?php if (isset($errors['content'])): ?>
                         <p class="errorsMessage">
@@ -85,7 +85,7 @@
                       <?php endif; ?><br>
                     </form>
                   </div>
-                  <button id="replyModalBtn" style="background-color: transparent;"><a href="#replyDelete">supprimer</a></button>
+                  <button id="replyModalBtn" style="background-color: transparent;"><a href="#replyDelete"><i class="fa-solid fa-eraser"></i></a></button>
                   
                   <?php }  ?>
             </div>

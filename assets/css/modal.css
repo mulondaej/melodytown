@@ -4,8 +4,8 @@
 }
 
 #openModalBtn {
-    background-color: rgb(219, 30, 30);
-    color: white;
+    background-color: rgb(227, 75, 75);
+    color: rgb(0, 0, 0);
     padding: 10px 15px;
     border: none;
     border-radius: 6px;
@@ -49,13 +49,13 @@
 }
 
 #delete input {
-    background-color: rgb(219, 30, 30);
-    color: white;
+    background-color: rgb(223, 58, 58);
+    color: rgb(0, 0, 0);
 }
 
 #openModalBtn {
-    background-color: rgb(219, 30, 30);
-    color: white;
+    background-color: rgb(223, 58, 58);
+    color: rgb(0, 0, 0);
     padding: 10px 15px;
     border: none;
     border-radius: 6px;
@@ -99,6 +99,14 @@
 }
 
 #replyDelete input {
-    background-color: rgb(219, 30, 30);
+    background-color: rgb(223, 58, 58);
+    color: rgb(0, 0, 0);
+}
+
+#logForm button {
+    border-radius: 8px;
+}
+
+#logForm button a {
     color: white;
 }

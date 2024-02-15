@@ -90,6 +90,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
     } else {
         $errors['add'] = TOPICS_ERROR;
     }
+
+    if (empty($errors)) {
+        if($topic->create()) {
+            $success = '<p id=successMessage">Votre topic vient d\'être publié avec succès </a></p>';
+        }
+    }
+
 }
 
 // topic

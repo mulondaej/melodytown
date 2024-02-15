@@ -30,6 +30,9 @@ define('USERS_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de
 
 define('USERS_PASSWORD_UPDATE_SUCCESS', 'Votre mot de passe a bien été mis à jour');
 define('USERS_PASSWORD_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre mot de passe');
+define('USERS_PASSWORD_UPDATE_ERROR_EMPTY', 'Le mot de passe est requis');
+define('USERS_PASSWORD_UPDATE_ERROR_INVALID', 'Le mot de passe est invalide. 
+Il doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial');
 
 define('USERS_LOCATION_UPDATE_SUCCESS', 'Votre location a bien été mis à jour');
 define('USERS_LOCATION_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre location');
@@ -40,15 +43,19 @@ define('CONTACT_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour 
 //MIS A JOUR TOPICS
 define('TOPIC_UPDATE_SUCCESS', 'Votre compte a bien été mis à jour');
 define('TOPIC_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre compte');
+define('TOPIC_UPDATE_ERROR_EXISTS', 'Le topic reste inchangé');
 
 define('TOPIC_TITLE_UPDATE_SUCCESS', 'Le titre a bien été mis à jour');
 define('TOPIC_TITLE_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de titre');
+define('TOPIC_TITLE_UPDATE_ERROR_INVALID', 'Le titre existe déjà');
 
 define('TOPIC_CONTENT_UPDATE_SUCCESS', 'Le contenu a bien été mis à jour');
 define('TOPIC_CONTENT_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du contenu');
+define('TOPIC_CONTENT_UPDATE_ERROR_INVALID', 'Le reste inchangé');
 
 define('TOPIC_REPLIES_UPDATE_SUCCESS', 'La reponse a bien été mis à jour');
 define('TOPIC_REPLIES_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre reponse');
+define('TOPIC_REPLIES_UPDATE_ERROR_INVALID', 'Le reste inchangé');
 
 define('TOPIC_TAG_CATEGORIE_UPDATE_SUCCESS', 'Cela a bien été mis à jour');
 define('TOPIC_TAG_CATEGORIE_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du tag ou categorie');
@@ -56,9 +63,11 @@ define('TOPIC_TAG_CATEGORIE_UPDATE_ERROR', 'Une erreur est survenue lors de la m
 //MIS A JOUR STATUS
 define('STATUS_UPDATE_SUCCESS', 'Le contenu a bien été mis à jour');
 define('STATUS_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du contenu');
+define('STATUS_UPDATE_ERROR_INVALID', 'Le reste inchangé');
 
 define('STATUS_COMMENTS_UPDATE_SUCCESS', 'La reponse a bien été mis à jour');
 define('STATUS_COMMENTS_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre reponse');
+define('STATUS_COMMENTS_UPDATE_ERROR_INVALID', 'Le reste inchangé');
 
 // IMAGE
 define('IMAGE_ERROR_EMPTY', 'L\'image est requise');
@@ -81,10 +90,12 @@ define('TOPICS_CONTENT_ERROR', 'Veuillez redigez une phrase au moins, la case ne
 
 // REPLIES
 define('TOPICS_REPLIES_SUCCESS', 'le reply est publié');
+define('TOPICS_REPLIES_ERROR_INVALID', 'Le contenu doit contenir au moins 30 caractères');
 define('TOPICS_REPLIES_ERROR', 'Veuillez redigez une phrase au moins, la case ne peut pas être vide');
 
 // COMMENTS
 define('STATUS_COMMENTS_SUCCESS', 'le commentaire est publié');
+define('STATUS_COMMENTS_ERROR_EXISTS', 'Le contenu existe déja');
 define('STATUS_COMMENTS_ERROR', 'Veuillez redigez une phrase au moins, la case ne peut pas être vide');
 
 // TAGS
@@ -101,8 +112,10 @@ define('TOPICS_ERROR', 'Il y a un eu un soucis: soit le titre;,le tag ou le cont
 
 // STATUS
 define('STATUS_SUCCESS', 'Status publié avec succes');
+define('STATUS_ERROR_EXISTS', 'Le contenu existe déja');
 define('STATUS_ERROR', 'Il y a un eu un soucis: peut etre le contenu y manque');
 
 // CONTACT
 define('CONTACT_SUCCESS', 'le message est publié avec succes');
+define('CONTACT_ERROR_EXISTS', 'Le contenu existe déja');
 define('CONTACT_ERROR', 'Il y a un eu un soucis: peut etre le contenu y manque');

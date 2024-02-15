@@ -6,8 +6,10 @@
     
         <h1>Threads</h1><hr>
         
-
         <div class="forumcontainer" id="forumcontainer">
+        <?php if (isset($success)) { ?><!-- Si la creation est une reussite, afficher le message de succes -->
+            <p id=successMessage><?= $success ?></p>
+        <?php } ?>
             <?php if (count($topicsList) == 0) { ?>
                 <p>No topics available</p>
             <?php } else { ?>

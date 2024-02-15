@@ -17,7 +17,7 @@
     <fieldset id="userPosting">
     <form action="/topic-<?= $_GET['id'] ?>" method="POST">
       <div id="centered"><label for="comments"></label>
-        <textarea name="comments" id="comments" value=" <?= @$_POST['content'] ?>" ?></textarea>
+        <textarea name="comments" id="comments" value="<?= @$_POST['content'] ?>"></textarea>
         <br><input type="submit" value="post" id="commentBtn" name="reply">
       </div>
     </form>

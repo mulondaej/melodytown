@@ -58,10 +58,9 @@ class Status
     {
         $sql = 'INSERT INTO `a8yk4_status`(`content`, `publicationDate`,
          `updateDate`, `id_users`) 
-        VALUES (:content,NOW(),NOW(),:id_users)';
+        VALUES (:content, NOW(), NOW(), :id_users)';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
-        // $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
         return $req->execute();
     }
@@ -136,21 +135,12 @@ class Status
 
     public function update()
     {
-        $sql = 'UPDATE `a8yk4_status` SET =,`content`=:content, `updateDate` = :updateDate,
-        `id_categories`=:id_categories, `id_tags`=:id_tags WHERE `id` = :id';
+        $sql = 'UPDATE `a8yk4_status` SET =`content`=:content, `updateDate` = NOW()
+        WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
-        $req->bindValue(':publicationDate', $this->publicationDate, PDO::PARAM_STR);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
     }
 
-    public function changeUsers()
-    {
-        $sql = "UPDATE `a8yk4_status` SET `id_users` = :id_users WHERE id = :id";
-        $req = $this->pdo->prepare($sql);
-        $req->bindParam(':username', $this->username, PDO::PARAM_STR);
-        $req->bindParam(':id', $this->id, PDO::PARAM_INT);
-        $req->execute();
-    }
 }

@@ -192,7 +192,8 @@ class Topics
 
     public function updateContent()
     {
-        $sql = 'UPDATE `a8yk4_topics` SET `content`=:content, `updateDate` = :updateDate WHERE `id` = :id';
+        $sql = 'UPDATE `a8yk4_topics` SET `content`=:content, `updateDate` = :updateDate 
+        WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);

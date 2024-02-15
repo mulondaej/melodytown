@@ -15,5 +15,5 @@
     </div>
     
     <!-- lien pour modifier son compte -->
-    <p><a href="/modifier-mon-compte">Modifier tes infos</a></p>
+    <p><i class="fa-solid fa-user-pen"></i><a href="/modifier-mon-compte"> Modifier tes infos</a></p>
 </div>

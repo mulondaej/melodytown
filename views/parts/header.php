@@ -13,8 +13,10 @@
         <link rel="stylesheet" href="../../assets/css/scss.scss">
         <link rel="stylesheet" href="../../assets/css/style.mini.css">
         <link rel="stylesheet" href="../../assets/css/style.min.css.map">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/6b6dfd0b83.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         
     </head>
 
@@ -63,9 +65,8 @@
                             <img src="../assets/IMG/" alt="UserAvatar" id="avatar">
                         </button>
                         <ul class="dropdown-menu text-center dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
-                            <li><a class="dropdown-item" type="button" href="/mon-compte">Mon compte</a></li>
+                            <li><a class="dropdown-item" type="button" href="/mon-compte"><i class="fa-solid fa-user-pen"></i> Mon compte</a></li>
                             <li><a class="dropdown-item" type="button" href="/topic-list">Topics</a></li>
-                            <li><a class="dropdown-item" type="button" href="/events">What's New</a></li>
                         </ul>
                     </div>
 
@@ -82,7 +83,7 @@
                             <a href="/profile" id="idCorner">@<?= $_SESSION['user']['username'] ?></a>
                             <a href="/dashboard" style="color: darkgreen;">Admin</a>
                         <?php } ?>
-                        <a href="/deconnexion">Déconnexion</a>
+                        <a href="/deconnexion"><i class="fa-solid fa-user-slash"></i>Déconnexion</a>
                     </div>
                 <?php } ?>
             <?php } ?>

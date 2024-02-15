@@ -189,7 +189,10 @@ class Users
 
     public function getLatestUser()
     {
-        $sql = 'SELECT id, username, DATE_FORMAT(`registerDate`, "%d/%m /%Y") AS `registerDate` FROM `a8yk4_users` ORDER BY `registerDate` DESC';
+        $sql = 'SELECT id, username, 
+        DATE_FORMAT(`registerDate`, "%d/%m /%Y") AS `registerDate` 
+        FROM `a8yk4_users` 
+        ORDER BY `registerDate` DESC';
         $req = $this->pdo->query($sql);
         return $req->fetch(PDO::FETCH_OBJ);
     }

@@ -45,7 +45,7 @@ if(isset($_POST['updateTopic'])) { // si le formulaire est envoyé
             $errors['title'] = TOPIC_TITLE_UPDATE_ERROR; // sinon, afficher le message de succes
         }
     } else {
-        $errors['title'] = TOPIC_TITLE_UPDATE_ERROR; // sinon, afficher le message d'erreur
+        $errors['title'] = TOPIC_TITLE_UPDATE_ERROR_INVALID; // sinon, afficher le message d'erreur
     }
 
 
@@ -109,7 +109,7 @@ if (isset($_POST['updateContent'])) {
             $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
         }
     } else {
-        $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
+        $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR_INVALID;
     }
 
     if(empty($errors)) {
@@ -118,6 +118,12 @@ if (isset($_POST['updateContent'])) {
             $success = TOPIC_UPDATE_SUCCESS;
         } else {
             $errors['update'] = TOPIC_UPDATE_ERROR;
+        }
+    }
+
+    if (empty($errors)) {
+        if($topic->create()) {
+            $success = '<p id=successMessage">Votre topic vient d\'être modifié avec succès </a></p>';
         }
     }
 }
@@ -145,7 +151,7 @@ if(isset($_POST['updateReply'])) {
             $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR;
         }
     } else {
-        $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR;
+        $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR_INVALID;
     }
 
     // si les erreurs sont vides, alors mets le contenu du réponse à jour
@@ -159,6 +165,11 @@ if(isset($_POST['updateReply'])) {
         }
     }
 
+    if (empty($errors)) {
+        if($replies->create()) {
+            $success = '<p id=successMessage">Votre réponse vient d\'être publié avec succès </a></p>';
+        }
+    }
 }
 
 // Même logique pour la suppression des topics

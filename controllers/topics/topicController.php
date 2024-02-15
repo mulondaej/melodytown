@@ -33,8 +33,6 @@ $replies->id_users = (int)$_GET['id'];
 
 $topicsDetails = $topic->getById();
 
-// $repliesDetails->$replies->getById();
-
 $repliesList = $replies->getRepliesByTopics();
 
 // si la requete est de type POST (envoi du formulaire), on l'traite
@@ -89,6 +87,12 @@ if(isset($_POST['updateReply'])) {
             $errors['update'] = TOPIC_UPDATE_ERROR;
         }
     }
+
+    if (empty($errors)) {
+        if($replies->create()) {
+            $success = '<p id=successMessage">Votre réponse vient d\'être publié avec succès </a></p>';
+        }
+    }
 }
 
 // Même logique pour la suppression des topics
@@ -125,7 +129,8 @@ if (isset($_POST['updateContent'])) {
 // si l'envoi de delete est déclenche, le topic sera supprimé
 if(isset($_POST['deleteTopic'])) {
     if($topic->delete()) {
-        header('Location: /liste-topics');
+        (header('Location: /liste-topics'));
+        $title = 'Deleted';
         exit;
     }
 }

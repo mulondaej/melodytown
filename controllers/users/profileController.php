@@ -95,23 +95,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addStatus'])) {
 if (isset($_POST['updateStatus'])) { // si est déclenché le POST variable updateStatus
 
     if (!empty($_POST['content'])) { // si le status n'est pas vide
-        if (preg_match($regex['content'], $POST['content'])) {
+        if (!preg_match($regex['content'], $POST['content'])) {
             $status->content = clean($_POST['content']); // on récupère le message en le nettoyant
             if ($status->checkIfExistsByContent() == 1) {  // si le statut existe déjà dans la BDD, on ne peut pas le mettre à jour
                 $errors['content'] = STATUS_UPDATE_ERROR; // afficher le message d'erreur
             } else {
-                $errors['content'] = STATUS_UPDATE_SUCCESS; // sinon, on met à jour le statut dans la BDD
+                $errors['content'] = STATUS_UPDATE_ERROR; // sinon, on met à jour le statut dans la BDD
             }
         } else {
-            $errors['content'] = STATUS_UPDATE_ERROR; // sinon, afficher le message d'erreur
+            $errors['content'] = STATUS_UPDATE_ERROR_INVALID; // sinon, afficher le message d'erreur
         }
 
 
         // si les erreurs sont vides, les status seront mis à jour dans la BDD
         if (empty($errors)) {
-            $status->id_users = $_SESSION['user']['id'];
+            $status->id_users = $_SESSION['user']->id;
             if ($status->update()) {
-                $status->content;
                 $success = STATUS_SUCCESS;
             } else {
                 $errors['update'] = STATUS_ERROR;
@@ -120,6 +119,8 @@ if (isset($_POST['updateStatus'])) { // si est déclenché le POST variable upda
     }
 }
 
+
+//suppression des status
 if (isset($_POST['deleteStatus'])) { // si est déclenché le POST variable deleteStatus
     if (isset($_POST['content'])) { // si le status existe ; on le supprime
         if ($status->delete()) {
@@ -161,22 +162,21 @@ if (isset($_POST['addComment'])) {
 if (isset($_POST['updateComment'])) {
 
     if (!empty($_POST['comment'])) {
-        if (preg_match($regex['content'], $POST['comment'])) {
+        if (!preg_match($regex['content'], $POST['comment'])) {
             $comments->content = clean($_POST['content']);
             if ($comments->checkIfExistsByContent() == 1) {
                 $errors['comment'] = STATUS_COMMENTS_UPDATE_ERROR;
             }
         } else {
-            $errors['comment'] = STATUS_COMMENTS_UPDATE_SUCCESS;
+            $errors['comment'] = STATUS_COMMENTS_UPDATE_ERROR;
         }
     } else {
-        $errors['comment'] = STATUS_COMMENTS_UPDATE_ERROR;
+        $errors['comment'] = STATUS_COMMENTS_UPDATE_ERROR_INVALID;
     }
 
     if (empty($errors)) {
-        $comments->id_users = $_SESSION['user']['id'];
+        $comments->id_users = $_SESSION['user']->id;
         if ($comments->update()) {
-            $comments->content;
             $success = STATUS_COMMENTS_SUCCESS;
         } else {
             $errors['update'] = STATUS_COMMENTS_ERROR;
@@ -184,6 +184,7 @@ if (isset($_POST['updateComment'])) {
     }
 }
 
+//suppresion de commentaires
 if (isset($_POST['deleteComment'])) {
     if (isset($_POST['comment'])) {
         if ($comments->delete()) {
@@ -227,14 +228,15 @@ $comments->id_users = $_SESSION['user']['id'];
 $userOwnComments = $comments->getListByIdUsers();
 $latestComment = $comments->getComment();
 
+
 $totalCounting = $userTotalAnswer + $userTotalTopics;
+
+var_dump($errors);
 
 $title = 'Profile'; // titre de la page
 
- var_dump($userTopics);
-
 //  Inclusion des fichiers: header, du view et du footer
-require_once '../../views/parts/header.php';
+// require_once '../../views/parts/header.php';
 require_once '../../views/users/profile.php';
 require_once '../../views/parts/footer.php';
 

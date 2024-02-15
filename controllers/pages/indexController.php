@@ -6,6 +6,7 @@ require_once '../../models/forumModel.php' ;
 require_once '../../models/statusModel.php';
 require_once '../../models/topicsRepliesModel.php' ;
 require_once '../../models/commentsModel.php' ;
+require_once '../../models/contactModel.php' ;
 require_once '../../models/topicsModel.php';
 require_once '../../models/categoriesModel.php';
 require_once '../../models/tagsModel.php';
@@ -47,6 +48,11 @@ $status = new Status;
 $statusList = $status->getList();
 $latestStatus = $status->getStatus();
 $statusCount = count($statusList);
+
+$contact = new Contact;
+$contactList = $contact->getList();
+$latestContact = $contact->getMessage();
+$contactCount = count($contactList);
 
 $totalCount = $postCount + $topicCount + $statusCount ; // total count de tous les publications : status; topics et replies 
 

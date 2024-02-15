@@ -40,7 +40,7 @@
                 <?php if ($_SESSION['user']['id'] == $t->id_users) {?>
                 <div class="threads">
                     <button type="submit" class="cta"><a href="/modifier-topic-<?= $t->id ?>">modifier</a></button>
-                    <button type="submit" class="cta"><a href="/modifier-topic-<?= $t->id ?>">supprimer</a></button>
+                    <button type="submit" class="cta"><a href="/modifier-topic-<?= $t->id ?>"><i class="fa-solid fa-trash-can"></i> supprimer</a></button>
                 </div>
                 <?php } ?>
             </div>
