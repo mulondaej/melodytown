@@ -449,6 +449,66 @@
       width: fit-content;
   }
 
+  /* topic thread */
+  #threadMain {
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+  #threadHeader {
+    padding: 0;
+    width: 90%;
+  }
+
+  #threadContains {
+    margin: 0 auto;
+    padding: 0;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .interact {
+    margin: 0 auto;
+    padding: 0;
+    width: 40%;
+    justify-content: center;
+  }
+
+
+  #likeBtn, #replyBtn,
+ #replyRepliesBtn, 
+ #replyLikeBtn, 
+ #replyModalBtn, 
+ #editModal {
+    font-size: 13px;
+    margin: 3px;
+}
+
+  #userCard {
+    width: max-content;
+  }
+
+  #repliesContains {
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+  }
+
+  #repliesContains .interact {
+    width: 40%;
+  }
+
+  #userPosting {
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+  }
+
   .footer {
       padding: 10px;
       text-align: center;

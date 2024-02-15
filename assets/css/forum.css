@@ -69,13 +69,6 @@ textarea {
     color: rgb(255, 242, 169);
 }
 
-#ToCreate {
-    border: transparent;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 6px 8px;
-}
-
 #modalThread {
     background-color: transparent;
     padding: 1rem;
@@ -90,6 +83,11 @@ textarea {
     float: right;
     color: red;
     font-size: 31px;
+}
+
+.messageCenter {
+    text-align: center;
+    justify-content: center;
 }
 
 /* MAIN SECTION FORUM*/
@@ -276,6 +274,9 @@ textarea {
     width: 95%;
     justify-content: center;
     display: block;
+    background-color: #fdfeff;
+    box-shadow: 0 0 10px rgba(71, 72, 72, 0.2);
+    gap: 1rem;
 }
 
 #threadContains {
@@ -425,6 +426,7 @@ textarea {
     background-color: #f2ebe2;
     width: 90%;
     border-radius: 8px;
+    margin-bottom: 1rem;
 }
 
 #comments {

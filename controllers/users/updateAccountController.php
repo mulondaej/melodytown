@@ -3,6 +3,7 @@
 // les models de site et les utils
 require_once '../../models/topicsModel.php';
 require_once '../../models/usersModel.php';
+require_once '../../models/statusModel.php';
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
@@ -22,6 +23,8 @@ $user = new Users;
 $user->id = $_SESSION['user']['id'];
 
 $topic = new Topics;
+
+$status = new Status;
 
 
 // Vérifier si le formulaire d'édition d'informations a été soumis
@@ -186,26 +189,37 @@ if (isset($_POST['updateAvatar'])) {
 // le transfert de données et suppression du compte
 if (isset($_POST['transferData'])) {
     // Supprime l'utilisateur et transfère ses données à un autre utilisateur
+
     if ($user->delete()) {
-        $topics = $topic->getUserTopics($id_users);// Récupère les topics de l'utilisateur
+        $topics = $topic->getUserTopics();// Récupère les topics de l'utilisateur
+        $statuses = $status->getUserStatus();
 
         // Transfère chaque topic à un autre utilisateur
         foreach ($topics as $single_topic) {
             $single_topic->id_users = 1;
             $single_topic->changeUsers();
         }
+
+        foreach ($statuses as $single_status) {
+            $single_status->id_users = 1;
+            $single_status->changeUsers();
+        }
+
+        unset($_SESSION);
+        session_destroy();
+        header('Location: /accueil');
+        exit;
     }
 }
 
-
-// if (isset($_POST['deleteAccount'])) {
-    // if ($user->delete()) {
-    //     unset($_SESSION);
-    //     session_destroy();
-    //     header('Location: /accueil');
-    //     exit;
-//     }
-// }
+if (isset($_POST['deleteAccount'])) {
+    if ($user->delete()) {
+        unset($_SESSION);
+        session_destroy();
+        header('Location: /accueil');
+        exit;
+    }
+}
 
 
 $userAccount = $user->getById();
@@ -216,5 +230,5 @@ $title = 'Account-update'; // Titre de la page
 require_once '../../views/parts/header.php';
 require_once '../../views/users/updateAccount.php';
 require_once '../../views/parts/footer.php';
-?>
+
 

@@ -82,12 +82,14 @@
                             <p><b><?= $ownStatus->username ?></b>:
                                 <?= $ownStatus->content ?>
                             </p>
-                            <button class="likeStatus" id="likeBtn"><i class="fa-solid fa-heart">liker</i></button>
-                            <button class="commentStatus"><a href="#commenting">commenter</a></button>
-                            <button type="submit" value="edit" id="editModal">modifier</button>
-                            <button type="submit" id="profiModalBtn">supprimer</button>
-                        </div>
-
+                            <button id="likeBtn"><i class="fa-solid fa-heart"></i></button>
+                            <button id="replyBtn" name="replyBtn"><a href="#commenting">répondre</a></button>
+                        <?php if($_SESSION['user']['id'] == $status->id_users){ ?>
+                            <button type="submit" name="update" id="editModal">modifier</button>
+                            <button type="submit" id="profiModalBtn"><a href="#delete">supprimer</a></button>
+                        <?php } ?>
+                    </div>
+                        
                         <div id="logFormEdits">
                             <form action="" method="POST" id="editForm">
                                 <textarea class="replyText" value=""><?= $ownStatus->content ?></textarea>
@@ -100,7 +102,11 @@
                             </form>
                         </div>
 
-                        <div id="modalContainer">
+                        
+                        <?php } ?>
+                    <?php } ?>
+                <?php } ?>
+                <div id="modalContainer">
                             <div id="modal">
                                 <span id="closeBtn">&times;</span>
                                 <p id="modalText">Vouliez-vous le supprimer?</p>
@@ -109,10 +115,7 @@
                                 </form>
                             </div>
                         </div>
-                        <?php } ?>
-                    <?php } ?>
-                <?php } ?>
-                        <ul class="comments"><!-- Comments go here -->
+                        <ul class="comments"><!-- Comments vont ici -->
                             <li>
                             <?php if (count($userOwnComments) == 0) { ?>
                                 <p class="errorsMessage">No comments</p>
@@ -121,11 +124,13 @@
                                     <p><b><?= $commentingUser->username ?></b>:
                                         <?= $commentingUser->content ?>
                                     </p>
-                                    <button class="likeComment" id="likeBtn"><i class="fa-solid fa-heart">liker</i></button>
-                                    <button class="replyComment"><a href="#commenting">commenter</a></button>
-                                    <button class="replyComment" type="submit" value="edit" id="editModal">modifier</button>
-                                    <button type="submit" value="delete" id="commentModalBtn">supprimer</button>
+                                    <button id="replyLikeBtn"><i class="fa-solid fa-heart"></i></button>
+                                    <button id="replyRepliesBtn" ><a href="#commenting" name="replyRepliesBtn">répondre</a></button>
+                                <?php if($_SESSION['user']['id'] == $comments->id_users){ ?>
+                                    <button class="replyComment" name="update" type="submit" id="editModal">modifier</button>
+                                    <button type="submit" value="delete" id="replyModalBtn"><a href="#replyDelete">supprimer</a></button>
                                 </li>
+                                <?php }?>
                                 <div id="logFormEdits">
                                     <form action="" method="POST" id="editForm">
                                         <textarea class="replyText">value=" <?= $userOwnComments->content ?>" ?></textarea>
@@ -137,18 +142,19 @@
                                     </form>
                                 </div>
 
-                                <div id="modalContainer">
-                                    <div id="modal">
-                                        <span id="closeBtn">&times;</span>
-                                        <p id="modalText">Vouliez-vous supprimer le commentaire?</p>
-                                        <form action="" method="POST" id="delete">
+                                
+                            <?php } ?>
+                        <?php } ?>
+                        </ul>
+                        <div id="replyModalContainer">
+                                    <div id="replyModal">
+                                        <span id="replyCloseBtn">&times;</span>
+                                        <p id="replyModalText">Vouliez-vous supprimer le commentaire?</p>
+                                        <form action="" method="POST" id="replyDelete">
                                         <input type="submit" value="supprimer" name="deleteComment">
                                         </form>
                                     </div>
                                 </div>
-                            <?php } ?>
-                        <?php } ?>
-                        </ul>
                         <!-- Reply form for status -->
 
                         <form action="#" method="POST" class="replying">
@@ -184,5 +190,6 @@
 
 </main>
 
-<script src="../../assets/javaSc/profileModal.js"></script>
-<script src="../../assets/javaSc/profile.js"></script>
+<script src="assets/javaSc/profileModal.js"></script>
+<script src="assets/javaSc/profile.js"></script>
+  <script src="assets/javaSc/repliesModal.js"></script>

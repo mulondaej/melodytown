@@ -54,43 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
             avatarImageUpload.click();
         });
     }
-
-    // Toggle media folder 
-    mediaLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        mediaFolder.classList.toggle('show-media-folder');
-    });
-
-    //Media js
-    const fileInput = document.getElementById('fileUploadMedia');
-    const uploadButton = document.getElementById('uploadMediaBtn');
-    const mediaList = document.getElementById('media-list');
-
-    uploadButton.addEventListener('click', function () {
-        fileInput.click();
-    });
-
-    fileInput.addEventListener('change', function () {
-        const files = fileInput.files;
-        for (let i = 0; i < files.length; i++) {
-            const file = files[i];
-            const listItem = document.createElement('li');
-            const image = document.createElement('img');
-            image.src = URL.createObjectURL(file);
-            listItem.appendChild(image);
-            mediaList.appendChild(listItem);
-        }
-        fileInput.value = ''; // Clear the file input
-    });
-
-
-
-
 });
 
-const likeBtn = document.getElementById("likeBtn");
+const editForm = document.getElementById('editModal');
+const formEdit = document.getElementById('logFormEdits');
 
-likeBtn.addEventListener('click', function () {
-    likeBtn.classList.toggle("changeColor");
+editForm.addEventListener("click", () => {
+    if (formEdit.style.display === 'none' || formEdit.style.display === '') {
+        formEdit.style.display = 'block';
+    } else {
+        formEdit.style.display = 'none';
+    }
 });
 

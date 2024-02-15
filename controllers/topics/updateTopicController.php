@@ -30,6 +30,8 @@ $categoriesList = $categories->getList();
 $tags = new Tags;
 $tagsList = $tags->getList();
 
+var_dump($_POST);
+
 // si l'envoi de $_POST variable existe
 if(isset($_POST['updateTopic'])) { // si le formulaire est envoyé
 
@@ -40,7 +42,7 @@ if(isset($_POST['updateTopic'])) { // si le formulaire est envoyé
                 $errors['title'] = TOPIC_TITLE_UPDATE_ERROR;  // afficher le message d'erreur
             }
         } else {
-            $errors['title'] = TOPIC_TITLE_UPDATE_SUCCESS; // sinon, afficher le message de succes
+            $errors['title'] = TOPIC_TITLE_UPDATE_ERROR; // sinon, afficher le message de succes
         }
     } else {
         $errors['title'] = TOPIC_TITLE_UPDATE_ERROR; // sinon, afficher le message d'erreur
@@ -49,16 +51,16 @@ if(isset($_POST['updateTopic'])) { // si le formulaire est envoyé
 
     // Même logique que pour la case de titre mais pour le contenu
     if (!empty($_POST['content'])) {
-        if (preg_match($regex['content'], $POST['content'])) {
+        if (!preg_match($regex['content'], $_POST['content'])) {
             $topic->content = clean($_POST['content']);
             if ($topic->checkIfExistsByContent() == 1 ) {
-                $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
+                $errors['content'] = 'existe';
             }
         } else {
-            $errors['content'] = TOPIC_CONTENT_UPDATE_SUCCESS;
+            $errors['content'] = 'regex';
         }
     } else {
-        $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
+        $errors['content'] = 'vide';
     }
 
     if (!empty($_POST['categories'])) { // si la catégorie n'est pas vide
@@ -95,21 +97,23 @@ if(isset($_POST['updateTopic'])) { // si le formulaire est envoyé
 
 }
 
+
 if (isset($_POST['updateContent'])) {
     if (!empty($_POST['content'])) {
-        if (preg_match($regex['content'], $POST['content'])) {
+        if (!preg_match($regex['content'], $POST['content'])) {
             $topic->content = clean($_POST['content']);
             if ($topic->checkIfExistsByContent() == 1) {
                 $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
             }
         } else {
-            $errors['content'] = TOPIC_CONTENT_UPDATE_SUCCESS;
+            $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
         }
     } else {
         $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
     }
 
     if(empty($errors)) {
+        $topic->id_users = $_SESSION['user']->id;
         if($topic->updateContent()){
             $success = TOPIC_UPDATE_SUCCESS;
         } else {
@@ -124,6 +128,7 @@ if(isset($_POST['deleteTopic'])) {
         header('Location: /liste-topics');
         exit;
     }
+    var_dump($topic->delete());
 }
 
 // si l'envoi de $_POST variable existe, alors mets les contenus du reponse à jour
@@ -131,13 +136,13 @@ if(isset($_POST['updateReply'])) {
 
     // Même logique que pour la case de titre mais pour les réponses ou commentaires
     if (!empty($_POST['content'])) {
-        if (preg_match($regex['content'], $POST['content'])) {
+        if (!preg_match($regex['content'], $POST['content'])) {
             $replies->content = clean($_POST['content']);
             if ($replies->checkIfExistsByContent() == 1 ) {
                 $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR;
             }
         } else {
-            $errors['content'] = TOPIC_REPLIES_UPDATE_SUCCESS;
+            $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR;
         }
     } else {
         $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR;
@@ -163,6 +168,9 @@ if(isset($_POST['deleteReply'])) {
         exit;
     }
 }
+
+var_dump($errors);
+
 
 $title = 'Topic-update'; // Titre de la page
 

@@ -50,10 +50,15 @@ class Replies {
 
     public function getById()
     {
-        $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`
+        $sql = 'SELECT `r`.`id`, `r`.`content`, 
+        DATE_FORMAT(`r`.`publicationDate`, "%d/%m/%y") AS `publicationDate`, 
+        `u`.`username`, `r`.`id_users`, `r`.`id_topics`
         FROM `a8yk4_topicreplies` AS `r`
-        INNER JOIN `a8yk4_users` AS `u` ON `r`.`id_users` = `u`.`id`';
+        INNER JOIN `a8yk4_users` AS `u` ON `r`.`id_users` = `u`.`id`
+        INNER JOIN `a8yk4_topics` AS `t` ON `r`.`id_topics` = `t`.`id`
+        WHERE `r`.id = :id ;';
         $req = $this->pdo->prepare($sql);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         $req->execute();
         return $req->fetch(PDO::FETCH_OBJ);
     } 
@@ -82,7 +87,7 @@ class Replies {
     
     public function getRepliesByTopics()
     {
-        $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`
+        $sql = 'SELECT `content`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`, `id_users`
         FROM `a8yk4_topicreplies` AS `r`
         INNER JOIN `a8yk4_users` AS `u` ON `r`.`id_users` = `u`.`id`
         WHERE `id_topics` = :id_topics
@@ -90,7 +95,7 @@ class Replies {
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id_topics', $this->id_topics, PDO::PARAM_INT);
         $req->execute();
-        return $req->fetchAll(PDO::FETCH_OBJ);
+        return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getList()
@@ -98,7 +103,7 @@ class Replies {
         $sql = 'SELECT `r`.`id`, SUBSTR(`r`.`content`, 1, 500) AS `content`,
         DATE_FORMAT(`r`.`publicationDate`, "%d/%m/%y") AS `publicationDate`,
         DATE_FORMAT(`r`.`updateDate`, "%d/%m/%y") AS `updateDate`,
-        `u`.`username`, `r`.`id_users`, `id_topics`
+        `u`.`username`, `r`.`id_users`, `r`.`id_topics`
         FROM `a8yk4_topicreplies` AS `r`
         INNER JOIN `a8yk4_users` AS `u` ON `r`.`id_users` = `u`.`id`
         INNER JOIN `a8yk4_topics` AS `t` ON `r`.`id_topics` = `t`.`id`

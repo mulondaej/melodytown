@@ -37,10 +37,12 @@
                 </p>
                 <p><a href="/topic-<?= $t->id ?>"><b>Réponses :</b> <?= $repliesCount ?></a></p>
                 <a href="/topic-<?= $t->id ?>" class="cta">Lire la suite</a><br>
+                <?php if ($_SESSION['user']['id'] == $t->id_users) {?>
                 <div class="threads">
                     <button type="submit" class="cta"><a href="/modifier-topic-<?= $t->id ?>">modifier</a></button>
                     <button type="submit" class="cta"><a href="/modifier-topic-<?= $t->id ?>">supprimer</a></button>
                 </div>
+                <?php } ?>
             </div>
         </div>
         <?php } ?>

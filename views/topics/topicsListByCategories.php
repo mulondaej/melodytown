@@ -3,9 +3,9 @@
 ?>
 <div id="main">
     <section class="forum" id="forum">
-    <?php if (count($topicsByCategories)) { ?>
-        <h1><?= $categories->name == 1?></h1><hr>
-        <?php } ?>
+    
+        <h1>Threads</h1><hr>
+        
 
         <div class="forumcontainer" id="forumcontainer">
             <?php if (count($topicsList) == 0) { ?>

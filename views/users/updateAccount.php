@@ -74,15 +74,6 @@
         </div>
     </div>
 
-    <!-- <div id="modalContainer">
-        <div id="modal">
-            <span id="closeBtn">&times;</span>
-            <p id="modalText">Êtes-vous sûr de vouloir supprimer votre compte ?</p>
-            <form action="/modifier-mon-compte" method="POST" id="delete">
-                <input type="submit" value="Supprimer" name="deleteAccount">
-            </form>
         </div>
-    </div> -->
-
-        </div>
-<script src="../../assets/javaSc/modals.js"></script>
+<script src="assets/javaSc/modals.js"></script>
+<script src="assets/javaSc/repliesModal.js"></script>

@@ -9,10 +9,7 @@
         <a href="/inbox"> Inbox</a>
     </button>
     <button class="btn btn-secondary btn-sm" type="button">
-        <a href="/alerts"> Alerts</a>
-    </button>
-    <button class="btn btn-secondary btn-sm" type="button">
-        <a href="/mon-compte"> Account</a>
+        <a href="/mon-compte"> Mon compte</a>
     </button>
     <a href="/deconnexion">Déconnexion</a>
 </div>

@@ -12,12 +12,12 @@ require_once '../../utils/functions.php';
 
 session_start();
 
-// Confirmation que l'utilisateur est bel et bien en ligne
-if (!isset($_SESSION['user'])) {
-    // Sinon, lui rediriger vers la page d'accueil ou de connexion
-    header("Location: /connexion");
-    exit();
-}
+// // Confirmation que l'utilisateur est bel et bien en ligne
+// if (!isset($_SESSION['user'])) {
+//     // Sinon, lui rediriger vers la page d'accueil ou de connexion
+//     header("Location: /connexion");
+//     exit();
+// }
 
 // établissement des variables pour accéder aux données des modèles 
 $categories = new Categories;
@@ -94,8 +94,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
 
 // topic
 $topicsList = $topic->getList();
-$topic->id_categories = (int)$_GET['id'];
-$topicsByCategories = $topic->getTopicsByCategories();
 $latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
 

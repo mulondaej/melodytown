@@ -144,4 +144,13 @@ class Status
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
     }
+
+    public function changeUsers()
+    {
+        $sql = "UPDATE `a8yk4_status` SET `id_users` = :id_users WHERE id = :id";
+        $req = $this->pdo->prepare($sql);
+        $req->bindParam(':username', $this->username, PDO::PARAM_STR);
+        $req->bindParam(':id', $this->id, PDO::PARAM_INT);
+        $req->execute();
+    }
 }

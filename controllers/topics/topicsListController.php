@@ -10,6 +10,8 @@ session_start();
   
 
 $topic = new Topics;
+// $topic->id_users = $_SESSION['user']['id'];
+// $topicsDetails = $topic->getById();
 $topicsList = $topic->getList();
 $latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);

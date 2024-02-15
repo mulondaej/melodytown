@@ -94,12 +94,12 @@ class Topics
     public function getById()
     {
         $sql = 'SELECT t.`id`, `g`.`name` AS `tag`, `t`.`title`, `t`.`content`, 
-        DATE_FORMAT(`t`.`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`
+        DATE_FORMAT(`t`.`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`, `t`.`id_users`
         FROM `a8yk4_topics` AS `t`
         INNER JOIN `a8yk4_users` AS `u` ON `t`.`id_users` = `u`.`id`
         INNER JOIN `a8yk4_tags` AS `g` ON `t`.`id_tags` = `g`.`id`
         INNER JOIN `a8yk4_categories` AS `c` ON `t`.`id_categories` = `c`.`id`
-        WHERE `t`.id = :id ;';
+        WHERE `t`.`id` = :id ;';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         $req->execute();
@@ -179,12 +179,11 @@ class Topics
 
     public function update()
     {
-        $sql = 'UPDATE `a8yk4_topics` SET `title`=:title,`content`=:content, `updateDate` = :updateDate,
+        $sql = 'UPDATE `a8yk4_topics` SET `title`=:title,`content`=:content, `updateDate` = NOW(),
         `id_categories`=:id_categories, `id_tags`=:id_tags WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':title', $this->title, PDO::PARAM_STR);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
-        $req->bindValue(':publicationDate', $this->publicationDate, PDO::PARAM_STR);
         $req->bindValue(':id_categories', $this->id_categories, PDO::PARAM_INT);
         $req->bindValue(':id_tags', $this->id_tags, PDO::PARAM_INT);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);

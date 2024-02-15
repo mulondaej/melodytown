@@ -29,7 +29,11 @@ $replies = new Replies();
 
 $replies->id_topics = (int)$_GET['id'];
 
+$replies->id_users = (int)$_GET['id'];
+
 $topicsDetails = $topic->getById();
+
+// $repliesDetails->$replies->getById();
 
 $repliesList = $replies->getRepliesByTopics();
 
@@ -63,7 +67,7 @@ if(isset($_POST['updateReply'])) {
 
     // Même logique que pour la case de titre mais pour les réponses ou commentaires
     if (!empty($_POST['content'])) {
-        if (preg_match($regex['content'], $POST['content'])) {
+        if (!preg_match($regex['content'], $POST['content'])) {
             $replies->content = clean($_POST['content']);
             if ($replies->checkIfExistsByContent() == 1 ) {
                 $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR;
@@ -97,13 +101,13 @@ if(isset($_POST['deleteReply'])) {
 
 if (isset($_POST['updateContent'])) {
     if (!empty($_POST['content'])) {
-        if (preg_match($regex['content'], $POST['content'])) {
+        if (!preg_match($regex['content'], $POST['content'])) {
             $topic->content = clean($_POST['content']);
             if ($topic->checkIfExistsByContent() == 1) {
                 $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
             }
         } else {
-            $errors['content'] = TOPIC_CONTENT_UPDATE_SUCCESS;
+            $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
         }
     } else {
         $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;

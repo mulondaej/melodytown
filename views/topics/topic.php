@@ -28,8 +28,10 @@
 
         <div class="interact">
           <button id="likeBtn"><i class="fa-solid fa-heart"></i></button>
-          <button id="replyBtn" name="replyBtn"><a href="#comments">reply</a></button>
-          <button type="submit" name="update" id="editModal">modifier</button>
+          <button id="replyBtn" name="replyBtn"><a href="#comments">répondre</a></button>
+          <?php if($_SESSION['user']['id'] == $topicsDetails->id_users){ ?>
+            <button type="submit" name="update" id="editModal">modifier</button>
+          
           <div id="logFormEdits">
             <form action="#" method="POST" id="editForme">
               <textarea class="replyText"><?= $topicsDetails->content ?> </textarea>
@@ -40,6 +42,7 @@
             </form>
           </div>
           <button id="openModalBtn" style="background-color: transparent;"><a href="#delete">supprimer</a></button>
+        <?php } ?>
         </div>
       </div>
     </div>
@@ -66,8 +69,11 @@
       
               <div class="interact">
                 <button id="replyLikeBtn"><i class="fa-solid fa-heart"></i></button>
-                <button id="replyRepliesBtn" ><a href="#comments" name="replyRepliesBtn">reply</a></button>
-                <button type="submit" name="update" id="editModal">modifier</button>
+                <button id="replyRepliesBtn" ><a href="#comments" name="replyRepliesBtn">répondre</a></button>
+                
+                <?php if($_SESSION['user']['id'] == $r->id_users){ ?>
+                  <button type="submit" name="update" id="editModal">modifier</button>
+                
                 <div id="logFormEdits">
                   <form action="#" method="POST" id="editForme">
                     <textarea class="replyText"><?= $r->content ?> </textarea>
@@ -80,7 +86,9 @@
                     </form>
                   </div>
                   <button id="replyModalBtn" style="background-color: transparent;"><a href="#replyDelete">supprimer</a></button>
-                </div>
+                  
+                  <?php }  ?>
+            </div>
             </div>
           </div>
         </div>
@@ -92,7 +100,7 @@
     <div id="modal">
       <span id="closeBtn">&times;</span>
       <p id="modalText">Êtes-vous sûr de vouloir supprimer votre topic ?</p>
-      <form action="/liste-topics-par-categories" method="POST" id="delete">
+      <form action="/topic-<?= $topic->id ?>" method="POST" id="delete">
         <input type="submit" value="Supprimer" name="deleteTopic">
       </form>
     </div>
@@ -103,10 +111,11 @@
       <span id="replyCloseBtn">&times;</span>
       <p id="replyModalText">Êtes-vous sûr de vouloir supprimer votre réponse ?</p>
       <form action="/liste-topics-par-categories" method="POST" id="replyDelete">
-        <input type="submit" value="Supprimer" name="deleteReply">
+        <input type="submit" value="supprimer" name="deleteReply">
       </form>
     </div>
   </div>
 
   <script src="assets/javaSc/topic.js"></script>
   <script src="assets/javaSc/modals.js"></script>
+  <script src="assets/javaSc/repliesModal.js"></script>

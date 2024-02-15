@@ -40,17 +40,17 @@
             <p class=errorsMessage><?= $errors['content'] ?></p>
         <?php } ?>
 
-        
-        <input type="submit" value="Modifier" name="updateTopic">
-
-        <button id="openModalBtn"><a href="#delete">Supprimer</a></button>
+        <?php if($_SESSION['user']['id'] == $topicsDetails->id_users){ ?>
+            <input type="submit" value="Modifier" name="updateTopic">
+            <button id="openModalBtn"><a href="#delete">Supprimer</a></button>
+        <?php } ?>
     </form>
 
     <div id="modalContainer">
         <div id="modal">
             <span id="closeBtn">&times;</span>
             <p id="modalText">Êtes-vous sûr de vouloir supprimer votre topic ?</p>
-            <form action="/liste-topics-par-categories" method="POST" id="delete">
+            <form action="/modifier-topic-<?= $topic->id ?>" method="POST" id="delete">
                 <input type="submit" value="Supprimer" name="deleteTopic">
             </form>
         </div>

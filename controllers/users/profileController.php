@@ -131,7 +131,7 @@ if (isset($_POST['deleteStatus'])) { // si est déclenché le POST variable dele
 
 $comments = new Comments;
 
-$comments->id_status = (int)$_GET['id']; // on récupère l'id du commentaire 
+// $comments->id_status = (int)$_GET['id']; // on récupère l'id du commentaire 
 
 // même logique pour creer les commentaires que pour les status
 if (isset($_POST['addComment'])) {
@@ -218,7 +218,9 @@ $userTotalAnswer = count($userReply);
 
 //status
 $userOwnStatus = $status->getListByIdUsers();
-$latestStatus = $userOwnStatus[0];
+if(count($userOwnStatus) > 0) {
+    $latestStatus = $userOwnStatus[0];
+}
 
 //comments
 $comments->id_users = $_SESSION['user']['id'];
@@ -228,6 +230,8 @@ $latestComment = $comments->getComment();
 $totalCounting = $userTotalAnswer + $userTotalTopics;
 
 $title = 'Profile'; // titre de la page
+
+ var_dump($userTopics);
 
 //  Inclusion des fichiers: header, du view et du footer
 require_once '../../views/parts/header.php';
