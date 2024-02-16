@@ -30,8 +30,6 @@ $categoriesList = $categories->getList();
 $tags = new Tags;
 $tagsList = $tags->getList();
 
-var_dump($_POST);
-
 // si l'envoi de $_POST variable existe
 if(isset($_POST['updateTopic'])) { // si le formulaire est envoyé
 
@@ -54,13 +52,13 @@ if(isset($_POST['updateTopic'])) { // si le formulaire est envoyé
         if (!preg_match($regex['content'], $_POST['content'])) {
             $topic->content = clean($_POST['content']);
             if ($topic->checkIfExistsByContent() == 1 ) {
-                $errors['content'] = 'existe';
+                $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR_INVALID;
             }
         } else {
-            $errors['content'] = 'regex';
+            $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
         }
     } else {
-        $errors['content'] = 'vide';
+        $errors['content'] = 'le nouveau contenu ne doit pas être vide';
     }
 
     if (!empty($_POST['categories'])) { // si la catégorie n'est pas vide
@@ -94,10 +92,9 @@ if(isset($_POST['updateTopic'])) { // si le formulaire est envoyé
             $errors['update'] = TOPIC_UPDATE_ERROR;
         }
     }
-
 }
 
-
+// la modification du contenu seul 
 if (isset($_POST['updateContent'])) {
     if (!empty($_POST['content'])) {
         if (!preg_match($regex['content'], $POST['content'])) {
@@ -121,11 +118,6 @@ if (isset($_POST['updateContent'])) {
         }
     }
 
-    if (empty($errors)) {
-        if($topic->create()) {
-            $success = '<p id=successMessage">Votre topic vient d\'être modifié avec succès </a></p>';
-        }
-    }
 }
 
 // si l'envoi de delete est déclenche, le topic sera supprimé
@@ -134,7 +126,6 @@ if(isset($_POST['deleteTopic'])) {
         header('Location: /liste-topics');
         exit;
     }
-    var_dump($topic->delete());
 }
 
 // si l'envoi de $_POST variable existe, alors mets les contenus du reponse à jour
@@ -164,23 +155,9 @@ if(isset($_POST['updateReply'])) {
             $errors['update'] = TOPIC_UPDATE_ERROR;
         }
     }
-
-    if (empty($errors)) {
-        if($replies->create()) {
-            $success = '<p id=successMessage">Votre réponse vient d\'être publié avec succès </a></p>';
-        }
-    }
 }
 
-// Même logique pour la suppression des topics
-if(isset($_POST['deleteReply'])) {
-    if($topic->delete()) {
-        header('Location: /topic-<?= $topic->id ?>');
-        exit;
-    }
-}
-
-var_dump($errors);
+// var_dump($errors);
 
 
 $title = 'Topic-update'; // Titre de la page

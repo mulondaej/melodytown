@@ -192,4 +192,3 @@
 
 <script src="assets/javaSc/profileModal.js"></script>
 <script src="assets/javaSc/profile.js"></script>
-  <script src="assets/javaSc/repliesModal.js"></script>

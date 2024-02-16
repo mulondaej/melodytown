@@ -14,11 +14,15 @@ function closeModal() {
     modalContainer.style.display = 'none';
 }
 
+if(openModalBtn!= null ){
 // le bouton "Supprimer" par un clic
 openModalBtn.addEventListener('click', openModal);
+ }
 
+ if(closeBtn!= null ){
 // le button "fermer" par un clic
 closeBtn.addEventListener('click', closeModal);
+}
 
 // fermer le conteneur en cliquant n'importe où
 modalContainer.addEventListener("click", (e) => {
@@ -26,6 +30,5 @@ modalContainer.addEventListener("click", (e) => {
         modalContainer.style.display = "none"
     }
 });
-
 
 

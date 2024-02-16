@@ -31,9 +31,7 @@ $replies->id_topics = (int)$_GET['id'];
 
 $replies->id_users = (int)$_GET['id'];
 
-$topicsDetails = $topic->getById();
 
-$repliesList = $replies->getRepliesByTopics();
 
 // si la requete est de type POST (envoi du formulaire), on l'traite
 if(isset($_POST['reply'])) {
@@ -87,18 +85,13 @@ if(isset($_POST['updateReply'])) {
             $errors['update'] = TOPIC_UPDATE_ERROR;
         }
     }
-
-    if (empty($errors)) {
-        if($replies->create()) {
-            $success = '<p id=successMessage">Votre réponse vient d\'être publié avec succès </a></p>';
-        }
-    }
 }
 
-// Même logique pour la suppression des topics
+// Même logique pour la suppression des topics mais avec precision de l'id 
 if(isset($_POST['deleteReply'])) {
-    if($topic->delete()) {
-        header('Location: /liste-topics');
+    $replies->id = $_POST['idDelete']; // id du reply à supprimer
+    if($replies->delete()) {
+        header('Location: /topic-'.$topic->id);
         exit;
     }
 }
@@ -114,10 +107,11 @@ if (isset($_POST['updateContent'])) {
             $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
         }
     } else {
-        $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
+        $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR_INVALID;
     }
 
     if(empty($errors)) {
+        $topic->id_users = $_SESSION['user']['id'];
         if($topic->updateContent()){
             $success = TOPIC_UPDATE_SUCCESS;
         } else {
@@ -135,13 +129,10 @@ if(isset($_POST['deleteTopic'])) {
     }
 }
 
-if (isset($_POST['replyRepliesBtn']))  {
- echo $_POST['comments'] = $quotedReply .= " << ". $replies->content . ">>" . "\n";
-} else if(isset($_POST['replyBtn'])) {
-    echo $_POST['comments'] = $quotedText .= " << ". $replies->content . ">>" . "\n";
-}
 
-// $reply .= "> " . $quotedText . "\n";
+$topicsDetails = $topic->getById();
+
+$repliesList = $replies->getRepliesByTopics();
 
 $title = $topicsDetails->title; // Titre de la page sera le nom du topic
 

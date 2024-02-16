@@ -83,7 +83,7 @@ class Topics
         return $req->execute();
     }
 
-    public function delete()
+    public function delete() // suppression declaration dans la BDD
     {
         $sql = 'DELETE FROM `a8yk4_topics` WHERE `id`= :id';
         $req = $this->pdo->prepare($sql);
@@ -177,7 +177,7 @@ class Topics
         $req->execute();
     }
 
-    public function update()
+    public function update() //update de topic dans la BDD
     {
         $sql = 'UPDATE `a8yk4_topics` SET `title`=:title,`content`=:content, `updateDate` = NOW(),
         `id_categories`=:id_categories, `id_tags`=:id_tags WHERE `id` = :id';

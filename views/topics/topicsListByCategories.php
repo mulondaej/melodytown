@@ -14,7 +14,10 @@
                 <p>No topics available</p>
             <?php } else { ?>
                 <?php foreach ($topicsList as $t) { ?>
-
+                <div class="subforum central" id="central">
+                    <div class="subforum-title">
+                        <h1 id="title"><?= $t->categorie ?></h1>
+                    </div>
                     <div class="subforum-row">
                         <div class="subforum-icon subforum-column center" id="icon">
                             <i class="fa-regular fa-comment" style="color: #e0e9f6;"></i>
@@ -61,7 +64,6 @@
                 </li>
             </ul>
         </nav>
-        </main>
  
     </section>
 </div>

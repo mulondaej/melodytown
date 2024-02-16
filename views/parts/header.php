@@ -5,7 +5,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= $title ?></title>
-        <link rel="icon" href="assets/IMG/logo2.jpg" type="image/x-icon">
         <link rel="stylesheet" href="../../assets/css/mainstyle.css">
         <link rel="stylesheet" href="../../assets/css/modal.css">
         <link rel="stylesheet" href="../../assets/css/forum.css">
@@ -14,7 +13,7 @@
         <link rel="stylesheet" href="../../assets/css/style.mini.css">
         <link rel="stylesheet" href="../../assets/css/style.min.css.map">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://kit.fontawesome.com/6b6dfd0b83.js" crossorigin="anonymous"></script>
+        
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         

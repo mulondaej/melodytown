@@ -493,4 +493,7 @@ textarea {
     text-decoration: none;
 }
 
+.pagination li a {
+    color: black;
+}
 

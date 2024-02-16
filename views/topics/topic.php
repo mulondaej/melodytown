@@ -34,7 +34,7 @@
           
           <div id="logFormEdits">
             <form action="#" method="POST" id="editForme">
-              <textarea class="replyText" value="<?= $_POST['content'] ?>"><?= $topicsDetails->content ?> </textarea>
+              <textarea class="replyText" value="<?= $topicsDetails->content ?>"> </textarea>
               <input type="submit" class="postReply" name="updateContent" value="edit">
               <?php if (isset($errors['content'])): ?>
                 <p class="errorsMessage"><?= $errors['content'] ?></p>
@@ -57,21 +57,21 @@
           <div id="userCard">
             <div class="userImg"><img src="../../assets/IMG/logo.jpg" id="userAvy"></div>
             <div class="username">
-              <h5><a href="#user"><?= $r->username ?></a></h5>
+              <h5><a href="#user"><?= $r['username'] ?></a></h5>
             </div>
           </div>
           <div id="threadContent">
             <div id="contents">
-              <p><?= $r->content ?></p>
+              <p><?= $r['content'] ?></p>
               <div id="timed">
-                <p><?= $r->publicationDate ?></p>
+                <p><?= $r['publicationDate'] ?></p>
               </div>
       
               <div class="interact">
                 <button id="replyLikeBtn"><i class="fa-solid fa-heart"></i></button>
                 <button id="replyRepliesBtn" ><a href="#comments" name="replyRepliesBtn">répondre</a></button>
                 
-                <?php if($_SESSION['user']['id'] == $r->id_users){ ?>
+                <?php if($_SESSION['user']['id'] == $r['id_users']){ ?>
                   <button type="submit" name="update" id="editModal">modifier</button>
                 
                 <div id="logFormEdits">
@@ -85,7 +85,7 @@
                       <?php endif; ?><br>
                     </form>
                   </div>
-                  <button id="replyModalBtn" style="background-color: transparent;"><a href="#replyDelete"><i class="fa-solid fa-eraser"></i></a></button>
+                  <button id="replyModalBtn" style="background-color: transparent;" deleteid="<?= $r['id'] ?>"><a href="#replyDelete"><i class="fa-solid fa-eraser"></i></a></button>
                   
                   <?php }  ?>
             </div>
@@ -110,7 +110,8 @@
     <div id="replyModal">
       <span id="replyCloseBtn">&times;</span>
       <p id="replyModalText">Êtes-vous sûr de vouloir supprimer votre réponse ?</p>
-      <form action="/liste-topics-par-categories" method="POST" id="replyDelete">
+      <form action="/topic-<?= $topic->id ?>" method="POST" id="replyDelete">
+        <input type="text" name="idDelete" id="idDelete">
         <input type="submit" value="supprimer" name="deleteReply">
       </form>
     </div>

@@ -69,7 +69,7 @@ if (isset($_POST['sendMessage'])) {
 
     // si les erreurs sont vides, le message sera bel et bien envoyé dans le BDD 
     if (empty($errors)) {
-        $contact->id_users = $_SESSION['user']['id'];
+        
         if ($contact->create()) {
             $success = CONTACT_SUCCESS;
         } else {
@@ -79,14 +79,6 @@ if (isset($_POST['sendMessage'])) {
         $errors['add'] = CONTACT_ERROR;
     }
 
-    if (empty($errors)) {
-        if($contact->create()) {
-            $success = '<p id=successMessage"> Merci de nous avoir contacté! A très bientot ! </a></p>';
-        }
-    }
-
-    // var_dump($_POST);
-    // var_dump($errors);
 }
 
 

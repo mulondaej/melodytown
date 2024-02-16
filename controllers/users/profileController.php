@@ -236,7 +236,7 @@ var_dump($errors);
 $title = 'Profile'; // titre de la page
 
 //  Inclusion des fichiers: header, du view et du footer
-// require_once '../../views/parts/header.php';
+require_once '../../views/parts/header.php';
 require_once '../../views/users/profile.php';
 require_once '../../views/parts/footer.php';
 

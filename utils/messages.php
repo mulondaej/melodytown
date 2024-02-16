@@ -41,9 +41,9 @@ define('CONTACT_UPDATE_SUCCESS', 'Votre location a bien été mis à jour');
 define('CONTACT_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre location');
 
 //MIS A JOUR TOPICS
-define('TOPIC_UPDATE_SUCCESS', 'Votre compte a bien été mis à jour');
+define('TOPIC_UPDATE_SUCCESS', 'Votretopic a bien été mis à jour');
 define('TOPIC_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre compte');
-define('TOPIC_UPDATE_ERROR_EXISTS', 'Le topic reste inchangé');
+define('TOPIC_UPDATE_ERROR_EXISTS', 'Le topic est toujours le même');
 
 define('TOPIC_TITLE_UPDATE_SUCCESS', 'Le titre a bien été mis à jour');
 define('TOPIC_TITLE_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de titre');
@@ -51,11 +51,11 @@ define('TOPIC_TITLE_UPDATE_ERROR_INVALID', 'Le titre existe déjà');
 
 define('TOPIC_CONTENT_UPDATE_SUCCESS', 'Le contenu a bien été mis à jour');
 define('TOPIC_CONTENT_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du contenu');
-define('TOPIC_CONTENT_UPDATE_ERROR_INVALID', 'Le reste inchangé');
+define('TOPIC_CONTENT_UPDATE_ERROR_INVALID', 'Le contenu est toujours le même');
 
-define('TOPIC_REPLIES_UPDATE_SUCCESS', 'La reponse a bien été mis à jour');
+define('TOPIC_REPLIES_UPDATE_SUCCESS', 'La réponse a bien été mis à jour');
 define('TOPIC_REPLIES_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre reponse');
-define('TOPIC_REPLIES_UPDATE_ERROR_INVALID', 'Le reste inchangé');
+define('TOPIC_REPLIES_UPDATE_ERROR_INVALID', 'Le contenu est toujours le même');
 
 define('TOPIC_TAG_CATEGORIE_UPDATE_SUCCESS', 'Cela a bien été mis à jour');
 define('TOPIC_TAG_CATEGORIE_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du tag ou categorie');
@@ -63,12 +63,14 @@ define('TOPIC_TAG_CATEGORIE_UPDATE_ERROR', 'Une erreur est survenue lors de la m
 //MIS A JOUR STATUS
 define('STATUS_UPDATE_SUCCESS', 'Le contenu a bien été mis à jour');
 define('STATUS_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du contenu');
-define('STATUS_UPDATE_ERROR_INVALID', 'Le reste inchangé');
+define('STATUS_UPDATE_ERROR_INVALID', 'Le contenu est toujours le même');
 
 define('STATUS_COMMENTS_UPDATE_SUCCESS', 'La reponse a bien été mis à jour');
 define('STATUS_COMMENTS_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre reponse');
-define('STATUS_COMMENTS_UPDATE_ERROR_INVALID', 'Le reste inchangé');
+define('STATUS_COMMENTS_UPDATE_ERROR_INVALID', 'Le contenu est toujours le même');
 
+
+///CREATION 
 // IMAGE
 define('IMAGE_ERROR_EMPTY', 'L\'image est requise');
 define('IMAGE_ERROR_INVALID', 'L\'image est invalide');

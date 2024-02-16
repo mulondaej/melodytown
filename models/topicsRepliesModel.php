@@ -87,7 +87,7 @@ class Replies {
     
     public function getRepliesByTopics()
     {
-        $sql = 'SELECT `content`, 
+        $sql = 'SELECT `r`.`id`,`content`, 
         DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, 
         `u`.`username`, `id_users`
         FROM `a8yk4_topicreplies` AS `r`
