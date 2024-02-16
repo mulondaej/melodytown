@@ -66,7 +66,7 @@ class Users
      * @param string $birthdate La date de naissance au format YYYY-MM-DD
      * @return bool
      */
-    public function create()
+    public function create() // ajout d'un utilisateur dans la base de données
     {
         $sql = 'INSERT INTO `a8yk4_users`(`username`, `email`, `password`, `birthdate`, `registerDate`, `id_usersRoles`) 
         VALUES (:username,:email,:password,:birthdate, NOW(), 1)'; // calling the specific table request
@@ -95,7 +95,7 @@ class Users
         return $req->fetch(PDO::FETCH_COLUMN);
     }
 
-    public function delete()
+    public function delete() // suppression d'un utilisateur dans la base de données
     {
         $sql = 'DELETE FROM `a8yk4_users` WHERE `id`= :id ;';
         $req = $this->pdo->prepare($sql);

@@ -29,7 +29,7 @@ class Replies {
             return $req->fetch(PDO::FETCH_COLUMN);
         }
 
-    public function create()
+    public function create() // ajout de réponses pour le topic dans la base de données
     {
         $sql = 'INSERT INTO `a8yk4_topicreplies`( `content`,`publicationDate`,`updateDate`, `id_users`, `id_topics`) 
         VALUES (:content, NOW(), NOW(), :id_users, :id_topics)';
@@ -40,7 +40,7 @@ class Replies {
         $req->execute();
     }
 
-    public function delete()
+    public function delete() // suppression de réponses pour le topic dans la BDD
     {
         $sql = 'DELETE FROM `a8yk4_topicreplies` WHERE `id`= :id';
         $req = $this->pdo->prepare($sql);

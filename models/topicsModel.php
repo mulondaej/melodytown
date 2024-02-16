@@ -69,7 +69,7 @@ class Topics
      * @param string $publicationDate La date de la publication au format YYYY-MM-DD
      * @return bool
      */
-    public function create()
+    public function create() // Ajout de topic dans la base de données
     {
         $sql = 'INSERT INTO `a8yk4_topics`(`title`, `content`, `publicationDate`,
          `updateDate`, `id_users`, `id_categories`, `id_tags`) 
@@ -83,7 +83,7 @@ class Topics
         return $req->execute();
     }
 
-    public function delete() // suppression declaration dans la BDD
+    public function delete() // suppression de topic dans la BDD
     {
         $sql = 'DELETE FROM `a8yk4_topics` WHERE `id`= :id';
         $req = $this->pdo->prepare($sql);
