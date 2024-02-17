@@ -82,4 +82,7 @@ if (replyRepliesBtn != null) {
 replyRepliesBtn.addEventListener('click', () => {
     quotedContent.value += '" ' + content + '\n\n' + '"';
 });
-}
+};
+
+
+//

@@ -29,7 +29,7 @@
         <div class="interact">
           <button id="likeBtn"><i class="fa-solid fa-heart"></i></button>
           <button id="replyBtn" name="replyBtn"><a href="#comments">répondre</a></button>
-          <?php if($_SESSION['user']['id'] == $topicsDetails->id_users){ ?>
+          <?php if($_SESSION['user']['id'] == $topicsDetails->id_users && ($_SESSION['user']['id_usersRoles'] == 167 || 381)){ ?>
             <button type="submit" name="update" id="editModal">modifier</button>
           
           <div id="logFormEdits">
@@ -41,7 +41,8 @@
               <?php endif; ?><br>
             </form>
           </div>
-          <button id="openModalBtn" style="background-color: transparent;"><a href="#delete"><i class="fa-solid fa-trash-can"></i></a></button>
+          <button id="openModalBtn" style="background-color: transparent;">
+          <a href="#delete"><i class="fa-solid fa-trash-can"></i></a></button>
         <?php } ?>
         </div>
       </div>
@@ -71,7 +72,7 @@
                 <button id="replyLikeBtn"><i class="fa-solid fa-heart"></i></button>
                 <button id="replyRepliesBtn" ><a href="#comments" name="replyRepliesBtn">répondre</a></button>
                 
-                <?php if($_SESSION['user']['id'] == $r['id_users']){ ?>
+                <?php if($_SESSION['user']['id'] == $r['id_users'] && ($_SESSION['user']['id_usersRoles'] == 167 || 381)){ ?>
                   <button type="submit" name="update" id="editModal">modifier</button>
                 
                 <div id="logFormEdits">

@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="../../assets/css/style.mini.css">
         <link rel="stylesheet" href="../../assets/css/style.min.css.map">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        
+        <script src="https://cdn.tiny.cloud/1/r46x7x3vh3lxxmkcnj8zb3ribaidejh4xsiec99z9vj5oudn/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         
@@ -74,11 +74,11 @@
                         <?php if ($_SESSION['user']['id_usersRoles'] == 1) { ?>
                             <a href="/profil" id="idCorner">@<?= $_SESSION['user']['username'] ?></a>
                         <?php }
-                        if ($_SESSION['user']['id_usersRoles'] == 142) { ?>
+                        if ($_SESSION['user']['id_usersRoles'] == 167) { ?>
                             <a href="/profile" id="idCorner">@<?= $_SESSION['user']['username'] ?></a>
                             <a href="/dashboard" style="color: rgb(130, 182, 195);">Moderation</a></li>
                         <?php }
-                        if ($_SESSION['user']['id_usersRoles'] == 258) { ?>
+                        if ($_SESSION['user']['id_usersRoles'] == 381) { ?>
                             <a href="/profile" id="idCorner">@<?= $_SESSION['user']['username'] ?></a>
                             <a href="/dashboard" style="color: darkgreen;">Admin</a>
                         <?php } ?>
@@ -87,3 +87,6 @@
                 <?php } ?>
             <?php } ?>
         </header>
+
+    <body>
+            

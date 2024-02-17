@@ -62,7 +62,7 @@
             <span class="visually-hidden"></span>
         </button>
         <!-- si l'utilisateur est un admin ou modérateur, ses alertes seront differents -->
-        <?php if ($_SESSION['user']['id_userRoles'] = 258) {  ?> 
+        <?php if ($_SESSION['user']['id_userRoles'] = 381 || 167) {  ?> 
             <ul class="dropdown-menu dropdown-menu-dark text-center">
                 <li><a class="dropdown-item" href="#">
                         <i class="fa-solid fa-envelope"></i> 5 nouveaux messages</a></li>
