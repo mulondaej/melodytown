@@ -23,6 +23,143 @@ $user = new Users;
 $user->id = $_SESSION['user']['id'];
 $userAccount = $user->getById();
 
+$status = new Status;
+
+
+$status->id_users = $_SESSION['user']['id'];
+
+
+
+// si la requête est une méthode POST et le POST variable est déclenché, on traite les données du formulaire
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addStatus'])) {
+
+    if (!empty($_POST['content'])) { // si le message n'est pas vide
+        if (!preg_match($regex['content'], $_POST['content'])) {  // si le message n'est pas conforme à la regex
+            $status->content = trim($_POST['content']); // on récupère le message en le trimmant
+        } else {
+            $errors['content'] = STATUS_ERROR; // sinon, afficher le message d'erreur
+        }
+    } else {
+        $errors['content'] = STATUS_ERROR; // sinon, afficher le message d'erreur
+    }
+
+    // si les erreurs sont vides, les status seront ajoutés dans la BDD
+    if (empty($errors)) {
+        $status->id_users = $_SESSION['user']['id'];
+        if ($status->create()) {
+            $success = STATUS_SUCCESS;
+        } else {
+            $errors['add'] = STATUS_ERROR;
+        }
+    } else {
+        $errors['add'] = STATUS_ERROR;
+    }
+}
+
+//suppression des status
+if (isset($_POST['deleteStatus'])) { // si est déclenché le POST variable deleteStatus
+    $status->id = (int) $_GET['id'];
+    if ($status->delete()) { // si la suppression de l'utilisateur réussie, on redirige vers la page de profil
+        header('Location: /profil');
+        exit;
+    }
+}
+
+
+// les mis à jour et la suppression des status et des commentaires sont gérées ici.
+if (isset($_POST['updateStatus'])) { // si est déclenché le POST variable updateStatus
+
+    if (!empty($_POST['content'])) { // si le status n'est pas vide
+        if (!preg_match($regex['content'], $POST['content'])) {
+            $status->content = clean($_POST['content']); // on récupère le message en le nettoyant
+            if ($status->checkIfExistsByContent() == 1) {  // si le statut existe déjà dans la BDD, on ne peut pas le mettre à jour
+                $errors['content'] = STATUS_UPDATE_ERROR; // afficher le message d'erreur
+            } else {
+                $errors['content'] = STATUS_UPDATE_ERROR; // sinon, on met à jour le statut dans la BDD
+            }
+        } else {
+            $errors['content'] = STATUS_UPDATE_ERROR_INVALID; // sinon, afficher le message d'erreur
+        }
+
+        // si les erreurs sont vides, les status seront mis à jour dans la BDD
+        if (empty($errors)) {
+            $status->id_users = $_SESSION['user']->id;
+            if ($status->update()) {
+                $success = STATUS_SUCCESS;
+            } else {
+                $errors['update'] = STATUS_ERROR;
+            }
+        }
+    }
+}
+
+
+$comments = new Comments;
+
+$comments->id_users = (int) $_SESSION['user']['id'];
+
+// même logique pour creer les commentaires que pour les status
+if (isset($_POST['addComment'])) {
+    if (!empty($_POST['content'])) {
+        $comments->id_status = $status->id;
+        if (!preg_match($regex['content'], $_POST['content'])) {
+            $comments->content = $_POST['content'];
+
+
+        } else {
+            $errors['content'] = STATUS_COMMENTS_ERROR;
+        }
+    } else {
+        $errors['content'] = STATUS_COMMENTS_ERROR_EXISTS;
+    }
+
+
+
+    if (empty($errors)) {
+        if ($comments->create()) {
+            $success = STATUS_COMMENTS_SUCCESS;
+        } else {
+            $errors['add'] = STATUS_COMMENTS_ERROR;
+        }
+    }
+}
+
+// même logique pour les mis à jour des commentaires que pour les status
+if (isset($_POST['updateComment'])) {
+
+    if (!empty($_POST['content'])) {
+        if (!preg_match($regex['content'], $POST['content'])) {
+            $comments->content = clean($_POST['content']);
+            if ($comments->checkIfExistsByContent() == 1) {
+                $errors['content'] = STATUS_COMMENTS_UPDATE_ERROR;
+            }
+        } else {
+            $errors['content'] = STATUS_COMMENTS_UPDATE_ERROR;
+        }
+    } else {
+        $errors['content'] = STATUS_COMMENTS_UPDATE_ERROR_INVALID;
+    }
+
+    if (empty($errors)) {
+        $comments->id_users = $_SESSION['user']->id;
+        if ($comments->update()) {
+            $success = STATUS_COMMENTS_SUCCESS;
+        } else {
+            $errors['update'] = STATUS_COMMENTS_ERROR;
+        }
+    }
+}
+
+//suppresion de commentaires
+if (isset($_POST['deleteComment'])) {
+    if (isset($_POST['content'])) {
+        if ($comments->delete()) {
+            header('Location: /profil');
+            exit;
+        }
+    }
+}
+
 // si la requête est une méthode POST et le POST variable esy déclenché, on traite les données du formulaire
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateAvatar'])) {
     if (!empty($_FILES['avatar'])) { // si l'image n'est pas vide
@@ -59,141 +196,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateAvatar'])) {
     }
 }
 
-$status = new Status;
-
-
-$status->id_users = $_SESSION['user']['id'];
-
-// si la requête est une méthode POST et le POST variable est déclenché, on traite les données du formulaire
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addStatus'])) {
-
-    if (!empty($_POST['content'])) { // si le message n'est pas vide
-        if (!preg_match($regex['content'], $_POST['content'])) {  // si le message n'est pas conforme à la regex
-            $status->content = trim($_POST['content']); // on récupère le message en le trimmant
-        } else {
-            $errors['content'] = STATUS_ERROR; // sinon, afficher le message d'erreur
-        }
-    } else {
-        $errors['content'] = STATUS_ERROR; // sinon, afficher le message d'erreur
-    }
-
-    // si les erreurs sont vides, les status seront ajoutés dans la BDD
-    if (empty($errors)) {
-        $status->id_users = $_SESSION['user']['id'];
-        if ($status->create()) {
-            $success = STATUS_SUCCESS;
-        } else {
-            $errors['add'] = STATUS_ERROR;
-        }
-    } else {
-        $errors['add'] = STATUS_ERROR;
-    }
-
-}
-
-// les mis à jour et la suppression des status et des commentaires sont gérées ici.
-if (isset($_POST['updateStatus'])) { // si est déclenché le POST variable updateStatus
-
-    if (!empty($_POST['content'])) { // si le status n'est pas vide
-        if (!preg_match($regex['content'], $POST['content'])) {
-            $status->content = clean($_POST['content']); // on récupère le message en le nettoyant
-            if ($status->checkIfExistsByContent() == 1) {  // si le statut existe déjà dans la BDD, on ne peut pas le mettre à jour
-                $errors['content'] = STATUS_UPDATE_ERROR; // afficher le message d'erreur
-            } else {
-                $errors['content'] = STATUS_UPDATE_ERROR; // sinon, on met à jour le statut dans la BDD
-            }
-        } else {
-            $errors['content'] = STATUS_UPDATE_ERROR_INVALID; // sinon, afficher le message d'erreur
-        }
-
-
-        // si les erreurs sont vides, les status seront mis à jour dans la BDD
-        if (empty($errors)) {
-            $status->id_users = $_SESSION['user']->id;
-            if ($status->update()) {
-                $success = STATUS_SUCCESS;
-            } else {
-                $errors['update'] = STATUS_ERROR;
-            }
-        }
-    }
-}
-
-
-//suppression des status
-if (isset($_POST['deleteStatus'])) { // si est déclenché le POST variable deleteStatus
-    if (isset($_POST['content'])) { // si le status existe ; on le supprime
-        if ($status->delete()) {
-            header('Location: /profil'); // on redirige vers la page de profil
-            exit;
-        }
-    }
-}
-
-$comments = new Comments;
-
-// $comments->id_status = (int)$_GET['id']; // on récupère l'id du commentaire 
-
-// même logique pour creer les commentaires que pour les status
-if (isset($_POST['addComment'])) {
-    if (!empty($_POST['comment'])) {
-        if (!preg_match($regex['content'], $_POST['comment'])) {
-            $comments->content = $_POST['comment'];
-        } else {
-            $errors['comment'] = STATUS_COMMENTS_ERROR;
-        }
-    } else {
-        $errors['comment'] = STATUS_COMMENTS_ERROR;
-    }
-
-    $comments->id_status = $status->id;
-    $comments->id_users = $_SESSION['user']['id'];
-    
-    if (empty($errors)) {
-        if ($comments->create()) {
-            $success = STATUS_COMMENTS_SUCCESS;
-        } else {
-            $errors['add'] = STATUS_COMMENTS_ERROR;
-        }
-    }
-}
-
-// même logique pour les mis à jour des commentaires que pour les status
-if (isset($_POST['updateComment'])) {
-
-    if (!empty($_POST['comment'])) {
-        if (!preg_match($regex['content'], $POST['comment'])) {
-            $comments->content = clean($_POST['content']);
-            if ($comments->checkIfExistsByContent() == 1) {
-                $errors['comment'] = STATUS_COMMENTS_UPDATE_ERROR;
-            }
-        } else {
-            $errors['comment'] = STATUS_COMMENTS_UPDATE_ERROR;
-        }
-    } else {
-        $errors['comment'] = STATUS_COMMENTS_UPDATE_ERROR_INVALID;
-    }
-
-    if (empty($errors)) {
-        $comments->id_users = $_SESSION['user']->id;
-        if ($comments->update()) {
-            $success = STATUS_COMMENTS_SUCCESS;
-        } else {
-            $errors['update'] = STATUS_COMMENTS_ERROR;
-        }
-    }
-}
-
-//suppresion de commentaires
-if (isset($_POST['deleteComment'])) {
-    if (isset($_POST['comment'])) {
-        if ($comments->delete()) {
-            header('Location: /profil');
-            exit;
-        }
-    }
-}
-
 // établissement des variables pour accéder aux données des modèles 
 //topics
 $topic = new Topics;
@@ -201,15 +203,15 @@ $topic->id_users = $_SESSION['user']['id'];
 $userTopics = $topic->getUserTopics();
 $userTotalTopics = count($userTopics);
 
-if(count($userTopics) > 0) {
+if (count($userTopics) > 0) {
     $latestPost = $userTopics[0];
 }
 
 //replies
 $replies = new Replies;
 
-foreach($userTopics as $key => $post) {  
-    $replies->id_topics =  $post['id'];
+foreach ($userTopics as $key => $post) {
+    $replies->id_topics = $post['id'];
     $userTopics[$key]['content'] = $replies->getRepliesByTopics();
 }
 
@@ -219,7 +221,7 @@ $userTotalAnswer = count($userReply);
 
 //status
 $userOwnStatus = $status->getListByIdUsers();
-if(count($userOwnStatus) > 0) {
+if (count($userOwnStatus) > 0) {
     $latestStatus = $userOwnStatus[0];
 }
 
@@ -231,7 +233,6 @@ $latestComment = $comments->getComment();
 
 $totalCounting = $userTotalAnswer + $userTotalTopics;
 
-var_dump($errors);
 
 $title = 'Profile'; // titre de la page
 

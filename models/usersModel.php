@@ -28,7 +28,9 @@ class Users
      */
     public function checkIfExistsByEmail()
     {
-        $sql = 'SELECT COUNT(`email`) FROM `a8yk4_users` WHERE `email` = :email';
+        $sql = 'SELECT COUNT(`email`) 
+        FROM `a8yk4_users` 
+        WHERE `email` = :email';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':email', $this->email, PDO::PARAM_STR);
         $req->execute();
@@ -42,7 +44,9 @@ class Users
      */
     public function checkIfExistsByUsername()
     {
-        $sql = 'SELECT COUNT(`username`) FROM `a8yk4_users` WHERE `username` = :username';
+        $sql = 'SELECT COUNT(`username`) 
+        FROM `a8yk4_users` 
+        WHERE `username` = :username';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->execute();

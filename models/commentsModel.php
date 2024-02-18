@@ -37,7 +37,6 @@ class Comments {
         VALUES (:content, NOW(), NOW(), :id_status, :id_users )';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
-        // $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->bindValue(':id_status', $this->id_status, PDO::PARAM_INT);
         $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
         $req->execute();

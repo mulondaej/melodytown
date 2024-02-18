@@ -18,13 +18,6 @@ if($topic->checkIfExistsById() == 0) { // si le topic n'existe pas, on redirige 
     exit;
 }
 
-if(isset($_POST['deleteTopic'])) {
-    if($topic->delete()) {
-        header('Location: /topics');
-        exit;
-    }
-}
-
 $replies = new Replies();
 
 $replies->id_topics = (int)$_GET['id'];
@@ -123,12 +116,10 @@ if (isset($_POST['updateContent'])) {
 // si l'envoi de delete est déclenche, le topic sera supprimé
 if(isset($_POST['deleteTopic'])) {
     if($topic->delete()) {
-        (header('Location: /liste-topics'));
-        $title = 'Deleted';
+        (header('Location: /liste-topics-par-categories'));
         exit;
     }
 }
-
 
 $topicsDetails = $topic->getById();
 

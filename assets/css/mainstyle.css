@@ -1095,7 +1095,8 @@ button:hover,
 .navbar a:hover,
 a:hover,
 button:hover,
-.navbar button:hover {
+.navbar button:hover,
+#replyBtn a:hover, #replyRepliesBtn a:hover{
     text-decoration: underline;
     color: rgb(255, 155, 100);
 }

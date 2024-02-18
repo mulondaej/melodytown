@@ -7,7 +7,6 @@ class Topics
     public string $content;
     public string $publicationDate;
     public string $updateDate;
-    public string $username;
     public int $id_users;
     public int $id_categories;
     public int $id_tags;
@@ -172,7 +171,6 @@ class Topics
     {
         $sql = "UPDATE `a8yk4_topics` SET `id_users` = :id_users WHERE id = :id";
         $req = $this->pdo->prepare($sql);
-        $req->bindParam(':username', $this->username, PDO::PARAM_STR);
         $req->bindParam(':id', $this->id, PDO::PARAM_INT);
         $req->execute();
     }

@@ -31,10 +31,11 @@
         <?php } ?>
 
         <div><!-- Case à cocher pour se souvenir du mot de passe -->
-            <input type="checkbox" name="remember" id="remember"><label for="remember">Se souvenir de moi</label>
+            <input type="checkbox" name="remember" id="remember">
+            <label for="remember">Se souvenir de moi</label>
         </div>
 
-        <!-- <div class="g-recaptcha" data-sitekey="reCAPTCHA_site_key"></div> -->
+        <div class="g-recaptcha" data-sitekey="reCAPTCHA_site_key"></div> <!-- recaptcha google -->
 
         <input type="submit" value="Se connecter"><!-- Bouton de la connexion -->
 
@@ -43,5 +44,4 @@
     </form>
 </section>
 
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-    async defer></script>
+<script src="assets/javaSC/recaptcha.js"></script>

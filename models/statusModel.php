@@ -6,7 +6,6 @@ class Status
     public string $content;
     public string $publicationDate;
     public string $updateDate;
-    public string $username;
     public int $id_users;
 
     public function __construct()
@@ -54,7 +53,7 @@ class Status
      * @param string $publicationDate La date de la publication au format YYYY-MM-DD
      * @return bool
      */
-    public function create()
+    public function create() // insertion du status dans la base de données
     {
         $sql = 'INSERT INTO `a8yk4_status`(`content`, `publicationDate`,
          `updateDate`, `id_users`) 
@@ -65,15 +64,15 @@ class Status
         return $req->execute();
     }
 
-    public function delete()
+    public function delete() // supprimer le status de l'utilisateur
     {
-        $sql = 'DELETE FROM `a8yk4_status` WHERE `id= :id ;';
+        $sql = 'DELETE FROM `a8yk4_status` WHERE `id`= :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
     }
 
-    public function getById()
+    public function getById() // recuperer le status de l'utilisateur par son id
     {
         $sql = 'SELECT `s`.`content`, 
         DATE_FORMAT(`s`.`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`

@@ -27,5 +27,13 @@ modalContainer.addEventListener("click", (e) => {
     }
 });
 
+///////////////////////////////
+$(document).ready(function () {
+    $(".morelink").click(function (e) {
+        e.preventDefault();
+        $(this).prev().toggle();
+        $(this).text($(this).text() == "Read more" ? "Read less" : "Read more");
+    });
+});
 
 
