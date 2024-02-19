@@ -460,15 +460,17 @@
 
     /* topic thread */
     #threadMain {
-        width: max-content;
+        width: 400px;
         margin: 0 auto;
         padding: 0;
         display: block;
+        height: 100%;
     }
 
     #threadHeader {
         padding: 0;
-        width: 90%;
+        width: 80%;
+        margin: 0 auto;
     }
 
     #threadContains {
@@ -479,22 +481,55 @@
         justify-content: center;
     }
 
+    #contents {
+        font-size: 16px;
+    }
+
     .interact {
         margin: 0 auto;
         padding: 0;
-        width: 40%;
+        width: 20%;
         justify-content: center;
+        text-align: center;
+        display: flex;
+        bottom: 0;
+        margin-top: 1rem;
     }
 
+    #logFormEdits {
+        width: 80%;
+        z-index: 1;
+        margin-top: 1.7rem;
+    }
 
+    #editForme {
+        display: block;
+        margin: 8px;
+        padding: 0;
+        margin-bottom: 0.8rem;
+    }
+
+    .replyText {
+        display: flex;
+        padding: 0;
+        width: 100%;
+    }
+
+    .postReply {
+        padding: 0;
+        margin: 0 auto;
+        width:  100%;
+    }
     #likeBtn,
     #replyBtn,
     #replyRepliesBtn,
     #replyLikeBtn,
     #replyModalBtn,
-    #editModal {
-        font-size: 13px;
-        margin: 3px;
+    #editModal, 
+    #openModalBtn {
+        font-size: 12px;
+        margin: 5px;
+        padding: 0;
     }
 
     #userCard {
@@ -517,10 +552,12 @@
         margin: 0 auto;
         padding: 0;
         width: 80%;
+        bottom: 0;
+        position: relative;
     }
 
     .footer {
-        padding: 10px;
+        
         text-align: center;
         bottom: 0;
         width: 100%;

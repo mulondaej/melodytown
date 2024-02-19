@@ -15,25 +15,39 @@ function closeModal() {
 }
 
 // le bouton "Supprimer" par un clic
+if (profiModalBtn != null) {
 profiModalBtn.addEventListener('click', openModal);
+}
 
 // le button "fermer" par un clic
+if (closeBtn != null) {
 closeBtn.addEventListener('click', closeModal);
+}
 
 // fermer le conteneur en cliquant n'importe où
+if (modalContainer != null) {
 modalContainer.addEventListener("click", (e) => {
     if (e.target != modal && e.target != modalText) {
         modalContainer.style.display = "none"
     }
 });
+}
 
 ///////////////////////////////
-$(document).ready(function () {
-    $(".morelink").click(function (e) {
-        e.preventDefault();
-        $(this).prev().toggle();
-        $(this).text($(this).text() == "Read more" ? "Read less" : "Read more");
+
+if (profiModalBtn != null) {
+    profiModalBtn.addEventListener('click', () => {
+        const deleteId = profiModalBtn.getAttribute('deleteid');
+        idDelete.value = deleteId;
+        console.log(deleteId)
     });
-});
+}
 
-
+/////
+if (replyModalBtn != null) {
+    replyModalBtn.addEventListener('click', () => {
+        const deleteId = replyModalBtn.getAttribute('deleteid');
+        idDelete.value = deleteId;
+        console.log(deleteId)
+    });
+}

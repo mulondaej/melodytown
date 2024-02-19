@@ -39,3 +39,25 @@ replyModalBtn.addEventListener('click', () => {
     console.log(deleteId)
 });
 }
+
+///////////////////////////////////////
+// const editForm = document.getElementById('editModal');
+// const formEdit = document.getElementById('logFormEdits');
+
+// if(editForm!= null ){
+// editForm.addEventListener("click", () => {
+//     if (formEdit.style.display === 'none' || formEdit.style.display === '') {
+//         formEdit.style.display = 'block';
+//     } else {
+//         formEdit.style.display = 'none';
+//     }
+// });
+// }
+
+// if (editForm != null) {
+//     editForm.addEventListener('click', () => {
+//         const updatecontent = editForm.getAttribute('updatecontent');
+//         contentUpdate.value = updatecontent;
+//         console.log(updatecontent)
+//     });
+//     }

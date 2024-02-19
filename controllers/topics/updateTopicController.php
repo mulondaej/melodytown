@@ -61,6 +61,7 @@ if(isset($_POST['updateTopic'])) { // si le formulaire est envoyé
         $errors['content'] = 'le nouveau contenu ne doit pas être vide';
     }
 
+
     if (!empty($_POST['categories'])) { // si la catégorie n'est pas vide
         $categories->id = $_POST['categories'];
         if ($categories->checkIfExistsById() == 1) { // si la catégorie existe déjà dans la BDD
@@ -94,31 +95,6 @@ if(isset($_POST['updateTopic'])) { // si le formulaire est envoyé
     }
 }
 
-// la modification du contenu seul 
-if (isset($_POST['updateContent'])) {
-    if (!empty($_POST['content'])) {
-        if (!preg_match($regex['content'], $POST['content'])) {
-            $topic->content = clean($_POST['content']);
-            if ($topic->checkIfExistsByContent() == 1) {
-                $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
-            }
-        } else {
-            $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
-        }
-    } else {
-        $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR_INVALID;
-    }
-
-    if(empty($errors)) {
-        $topic->id_users = $_SESSION['user']->id;
-        if($topic->updateContent()){
-            $success = TOPIC_UPDATE_SUCCESS;
-        } else {
-            $errors['update'] = TOPIC_UPDATE_ERROR;
-        }
-    }
-
-}
 
 // si l'envoi de delete est déclenche, le topic sera supprimé
 if(isset($_POST['deleteTopic'])) {
@@ -127,37 +103,6 @@ if(isset($_POST['deleteTopic'])) {
         exit;
     }
 }
-
-// si l'envoi de $_POST variable existe, alors mets les contenus du reponse à jour
-if(isset($_POST['updateReply'])) {
-
-    // Même logique que pour la case de titre mais pour les réponses ou commentaires
-    if (!empty($_POST['content'])) {
-        if (!preg_match($regex['content'], $POST['content'])) {
-            $replies->content = clean($_POST['content']);
-            if ($replies->checkIfExistsByContent() == 1 ) {
-                $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR;
-            }
-        } else {
-            $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR;
-        }
-    } else {
-        $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR_INVALID;
-    }
-
-    // si les erreurs sont vides, alors mets le contenu du réponse à jour
-    if(empty($errors)) {
-        $replies->id_users = $_SESSION['user']['id'];
-        if($replies->update()){
-              $replies->content;
-            $success = TOPIC_UPDATE_SUCCESS;
-        } else {
-            $errors['update'] = TOPIC_UPDATE_ERROR;
-        }
-    }
-}
-
-// var_dump($errors);
 
 
 $title = 'Topic-update'; // Titre de la page

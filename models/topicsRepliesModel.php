@@ -123,4 +123,14 @@ class Replies {
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
     }
+
+    public function updateReply()
+    {
+        $sql = 'UPDATE `a8yk4_topicreplies` SET `content`=:content, `updateDate` = :updateDate 
+        WHERE `id` = :id';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':content', $this->content, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $req->execute();
+    }
 }

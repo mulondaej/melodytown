@@ -6,21 +6,19 @@
     </div>
 <?php } else { ?>
     <?php if (isset($success)) { ?>
-        <p #="successMessage"><?= $success ?></p>
+        <p id="successMessage"><?= $success ?></p>
     <?php } ?>
 
-    <?php if (isset($errors['reply'])) { ?>
-        <p class="errorsMessage"><?= $errors['reply'] ?></p>
-    <?php } ?>
-    
     
     <fieldset id="userPosting">
-    <form action="/topic-<?= $_GET['id'] ?>" method="POST">
-      <div id="centered"><label for="comments"></label>
-        <textarea name="comments" id="comments" value="<?= @$_POST['content'] ?>"></textarea>
-        <br><input type="submit" value="post" id="commentBtn" name="reply">
-      </div>
-    </form>
+      <form action="/topic-<?= $_GET['id'] ?>" method="POST" id="centered">
+          <label for="content"></label>
+          <textarea name="content" id="comments" value="<?= @$_POST['content'] ?>"></textarea>
+          <br><input type="submit" value="post" id="commentBtn" name="reply">
+          <?php if (isset($errors['content'])) { ?>
+              <p class="errorsMessage"><?= $errors['content'] ?></p>
+            <?php } ?>
+      </form>
     </fieldset>
     <?php } ?>
     </main>

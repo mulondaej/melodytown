@@ -64,25 +64,12 @@ if (replyLikeBtn != null) {
 
 }
 
-const replyBtn = document.getElementById('replyBtn');
-const quotedContent = document.getElementById('comments');
-const content = document.getElementById('contentP');
 
-if(quotedContent!= null ){
-    quotedContent.value = content.value
-    replyBtn.addEventListener('click', () => {
-        quotedContent.value += '" ' + '\n\n' + '"';
-    })
-}
-
-
-const replyRepliesBtn = document.getElementById('quoteBtn');
-// const quotedReply = document.getElementById('comments');
-if (replyRepliesBtn != null) {
-replyRepliesBtn.addEventListener('click', () => {
-    quotedContent.value += '" ' + content + '\n\n' + '"';
-});
-};
-
-
-//
+//////////////////////////
+if (editForm != null) {
+    editForm.addEventListener('click', () => {
+        const updatecontent = editForm.getAttribute('updatecontent');
+        contentUpdate.value = updatecontent;
+        console.log(updatecontent)
+    });
+    }

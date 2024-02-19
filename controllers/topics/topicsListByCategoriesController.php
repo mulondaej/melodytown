@@ -95,8 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
 
 // topic
 
-// $getTopic = $topic->getTopicsByCategories();
-
 $topicsList = $topic->getList();
 $latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
@@ -107,6 +105,7 @@ $latestReply = $replies->getReply();
 $repliesCount = count($repliesList);
 
 $totalCount = $repliesCount + $topicCount;
+
 
 $title = 'Topics';// Titre de la page
 

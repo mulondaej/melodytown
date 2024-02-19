@@ -20,22 +20,22 @@ if($topic->checkIfExistsById() == 0) { // si le topic n'existe pas, on redirige 
 
 $replies = new Replies();
 
-$replies->id_topics = (int)$_GET['id'];
+$replies->id_topics = (int)$_GET['id']; // on récupère l'id du topic
 
-$replies->id_users = (int)$_GET['id'];
+$replies->id_users = (int)$_GET['id']; // on récupère l'id de l'utilisateur qui a posté ce commentaire
 
 
 
 // si la requete est de type POST (envoi du formulaire), on l'traite
 if(isset($_POST['reply'])) {
-    if(!empty($_POST['comments'])) { // si le contenu n'est pas vide
-        if(!preg_match($regex['content'], $_POST['comments'])) { 
-            $replies->content = $_POST['comments']; // si le contenu est valide, on l'ajoute le reply
+    if(!empty($_POST['content'])) { // si le contenu n'est pas vide
+        if(!preg_match($regex['reponse'], $_POST['content'])) { 
+            $replies->content = $_POST['content']; // si le contenu est valide, on l'ajoute le reply
         } else {
-            $errors['comments'] = TOPICS_REPLIES_ERROR; // sinon, afficher le message d'erreur 
+            $errors['content'] = TOPICS_REPLIES_ERROR; // sinon, afficher le message d'erreur 
         }
     } else {
-        $errors['comments'] = TOPICS_REPLIES_ERROR; // sinon, afficher le message d'erreur 
+        $errors['content'] = TOPICS_REPLIES_ERROR; // sinon, afficher le message d'erreur 
     }
    
     $replies->id_topics = $topic->id;  // id-topics des $replies sera pareil que l'id du $topic
@@ -51,34 +51,6 @@ if(isset($_POST['reply'])) {
     } 
 }
 
-// si l'envoi de $_POST variable existe, alors mets les contenus du reponse à jour
-if(isset($_POST['updateReply'])) {
-
-    // Même logique que pour la case de titre mais pour les réponses ou commentaires
-    if (!empty($_POST['content'])) {
-        if (!preg_match($regex['content'], $POST['content'])) {
-            $replies->content = clean($_POST['content']);
-            if ($replies->checkIfExistsByContent() == 1 ) {
-                $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR;
-            }
-        } else {
-            $errors['content'] = TOPIC_REPLIES_UPDATE_SUCCESS;
-        }
-    } else {
-        $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR;
-    }
-
-    // si les erreurs sont vides, alors mets le contenu du réponse à jour
-    if(empty($errors)) {
-        $replies->id_users = $_SESSION['user']['id'];
-        if($replies->update()){
-              $replies->content;
-            $success = TOPIC_UPDATE_SUCCESS;
-        } else {
-            $errors['update'] = TOPIC_UPDATE_ERROR;
-        }
-    }
-}
 
 // Même logique pour la suppression des topics mais avec precision de l'id 
 if(isset($_POST['deleteReply'])) {
@@ -89,15 +61,47 @@ if(isset($_POST['deleteReply'])) {
     }
 }
 
+
+// si l'envoi de $_POST variable existe, alors mets les contenus du reponse à jour
+if(isset($_POST['updateReply'])) {
+
+    // Même logique que pour la case de titre mais pour les réponses ou commentaires
+    if (!empty($_POST['replyUpdate'])) {
+        if (!preg_match($regex['reponse'], $POST['replyUpdate'])) {
+            $replies->content = clean($_POST['replyUpdate']);
+            if ($replies->checkIfExistsByContent() == 1 ) {
+                $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR;
+            }
+        } else {
+            $errors['content'] = TOPICS_REPLIES_ERROR;
+        }
+    } else {
+        $errors['content'] = TOPIC_REPLIES_UPDATE_ERROR;
+    }
+
+    // si les erreurs sont vides, alors mets le contenu du réponse à jour
+    if(empty($errors)) {
+        $replies->id_users = $_SESSION['user']['id'];
+        if($replies->updateReply()){
+              $replies->content;
+            $success = TOPIC_UPDATE_SUCCESS;
+        } else {
+            $errors['update'] = TOPIC_UPDATE_ERROR;
+        }
+    }
+}
+
+
+// update content seulement
 if (isset($_POST['updateContent'])) {
-    if (!empty($_POST['content'])) {
-        if (!preg_match($regex['content'], $POST['content'])) {
-            $topic->content = clean($_POST['content']);
+    if (!empty($_POST['contentUpdate'])) {
+        if (!preg_match($regex['content'], $_POST['contentUpdate'])) {
+            $topic->content = clean($_POST['contentUpdate']);
             if ($topic->checkIfExistsByContent() == 1) {
                 $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
             }
         } else {
-            $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR;
+            $errors['content'] = TOPICS_CONTENT_ERROR;
         }
     } else {
         $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR_INVALID;
@@ -106,9 +110,10 @@ if (isset($_POST['updateContent'])) {
     if(empty($errors)) {
         $topic->id_users = $_SESSION['user']['id'];
         if($topic->updateContent()){
-            $success = TOPIC_UPDATE_SUCCESS;
+            $topic->content;
+            $success = TOPIC_CONTENT_UPDATE_SUCCESS;
         } else {
-            $errors['update'] = TOPIC_UPDATE_ERROR;
+            $errors['update'] = TOPIC_CONTENT_UPDATE_ERROR;
         }
     }
 }

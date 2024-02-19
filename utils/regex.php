@@ -7,4 +7,5 @@ $regex = [
     'title' => '/^[A-zÄ-ÿ0-9]{1,}[ \-\',A-zÄ-ÿ0-9\?\!\:\/]{1,}$/',
     'content' => '/(<script>)/',
     'comment' => '/(<script>)/',
+    'reponse' => '/(<script>)/',
 ];

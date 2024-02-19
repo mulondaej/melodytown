@@ -19,10 +19,6 @@
         <script src="https://cdn.tiny.cloud/1/r46x7x3vh3lxxmkcnj8zb3ribaidejh4xsiec99z9vj5oudn/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-         <!-- jQuery library -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <!-- jQuery shorten plugin -->
-        <script src="jquery.shorten.1.0.js"></script>
     </head>
 
     <body>
@@ -67,7 +63,7 @@
                     <!-- l'avatar dans un menu bouton pour afficher ces liens -->
                     <div class="btn-group" id="menu-button"> 
                         <button type="button" class="btn btn-sm btn-tertiary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../assets/IMG/" alt="UserAvatar" id="avatar">
+                            <img src="/assets/IMG/Avril23j.jpg" alt="UserAvatar" id="avatar">
                         </button>
                         <ul class="dropdown-menu text-center dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
                             <li><a class="dropdown-item" type="button" href="/mon-compte"><i class="fa-solid fa-user"></i> Mon compte</a></li>

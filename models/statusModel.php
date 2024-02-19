@@ -74,7 +74,7 @@ class Status
 
     public function getById() // recuperer le status de l'utilisateur par son id
     {
-        $sql = 'SELECT `s`.`content`, 
+        $sql = 'SELECT `s`.`id`, `s`.`content`, 
         DATE_FORMAT(`s`.`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`
         FROM `a8yk4_status` AS `s`
         INNER JOIN `a8yk4_users` AS `u` ON `s`.`id_users` = `u`.`id`
@@ -97,6 +97,21 @@ class Status
         $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
         $req->execute();
         return $req->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function getStatusByUser()
+    {
+        $sql = 'SELECT `s`.`id`, `content`, 
+        DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, 
+        `u`.`username`, `id_users`
+        FROM `a8yk4_topicreplies` AS `s`
+        INNER JOIN `a8yk4_users` AS `u` ON `s`.`id_users` = `u`.`id`
+        WHERE `id_users` = :id_users
+        ORDER BY `publicationDate` DESC';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getUserStatus()

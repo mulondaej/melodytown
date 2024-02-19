@@ -188,9 +188,9 @@ class Topics
         return $req->execute();
     }
 
-    public function updateContent()
+    public function updateContent() //update de contenu dans la BDD sans toucher au reste des champs
     {
-        $sql = 'UPDATE `a8yk4_topics` SET `content`=:content, `updateDate` = :updateDate 
+        $sql = 'UPDATE `a8yk4_topics` SET `content`=:content, `updateDate` = NOW()
         WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);

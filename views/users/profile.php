@@ -64,7 +64,7 @@
                 <?php } ?>
 
                 <form action="#" method="POST" id="postStatus">
-                    <textarea name="content" id="postHere"></textarea>
+                    <textarea name="content" id="postHere" ></textarea>
                     <input type="submit" id="posted" value="post" name="addStatus">
                     <?php if (isset($errors['content'])): ?>
                         <p class="errorsMessage"><?= $errors['content'] ?></p>
@@ -84,46 +84,53 @@
                             </p>
                             <button id="likeBtn"><i class="fa-solid fa-heart"></i></button>
                             <button id="replyBtn" name="replyBtn"><a href="#commenting">répondre</a></button>
-                            <form action="#" method="POST" class="replying" id="Replying">
-                                <textarea class="replyText" id="commenting" ></textarea>
-                                <input type="submit" class="postReply" name="addComment" value="comment">
-                                <?php if (isset($errors['comment'])): ?>
-                                    <p class="errorsMessage">
-                                        <?= $errors['comment'] ?>
-                                    </p>
-                                <?php endif; ?><br>
-                            </form>
+                            
                         <?php if($_SESSION['user']['id'] == $status->id_users){ ?>
-                            <button type="submit" name="update" id="editModal">modifier</button>
-                            <button type="submit" id="profiModalBtn"><a href="#delete">supprimer</a></button>
+                            <button type="submit" name="update" id="editModal" updatecontent=<?= $ownStatus->content ?> >modifier</button>
+                            <button type="submit" id="profiModalBtn" deleteid=""><a href="#delete">supprimer</a></button>
                         <?php } ?>
                     </div>
-                        
-                        <div id="logFormEdits">
-                            <form action="" method="POST" id="editForm">
-                                <textarea class="replyText" value=""><?= $ownStatus->content ?></textarea>
-                                <input type="submit" class="postReply" name="updateStatus" value="modifier">
-                                <?php if (isset($errors['content'])): ?>
-                                    <p class="errorsMessage">
-                                        <?= $errors['content'] ?>
-                                    </p>
-                                <?php endif; ?><br>
-                            </form>
-                        </div>
+
+                            <!-- modification form -->
+                    <div id="logFormEdits">
+                    <?php if (isset($success)) { ?>
+                        <p id="successMessage"><?= $success ?></p>
+                    <?php } ?>
+                        <form action="#" method="POST" id="editForme">
+                            <input type="text" class="replyText" name="contentUpdate" id="contentUpdate">
+                            <input type="submit" class="postReply" name="updateStatus" value="modifier">
+                            <?php if (isset($errors['content'])): ?>
+                                <p class="errorsMessage"><?= $errors['content'] ?></p>
+                            <?php endif; ?><br>
+                        </form>
+                    </div>
+
+                    <!-- reponses -->
+                    <form action="#" method="POST" class="replying" id="Replying">
+                        <input type="text" class="replyText" id="commenting">
+                        <input type="submit" class="postReply" name="addComment" value="commenter">
+                        <?php if (isset($errors['comment'])): ?>
+                           <p class="errorsMessage"><?= $errors['comment'] ?></p>
+                        <?php endif; ?><br>
+                    </form>
                         <?php } ?>
                     <?php } ?>
                 <?php } ?>
+
+                <!-- suppression -->
                 <div id="modalContainer">
-                     <div id="modal">
+                    <div id="modal">
                         <span id="closeBtn">&times;</span>
-                        <p id="modalText">Vouliez-vous le supprimer?</p>
-                        <form action="" method="POST" id="delete">
-                            <input type="submit" value="supprimer" name="deleteStatus">
+                        <p id="modalText">Êtes-vous sûr de vouloir supprimer votre status ?</p>
+                        <form action="/profil ?>" method="POST" id="delete">
+                            <input type="submit" value="Supprimer" name="deleteStatus">
                         </form>
                     </div>
                 </div>
-                <ul class="comments"><!-- Comments vont ici -->
-                    <li>
+
+
+                <ul class="comments">
+                    <li><!-- Comments vont ici -->
                     <?php if (count($userOwnComments) == 0) { ?>
                         <p class="errorsMessage">No comments</p>
                     <?php } else { ?>
@@ -140,7 +147,7 @@
                         <?php }?>
                         <div id="logFormEdits">
                             <form action="" method="POST" id="editForm">
-                                <textarea class="replyText">value=" <?= $userOwnComments->content ?>" ?></textarea>
+                                <textarea class="replyText">value=" <?= $commentingUser->content ?>" ?></textarea>
                                 <input type="submit" class="postReply" name="updateComment" value="modifier">
                                 <?php if (isset($errors['comment'])): ?>
                                     <p class="errorsMessage"><?= $errors['comment'] ?></p>
@@ -171,10 +178,10 @@
                     <!-- dèrnière activité ici -->
                     <h5><b>Tes contenus:</b><hr></h5>
                     <?php foreach($userTopics as $p) { ?>
-                        <li>*<?= $p['title'] ?><hr></li>
+                        <li>*<a href="/topic-<?= $p['id'] ?>"><?= $p['title'] ?></a><hr></li>
                         <ul>
                             <?php foreach($p['content'] as $pr) { ?>
-                                <li>-><?= $pr['content'] ?></li>
+                                <li>-><a href="/topic-<?= $p['id'] ?>"><?= $pr['content'] ?></a></li>
                         <?php } ?>
                         </ul>
                    <?php  } ?>

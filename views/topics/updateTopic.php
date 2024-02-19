@@ -40,7 +40,7 @@
             <p class=errorsMessage><?= $errors['content'] ?></p>
         <?php } ?>
 
-        <?php if($_SESSION['user']['id'] == $topicsDetails->id_users){ ?>
+        <?php if($_SESSION['user']['id'] == $topicsDetails->id_users && $_SESSION['user']['usersRoles'] == 167 || 381){ ?>
             <button type="submit" value="Modifier" name="updateTopic"><i class="fa-solid fa-pen-to-square"></i> modifier</button>
             <button id="openModalBtn"><i class="fa-solid fa-trash-can"></i> <a href="#delete">supprimer</a></button>
         <?php } ?>

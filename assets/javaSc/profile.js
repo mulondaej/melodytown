@@ -56,6 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+////////////////////////////////
+
 const editForm = document.getElementById('editModal');
 const formEdit = document.getElementById('logFormEdits');
 
@@ -68,3 +70,12 @@ editForm.addEventListener("click", () => {
 });
 
 ///////////////////////////////////////
+
+if (editForm != null) {
+    editForm.addEventListener('click', () => {
+        const updatecontent = editForm.getAttribute('updatecontent');
+        contentUpdate.value = updatecontent;
+        console.log(updatecontent)
+    });
+    }
+
