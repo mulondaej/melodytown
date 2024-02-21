@@ -13,10 +13,10 @@
     <fieldset id="userPosting">
       <form action="/topic-<?= $_GET['id'] ?>" method="POST" id="centered">
           <label for="content"></label>
-          <textarea name="content" id="comments" value="<?= @$_POST['content'] ?>"></textarea>
-          <br><input type="submit" value="post" id="commentBtn" name="reply">
-          <?php if (isset($errors['content'])) { ?>
-              <p class="errorsMessage"><?= $errors['content'] ?></p>
+          <textarea name="replyTextBar" id="replyTextBar" ></textarea>
+          <br><input type="submit" value="post" id="repliesBtn" name="reply">
+          <?php if (isset($errors['reponse'])) { ?>
+              <p class="errorsMessage"><?= $errors['reponse'] ?></p>
             <?php } ?>
       </form>
     </fieldset>

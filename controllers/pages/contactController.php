@@ -92,3 +92,4 @@ $title = 'contact'; // Titre de la page
 require_once '../../views/parts/header.php';
 require_once '../../views/pages/contact.php';
 require_once '../../views/parts/footer.php';
+?>

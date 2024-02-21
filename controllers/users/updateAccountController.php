@@ -146,46 +146,6 @@ if (isset($_POST['updatePassword'])) {
     }
 }
 
-// Mis à jour de l'avatar de l'utilisateur
-if (isset($_POST['updateAvatar'])) {
-    if (!empty($_FILES['avatar'])) { 
-        $avatarMessage = checkAvatar($_FILES['avatar']); // Vérifier si l'utilisateur a sélectionné un fichier
-        if ($avatarMessage != '') { // si le fichier n'est pas une image
-            $errors['avatar'] = $avatarMessage; // afficher l'erreur
-        } else {
-            // sinon, créer un nom unique pour l'avatar
-            $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-
-            while (file_exists('../../assets/IMG/user/' . $user->avatar)) {  // tant que le fichier existe déjà
-                // Crée un nouveau nom unique si un fichier avec le même nom existe déjà
-                $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-            }
-        }
-
-        // Si aucune erreur n'a été détectée, met à jour l'avatar de l'utilisateur
-        if(empty($errors)) {
-            $user->id = $_SESSION['user']['id'];
-            // Déplacer le fichier téléchargé vers le dossier de stockage
-            if(move_uploaded_file($_FILES['avatar']['tmp_name'], '../../assets/IMG/user/' . $user->avatar)) {
-                if($user->updateAvatar()){
-                    // Met à jour l'avatar de l'utilisateur dans la session
-                    $_SESSION['user']['avatar'] = $user->avatar;
-                    // Affichage d'un message de succès au cas de réussite
-                    $success = IMAGE_SUCCESS;
-                } else {
-                    // Supprime le fichier téléchargé si la mise à jour a échoué
-                    unlink('../../assets/IMG/user/' . $user->avatar);
-                    // sinon, afficher le message d'erreur de mise à jour qu cas d'echec
-                    $errors['update'] = IMAGE_ERROR;
-                }
-            } else {
-                // sinon, afficher le message d'erreur de téléchargement de fichier
-                $errors['update'] = IMAGE_ERROR;
-            }
-        }
-    }
-}
-
 // le transfert de données et suppression du compte
 if (isset($_POST['transferData'])) {
     // Supprime l'utilisateur et transfère ses données à un autre utilisateur
@@ -196,12 +156,12 @@ if (isset($_POST['transferData'])) {
 
         // Transfère chaque topic à un autre utilisateur
         foreach ($topics as $single_topic) {
-            $single_topic->id_users = 1;
+            $single_topic->id_users = $_SESSION['user']['id_users'] == 1;
             $single_topic->changeUsers();
         }
 
         foreach ($statuses as $single_status) {
-            $single_status->id_users = 1;
+            $single_status->id_users = $_SESSION['user']['id_users'] == 1;
             $single_status->changeUsers();
         }
 
@@ -230,5 +190,8 @@ $title = 'Account-update'; // Titre de la page
 require_once '../../views/parts/header.php';
 require_once '../../views/users/updateAccount.php';
 require_once '../../views/parts/footer.php';
+?>
 
+<script src="assets/javaSc/modals.js"></script>
+<script src="assets/javaSc/repliesModal.js"></script>
 

@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addStatus'])) {
 
 //suppression des status
 if (isset($_POST['deleteStatus'])) { // si est déclenché le POST variable deleteStatus
-    // $status->id = (int)$_GET['id'];
+    $status->id = $_POST['idStatusDelete'];
     if ($status->delete()) { // si la suppression de l'utilisateur réussie, on redirige vers la page de profil
         header('Location: /profil'); 
         exit;
@@ -66,14 +66,9 @@ if (isset($_POST['deleteStatus'])) { // si est déclenché le POST variable dele
 
 // les mis à jour et la suppression des status et des commentaires sont gérées ici.
 if (isset($_POST['updateStatus'])) { // si est déclenché le POST variable updateStatus
-    if (!empty($_POST['contentUpdate'])) { // si le status n'est pas vide
-        if (!preg_match($regex['content'], $POST['contentUpdate'])) {
-            $status->content = clean($_POST['contentUpdate']); // on récupère le message en le nettoyant
-            if ($status->checkIfExistsByContent() == 1) {  // si le statut existe déjà dans la BDD, on ne peut pas le mettre à jour
-                $errors['content'] = STATUS_ERROR_EXISTS; // afficher le message d'erreur
-            } else {
-                $errors['content'] = STATUS_UPDATE_ERROR; // sinon, on met à jour le statut dans la BDD
-            }
+    if (!empty($_POST['statusUpdate'])) { // si le status n'est pas vide
+        if (!preg_match($regex['content'], $_POST['statusUpdate'])) {
+            $status->content = clean($_POST['statusUpdate']); // on récupère le message en le nettoyant
         } else {
             $errors['content'] = STATUS_UPDATE_ERROR_INVALID; // sinon, afficher le message d'erreur
         }
@@ -81,15 +76,15 @@ if (isset($_POST['updateStatus'])) { // si est déclenché le POST variable upda
         // si les erreurs sont vides, les status seront mis à jour dans la BDD
         if (empty($errors)) {
             $status->id_users = $_SESSION['user']['id'];
+            $status->id = $_POST['statusid'];
             if ($status->update()) {
-                $success = STATUS_SUCCESS;
+                $success = STATUS_UPDATE_SUCCESS;
             } else {
-                $errors['update'] = STATUS_ERROR;
+                $errors['update'] = STATUS_UPDATE_ERROR;
             }
         }
     }
 }
-
 
 $comments = new Comments;
 
@@ -97,11 +92,11 @@ $comments->id_users = (int)$_SESSION['user']['id'];
 
 // même logique pour creer les commentaires que pour les status
 if (isset($_POST['addComment'])) {
-    if (!empty($_POST['comment'])) {
-        if (!preg_match($regex['comment'], $_POST['comment'])) {
-            $comments->content = $_POST['comment'];
+    if (!empty($_POST['commenting'])) {
+        if (!preg_match($regex['comment'], $_POST['commenting'])) {
+            $comments->content = $_POST['commenting'];
             
-            $comments->id_status = $status->id;
+            $comments->id_status = $_POST['statusid'];
         } else {
             $errors['comment'] = STATUS_COMMENTS_ERROR;
         }
@@ -109,8 +104,6 @@ if (isset($_POST['addComment'])) {
         $errors['comment'] = STATUS_COMMENTS_ERROR_EXISTS;
     }
 
-    
-    
     if (empty($errors)) {
         if ($comments->create()) {
             $success = STATUS_COMMENTS_SUCCESS;
@@ -121,73 +114,34 @@ if (isset($_POST['addComment'])) {
 }
 
 // même logique pour les mis à jour des commentaires que pour les status
-if (isset($_POST['updateComment'])) {
-
-    if (!empty($_POST['comment'])) {
-        if (!preg_match($regex['comment'], $POST['comment'])) {
-            $comments->content = clean($_POST['content']);
-            if ($comments->checkIfExistsByContent() == 1) {
-                $errors['comment'] = STATUS_COMMENTS_UPDATE_ERROR;
-            }
+if (isset($_POST['updateComments'])) {
+    if (!empty($_POST['commentUpdate'])) {
+        if (!preg_match($regex['reponse'], $_POST['commentUpdate'])) {
+            $comments->content = htmlspecialchars($_POST['commentUpdate']);
         } else {
-            $errors['comment'] = STATUS_COMMENTS_UPDATE_ERROR;
+            $errors['reponse'] = STATUS_COMMENTS_UPDATE_ERROR_INVALID;
         }
-    } else {
-        $errors['comment'] = STATUS_COMMENTS_UPDATE_ERROR_INVALID;
-    }
 
-    if (empty($errors)) {
-        $comments->id_users = $_SESSION['user']->id;
-        if ($comments->update()) {
-            $success = STATUS_COMMENTS_SUCCESS;
-        } else {
-            $errors['update'] = STATUS_COMMENTS_ERROR;
+        if (empty($errors)) {
+            $comments->id_users = $_SESSION['user']['id'];
+                $comments->id = $_POST['commentsid'];
+            if ($comments->update()) {
+                $comments->content = $_POST['commentUpdate'];
+                $success = STATUS_COMMENTS_SUCCESS;
+            } else {
+                $errors['update'] = STATUS_COMMENTS_ERROR;
+            }
         }
     }
 }
 
 //suppresion de commentaires
 if (isset($_POST['deleteComment'])) {
-    if (isset($_POST['comment'])) {
+    if (isset($_POST['idCommentsDelete'])) {
+            $comments->id = $_POST['commentsid'];
         if ($comments->delete()) {
             header('Location: /profil');
             exit;
-        }
-    }
-}
-
-// si la requête est une méthode POST et le POST variable esy déclenché, on traite les données du formulaire
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['updateAvatar'])) {
-    if (!empty($_FILES['avatar'])) { // si l'image n'est pas vide
-        $avatarMessage = checkAvatar($_FILES['avatar']); // si l'extension de l'image est autorisée
-
-        if ($avatarMessage != '') { // si l'extension de l'image n'est pas autorisée
-            $errors['avatar'] = $avatarMessage; // afficher le message d'erreur
-        } else {
-            $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-            // sinon, on donne un nom unique à l'image
-
-            while (file_exists('../../assets/IMG/user/' . $user->avatar)) { // si l'image existe déjà
-                $user->avatar = uniqid() . '.' . pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-                // on donne un nom unique à l'image
-            }
-        }
-
-        // si les erreurs sont vides, 
-        if (empty($errors)) {
-            $user->id = $_SESSION['user']['id']; // on récupère l'id de l'utilisateur
-            if (move_uploaded_file($_FILES['avatar']['tmp_name'], '../../assets/IMG/user/' . $user->avatar)) {
-                // si la fonction move_uploaded_file renvoie TRUE
-                if ($user->updateAvatar()) { // si la fonction updateAvatar renvoie TRUE; alors on met à jour l'avatar de l'utilisateur dans la BDD
-                    $_SESSION['user']['avatar'] = $user->avatar;
-                    $success = IMAGE_SUCCESS;
-                } else { // sinon, on enlève l'avatar de l'utilisateur hors de la BDD et le dossier d'images
-                    unlink('../../assets/IMG/user/' . $user->avatar);
-                    $errors['update'] = IMAGE_ERROR; // et afficher le message d'erreur
-                }
-            } else {
-                $errors['update'] = IMAGE_ERROR; // afficher le message d'erreur
-            }
         }
     }
 }
@@ -221,8 +175,6 @@ if(count($userOwnStatus) > 0) {
     $latestStatus = $userOwnStatus[0];
 }
 
-$statusList = $status->getList();
-
 // foreach($userStatus as $key => $opinion) {  
 //     $status->id =  $opinion['id'];
 //     $userStatus[$key]['content'] = $status->getStatusByUser();
@@ -230,7 +182,7 @@ $statusList = $status->getList();
 
 //comments
 $comments->id_users = $_SESSION['user']['id'];
-$userOwnComments = $comments->getListByIdUsers();
+$userComments = $comments->getListByIdUsers();
 $latestComment = $comments->getComment();
 
 
@@ -243,5 +195,7 @@ $title = 'Profile'; // titre de la page
 require_once '../../views/parts/header.php';
 require_once '../../views/users/profile.php';
 require_once '../../views/parts/footer.php';
-
 ?>
+
+<script src="assets/javaSc/comments.js"></script>
+<script src="assets/javaSc/profile.js"></script>

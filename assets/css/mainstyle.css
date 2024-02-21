@@ -227,6 +227,15 @@ header a {
     box-shadow: 0 0 10px rgba(225, 228, 231, 0.2);
 }
 
+.accountFlex {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto;
+    justify-content: space-evenly;
+    height: 100%;
+    /* background-color: #e8ecefc5;
+    box-shadow: 0 0 10px rgba(225, 228, 231, 0.2); */
+}
 /* pour la centrification de la page de compte */
 .comptePage { 
     margin: 0 auto;
@@ -243,6 +252,7 @@ header a {
 
 .compteH1, #compteH1 { /* le h1 sera centré */
     text-align: center;
+    /* color: white; */
 }
 
 .terms { /* pour la centrification de la page de termes, help et autres */
@@ -322,13 +332,7 @@ header a {
     flex-direction: column;
 }
 
-.accountFlex {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin: 0 auto;
-    justify-content: space-evenly;
-    height: 100%;
-}
+
 
 /* NOTIFICATIONS */
 .notification {
@@ -793,14 +797,14 @@ header a {
 }
 
 /* form hidden */
-#logFormEdit, #logFormEdits {
+#logFormEdit, #logFormEdits, #replyLogFormEdits  {
     display: none;
     margin: 0 auto;
     justify-content: center;
     text-align: center;
 }
 
-#editForm, #editForme {
+#editForm, #editForme, #editFormeReply {
     margin: 0 auto;
     justify-content: center;
     text-align: center;
@@ -1050,7 +1054,7 @@ header a {
 /* FOOTER */
 .footer { 
     /* le footer en bas du site dans une couleur grise avec des liens centré au centre */
-    background-color: #423d3db5;
+    background-color: #363333b5;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -1099,18 +1103,6 @@ button:hover,
 #replyBtn a:hover, #replyRepliesBtn a:hover{
     text-decoration: underline;
     color: rgb(255, 155, 100);
-}
-
-.chatPop:hover .dropup-content {/* Shows up  on hover */
-    display: block;
-}
-
-.chatPop:hover #popUpChat {
-    background-color: #2980B9;
-}
-
-.dropup-content a:hover {
-    background-color: #ddd
 }
 
 #commentBtn:hover {

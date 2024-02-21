@@ -1,81 +1,87 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Les variables déclarés
-    //PROFILE
-    const editCoverButton = document.getElementById("editCover");
-    const avatarImageUpload = document.getElementById("avatarUpload");
-    const editAvatarButton = document.getElementById("editAvatar");
-    const mediaLink = document.getElementById('media-link');
-    const mediaFolder = document.getElementById('media-folder');
-    const coverImageUpload = document.getElementById("coverUpload");
-    const coverPicture = document.getElementById("coverPicture");
+//Modal
+// Récupération des DOM
+const profiModalBtn = document.getElementById('profiModalBtn');
+const modalContainer = document.getElementById('modalContainer');
+const closeBtn = document.getElementById('closeBtn');
 
-    coverImageUpload.addEventListener("change", function () {
-        const file = coverImageUpload.files[0];
+// Fonction d'affichage de conteneur modal
+function openModal() {
+    modalContainer.style.display = 'block';
+}
 
-        if (file) {
-            // Create a FileReader to read the uploaded file
-            const reader = new FileReader();
+// Fonction de clotûre de  conteneur modal
+function closeModal() {
+    modalContainer.style.display = 'none';
+}
 
-            reader.onload = function (e) {
-                // Set the uploaded image as the cover picture source
-                coverPicture.src = e.target.result;
-            };
+// le bouton "Supprimer" par un clic
+if (profiModalBtn != null) {
+    profiModalBtn.addEventListener('click', openModal);
+}
 
-            // Read the file as a data URL
-            reader.readAsDataURL(file);
+// le button "fermer" par un clic
+if (closeBtn != null) {
+    closeBtn.addEventListener('click', closeModal);
+}
+
+// fermer le conteneur en cliquant n'importe où
+if (modalContainer != null) {
+    modalContainer.addEventListener("click", (e) => {
+        if (e.target != modal && e.target != modalText) {
+            modalContainer.style.display = "none"
         }
     });
-
-    // file input when "Edit Cover" is clicked
-
-    editCoverButton.addEventListener("click", function () {
-        coverImageUpload.click(); // Trigger the file input click event
-    });
-
-    // avatar image upload (Similar to cover image upload)
-    const avatarImg = document.getElementById("profileAvy");
-
-    avatarImageUpload.addEventListener("change", function () {
-        const file = avatarImageUpload.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-                avatarImg.src = e.target.result;
-            };
-
-            reader.readAsDataURL(file);
-        }
-    });
-
-    if (editAvatarButton != null) {
-        editAvatarButton.addEventListener("click", function () {
-            avatarImageUpload.click();
-        });
-    }
-});
+}
 
 ////////////////////////////////
 
 const editForm = document.getElementById('editModal');
 const formEdit = document.getElementById('logFormEdits');
 
-editForm.addEventListener("click", () => {
-    if (formEdit.style.display === 'none' || formEdit.style.display === '') {
-        formEdit.style.display = 'block';
-    } else {
-        formEdit.style.display = 'none';
-    }
-});
+if (editForm != null) {
+    editForm.addEventListener("click", () => {
+        if (formEdit.style.display === 'none' || formEdit.style.display === '') {
+            formEdit.style.display = 'block';
+        } else {
+            formEdit.style.display = 'none';
+        }
+    });
+}
 
 ///////////////////////////////////////
-
+// modification des status par un clic dans un modal form 
 if (editForm != null) {
     editForm.addEventListener('click', () => {
-        const updatecontent = editForm.getAttribute('updatecontent');
-        contentUpdate.value = updatecontent;
-        console.log(updatecontent)
+        const updatestatus = editForm.getAttribute('updatestatus'); // on lie l'id de l'élément avec le status
+        statusUpdate.value = updatestatus; // la valeur de l'élément 
+        console.log(updatestatus)
     });
-    }
+}
 
+
+///////////////////////////////
+// suppression des status par un clic dans un modal
+if (profiModalBtn != null) { // le bouton n'est pas présent dans la page
+    profiModalBtn.addEventListener('click', () => { // le bouton est cliqué
+        const statusdeleteId = profiModalBtn.getAttribute('statusdeleteid'); // on lie l'id de l'élément avec le status
+        idStatusDelete.value = statusdeleteId; // on l'enregistre l'id de l'élément avec le status
+        console.log(statusdeleteId)
+    });
+}
+
+/////
+
+// pour repondre le contenu du topic dans un input textbox en modal en le quotant
+let replyBtn = document.getElementsByClassName('replyBtn');
+
+if (replyBtn != null) {
+    for (let r of replyBtn) {
+        r.addEventListener('click', (e) => {
+            let replystatus = e.target.getAttribute('replystatus');
+            commenting.value = "@" + replystatus + "\n";
+            console.log(replystatus)
+        });
+    }
+}
+
+///////////////////////////////////////

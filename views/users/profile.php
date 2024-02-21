@@ -83,11 +83,11 @@
                                 <?= $ownStatus->content ?>
                             </p>
                             <button id="likeBtn"><i class="fa-solid fa-heart"></i></button>
-                            <button id="replyBtn" name="replyBtn"><a href="#commenting">répondre</a></button>
+                            <button id="replyBtn" class="replyBtn" name="replyBtn" replystatus=<?= $ownStatus->username ?> ><a href="#commenting">répondre</a></button>
                             
                         <?php if($_SESSION['user']['id'] == $status->id_users){ ?>
-                            <button type="submit" name="update" id="editModal" updatecontent=<?= $ownStatus->content ?> >modifier</button>
-                            <button type="submit" id="profiModalBtn" deleteid=""><a href="#delete">supprimer</a></button>
+                            <button type="submit" name="update" id="editModal" updatestatus=<?= $ownStatus->content ?> >modifier</button>
+                            <button type="submit" id="profiModalBtn" statusdeleteid=<?= $ownStatus->id ?>><a href="#delete">supprimer</a></button>
                         <?php } ?>
                     </div>
 
@@ -97,17 +97,56 @@
                         <p id="successMessage"><?= $success ?></p>
                     <?php } ?>
                         <form action="#" method="POST" id="editForme">
-                            <input type="text" class="replyText" name="contentUpdate" id="contentUpdate">
+                            <input type="hidden" name="statusid" value="<?= $ownStatus->id ?>">
+                            <input type="text" class="replyText" name="statusUpdate" id="statusUpdate">
                             <input type="submit" class="postReply" name="updateStatus" value="modifier">
                             <?php if (isset($errors['content'])): ?>
                                 <p class="errorsMessage"><?= $errors['content'] ?></p>
                             <?php endif; ?><br>
                         </form>
                     </div>
+                    
+                    <ul class="comments">
+                    <li><!-- Comments vont ici -->
+                    <?php if (count($userComments) == 0) { ?>
+                        <p class="errorsMessage">No comments</p>
+                    <?php } else { ?>
+                        <?php foreach ($userComments as $c) { ?>
+                            <p><b><?= $c->username ?></b>:
+                                <?= $c->content ?>
+                            </p>
+                            <button id="statusLikeBtn"><i class="fa-solid fa-heart"></i></button>
+                            <button id="statusReplyBtn" name="statusReplyBtn" class="statusReplyBtn" commentstatus="<?= $c->username ?>">
+                            <a href="#commenting" >répondre</a></button>
+                        <?php if($_SESSION['user']['id'] == $comments->id_users){ ?>
+                            <button id="editCommentModal" class="replyComment" name="update" type="submit" commentupdate="<?= $c->content ?>">
+                                modifier</button>
+                            <button type="submit" value="delete" id="commentModalBtn" class="commentModalBtn" commentdelete="<?= $c->id ?>">
+                            <a href="#replyDelete">supprimer</a></button>
+                        </li>
+                        <?php }?>
+                        <div id="logFormEdit">
+                            <form action="" method="POST" id="editForm">
+                                <input type="hidden" name="commentsid" value="<?= $c->id ?>">
+                                <input type="text" class="replyText" name="commentUpdate" id="commentUpdate">
+                                <input type="submit" class="postReply" name="updateComments" value="modifier">
+                                <?php if (isset($errors['reponse'])): ?>
+                                    <p class="errorsMessage"><?= $errors['reponse'] ?></p>
+                                <?php endif; ?><br>
+                            </form>
+                        </div>
+                            <?php } ?>
+                        <?php } ?>
+                    </ul>
 
                     <!-- reponses -->
-                    <form action="#" method="POST" class="replying" id="Replying">
-                        <input type="text" class="replyText" id="commenting">
+                    <form action="#" method="POST" class="replying" id="replying">
+                        <?php if(isset($_POST['replyBtn'])) { ?>
+                            <input type="hidden" name="statusid" value="<?= $ownStatus->id ?>">
+                        <?php } else if (isset($_POST['statusReplyBtn'])) {?>
+                            <input type="hidden" name="commentsid" value="<?= $c->id ?>">
+                        <?php }?>
+                        <input type="text" class="replyText" id="commenting" name="commenting">
                         <input type="submit" class="postReply" name="addComment" value="commenter">
                         <?php if (isset($errors['comment'])): ?>
                            <p class="errorsMessage"><?= $errors['comment'] ?></p>
@@ -123,46 +162,21 @@
                         <span id="closeBtn">&times;</span>
                         <p id="modalText">Êtes-vous sûr de vouloir supprimer votre status ?</p>
                         <form action="/profil ?>" method="POST" id="delete">
-                            <input type="submit" value="Supprimer" name="deleteStatus">
+                            <input type="hidden" name="statusid" value="<?= $ownStatus->id ?>">
+                            <input type="text" name="idStatusDelete" id="idStatusDelete">
+                            <input type="submit" value="supprimer" name="deleteStatus">
                         </form>
                     </div>
                 </div>
-
-
-                <ul class="comments">
-                    <li><!-- Comments vont ici -->
-                    <?php if (count($userOwnComments) == 0) { ?>
-                        <p class="errorsMessage">No comments</p>
-                    <?php } else { ?>
-                        <?php foreach ($userOwnComments as $commentingUser) { ?>
-                            <p><b><?= $commentingUser->username ?></b>:
-                                <?= $commentingUser->content ?>
-                            </p>
-                            <button id="replyLikeBtn"><i class="fa-solid fa-heart"></i></button>
-                            <button id="replyRepliesBtn" ><a href="#commenting" name="replyRepliesBtn">répondre</a></button>
-                        <?php if($_SESSION['user']['id'] == $comments->id_users){ ?>
-                            <button class="replyComment" name="update" type="submit" id="editModal">modifier</button>
-                            <button type="submit" value="delete" id="replyModalBtn"><a href="#replyDelete">supprimer</a></button>
-                        </li>
-                        <?php }?>
-                        <div id="logFormEdits">
-                            <form action="" method="POST" id="editForm">
-                                <textarea class="replyText">value=" <?= $commentingUser->content ?>" ?></textarea>
-                                <input type="submit" class="postReply" name="updateComment" value="modifier">
-                                <?php if (isset($errors['comment'])): ?>
-                                    <p class="errorsMessage"><?= $errors['comment'] ?></p>
-                                <?php endif; ?><br>
-                            </form>
-                        </div>
-                            <?php } ?>
-                        <?php } ?>
-                </ul>
+                
                 <div id="replyModalContainer">
                     <div id="replyModal">
                         <span id="replyCloseBtn">&times;</span>
-                        <p id="replyModalText">Vouliez-vous supprimer le commentaire?</p>
-                        <form action="" method="POST" id="replyDelete">
-                        <input type="submit" value="supprimer" name="deleteComment">
+                        <p id="replyModalText">Vouliez-vous supprimer le commentaire ?</p>
+                        <form action="" method="POST" id="replyDelete"> 
+                            <input type="hidden" name="commentsid" value="<?= $c->id ?>">
+                            <input type="text" name="idCommentsDelete" id="idCommentsDelete">
+                            <input type="submit" value="supprimer" name="deleteComment">
                         </form>
                     </div>
                 </div>
@@ -178,10 +192,10 @@
                     <!-- dèrnière activité ici -->
                     <h5><b>Tes contenus:</b><hr></h5>
                     <?php foreach($userTopics as $p) { ?>
-                        <li>*<a href="/topic-<?= $p['id'] ?>"><?= $p['title'] ?></a><hr></li>
+                        <li>-- <a href="/topic-<?= $p['id'] ?>"><?= $p['title'] ?></a></li><hr>
                         <ul>
                             <?php foreach($p['content'] as $pr) { ?>
-                                <li>-><a href="/topic-<?= $p['id'] ?>"><?= $pr['content'] ?></a></li>
+                                <li>** <a href="/topic-<?= $p['id'] ?>"><?= $pr['content'] ?></a></li><hr>
                         <?php } ?>
                         </ul>
                    <?php  } ?>
@@ -192,5 +206,3 @@
 
 </main>
 
-<script src="assets/javaSc/profileModal.js"></script>
-<script src="assets/javaSc/profile.js"></script>

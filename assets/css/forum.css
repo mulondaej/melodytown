@@ -277,6 +277,7 @@ textarea {
     background-color: #fdfeff;
     box-shadow: 0 0 10px rgba(71, 72, 72, 0.2);
     gap: 1rem;
+    height: 100%;
 }
 
 #threadContains {
@@ -429,7 +430,7 @@ textarea {
     margin-bottom: 1rem;
 }
 
-#comments {
+#replyTextBar {
     justify-content: center;
     margin: 0 auto;
     margin-top: 10px;
@@ -469,7 +470,7 @@ textarea {
     margin: 10px;
 }
 
-#commentBtn {
+#repliesBtn {
     max-width: max-content;
     justify-content: center;
     margin: 0 auto;
@@ -487,7 +488,17 @@ textarea {
     display: block;
 }
 
-#likeBtn, #replyBtn, #replyRepliesBtn #replyLikeBtn, #replyModalBtn, #editModal {
+#likeBtn, 
+#replyBtn, 
+#replyRepliesBtn,
+ #replyLikeBtn, 
+ #replyModalBtn, 
+ #editModal,
+ #editCommentModal,
+ #replyEditModal,
+ #commentModalBtn,
+ #statusReplyBtn,
+ #statusLikeBtn {
     background-color: transparent;
     font-size: 15px;
     text-decoration: none;
@@ -501,3 +512,5 @@ textarea {
 #replyBtn a, #replyRepliesBtn a{
     text-decoration: none;
 }
+
+

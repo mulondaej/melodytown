@@ -4,10 +4,10 @@ class Comments {
 
     private $pdo;
     public int $id;
-    public int $content;
-    public int $publicationDate;
-    public int $updateDate;
-    public int $username;
+    public string $content;
+    public string $publicationDate;
+    public string $updateDate;
+    public string $username;
     public int $id_status;
     public int $id_users;
 
@@ -79,7 +79,7 @@ class Comments {
 
     public function getListByIdUsers()
     {
-        $sql = 'SELECT `k`.`content`, 
+        $sql = 'SELECT `k`.`id`, `k`.`content`, 
         DATE_FORMAT(`k`.`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`
         FROM `a8yk4_comments`  AS `k`
         INNER JOIN `a8yk4_users` AS `u` ON `k`.`id_users` = `u`.`id`
@@ -116,7 +116,6 @@ class Comments {
         WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
-        $req->bindValue(':updateDate', $this->updateDate, PDO::PARAM_STR);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
     }

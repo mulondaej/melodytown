@@ -16,25 +16,25 @@ Vous pouvez nous rejoindre via le formulaire de contact en dessous ou en nous en
     <?php } ?>
 <form action="/contact" method="post" id="logForm">
         <label for="username">Name:</label><br>
-        <input type="text" id="username" name="username" value="<?= $_POST['username'] ?>" required><br>
+        <input type="text" id="username" name="username" value="<?= @$_POST['username'] ?>" required><br>
         <?php if (isset($errors['username'])) : ?>
             <p><?= $errors['username'] ?></p>
         <?php endif; ?>
 
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="<?= $_POST['email'] ?>" required><br>
+        <input type="email" id="email" name="email" value="<?= @$_POST['email'] ?>" required><br>
         <?php if (isset($errors['email'])) : ?>
             <p><?= $errors['email'] ?></p>
         <?php endif; ?>
 
         <label for="subject">Sujet:</label><br>
-        <input type="text" id="subject" name="subject" value="<?= $_POST['subject'] ?>" required><br>
+        <input type="text" id="subject" name="subject" value="<?= @$_POST['subject'] ?>" required><br>
         <?php if (isset($errors['subject'])) : ?>
             <p><?= $errors['subject'] ?></p>
         <?php endif; ?>
 
         <label for="message">Message:</label><br>
-        <textarea id="message" name="message" value="<?= $_POST['message'] ?>" required></textarea><br><br>
+        <textarea id="message" name="message" value="<?= @$_POST['message'] ?>" required></textarea><br><br>
         <?php if (isset($errors['message'])) : ?>
             <p><?= $errors['message'] ?></p>
         <?php endif; ?>

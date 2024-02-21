@@ -40,7 +40,7 @@ if(isset($_POST['updateTopic'])) { // si le formulaire est envoyé
                 $errors['title'] = TOPIC_TITLE_UPDATE_ERROR;  // afficher le message d'erreur
             }
         } else {
-            $errors['title'] = TOPIC_TITLE_UPDATE_ERROR; // sinon, afficher le message de succes
+            $errors['title'] = TOPIC_TITLE_UPDATE_ERROR; 
         }
     } else {
         $errors['title'] = TOPIC_TITLE_UPDATE_ERROR_INVALID; // sinon, afficher le message d'erreur
@@ -111,8 +111,8 @@ $title = 'Topic-update'; // Titre de la page
 require_once '../../views/parts/header.php';
 require_once '../../views/topics/updateTopic.php';
 require_once '../../views/parts/footer.php';
+?>
 
-
-
+<script src="assets/javaSc/modals.js"></script>
 
 

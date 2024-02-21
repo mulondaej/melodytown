@@ -61,4 +61,7 @@ $title = 'MelodyTown'; // Titre de la page
 //  Inclusion des fichiers: header, du view et du footer
  require_once('../../views/parts/header.php');
  require_once('../../index.php');
- require_once('../../views/parts/footer.php'); ?>
+ require_once('../../views/parts/footer.php'); 
+ ?>
+
+<script src="../../assets/javaSc/topic.js"></script>

@@ -3,7 +3,7 @@
 <div class="comptePage">
     <!--  Titre de la page de compte et l'avatar d'utilisateur centré au top-->
     <h1 id="compteH1">Votre compte </h1><hr>
-        <img src="../../assets/IMG/<?= $userAccount->avatar ?>" alt="User Avatar" id="avyCompte">
+        <img src="/assets/IMG/Avril23j.jpg <?= $userAccount->avatar ?>" alt="User Avatar" id="avyCompte">
     
     <div class="details"><!-- les details de l'utilisateur -->
         <P><b>Pseudo :</b> <?= $userAccount->username ?></P>

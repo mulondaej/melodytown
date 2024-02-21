@@ -642,4 +642,3 @@
     </aside>
 </div>
 
-<script src="../../assets/javaSc/topic.js"></script>

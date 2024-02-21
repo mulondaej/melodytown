@@ -14,50 +14,72 @@ function closeModal() {
     replyModalContainer.style.display = 'none';
 }
 if (replyModalBtn != null) {
-// le bouton "Supprimer" par un clic
-replyModalBtn.addEventListener('click', openModal);
+    // le bouton "Supprimer" par un clic
+    replyModalBtn.addEventListener('click', openModal);
 }
 
 // le button "fermer" par un clic
 if (replyCloseBtn != null) {
-replyCloseBtn.addEventListener('click', closeModal);
+    replyCloseBtn.addEventListener('click', closeModal);
 }
 
 // fermer le conteneur en cliquant n'importe où
 if (replyModalContainer != null) {
-replyModalContainer.addEventListener("click", (e) => {
-    if (e.target != modal && e.target != modalText) {
-        replyModalContainer.style.display = "none"
-    }
-});
+    replyModalContainer.addEventListener("click", (e) => {
+        if (e.target != modal && e.target != modalText) {
+            replyModalContainer.style.display = "none"
+        }
+    });
 }
 
-if (replyModalBtn != null) {
-replyModalBtn.addEventListener('click', () => {
-    const deleteId = replyModalBtn.getAttribute('deleteid');
-    idDelete.value = deleteId;
-    console.log(deleteId)
-});
+// le bouton "Supprimer" par un clic extérieur au container
+if (replyModalBtn != null) { // si le bouton n'est pas présent dans la page
+    replyModalBtn.addEventListener('click', () => { // on rajoute l'action de clic 
+        const deleteId = replyModalBtn.getAttribute('deleteid'); // on lie l'id de l'élément avec le status
+        idDelete.value = deleteId; // on l'enregistre l'id de l'élément avec le status pour l'envoyer au php
+        console.log(deleteId)
+    });
 }
 
 ///////////////////////////////////////
-// const editForm = document.getElementById('editModal');
-// const formEdit = document.getElementById('logFormEdits');
+// modal replies
+const editFormReply = document.getElementById('replyEditModal');
+const replyFormEdit = document.getElementById('replyLogFormEdits');
 
-// if(editForm!= null ){
-// editForm.addEventListener("click", () => {
-//     if (formEdit.style.display === 'none' || formEdit.style.display === '') {
-//         formEdit.style.display = 'block';
-//     } else {
-//         formEdit.style.display = 'none';
-//     }
-// });
-// }
+if (editFormReply != null) {
+    editFormReply.addEventListener("click", () => {
+        if (replyFormEdit.style.display === 'none' || replyFormEdit.style.display === '') {
+            replyFormEdit.style.display = 'block';
+        } else {
+            replyFormEdit.style.display = 'none';
+        }
+    });
+}
 
-// if (editForm != null) {
-//     editForm.addEventListener('click', () => {
-//         const updatecontent = editForm.getAttribute('updatecontent');
-//         contentUpdate.value = updatecontent;
-//         console.log(updatecontent)
-//     });
-//     }
+// pour modifier les reponses dans un input textbox en modal
+if (editFormReply != null) {
+    editFormReply.addEventListener('click', () => {
+        const updatereply = editFormReply.getAttribute('updatereply');
+        const repliesUpdate = document.getElementById('repliesUpdate'); // recuperer l'id de textbar
+        if (repliesUpdate) {
+            repliesUpdate.value = updatereply;
+            console.log(updatereply)
+        }
+    });
+}
+
+
+// pour repondre le contenu du topic dans un input textbox en modal en le quotant
+let repliesBtn = document.getElementsByClassName('repliesBtn');
+
+if (repliesBtn != null) {
+    for (let r of repliesBtn) {
+        r.addEventListener('click', (e) => {
+            let quotereply = e.target.getAttribute('quotereply');
+            replyTextBar.value = "<<" + quotereply + ">>" + "\n";
+            console.log(quotereply)
+        });
+
+    }
+
+}

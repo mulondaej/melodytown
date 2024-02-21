@@ -32,7 +32,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-//EDIT
+
+
+// likes ///////////////////
+const likeBtn = document.getElementById('likeBtn');
+
+if(likeBtn!= null ){
+likeBtn.addEventListener('click', () => {
+    likeBtn.classList.toggle("changeColor");
+});
+}
+
+
+//REPLIES /////////////////////
+const replyLikeBtn = document.getElementById('replyLikBtn');
+
+if (replyLikeBtn != null) {
+    replyLikeBtn.addEventListener('click', () => {
+        replyLikeBtn.classList.toggle("changeColor");
+    });
+}
+
+//EDIT ////////////////
 const editForm = document.getElementById('editModal');
 const formEdit = document.getElementById('logFormEdits');
 
@@ -46,26 +67,8 @@ editForm.addEventListener("click", () => {
 });
 }
 
-const likeBtn = document.getElementById('likeBtn');
-if(likeBtn!= null ){
-likeBtn.addEventListener('click', () => {
-    likeBtn.classList.toggle("changeColor");
-});
-}
-
-
-//REPLIES
-const replyLikeBtn = document.getElementById('replyLikBtn');
-
-if (replyLikeBtn != null) {
-    replyLikeBtn.addEventListener('click', () => {
-        replyLikeBtn.classList.toggle("changeColor");
-    });
-
-}
-
-
 //////////////////////////
+// pour modifier le contenu du topic dans un input textbox en modal
 if (editForm != null) {
     editForm.addEventListener('click', () => {
         const updatecontent = editForm.getAttribute('updatecontent');
@@ -73,3 +76,15 @@ if (editForm != null) {
         console.log(updatecontent)
     });
     }
+
+
+    // pour repondre le contenu du topic dans un input textbox en modal en le quotant
+if (replyBtn != null) {
+    replyBtn.addEventListener('click', () => {
+        const quotecontent = replyBtn.getAttribute('quotecontent');
+        const replyTextBar = document.getElementById('replyTextBar'); // recuperer l'id de textbar
+        if (replyTextBar) {
+            replyTextBar.value += "<< " + quotecontent + " >>" + "\n\n"; // joindre le contenu dans le textbox
+        }
+    }); 
+}

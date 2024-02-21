@@ -114,7 +114,7 @@ class Replies {
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function update()
+    public function update() // update de la réponse
     {
         $sql = 'UPDATE `a8yk4_topicreplies` SET `content`=:content , `updateDate` = NOW() 
         WHERE `id` = :id';
@@ -124,13 +124,4 @@ class Replies {
         return $req->execute();
     }
 
-    public function updateReply()
-    {
-        $sql = 'UPDATE `a8yk4_topicreplies` SET `content`=:content, `updateDate` = :updateDate 
-        WHERE `id` = :id';
-        $req = $this->pdo->prepare($sql);
-        $req->bindValue(':content', $this->content, PDO::PARAM_STR);
-        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
-        return $req->execute();
-    }
 }

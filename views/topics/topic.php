@@ -10,6 +10,10 @@
     </div>
     <hr>
   </div>
+  <?php if (isset($success)) { ?>
+        <p id="successMessage"><?= $success ?></p>
+  <?php } ?>
+
   <div id="threadContains">
     <div id="userCard">
       <div class="userImg"><img src="../../assets/IMG/logo.jpg" id="userAvy"></div><br>
@@ -24,20 +28,19 @@
         <div id="timed">
           <p><?= $topicsDetails->publicationDate ?></p>
         </div>
-
+        
         <div class="interact">
           <button id="likeBtn"><i class="fa-solid fa-heart"></i></button>
-          <button id="replyBtn" name="replyBtn"><a href="#comments">répondre</a></button>
+          <button id="replyBtn" name="replyBtn" quotecontent="<?= $topicsDetails->content ?>"><a href="#comments">répondre</a></button>
+          <?php if(!empty($_SESSION['user'])) { ?>
           <?php if($_SESSION['user']['id'] == $topicsDetails->id_users && ($_SESSION['user']['id_usersRoles'] == 167 || 381)){ ?>
             <button type="submit" name="update" id="editModal" updatecontent=<?= $topicsDetails->content ?> >modifier</button>
             <button id="openModalBtn" style="background-color: transparent;">
             <a href="#delete"><i class="fa-solid fa-trash-can"></i></a></button>
           <?php } ?>
+          <?php } ?>
         </div>
         <div id="logFormEdits">
-        <?php if (isset($success)) { ?>
-            <p id="successMessage"><?= $success ?></p>
-          <?php } ?>
           <form action="#" method="POST" id="editForme">
             <input type="text" class="replyText" name="contentUpdate" id="contentUpdate">
             <input type="submit" class="postReply" name="updateContent" value="modifier">
@@ -68,20 +71,23 @@
               <div id="timed">
                 <p><?= $r['publicationDate'] ?></p>
               </div>
-      
+              
               <div class="interact">
                 <button id="replyLikeBtn"><i class="fa-solid fa-heart"></i></button>
-                <button id="replyRepliesBtn" ><a href="#comments" name="replyRepliesBtn">répondre</a></button>
+                <button id="replyRepliesBtn" class="repliesBtn" name="replyRepliesBtn" quotereply=<?= $r['content'] ?>><a href="#comments">répondre</a></button>
+                
                 <?php if($_SESSION['user']['id'] == $r['id_users'] && ($_SESSION['user']['id_usersRoles'] == 167 || 381)){ ?>
-                  <button type="submit" name="repliesUpdate" id="editModal" updatereply=<?= $r['content'] ?>>modifier</button>
+                  <button type="submit" name="updatereplies" id="replyEditModal" updatereply=<?= $r['content'] ?>>modifier</button>
                   <button id="replyModalBtn" style="background-color: transparent;" deleteid="<?= $r['id'] ?>">
                   <a href="#replyDelete"><i class="fa-solid fa-eraser"></i></a></button>
-                  <?php } ?>
+                <?php } ?>
               </div>
-              <div id="logFormEdits">
-                <form action="#" method="POST" id="editForme">
-                  <input type="text" class="replyText"  > </textarea>
+              <div id="replyLogFormEdits">
+                <form action="#" method="POST" id="editFormeReply">
+                  <input type="hidden" name="repliesid" value="<?= $r['id'] ?>">
+                  <input type="text" class="replyText" name="repliesUpdate" id="repliesUpdate">
                   <input type="submit" class="postReply" name="updateReply" value="modifier">
+                  
                   <?php if (isset($errors['reponse'])): ?>
                     <p class="errorsMessage">
                       <?= $errors['reponse'] ?>
@@ -117,6 +123,4 @@
     </div>
   </div>
 
-  <script src="assets/javaSc/topic.js"></script>
-  <script src="assets/javaSc/modals.js"></script>
-  <script src="assets/javaSc/repliesModal.js"></script>
+  

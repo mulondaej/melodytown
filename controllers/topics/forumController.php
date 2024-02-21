@@ -59,3 +59,5 @@ require_once '../../views/parts/header.php';
 require_once '../../views/topics/forum.php'; 
 require_once '../../views/parts/footer.php';
 ?>
+
+<script src="../../assets/javaSc/topic.js"></script>

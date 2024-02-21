@@ -633,12 +633,12 @@
             <ul>
                 <li><a href="/#"><b>Admin:</b> </a><span id="members-online">
                     <a href="/profile">
-                    <?php if($_SESSION['user']['id_usersRoles'] == '258') { ?>
+                    <?php if($_SESSION['user']['id_usersRoles'] == '381') { ?>
                             <?= $latestUser->username ?>
                         <?php } ?></a></span></li> 
                 <li><a href="/#"><b>Modérateurs:</b> </a><span id="members-online">
                     <a href="/profile">
-                    <?php if($_SESSION['user']['id_usersRoles'] == '142') { ?>
+                    <?php if($_SESSION['user']['id_usersRoles'] == '167') { ?>
                             <?= $latestUser->username ?>
                         <?php } ?></a></span></li>
             </ul>
@@ -692,7 +692,3 @@
     </aside>
 </div>
 
-<script src="../../assets/javaSc/topic.js"></script>
-<?php
-$title = 'MelodyTown';
-?>
