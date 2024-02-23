@@ -46,6 +46,8 @@ $repliesList = $replies->getList();
 $latestReply = $replies->getReply();
 $postCount = count($repliesList);
 
+
+
 $status = new Status;
 $statusList = $status->getList();
 $latestStatus = $status->getStatus();

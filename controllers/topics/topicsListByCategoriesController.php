@@ -32,7 +32,6 @@ $replies = new Replies;
 
 // si la requete est de type POST (envoi du formulaire), on l'execute
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
-
     // on récupère les données du formulaire
     if (!empty($_POST['title'])) { // si le titre n'est pas vide
         if (preg_match($regex['title'], $_POST['title'])) { // si le titre n'est pas vide
@@ -113,6 +112,7 @@ $title = 'Topics';// Titre de la page
 require_once '../../views/parts/header.php';
 require_once '../../views/topics/topicsListByCategories.php';
 require_once '../../views/parts/footer.php';
+?>
+ 
 
-
-
+<script src="assets/javaSc/modals.js"></script>

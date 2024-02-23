@@ -31,3 +31,6 @@ require_once '../../views/parts/header.php';
 require_once '../../views/topics/topicsList.php';
 require_once '../../views/parts/footer.php';
 ?>
+
+
+<script src="assets/javaSc/modals.js"></script>

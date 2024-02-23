@@ -191,6 +191,7 @@
                 <ul id="activity-list">
                     <!-- dèrnière activité ici -->
                     <h5><b>Tes contenus:</b><hr></h5>
+                    
                     <?php foreach($userTopics as $p) { ?>
                         <li>-- <a href="/topic-<?= $p['id'] ?>"><?= $p['title'] ?></a></li><hr>
                         <ul>

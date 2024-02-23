@@ -14,7 +14,7 @@ $topic = new Topics();
 $topic->id = (int)$_GET['id'];
 
 if($topic->checkIfExistsById() == 0) { // si le topic n'existe pas, on redirige vers l'accueil
-    header('Location: /topics');
+    header('Location: /liste-topics-par-categories');
     exit;
 }
 
@@ -23,7 +23,6 @@ $replies = new Replies();
 $replies->id_topics = (int)$_GET['id']; // on récupère l'id du topic
 
 $replies->id_users = (int)$_GET['id']; // on récupère l'id de l'utilisateur qui a posté ce commentaire
-
 
 
 // si la requete est de type POST (envoi du formulaire), on l'traite
@@ -140,4 +139,4 @@ require_once '../../views/parts/footer.php';
 
 <script src="assets/javaSc/topic.js"></script>
 <script src="assets/javaSc/modals.js"></script>
-<script src="assets/javaSc/repliesModal.js"></script>
+<script src="assets/javaSc/replies.js"></script>

@@ -159,6 +159,7 @@ if(count($userTopics) > 0) {
 
 //replies
 $replies = new Replies;
+$replies->id_users = $_SESSION['user']['id'];
 
 foreach($userTopics as $key => $post) {  
     $replies->id_topics =  $post['id'];
@@ -169,16 +170,18 @@ $userReply = $replies->getUserReply();
 $latestReply = $replies->getReply();
 $userTotalAnswer = count($userReply);
 
+if(count($userReply) > 0) {
+    $latestReply = $userReply[0];
+}
+
+
+
 //status
 $userOwnStatus = $status->getListByIdUsers();
 if(count($userOwnStatus) > 0) {
     $latestStatus = $userOwnStatus[0];
 }
 
-// foreach($userStatus as $key => $opinion) {  
-//     $status->id =  $opinion['id'];
-//     $userStatus[$key]['content'] = $status->getStatusByUser();
-// }
 
 //comments
 $comments->id_users = $_SESSION['user']['id'];

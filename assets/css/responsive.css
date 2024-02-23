@@ -13,9 +13,9 @@
         margin: 0;
         padding: 0;
         height: 100%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
+        background-size:cover;
+        background-repeat: repeat-y;
+        background-position: unset;
     }
 
     header {
@@ -188,12 +188,19 @@
 
     .subforum-icon i {
         margin: 0 auto;
-        width: fit-content;
+        width: 100%;
         font-size: 25px;
+        padding: 0;
+        margin-top: 23px;
+        margin-bottom: 23px;
     }
 
     .subforum-icon {
+        margin: 0 auto;
         width: 100%;
+        font-size: 25px;
+        padding: 0;justify-content: center;
+        align-self: center;
     }
 
     .subforum-description {
@@ -258,24 +265,45 @@
 
     .mainContainer {
         display: flex;
-        /* flex-basis: 100%;
-    flex-wrap: wrap;
-    flex-direction: column; */
-        width: 50%;
+        width: 100%;
         margin: 0 auto;
+        padding: 0;
+        height: 100%;
+    }
+
+    .asideBar
+     {
+        width: 22%;
         padding: 0;
     }
 
-    .asideBar,
     .activ {
-        flex-basis: 100%;
-        display: none;
+        width: 25%;
+        padding: 0;
     }
 
+    .activity {
+        width: 100%;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    #activity-list {
+        width: 100%;
+        padding: 0;
+        margin: 0 auto;
+        
+    }
+    
+    #activity-list h5 {
+        font-size: 13px;
+        margin: 4px;
+    }
+    
     .mainStatus {
         flex-direction: column;
         display: block;
-        width: max-content;
+        width: 50%;
         margin: 0 auto;
         padding: 0;
         height: 100%;
@@ -288,20 +316,22 @@
         justify-content: space-evenly;
         border-radius: 8px;
         height: max-content;
-        width: max-content;
-        margin: 7px;
+        width: 50%;
+        margin: 0 auto;
+        padding: 0;
     }
 
     #postHere {
-        width: 21rem;
+        width: 100%;
         border-radius: 5px;
         border: 1px solid #ddd;
-        margin: 7px;
+        margin: 0 ;
         height: max-content;
+        padding: 0;
     }
 
     #posted {
-        width: max-content;
+        width: 50%;
         margin: 0 auto;
         padding: 0px 3px;
         border-radius: 5px;
@@ -311,9 +341,10 @@
 
     .state,
     #status {
-        width: fit-content;
+        width: 50%;
         margin: 0 auto;
         padding: 0;
+        height: 100%;
     }
 
     .replying {
@@ -557,7 +588,7 @@
     }
 
     .footer {
-        
+        position: relative;
         text-align: center;
         bottom: 0;
         width: 100%;

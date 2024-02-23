@@ -1,6 +1,6 @@
 <section>
     <?php if (isset($success)) { ?><!-- Si la connexion est une reussite, afficher le message de succes -->
-        <p id=successMessage><?= $success ?></p>
+        <div class="success"><p id=successMessage><?= $success ?></p></div>
     <?php } ?>
     <form action="/inscription" method="post" id="logForm">
         <!--  lien pour se connecter -->

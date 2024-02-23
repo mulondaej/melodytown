@@ -13,10 +13,11 @@ body {
     margin: 0;
     padding: 0;
     /* background-color: wheat; */
-    background-image: url('../IMG/backkk.jpg');
+    background-image: url('../IMG/backkk2.jpg');
     background-size: contain;
-    background-repeat: no-repeat;
     background-position:unset;
+    height: 100%;
+    width: 100%;
 }
 
 /* DEFAULT*/
@@ -62,7 +63,6 @@ header {
     height: 8rem;
     position: relative;
     text-align: center;
-    /*background-image: url('../IMG/melodyTown3.jpg');*/
 }
 
 header a {
@@ -253,6 +253,19 @@ header a {
 .compteH1, #compteH1 { /* le h1 sera centré */
     text-align: center;
     /* color: white; */
+}
+
+.success {
+    background-color: #e7e9ea;
+    box-shadow: 0 0 10px rgba(82, 83, 83, 0.2);
+    height: max-content;
+    width: max-content;
+}
+
+.footDiv {
+    height: 100%;
+    margin: 0 auto;
+    justify-content: center;
 }
 
 .terms { /* pour la centrification de la page de termes, help et autres */

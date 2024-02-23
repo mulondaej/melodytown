@@ -66,8 +66,6 @@
             <p id="modalText">Êtes-vous sûr de vouloir supprimer votre compte ?</p>
             <form action="/modifier-mon-compte" method="POST" id="delete">
                 <input type="submit" value="Supprimer" name="deleteAccount">
-                <input type="submit" value="Transfer-supprimer" name="transferData"
-                    style="background-color: antiquewhite;">
             </form>
         </div>
     </div>

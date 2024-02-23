@@ -146,32 +146,8 @@ if (isset($_POST['updatePassword'])) {
     }
 }
 
-// le transfert de données et suppression du compte
-if (isset($_POST['transferData'])) {
-    // Supprime l'utilisateur et transfère ses données à un autre utilisateur
 
-    if ($user->delete()) {
-        $topics = $topic->getUserTopics();// Récupère les topics de l'utilisateur
-        $statuses = $status->getUserStatus();
-
-        // Transfère chaque topic à un autre utilisateur
-        foreach ($topics as $single_topic) {
-            $single_topic->id_users = $_SESSION['user']['id_users'] == 1;
-            $single_topic->changeUsers();
-        }
-
-        foreach ($statuses as $single_status) {
-            $single_status->id_users = $_SESSION['user']['id_users'] == 1;
-            $single_status->changeUsers();
-        }
-
-        unset($_SESSION);
-        session_destroy();
-        header('Location: /accueil');
-        exit;
-    }
-}
-
+// Suppression de l'utilisateur
 if (isset($_POST['deleteAccount'])) {
     if ($user->delete()) {
         unset($_SESSION);

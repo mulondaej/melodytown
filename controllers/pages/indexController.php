@@ -6,7 +6,6 @@ require_once '../../models/forumModel.php' ;
 require_once '../../models/statusModel.php';
 require_once '../../models/topicsRepliesModel.php' ;
 require_once '../../models/commentsModel.php' ;
-require_once '../../models/contactModel.php' ;
 require_once '../../models/topicsModel.php';
 require_once '../../models/categoriesModel.php';
 require_once '../../models/tagsModel.php';
@@ -35,31 +34,35 @@ $tagsList = $tags->getList();
 
 $topic = new Topics;
 $topicsList = $topic->getList();
-// $topicsDetails = $topic->getById();
-$latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
+if ($topicCount > 0) {
+    $latestTopic = $topic->getTopic();
+}
 
 $replies = new Replies;
 $repliesList = $replies->getList();
-$latestReply = $replies->getReply();
 $postCount = count($repliesList);
+if ($postCount > 0) {
+    $latestReply = array();
+    $latestReply[0] = $replies->getReply();
+}
+
+
 
 $status = new Status;
 $statusList = $status->getList();
 $latestStatus = $status->getStatus();
 $statusCount = count($statusList);
 
-$contact = new Contact;
-$contactList = $contact->getList();
-$latestContact = $contact->getMessage();
-$contactCount = count($contactList);
+
 
 $totalCount = $postCount + $topicCount + $statusCount ; // total count de tous les publications : status; topics et replies 
 
 $title = 'MelodyTown'; // Titre de la page
 
-//  Inclusion des fichiers: header, du view et du footer
- require_once('../../views/parts/header.php');
+//  Inclusion des fichiers: header, du view et du footer 
+
+ require_once('../../views/parts/header.php');var_dump($errors);
  require_once('../../index.php');
  require_once('../../views/parts/footer.php'); 
  ?>

@@ -21,7 +21,7 @@
                         <?php } ?>
                     </select>
                     <?php if (isset($errors['tag'])) : ?>
-                        <p><?= $errors['tag'] ?></p>
+                        <p id=errorsMessage><?= $errors['tag'] ?></p>
                     <?php endif; ?>
 
                     <label for="categories">Categories</label>
@@ -31,19 +31,19 @@
                         <?php } ?>
                     </select>
                     <?php if (isset($errors['categories'])) : ?>
-                        <p><?= $errors['categories'] ?></p>
+                        <p id=errorsMessage><?= $errors['categories'] ?></p>
                     <?php endif; ?>
 
                     <label for="title">Title:</label>
                     <input type="text" id="title" name="title" value="<?= @$_POST['title'] ?>">
                     <?php if (isset($errors['title'])) : ?>
-                        <p><?= $errors['title'] ?></p>
+                        <p id=errorsMessage><?= $errors['title'] ?></p>
                     <?php endif; ?>
 
                     <label for="content">Content:</label>
-                    <textarea id="content" name="content"></textarea value="<?= @$_POST['content'] ?>">
+                    <textarea id="content" name="content" value="<?= @$_POST['content'] ?>"></textarea >
                     <?php if (isset($errors['content'])) : ?>
-                        <p><?= $errors['content'] ?></p>
+                        <p id=errorsMessage><?= $errors['content'] ?></p>
                     <?php endif; ?>
 
                     <div class="send">
