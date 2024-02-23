@@ -32,6 +32,4 @@ RewriteRule ^help$ /utils/help.php
 
 #ERRORS
 ErrorDocument 404 /controllers/errors/404Controller.php
-
-RewriteRule ^index$ /views/index.html
  
