@@ -57,8 +57,12 @@ define('TOPIC_REPLIES_UPDATE_SUCCESS', 'La réponse a bien été mis à jour');
 define('TOPIC_REPLIES_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre reponse');
 define('TOPIC_REPLIES_UPDATE_ERROR_INVALID', 'Le contenu est toujours le même');
 
-define('TOPIC_TAG_CATEGORIE_UPDATE_SUCCESS', 'Cela a bien été mis à jour');
-define('TOPIC_TAG_CATEGORIE_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du tag ou categorie');
+define('TOPIC_TAG_UPDATE_SUCCESS', 'le tag ou la categorie a bien été mis à jour');
+define('TOPIC_TAG_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du tag ou categorie');
+
+define('TOPIC_CATEGORIE_UPDATE_SUCCESS', 'le tag ou la categorie a bien été mis à jour');
+define('TOPIC_CATEGORIE_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du tag ou categorie');
+
 
 //MIS A JOUR STATUS
 define('STATUS_UPDATE_SUCCESS', 'Le contenu a bien été mis à jour');
@@ -105,8 +109,8 @@ define('TOPICS_TAGS_ERROR_EMPTY', 'Le tag est requis');
 define('TOPICS_TAGS_ERROR_INVALID', 'Le tag est invalide');
 
 // CATEGORIES
-define('TOPICS_CATEGORIES_ERROR_EMPTY', 'Le tag est requis');
-define('TOPICS_CATEGORIES_ERROR_INVALID', 'Le tag est invalide');
+define('TOPICS_CATEGORIES_ERROR_EMPTY', 'La categorie est requis');
+define('TOPICS_CATEGORIES_ERROR_INVALID', 'La categorie est invalide');
 
 // TOPIC
 define('TOPICS_SUCCESS', 'Votre topic vient d\'être publié avec succes');

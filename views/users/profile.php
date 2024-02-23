@@ -73,21 +73,21 @@
 
                 <div class="statusContainer">
 
-                    <?php if (count($userOwnStatus) == 0) { ?>
+                    <?php if (count($userStatus) == 0) { ?>
                         <p class="errorsMessage">No status available</p>
                     <?php } else { ?>
-                    <?php foreach ($userOwnStatus as $ownStatus) { ?>
+                    <?php foreach ($userStatus as $personalStatus) { ?>
 
                         <div class="status" id="status">
-                            <p><b><?= $ownStatus->username ?></b>:
-                                <?= $ownStatus->content ?>
+                            <p><b><?= $personalStatus->username ?></b>:
+                                <?= $personalStatus->content ?>
                             </p>
                             <button id="likeBtn"><i class="fa-solid fa-heart"></i></button>
-                            <button id="replyBtn" class="replyBtn" name="replyBtn" replystatus=<?= $ownStatus->username ?> ><a href="#commenting">répondre</a></button>
+                            <button id="replyBtn" class="replyBtn" name="replyBtn" replystatus=<?= $personalStatus->username ?> ><a href="#commenting">répondre</a></button>
                             
                         <?php if($_SESSION['user']['id'] == $status->id_users){ ?>
-                            <button type="submit" name="update" id="editModal" updatestatus=<?= $ownStatus->content ?> >modifier</button>
-                            <button type="submit" id="profiModalBtn" statusdeleteid=<?= $ownStatus->id ?>><a href="#delete">supprimer</a></button>
+                            <button type="submit" name="update" id="editModal" updatestatus=<?= $personalStatus->content ?> >modifier</button>
+                            <button type="submit" id="profiModalBtn" statusdeleteid=<?= $personalStatus->id ?>><a href="#delete">supprimer</a></button>
                         <?php } ?>
                     </div>
 
@@ -97,7 +97,7 @@
                         <p id="successMessage"><?= $success ?></p>
                     <?php } ?>
                         <form action="#" method="POST" id="editForme">
-                            <input type="hidden" name="statusid" value="<?= $ownStatus->id ?>">
+                            <input type="hidden" name="statusid" value="<?= $personalStatus->id ?>">
                             <input type="text" class="replyText" name="statusUpdate" id="statusUpdate">
                             <input type="submit" class="postReply" name="updateStatus" value="modifier">
                             <?php if (isset($errors['content'])): ?>
@@ -141,11 +141,8 @@
 
                     <!-- reponses -->
                     <form action="#" method="POST" class="replying" id="replying">
-                        <?php if(isset($_POST['replyBtn'])) { ?>
-                            <input type="hidden" name="statusid" value="<?= $ownStatus->id ?>">
-                        <?php } else if (isset($_POST['statusReplyBtn'])) {?>
-                            <input type="hidden" name="commentsid" value="<?= $c->id ?>">
-                        <?php }?>
+                        <input type="hidden" name="statusid" value="<?= $personalStatus->id ?>">
+                    
                         <input type="text" class="replyText" id="commenting" name="commenting">
                         <input type="submit" class="postReply" name="addComment" value="commenter">
                         <?php if (isset($errors['comment'])): ?>
@@ -162,7 +159,7 @@
                         <span id="closeBtn">&times;</span>
                         <p id="modalText">Êtes-vous sûr de vouloir supprimer votre status ?</p>
                         <form action="/profil ?>" method="POST" id="delete">
-                            <input type="hidden" name="statusid" value="<?= $ownStatus->id ?>">
+                            <input type="hidden" name="statusid" value="<?= $personalStatus->id ?>">
                             <input type="text" name="idStatusDelete" id="idStatusDelete">
                             <input type="submit" value="supprimer" name="deleteStatus">
                         </form>
@@ -191,7 +188,6 @@
                 <ul id="activity-list">
                     <!-- dèrnière activité ici -->
                     <h5><b>Tes contenus:</b><hr></h5>
-                    
                     <?php foreach($userTopics as $p) { ?>
                         <li>-- <a href="/topic-<?= $p['id'] ?>"><?= $p['title'] ?></a></li><hr>
                         <ul>

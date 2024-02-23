@@ -90,6 +90,7 @@ $comments = new Comments;
 
 $comments->id_users = (int)$_SESSION['user']['id'];
 
+
 // même logique pour creer les commentaires que pour les status
 if (isset($_POST['addComment'])) {
     if (!empty($_POST['commenting'])) {
@@ -167,19 +168,22 @@ foreach($userTopics as $key => $post) {
 }
 
 $userReply = $replies->getUserReply();
-$latestReply = $replies->getReply();
+if($userReply != false) {
+    $latestReply = $replies->getReply();
 $userTotalAnswer = count($userReply);
+
 
 if(count($userReply) > 0) {
     $latestReply = $userReply[0];
+}
 }
 
 
 
 //status
-$userOwnStatus = $status->getListByIdUsers();
-if(count($userOwnStatus) > 0) {
-    $latestStatus = $userOwnStatus[0];
+$userStatus = $status->getListByIdUsers();
+if(count($userStatus) > 0) {
+    $latestStatus = $userStatus[0];
 }
 
 
@@ -189,7 +193,6 @@ $userComments = $comments->getListByIdUsers();
 $latestComment = $comments->getComment();
 
 
-$totalCounting = $userTotalAnswer + $userTotalTopics;
 
 
 $title = 'Profile'; // titre de la page

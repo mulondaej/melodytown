@@ -166,7 +166,7 @@
 
     .forumcontainer {
         width: 100%;
-        max-height: max-content;
+        max-height: 100%;
         padding: 0;
         margin: 0;
     }
@@ -174,7 +174,7 @@
     .subforum {
         margin-top: 15px;
         text-decoration: none;
-        max-height: max-content;
+        max-height: 100%;
         width: 100%;
         padding: 0;
     }

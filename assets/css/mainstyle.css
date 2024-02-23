@@ -487,6 +487,15 @@ header a {
 .errorsMessage {
     color: red;
     text-align: center;
+    font-size: 14px;
+    margin: 0 auto;    
+}
+
+#errorsMessage {
+    color: red;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 auto;
 }
 
 /* PROFILE */

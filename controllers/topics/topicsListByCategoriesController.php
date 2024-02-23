@@ -106,6 +106,7 @@ $repliesCount = count($repliesList);
 $totalCount = $repliesCount + $topicCount;
 
 
+
 $title = 'Topics';// Titre de la page
 
 //  Inclusion des fichiers: header, du view et du footer
@@ -116,3 +117,4 @@ require_once '../../views/parts/footer.php';
  
 
 <script src="assets/javaSc/modals.js"></script>
+<script src="../../assets/javaSc/topic.js"></script>

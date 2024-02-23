@@ -8,6 +8,7 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(82, 85, 86, 0.1);
     display: block;
+    
 }
 
 label {
@@ -27,6 +28,7 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     text-align: center;
+    
 }
 
 #threadForm option {
@@ -38,7 +40,7 @@ select {
 }
 
 textarea {
-    height: 150px;
+    height: 120px;
 }
 
 .threadPosted p,
@@ -255,12 +257,17 @@ textarea {
 
 .subforum-icon i {
     margin: 0 auto;
-    font-size: 30px;
     margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    justify-content: center;
+    align-self: center;
 }
 
 .subforum-icon {
     width: fit-content;
+    justify-content: center;
+    align-self: center;
 }
 
 .subforum-devider {

@@ -67,10 +67,10 @@ if(isset($_POST['updateTopic'])) { // si le formulaire est envoyé
         if ($categories->checkIfExistsById() == 1) { // si la catégorie existe déjà dans la BDD
             $topic->id_categories = $_POST['categories'];
         } else {
-            $errors['categories'] = TOPIC_TAG_CATEGORIE_UPDATE_ERROR; // sinon, afficher le message d'erreur
+            $errors['categories'] = TOPIC_CATEGORIE_UPDATE_ERROR; // sinon, afficher le message d'erreur
         }
     } else {
-        $errors['categories'] = TOPIC_TAG_CATEGORIE_UPDATE_ERROR; // sinon, afficher le message d'erreur
+        $errors['categories'] = TOPIC_CATEGORIE_UPDATE_ERROR; // sinon, afficher le message d'erreur
     }
 
     // Même logique que pour la case de catégories mais pour les tags
@@ -79,10 +79,10 @@ if(isset($_POST['updateTopic'])) { // si le formulaire est envoyé
         if ($tags->checkIfExistsById() == 1) {
             $topic->id_tags = $_POST['tag'];
         } else {
-            $errors['tag'] = TOPIC_TAG_CATEGORIE_UPDATE_ERROR;
+            $errors['tag'] = TOPIC_TAG_UPDATE_ERROR;
         }
     } else {
-        $errors['tag'] = TOPIC_TAG_CATEGORIE_UPDATE_ERROR;
+        $errors['tag'] = TOPIC_TAG_UPDATE_ERROR;
     }
 
     // si les erreurs sont vides, alors mets les informations du topic à jour

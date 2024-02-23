@@ -43,7 +43,6 @@ $replies = new Replies;
 $repliesList = $replies->getList();
 $postCount = count($repliesList);
 if ($postCount > 0) {
-    $latestReply = array();
     $latestReply[0] = $replies->getReply();
 }
 
@@ -62,7 +61,7 @@ $title = 'MelodyTown'; // Titre de la page
 
 //  Inclusion des fichiers: header, du view et du footer 
 
- require_once('../../views/parts/header.php');var_dump($errors);
+ require_once('../../views/parts/header.php');
  require_once('../../index.php');
  require_once('../../views/parts/footer.php'); 
  ?>
