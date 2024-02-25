@@ -86,9 +86,9 @@ let statusReplyBtn = document.getElementsByClassName('statusReplyBtn');
 if (statusReplyBtn != null) {
     for (let re of statusReplyBtn) { 
         re.addEventListener('click', (e) => {
-            let replystatus = e.target.getAttribute('commentstatus'); // on lie l'id de l'élément avec le status
-            commenting.value = "@" + replystatus + "\n"; // la valeur de l'élément 
-            console.log(replystatus)
+            let commentstatus = e.target.getAttribute('commentstatus'); // on lie l'id de l'élément avec le status
+            commenting.value = "@" + commentstatus + "\n"; // la valeur de l'élément 
+            console.log(commentstatus)
         });
     }
 }

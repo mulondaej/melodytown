@@ -2,58 +2,55 @@
     <section class="forum" id="forum">
         <!-- topic creation form -->
         <div class="forumcontainer">
-            <h1 id="">Bienvenu(e) sur le forum</h1>
-            <?php if (!empty($_SESSION['user'])) { ?>
-                <!-- si l'utilisateur est connecté, alors il a acces au creation du topic  -->
+            <?php if (!empty($_SESSION['user'])) { ?> <!-- si l'utilisateur est connecté, alors il a acces au creation du topic  -->
+             
+            <!-- button qui ouvre le modal du formulaire pour creer un nouveau topic -->    
+            <button type="button" id="newThread" value="topic">Nouveau topic</button>
+            <div id="modalContainer">
+                <div id="modalThread">
+                    <span id="threadCloseBtn">&times;</span>
+                    
+                <form action="#" method="POST" id="threadForm" >
+                    <label for="tag">Tags:</label>
+                    <select name="tag" id="tag" value="<?= @$_POST['tag'] ?>">
+                        <option selected disabled>Choisissez un tag</option>
+                        <?php foreach ($tagsList as $t) { ?>
+                            <option value="<?= $t->id ?>"><?= $t->name ?></option>
+                        <?php } ?>
+                    </select>
+                    <?php if (isset($errors['tag'])) : ?>
+                        <p id=errorsMessage><?= $errors['tag'] ?></p>
+                    <?php endif; ?>
 
-                <button type="button" id="newThread" value="topic">Nouveau topic</button>
-                <div id="modalContainer">
-                    <div id="modalThread">
-                        <span id="threadCloseBtn">&times;</span>
+                    <label for="categories">Categories</label>
+                    <select id="categories" name="categories" value="<?= @$_POST['categories'] ?>">
+                        <option selected disabled>Choisissez une catégorie</option>
+                        <?php foreach ($categoriesList as $c) { ?>
+                            <option value="<?= $c->id ?>"><?= $c->name ?></option>
+                        <?php } ?>
+                    </select>
+                    <?php if (isset($errors['categories'])) : ?>
+                        <p id=errorsMessage><?= $errors['categories'] ?></p>
+                    <?php endif; ?>
 
-                        <form action="#" method="POST" id="threadForm">
-                            <label for="tag">Tags:</label>
-                            <select name="tag" id="tag" value="<?= @$_POST['tag'] ?>">
-                                <option selected disabled>Choisissez un tag</option>
-                            <?php foreach ($tagsList as $t) { ?>
-                                <option value="<?= $t->id ?>"><?= $t->name ?></option>
-                            <?php } ?>
-                            </select>
-                            <?php if (isset($errors['tag'])) : ?>
-                                <p id=errorsMessage><?= $errors['tag'] ?></p>
-                            <?php endif; ?>
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" value="<?= @$_POST['title'] ?>">
+                    <?php if (isset($errors['title'])) : ?>
+                        <p id=errorsMessage><?= $errors['title'] ?></p>
+                    <?php endif; ?>
 
-                            <label for="categories">Categories</label>
-                            <select id="categories" name="categories" value="<?= @$_POST['categories'] ?>">
-                                <option selected disabled>Choisissez une catégorie</option>
-                                <?php foreach ($categoriesList as $c) { ?>
-                                    <option value="<?= $c->id ?>">
-                                        <?= $c->name ?>
-                                    </option>
-                                <?php } ?>
-                            </select>
-                            <?php if (isset($errors['categories'])): ?>
-                                <p id=errorsMessage><?= $errors['categories'] ?></p>
-                            <?php endif; ?>
+                    <label for="content">Content:</label>
+                    <textarea id="content" name="content" value="<?= @$_POST['content'] ?>"></textarea >
+                    <?php if (isset($errors['content'])) : ?>
+                        <p id=errorsMessage><?= $errors['content'] ?></p>
+                    <?php endif; ?>
 
-                            <label for="title">Title:</label>
-                            <input type="text" id="title" name="title" value="<?= @$_POST['title'] ?>">
-                            <?php if (isset($errors['title'])): ?>
-                                <p id=errorsMessage><?= $errors['title'] ?></p>
-                            <?php endif; ?>
-
-                            <label for="content">Content:</label>
-                            <textarea id="content" name="content" value="<?= @$_POST['content'] ?>"></textarea>
-                            <?php if (isset($errors['content'])): ?>
-                                <p id=errorsMessage><?= $errors['content'] ?></p>
-                            <?php endif; ?>
-
-                            <div class="send">
-                                <input type="submit" name="threadPost" value="Create">
-                            </div>
-                        </form>
+                    <div class="send">
+                        <input type="submit" name="threadPost" value="Create">
                     </div>
+                </form>
                 </div>
+            </div>
                 <hr>
             <?php } ?>
                 <div class="subforum central" id="central">
@@ -182,7 +179,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
             <?php } ?>
             
         <div class="subforum manga" id="manga">

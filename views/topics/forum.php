@@ -13,7 +13,7 @@
                 <div id="modalThread">
                     <span id="threadCloseBtn">&times;</span>
                     
-                <form action="/liste-topics-par-categories" method="POST" id="threadForm" >
+                <form action="#" method="POST" id="threadForm" >
                     <label for="tag">Tags:</label>
                     <select name="tag" id="tag" value="<?= @$_POST['tag'] ?>">
                         <option selected disabled>Choisissez un tag</option>

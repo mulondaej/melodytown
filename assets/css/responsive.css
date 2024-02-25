@@ -14,8 +14,8 @@
         padding: 0;
         height: 100%;
         background-size:cover;
-        background-repeat: repeat-y;
-        background-position: unset;
+        background-repeat: no-repeat;
+        background-attachment: fixed
     }
 
     header {
@@ -151,11 +151,11 @@
     }
 
     #main {
-        height: 100%;
         display: block;
         width: 100%;
         margin: 0;
         padding: 0;
+        height: 100%;
     }
 
     #forum {
@@ -165,10 +165,9 @@
     }
 
     .forumcontainer {
-        width: 100%;
-        max-height: 100%;
+        width: 95%;
         padding: 0;
-        margin: 0;
+        margin: 0 auto;
     }
 
     .subforum {
@@ -177,14 +176,20 @@
         max-height: 100%;
         width: 100%;
         padding: 0;
+        margin: 0 auto;
     }
 
     .subforum-row {
-        width: 98.8%;
+        width: 100%;
         padding: 0;
+        margin-top: 5px;
+        height: min-content;
     }
 
-    .subforum-column {}
+    .subforum-title {
+        margin: 0 auto;
+        width: 100%;
+    }
 
     .subforum-icon i {
         margin: 0 auto;
@@ -204,7 +209,7 @@
     }
 
     .subforum-description {
-        width: 95%;
+        width: 98%;
         margin: 0 auto;
     }
 
@@ -222,6 +227,8 @@
         text-align: center;
         display: block;
         font-size: 12px;
+        margin: 0 auto;
+        width:  100%;
     }
 
     .subforum-info {
@@ -229,7 +236,7 @@
         text-align: center;
         margin: 0 auto;
         display: block;
-        width: min-content;
+        width: 98%;
     }
 
     .subforum-info a {
@@ -298,6 +305,12 @@
     #activity-list h5 {
         font-size: 13px;
         margin: 4px;
+        text-align: center;
+    }
+
+    #activity-list li {
+        text-align: center;
+        font-size: 11px;
     }
     
     .mainStatus {
@@ -310,15 +323,14 @@
     }
 
     #postStatus {
-        display: grid;
-        grid-template-columns: repeat(2, 0fr);
-        gap: 0.1rem;
+        display: flex;
         justify-content: space-evenly;
         border-radius: 8px;
         height: max-content;
-        width: 50%;
+        width: 90%;
         margin: 0 auto;
         padding: 0;
+        margin-top: 5px;
     }
 
     #postHere {
@@ -341,18 +353,61 @@
 
     .state,
     #status {
-        width: 50%;
+        width: 100%;
         margin: 0 auto;
         padding: 0;
         height: 100%;
     }
 
     .replying {
-        display: grid;
-        grid-template-columns: repeat(2, 0fr);
-        gap: 0.1rem;
+        display: flex;
+        justify-content: space-evenly;
+        width: 90%;
         margin: 0 auto;
-        margin: 5px;
+        padding: 0;
+    }
+
+    .comments {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        
+    }
+
+    .comments button, #status button {
+        width: 25%;
+        padding: 0;
+        margin: 0 auto;
+        display: flex;
+    }
+    .postReply {
+        width: 90%;
+        margin: 0;
+        padding: 0;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+
+    .statusContainer {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    #replyModalContainer, #modalContainer {
+        width: max-content;
+        padding: 0;
+        margin: 0 auto;
+        text-align: center;
+        justify-self: center;
+        background-color: transparent;
+    }
+
+    #modal, #replyModal {
+        width: 90%;
+        padding: 0;
+        margin: 0 auto;
+        margin-top: 10rem;
     }
 
     .userContainer {
@@ -630,6 +685,8 @@
         width: 60%;
         margin: 0 auto;
     }
+
+    
 }
 
 /* PC styles */

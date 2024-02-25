@@ -2,8 +2,8 @@
 /* CREATE BTNS */
 #threadForm {
     max-width: 310px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 10px auto;
+    padding: 12px;
     background-color: #ccdde2e1;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(82, 85, 86, 0.1);
@@ -73,7 +73,7 @@ textarea {
 
 #modalThread {
     background-color: transparent;
-    padding: 1rem;
+    padding: 0rem;
     width: 50%;
     height: max-content;
     margin: 0 auto;
@@ -515,9 +515,16 @@ textarea {
     color: black;
 }
 
-
 #replyBtn a, #replyRepliesBtn a{
     text-decoration: none;
 }
 
+.pagination li {
+    background-color: #51686a;
+}
 
+.pagination {
+    bottom: 0;
+    padding: 0;
+    position: relative;
+}

@@ -53,7 +53,7 @@ define('TOPIC_CONTENT_UPDATE_SUCCESS', 'Le contenu a bien été mis à jour');
 define('TOPIC_CONTENT_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du contenu');
 define('TOPIC_CONTENT_UPDATE_ERROR_INVALID', 'Le contenu est toujours le même');
 
-define('TOPIC_REPLIES_UPDATE_SUCCESS', 'La réponse a bien été mis à jour');
+define('TOPIC_REPLIES_UPDATE_SUCCESS', 'La réponse vient d\'être été mis à jour');
 define('TOPIC_REPLIES_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre reponse');
 define('TOPIC_REPLIES_UPDATE_ERROR_INVALID', 'Le contenu est toujours le même');
 
@@ -65,11 +65,11 @@ define('TOPIC_CATEGORIE_UPDATE_ERROR', 'Une erreur est survenue lors de la mise 
 
 
 //MIS A JOUR STATUS
-define('STATUS_UPDATE_SUCCESS', 'Le contenu a bien été mis à jour');
+define('STATUS_UPDATE_SUCCESS', 'Le status a bien été mis à jour');
 define('STATUS_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du contenu');
 define('STATUS_UPDATE_ERROR_INVALID', 'Le contenu est toujours le même');
 
-define('STATUS_COMMENTS_UPDATE_SUCCESS', 'La reponse a bien été mis à jour');
+define('STATUS_COMMENTS_UPDATE_SUCCESS', 'Le commentaire a bien été mis à jour');
 define('STATUS_COMMENTS_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre reponse');
 define('STATUS_COMMENTS_UPDATE_ERROR_INVALID', 'Le contenu est toujours le même');
 
@@ -87,29 +87,29 @@ define('IMAGE_SUCCESS', 'l\'envoi de l\'image est reussi');
 define('TOPICS_TITLE_SUCCESS', 'Merci d\'avoir respecté le norme');
 define('TOPICS_TITLE_ERROR_INVALID', 'Le titre existe déjà; choisissez un autre svp!');
 define('TOPICS_TITLE_ERROR_INVALID_2', 'Le titre doit contenir au moins 8 caractères');
-define('TOPICS_TITLE_ERROR', 'Mettez un titre SVP');
+define('TOPICS_TITLE_ERROR', 'Le titre est vide, mettez un svp!');
 
 // CONTENT
 define('TOPICS_CONTENT_SUCCESS', 'Merci d\'avoir respecté le norme');
 define('TOPICS_CONTENT_ERROR_INVALID', 'Le contenu doit contenir au moins 30 caractères');
-define('TOPICS_CONTENT_ERROR', 'Veuillez redigez une phrase au moins, la case ne peut pas être vide');
+define('TOPICS_CONTENT_ERROR', 'Veuillez redigez au moins une phrase ou quelque mots dans la case de contenu svp!');
 
 // REPLIES
-define('TOPICS_REPLIES_SUCCESS', 'le reply est publié');
-define('TOPICS_REPLIES_ERROR_INVALID', 'Le contenu doit contenir au moins 30 caractères');
-define('TOPICS_REPLIES_ERROR', 'Veuillez redigez une phrase au moins, la case ne peut pas être vide');
+define('TOPICS_REPLIES_SUCCESS', 'Votre reply a bien été rajouté avec succès');
+define('TOPICS_REPLIES_ERROR_INVALID', 'Le replyu doit contenir au moins 30 caractères');
+define('TOPICS_REPLIES_ERROR', 'Veuillez redigez quelques mots svp car lq case ne peut pas être vide');
 
 // COMMENTS
-define('STATUS_COMMENTS_SUCCESS', 'le commentaire est publié');
+define('STATUS_COMMENTS_SUCCESS', 'Votre commentaire est publié');
 define('STATUS_COMMENTS_ERROR_EXISTS', 'Le contenu existe déja');
-define('STATUS_COMMENTS_ERROR', 'Veuillez redigez une phrase au moins, la case ne peut pas être vide');
+define('STATUS_COMMENTS_ERROR', 'Veuillez redigez un mot svp car cette case ne peut pas être vide');
 
 // TAGS
 define('TOPICS_TAGS_ERROR_EMPTY', 'Le tag est requis');
 define('TOPICS_TAGS_ERROR_INVALID', 'Le tag est invalide');
 
 // CATEGORIES
-define('TOPICS_CATEGORIES_ERROR_EMPTY', 'La categorie est requis');
+define('TOPICS_CATEGORIES_ERROR_EMPTY', 'La categorie est requise');
 define('TOPICS_CATEGORIES_ERROR_INVALID', 'La categorie est invalide');
 
 // TOPIC

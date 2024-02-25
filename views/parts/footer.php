@@ -1,5 +1,5 @@
 
-
+</div>
 <!-- le footer avec liens pour contact, aide et termes -->
 <footer class="footer">
     <div class="footer-links">

@@ -128,7 +128,7 @@ if (isset($_POST['updateComments'])) {
                 $comments->id = $_POST['commentsid'];
             if ($comments->update()) {
                 $comments->content = $_POST['commentUpdate'];
-                $success = STATUS_COMMENTS_SUCCESS;
+                $success = STATUS_COMMENTS_UPDATE_SUCCESS;
             } else {
                 $errors['update'] = STATUS_COMMENTS_ERROR;
             }

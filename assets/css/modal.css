@@ -28,7 +28,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    position: fixed;
+    position: relative;
     top: 0;
     width: 100%;
     z-index: 1;
@@ -37,7 +37,7 @@
 
 #modal {
     background-color: whitesmoke;
-    padding: 1rem;
+    padding: 0.5rem;
     width: 50%;
     margin: 0 auto;
     margin-top: 4rem;
@@ -73,12 +73,12 @@
 }
 
 #replyModalContainer {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: transparent;
     display: none;
     align-items: center;
     justify-content: center;
     height: 100%;
-    position: fixed;
+    position: relative;
     top: 0;
     width: 100%;
     z-index: 1;
@@ -86,11 +86,13 @@
 }
 
 #replyModal {
-    background-color: whitesmoke;
-    padding: 1rem;
-    width: 50%;
+    background-color: rgb(238, 241, 243);
+    padding: 0.5rem;
+    width: 70%;
     margin: 0 auto;
-    margin-top: 4rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
 }
 
 #replyCloseBtn {

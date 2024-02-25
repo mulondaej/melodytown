@@ -14,9 +14,9 @@ body {
     padding: 0;
     /* background-color: wheat; */
     background-image: url('../IMG/backkk2.jpg');
-    background-size: contain;
-    background-position:unset;
-    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     width: 100%;
 }
 
@@ -1081,7 +1081,6 @@ header a {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px;
     text-align: center;
     bottom: 0;
     width: 100%;
@@ -1102,6 +1101,7 @@ header a {
 .footer p {
     margin-left: 180px;
     margin-top: 13px;
+    color: white;
 }
 
 /* HOVERS */

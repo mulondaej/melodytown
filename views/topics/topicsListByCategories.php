@@ -15,7 +15,7 @@
                  <div id="modalThread">
                      <span id="threadCloseBtn">&times;</span>
                      
-                 <form action="/liste-topics-par-categories" method="POST" id="threadForm" >
+                 <form action="#" method="POST" id="threadForm" >
                      <label for="tag">Tags:</label>
                      <select name="tag" id="tag" value="<?= @$_POST['tag'] ?>">
                         <option selected disabled>Choisissez un tag</option>
@@ -66,9 +66,9 @@
             <?php } else { ?>
                 <?php foreach ($topicsList as $t) { ?>
                 <div class="subforum central" id="central">
-                    <div class="subforum-title">
+                    <!-- <div class="subforum-title">
                         <h1 id="title"><?= $t->categorie ?></h1>
-                    </div>
+                    </div> -->
                     <div class="subforum-row">
                         <div class="subforum-icon subforum-column center" id="icon">
                             <i class="fa-regular fa-comment" style="color: #e0e9f6;"></i>
@@ -98,23 +98,7 @@
             <?php } ?>
         </div>
 
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        
  
     </section>
 </div>

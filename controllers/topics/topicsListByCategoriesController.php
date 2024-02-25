@@ -36,20 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
     if (!empty($_POST['title'])) { // si le titre n'est pas vide
         if (preg_match($regex['title'], $_POST['title'])) { // si le titre n'est pas vide
             $topic->title = clean($_POST['title']); // on récupère le titre en le nettoyant
-        } else {
-            $errors['title'] = TOPICS_TITLE_ERROR_INVALID; // sinon, afficher le message d'erreur invalid
-        }
-    } else {
+        }  else {
         $errors['title'] = TOPICS_TITLE_ERROR; // sinon, afficher le message d'erreur 
     }
+}
 
     // même logique de titre pour le contenu mais avec une regex plus large
     if (!empty($_POST['content'])) {
         if (!preg_match($regex['content'], $_POST['content'])) {
             $topic->content = trim($_POST['content']);
-        } else {
-            $errors['content'] = TOPICS_CONTENT_ERROR_INVALID;
-        }
+        } 
     } else {
         $errors['content'] = TOPICS_CONTENT_ERROR;
     }
@@ -83,12 +79,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
         $topic->id_users = $_SESSION['user']['id'];
         if ($topic->create()) {
             $success = TOPICS_SUCCESS;
+
+            header("Location: /liste-topics-par-categories");
+            exit();
         } else {
-            $errors['add'] = TOPICS_ERROR;
-        }
-    } else {
         $errors['add'] = TOPICS_ERROR;
     }
+}
 
 }
 
