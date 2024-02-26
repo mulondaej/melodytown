@@ -99,14 +99,7 @@ textarea {
     border-radius: 5px;
     justify-content: space-evenly;
     display: flex;
-}
-
-#mainDiscover {
-    width: 100%;
-    padding: 20px;
-    border-radius: 5px;
-    justify-content: space-evenly;
-    display: block;
+    height: 100%;
 }
 
 #topicContainer {
@@ -144,9 +137,10 @@ textarea {
 
 /* subforum threads styling*/
 .forumcontainer {
-    margin: 5px;
-    padding: 12px;
-    max-height: max-content;
+    margin: 0 auto;
+    padding: 0.5rem;
+    height:80%;
+    
 }
 
 .subforum {

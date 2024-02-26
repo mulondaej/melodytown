@@ -79,19 +79,24 @@
                     <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
             </div>
             <hr class="subforum-devider">
@@ -111,19 +116,24 @@
                     <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
             </div>
             <hr class="subforum-devider">
@@ -143,19 +153,24 @@
                     <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: :</a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
             </div>
             <hr class="subforum-devider">
@@ -175,19 +190,24 @@
                     <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
             </div>
             <hr class="subforum-devider">
@@ -208,19 +228,24 @@
                     <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
             </div>
             <div class="subforum-row">
@@ -241,19 +266,24 @@
                     <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
             </div>
             <div class="subforum-row">
@@ -273,19 +303,24 @@
                     <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
             </div>
             <hr class="subforum-devider">
@@ -308,19 +343,24 @@
                         <span><a href="/" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
                 </div>
                 <div class="subforum-row">
@@ -338,19 +378,24 @@
                         <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
                 </div>
                 <div class="subforum-row">
@@ -368,19 +413,24 @@
                         <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
                 </div>
                 <hr class="subforum-devider">
@@ -406,19 +456,24 @@
                             <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                         </div>
                         <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
                     </div>
                     <hr class="subforum-devider">
@@ -439,19 +494,24 @@
                             <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                         </div>
                         <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
                     </div>
                 </div>
@@ -476,19 +536,24 @@
                             <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                         </div>
                         <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
                     </div>
                     <hr class="subforum-devider">
@@ -515,19 +580,24 @@
                         <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                 </div>
                 <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                    <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                    <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                     </div>
                 </div>
                 <hr class="subforum-devider">
@@ -547,19 +617,24 @@
                         <span><a href="" id="liste-topics-par-categories"> <?= $totalCount ?></a> posts</span>
                     </div>
                     <div class="subforum-info subforum-column">
-                        <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                        <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -581,19 +656,24 @@
                                 <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                             </div>
                             <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
                         </div>
                         <hr class="subforum-devider">
@@ -609,19 +689,24 @@
                                 <span><a href="" id="liste-topics-par-categories"><?= $totalCount ?></a> posts</span>
                             </div>
                             <div class="subforum-info subforum-column">
-                    <b><a href="">Last post: </a></b><a href="/topic-<?= $latestTopic->id ?>">
-                        <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
+                    <b><a href="">Last post: </a></b>
+                    <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                <?php } ?>
+                        <?php if (!empty($_SESSION['user'])) {
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
                         </div>
                     </div>
@@ -645,17 +730,19 @@
                         </div>
                         <div class="subforum-info subforum-column">
                     <b><a href="">Last post: </a></b><a href=""><?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
-                                <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
                     </div>
                     <hr class="subforum-devider">
@@ -672,17 +759,19 @@
                         </div>
                         <div class="subforum-info subforum-column">
                     <b><a href="">Last post: </a></b><a href=""><?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
-                                    </a>
-                                <?php } ?>
-                            <?php } else { ?>
-                                <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%A, %d %B %Y %H:%M'); ?>
+                                if (!empty($latestReply)) { ?>
+                                    <?= $latestReply->username ?>,
+                                    <?= $latestReply->publicationDate ?>
                                 </a>
+                            <?php } else { ?>
+                                <p>Aucune</p>
                             <?php } ?>
+                        <?php } else { ?>
+                            <a href="/topic-<?= $latestTopic->id ?>">
+                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
+                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                            </a>
+                        <?php } ?>
                 </div>
                     </div>
                 </div>
@@ -697,22 +786,33 @@
     <div class="updates">
             <h2>Les Publications</h2>
             <ul>
-                <?php if (!empty($_SESSION['user'])) { 
-                     if(!empty($latestReply)) { ?>
-                        <li><b>Dèrnière Publication: </b><a href="/topic?"><?= $latestReply->content ?>
-                        </a><span id="posts-posted">par <a href="/topic?">
-                                <?= $latestReply->username ?>
-                            </a></span></li>
+            <?php if (!empty($_SESSION['user'])) {
+                    if (!empty($latestReply)) { ?>
+                        <li><b>Dèrnière Publication: </b><a href="/topic-<?= $latestReply->id_topics ?>">
+                                <?= $latestReply->content ?>
+                            </a><span id="posts-posted">
+                                <?php if (!empty($latestTopic)) { ?>par <a href="/topic-<?= $latestTopic->id ?>"><?php } ?>
+                                    <?= $latestReply->username ?>
+                                </a></span></li>
                     <?php } ?>
-                    <li><b>Dèrnière Topic: </b><a href="/topic?"><?= $latestTopic->title ?></a>
-                        <span id="posts-posted">par <a href="/topic?">
-                            <?= $latestTopic->username ?></a></span></li>
-                           <?php if(!empty($latestStatus)) { ?>
-                    <li><b>Dèrnière Status: </b><a href="/profil-<?= $latestStatus->id ?>"><?= $latestStatus->content ?></a>
+                    <?php if (!empty($latestTopic)) { ?><li><b>Dèrnière Topic: </b><a href="/topic-<?= $latestTopic->id ?>">
+                            <?= $latestTopic->title ?>
+                        </a><?php } ?>
+                        <span id="posts-posted">
+                            <?php if (!empty($latestTopic)) { ?>par <a href="/topic-<?= $latestTopic->id ?>">
+                                <?= $latestTopic->username ?>
+                            </a><?php } ?></span>
+                    </li>
+                    <?php if (!empty($latestStatus)) { ?>
+                        <li><b>Dèrnière Status: </b><a href="/profil-<?= $latestStatus->id ?>">
+                                <?= $latestStatus->content ?>
+                            </a>
                             <span id="posts-posted">par <a href="/profil-<?= $latestStatus->id ?>">
-                            <?= $latestStatus->username ?>
-                            </a></span></li>
+                                    <?= $latestStatus->username ?>
+                                </a></span>
+                        </li>
                     <?php } ?>
+
                 <?php } ?>
 
             </ul>

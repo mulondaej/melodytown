@@ -95,13 +95,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
 }
 
 $topicsList = $topic->getList();
-$latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
+if ($topicCount > 0) {
+    $latestTopic = $topic->getTopic();
+}
+
 
 $replies = new Replies;
 $repliesList = $replies->getList();
-$latestReply = $replies->getReply();
 $postCount = count($repliesList);
+if ($postCount > 0) {
+    $latestReply[0] = $replies->getReply();
+}
 
 
 
