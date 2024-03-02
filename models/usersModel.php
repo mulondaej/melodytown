@@ -165,12 +165,30 @@ class Users
         return $req->execute();
     }
 
-    // les functions sql updates de location, password et avatar
+    // les functions sql updates de location, email, username, password et avatar
     public function updateLocation() 
     {
         $sql = 'UPDATE `a8yk4_users` SET `location`=:location WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':location', $this->location, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $req->execute();
+    }
+
+    public function updateUsername() 
+    {
+        $sql = 'UPDATE `a8yk4_users` SET `username`=:username WHERE `id` = :id';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':username', $this->username, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $req->execute();
+    }
+
+    public function updateEmail() 
+    {
+        $sql = 'UPDATE `a8yk4_users` SET `email`=:email WHERE `id` = :id';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':email', $this->email, PDO::PARAM_STR);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
     }
@@ -191,6 +209,11 @@ class Users
         $req->bindValue(':password', $this->password, PDO::PARAM_STR);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
+    }
+
+    public function verifyAccount() {
+
+    
     }
 
 }

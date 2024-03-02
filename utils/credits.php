@@ -10,7 +10,7 @@ require_once '../views/parts/header.php';
 ?>
 
 <div class="footDiv">
-    <h1 class="compteH1"> Crédits : </h1>
+    <h1 class="compteH1"> Mentions légales : </h1>
     <div class="terms">
         <hr>
 

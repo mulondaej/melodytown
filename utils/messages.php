@@ -37,8 +37,11 @@ Il doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffr
 define('USERS_LOCATION_UPDATE_SUCCESS', 'Votre location a bien été mis à jour');
 define('USERS_LOCATION_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre location');
 
-define('CONTACT_UPDATE_SUCCESS', 'Votre location a bien été mis à jour');
-define('CONTACT_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre location');
+define('USERS_EMAIL_UPDATE_SUCCESS', 'Votre email a bien été mis à jour');
+define('USERS_EMAIL_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre email');
+
+define('USERS_USERNAME_UPDATE_SUCCESS', 'Votre username a bien été mis à jour');
+define('USERS_USERNAME_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour de votre username');
 
 //MIS A JOUR TOPICS
 define('TOPIC_UPDATE_SUCCESS', 'Votretopic a bien été mis à jour');

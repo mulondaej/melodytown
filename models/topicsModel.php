@@ -11,8 +11,6 @@ class Topics
     public int $id_categories;
     public int $id_tags;
 
-    public string $replies;
-
     public function __construct()
     {
         try {

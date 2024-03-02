@@ -41,6 +41,53 @@
                 compte</a></button><!-- button avec lien qui ouvre le modal de suppression de compte  -->
     </form>
 
+    <div id="logForm">
+        
+    <form action="/modifier-mon-compte" method="post" id="logForm" enctype="multipart/form-data">
+            <!--  -->
+            <label for="avatar">Nouveau avatar</label><!-- champ pour le nouveau mot de passe -->
+            <input type="file" name="avatar" id="profileAvatar">
+            <?php if (isset($errors['avatar'])) { ?>
+                <p id=errorsMessage><?= $errors['avatar'] ?></p>
+            <?php } ?>
+
+            <input type="submit" value="Ajouter" name="updateAvatar"><!-- button confirmer la modification  -->
+        </form>
+
+        <form action="/modifier-mon-compte" method="post" id="logForm">
+            <!--  -->
+            <label for="username">Nouveau username</label><!-- champ pour le nouveau mot de passe -->
+            <input type="username" name="username" id="username">
+            <?php if (isset($errors['username'])) { ?>
+                <p id=errorsMessage><?= $errors['username'] ?></p>
+            <?php } ?>
+
+            <input type="submit" value="Modifier" name="updateUsername"><!-- button confirmer la modification  -->
+        </form>
+
+        <form action="/modifier-mon-compte" method="post" id="logForm">
+            <!--  -->
+            <label for="email">Nouveau email</label><!-- champ pour le nouveau mot de passe -->
+            <input type="email" name="email" id="email">
+            <?php if (isset($errors['email'])) { ?>
+                <p id=errorsMessage><?= $errors['email'] ?></p>
+            <?php } ?>
+
+            <input type="submit" value="Modifier" name="updateEmail"><!-- button confirmer la modification  -->
+        </form>
+
+        <form action="/modifier-mon-compte" method="post" id="logForm">
+            <!--  -->
+            <label for="location">Nouveau Location</label><!-- champ pour le nouveau mot de passe -->
+            <input type="location" name="location" id="location">
+            <?php if (isset($errors['location'])) { ?>
+                <p id=errorsMessage><?= $errors['location'] ?></p>
+            <?php } ?>
+
+            <input type="submit" value="Modifier" name="updateLocation"><!-- button confirmer la modification  -->
+        </form>
+    </div>
+
     <form action="/modifier-mon-compte" method="post" id="logForm">
         <!--  -->
         <label for="password">Nouveau mot de passe</label><!-- champ pour le nouveau mot de passe -->

@@ -86,13 +86,17 @@
     }
 
     .navbar button {
-        margin-right: 1px;
+        margin-right: 0;
     }
 
     .navbar a {
-        font-size: 10px;
+        font-size: 14px;
         height: max-content;
-        margin: 0;
+        margin: -8px;
+    }
+
+    .navbar button i {
+        margin-right: 2px;
     }
 
     #logging {

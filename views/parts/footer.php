@@ -3,11 +3,11 @@
 <!-- le footer avec liens pour contact, aide et termes -->
 <footer class="footer">
     <div class="footer-links">
-        <a href="/contact">Help</a>
-        <a href="/credits">Credits</a>
-        <a href="/termes">Terms</a>
+        <a href="/contact">Nous contacter</a>
+        <a href="/termes">Termes et conditions</a>
+        <a href="/credits">Mentions légales</a>
     </div>
-    <p>&copy; Melodytown</p>
+    <p>EJMT &copy; Melodytown</p>
 </footer>
 
 
