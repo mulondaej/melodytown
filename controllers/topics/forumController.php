@@ -1,4 +1,5 @@
 <?php
+
 require_once "../../models/usersModel.php" ;
 require_once "../../models/forumModel.php" ;
 require_once "../../models/statusModel.php";
@@ -12,8 +13,8 @@ require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
 
-session_start();
 
+session_start();
 
 
 $user = new Users;
@@ -119,9 +120,10 @@ $totalCount = $postCount + $topicCount + $statusCount;
 
 $title = 'Forums';
 
-require_once '../../views/parts/header.php';
+
+require_once('../../views/parts/header.php');
 require_once '../../views/topics/forum.php'; 
-require_once '../../views/parts/footer.php';
+require_once('../../views/parts/footer.php'); 
 ?>
 
 <script src="../../assets/javaSc/topic.js"></script>

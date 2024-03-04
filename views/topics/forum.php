@@ -1,3 +1,6 @@
+
+
+
 <div id="main">
     <section class="forum" id="forum">
 
