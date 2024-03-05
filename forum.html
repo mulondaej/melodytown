@@ -1,0 +1,562 @@
+
+<!DOCTYPE php>
+<php lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="un forum de manga, comic, webtoon, ">
+        <title>
+            Forums        </title>
+        <link rel="sicon" href="../../assets/IMG/logoResized.jpg" type="image/jpg">
+        <link rel="canonical" href="URL_canonique_de_votre_forum">
+        <link rel="stylesheet" href="../../assets/css/mainstyle.css">
+        <link rel="stylesheet" href="../../assets/css/modal.css">
+        <link rel="stylesheet" href="../../assets/css/forum.css">
+        <link rel="stylesheet" href="../../assets/css/responsive.css">
+        <link rel="stylesheet" href="../../assets/css/scss.scss">
+        <link rel="stylesheet" href="../../assets/css/style.mini.css">
+        <link rel="stylesheet" href="../../assets/css/style.min.css.map">
+        <link rel="preconnect" href="https://www.google.com">
+        <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+        <script async src="https://www.google.com/recaptcha/api.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.tiny.cloud/1/r46x7x3vh3lxxmkcnj8zb3ribaidejh4xsiec99z9vj5oudn/tinymce/6/tinymce.min.js"
+            referrerpolicy="origin"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <header>
+
+                        <div class="siteLogo">
+                <img src="assets/IMG/logo2.jpg" alt="site logo" id="logo">
+                <a href="/accueil">
+                    <h1>MelodyTown</h1>
+                </a>
+            </div>
+
+            <!-- affiche de la barre de recherche -->
+            <div class="searchContainer">
+                <input type="text" id="searchInput" placeholder="..Search...">
+                <button onclick="search()">
+                    <i class="fa-solid fa-magnifying-glass fa-sm"></i></button>
+            </div>
+            <div id="searchResults"></div>
+
+
+            
+                <div class="navbar">
+    
+<!-- <nav> -->
+    <button class="btn btn-secondary btn-sm"><i class="fa-solid fa-house"></i><a href="/accueil"> Accueil</a></button>
+    
+    <div class="btn-group dropdown-center">
+        <button class="btn btn-secondary btn-sm" type="button">
+            <i class="fa-brands fa-discourse" id="discuss"></i>
+            <a href="/forum">                    Forums
+                </a></button>
+        <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark text-center">
+            <li><a class="dropdown-item" href="#">Manga</a></li>
+            <li><a class="dropdown-item" href="#">Comics</a></li>
+            <li><a class="dropdown-item" href="#">Webtoon</a></li>
+            <li><a class="dropdown-item" href="#">Afrostories</a></li>
+        </ul>
+    </div>
+
+    <!-- si l'utilisateur en ligne est sur la page de forum, alors ses navs changent -->
+    </div>
+                <button class="btn btn-secondary btn-sm" id="connect"><i class="fa-solid fa-right-to-bracket ">
+                        <a href="/connexion"> Connexion</a></i></button>
+                <button class="btn btn-secondary btn-sm" id="connect"><i class="fa-solid fa-right-to-bracket ">
+                        <a href="/inscription"> S'inscrire</a></i></button>
+                    </header>
+
+        <body><div id="main">
+    <section class="forum" id="forum">
+
+        <!-- Thread creation form -->
+        <h1>Discuter avec plaisir et passion!</h1>
+        <div class="forumcontainer">
+            
+
+            <div class="subforum manga" id="manga">
+                <div class="subforum-title">
+                    <h1>Manga</h1>
+                </div>
+                <hr class="subforum-devider">
+                <div class="subforum-row">
+                    <div class="subforum-icon subforum-column ">
+                        <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                    </div>
+                    <div class="subforum-description subforum-column">
+                        <h4><a href="/liste-topics-par-categories">Bleach</a></h4>
+                        <div>
+                            <h6><a href="/liste-topics-par-categories">Discussions</a></h6>
+                            <h6><a href="/liste-topics-par-categories">Théories</a></h6>
+                            <h6><a href="/liste-topics-par-categories">Versus</a></h6>
+                        </div>
+                    </div>
+                    <div class="subforum-stats subforum-column ">
+                        <span><a href="" id="liste-topics-par-categories">
+                                1                            </a> posts</span>
+                    </div>
+                    <div class="subforum-info subforum-column">
+                        <b><a href="">Last post: </a></b>
+                                                    <a href="/topic-161">
+                                                                                                                    <a href="/topic-161">
+                                                                User: 04/03/2024                            </a>
+                                            </div>
+                </div>
+                <hr class="subforum-devider">
+                <div class="subforum-row">
+                    <div class="subforum-icon subforum-column ">
+                        <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                    </div>
+                    <div class="subforum-description subforum-column">
+                        <h4><a href="/liste-topics-par-categories">Naruto</a></h4>
+                        <div>
+                            <h6><a href="/liste-topics-par-categories">Discussions</a></h6>
+                            <h6><a href="/liste-topics-par-categories">Théories</a></h6>
+                            <h6><a href="/liste-topics-par-categories">Versus</a></h6>
+                        </div>
+                    </div>
+                    <div class="subforum-stats subforum-column ">
+                        <span><a href="" id="liste-topics-par-categories">
+                                1                            </a> posts</span>
+                    </div>
+                    <div class="subforum-info subforum-column">
+                        <b><a href="">Last post: </a></b>
+                                                    <a href="/topic-161">
+                                                                                                                    <a href="/topic-161">
+                                                                User: 04/03/2024                            </a>
+                                            </div>
+                </div>
+                <hr class="subforum-devider">
+                <div class="subforum-row">
+                    <div class="subforum-icon subforum-column ">
+                        <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                    </div>
+                    <div class="subforum-description subforum-column">
+                        <h4><a href="/liste-topics-par-categories">One Piece</a></h4>
+                        <div>
+                            <h6><a href="/liste-topics-par-categories">Discussions</a></h6>
+                            <h6><a href="/liste-topics-par-categories">Théories</a></h6>
+                            <h6><a href="/liste-topics-par-categories">Versus</a></h6>
+                        </div>
+                    </div>
+                    <div class="subforum-stats subforum-column ">
+                        <span><a href="" id="liste-topics-par-categories">
+                                1                            </a> posts</span>
+                    </div>
+                    <div class="subforum-info subforum-column">
+                        <b><a href="">Last post: </a></b>
+                                                    <a href="/topic-161">
+                                                                                                                    <a href="/topic-161">
+                                                                User: 04/03/2024                            </a>
+                                            </div>
+                </div>
+                <hr class="subforum-devider">
+                <div class="subforum-row">
+                    <div class="subforum-icon subforum-column ">
+                        <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                    </div>
+                    <div class="subforum-description subforum-column">
+                        <h4><a href="/liste-topics-par-categories">Hunter X Hunter</a></h4>
+                        <div>
+                            <h6><a href="/liste-topics-par-categories">Discussions</a></h6>
+                            <h6><a href="/liste-topics-par-categories">Théories</a></h6>
+                            <h6><a href="/liste-topics-par-categories">Versus</a></h6>
+                        </div>
+                    </div>
+                    <div class="subforum-stats subforum-column ">
+                        <span><a href="" id="liste-topics-par-categories">
+                                1                            </a> posts</span>
+                    </div>
+                    <div class="subforum-info subforum-column">
+                        <b><a href="">Last post: </a></b>
+                                                    <a href="/topic-161">
+                                                                                                                    <a href="/topic-161">
+                                                                User: 04/03/2024                            </a>
+                                            </div>
+                </div>
+                <hr class="subforum-devider">
+                <div class="subforum-row">
+                    <div class="subforum-icon subforum-column ">
+                        <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                    </div>
+                    <div class="subforum-description subforum-column">
+                        <h4><a href="/liste-topics-par-categories">Golden</a></h4>
+                        <div>
+                            <h6><a href="/liste-topics-par-categories">DBZ</a></h6>
+                            <h6><a href="/liste-topics-par-categories">Saint Seiya</a></h6>
+                            <h6><a href="/liste-topics-par-categories">JoJo Bizarre</a></h6>
+                            <h6><a href="/liste-topics-par-categories">Major</a></h6>
+                        </div>
+                    </div>
+                    <div class="subforum-stats subforum-column ">
+                        <span><a href="" id="liste-topics-par-categories">
+                                1                            </a> posts</span>
+                    </div>
+                    <div class="subforum-info subforum-column">
+                        <b><a href="">Last post: </a></b>
+                                                    <a href="/topic-161">
+                                                                                                                    <a href="/topic-161">
+                                                                User: 04/03/2024                            </a>
+                                            </div>
+                </div>
+                <div class="subforum-row">
+                    <div class="subforum-icon subforum-column ">
+                        <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                    </div>
+                    <div class="subforum-description subforum-column">
+                        <h4><a href="/liste-topics-par-categories">New Gen</a></h4>
+                        <div>
+                            <h6><a href="/liste-topics-par-categories">MHA</a></h6>
+                            <h6><a href="/liste-topics-par-categories">Kingdom</a></h6>
+                            <h6><a href="/liste-topics-par-categories">OPM</a></h6>
+                            <h6><a href="/liste-topics-par-categories">JJK</a></h6>
+                            <h6><a href="/liste-topics-par-categories">more</a></h6>
+                        </div>
+                    </div>
+                    <div class="subforum-stats subforum-column ">
+                        <span><a href="" id="liste-topics-par-categories">
+                                1                            </a> posts</span>
+                    </div>
+                    <div class="subforum-info subforum-column">
+                        <b><a href="">Last post: </a></b>
+                                                    <a href="/topic-161">
+                                                                                                                    <a href="/topic-161">
+                                                                User: 04/03/2024                            </a>
+                                            </div>
+                </div>
+                <div class="subforum-row">
+                    <div class="subforum-icon subforum-column ">
+                        <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                    </div>
+                    <div class="subforum-description subforum-column">
+                        <h4><a href="/liste-topics-par-categories">Finished series</a></h4>
+                        <div>
+                            <h6><a href="/liste-topics-par-categories">Reborn</a></h6>
+                            <h6><a href="/liste-topics-par-categories">Fairytail</a></h6>
+                            <h6><a href="/liste-topics-par-categories">AoT</a></h6>
+                            <h6><a href="/liste-topics-par-categories">more</a></h6>
+                        </div>
+                    </div>
+                    <div class="subforum-stats subforum-column ">
+                        <span><a href="" id="liste-topics-par-categories">
+                                1                            </a> posts</span>
+                    </div>
+                    <div class="subforum-info subforum-column">
+                        <b><a href="">Last post: </a></b>
+                                                    <a href="/topic-161">
+                                                                                                                    <a href="/topic-161">
+                                                                User: 04/03/2024                            </a>
+                                            </div>
+                </div>
+                <hr class="subforum-devider">
+                <div class="subforum comics" id="comics">
+                    <div class="subforum-title">
+                        <h1>Comics</h1>
+                    </div>
+                    <div class="subforum-row">
+                        <div class="subforum-icon subforum-column ">
+                            <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                        </div>
+                        <div class="subforum-description subforum-column">
+                            <h4><a href="/liste-topics-par-categories">Marvel</a></h4>
+                            <div>
+                                <h6><a href="/liste-topics-par-categories">Comics</a></h6>
+                                <h6><a href="/liste-topics-par-categories">Series/ Movies</a></h6>
+                            </div>
+                        </div>
+                        <div class="subforum-stats subforum-column ">
+                            <span><a href="/" id="liste-topics-par-categories">
+                                    1                                </a> posts</span>
+                        </div>
+                        <div class="subforum-info subforum-column">
+                            <b><a href="">Last post: </a></b>
+                                                            <a href="/topic-161">
+                                                                                                                                    <a href="/topic-161">
+                                                                        User: 04/03/2024                                </a>
+                                                    </div>
+                    </div>
+                    <div class="subforum-row">
+                        <div class="subforum-icon subforum-column ">
+                            <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                        </div>
+                        <div class="subforum-description subforum-column">
+                            <h4><a href="/liste-topics-par-categories">D.C</a></h4>
+                            <div>
+                                <h6><a href="/liste-topics-par-categories">Comics</a></h6>
+                                <h6><a href="/liste-topics-par-categories">Series/ Movies</a></h6>
+                            </div>
+                        </div>
+                        <div class="subforum-stats subforum-column ">
+                            <span><a href="" id="liste-topics-par-categories">
+                                    1                                </a> posts</span>
+                        </div>
+                        <div class="subforum-info subforum-column">
+                            <b><a href="">Last post: </a></b>
+                                                            <a href="/topic-161">
+                                                                                                                                    <a href="/topic-161">
+                                                                        User: 04/03/2024                                </a>
+                                                    </div>
+                    </div>
+                    <div class="subforum-row">
+                        <div class="subforum-icon subforum-column ">
+                            <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                        </div>
+                        <div class="subforum-description subforum-column">
+                            <h4><a href="/liste-topics-par-categories">Other publishers</a></h4>
+                            <div>
+                                <h6><a href="/liste-topics-par-categories">Invincible</a></h6>
+                                <h6><a href="/liste-topics-par-categories">other series</a></h6>
+                            </div>
+                        </div>
+                        <div class="subforum-stats subforum-column ">
+                            <span><a href="" id="liste-topics-par-categories">
+                                    1                                </a> posts</span>
+                        </div>
+                        <div class="subforum-info subforum-column">
+                            <b><a href="">Last post: </a></b>
+                                                            <a href="/topic-161">
+                                                                                                                                    <a href="/topic-161">
+                                                                        User: 04/03/2024                                </a>
+                                                    </div>
+                    </div>
+                    <hr class="subforum-devider">
+
+                    <div class="subforum webtoon" id="webtoon">
+                        <div class="subforum-title">
+                            <h1>Webtoon</h1>
+                        </div>
+                        <div class="subforum-row">
+                            <div class="subforum-icon subforum-column ">
+                                <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                            </div>
+                            <div class="subforum-description subforum-column">
+                                <h4><a href="/liste-topics-par-categories">Well-known</a></h4>
+                                <div>
+                                    <h6><a href="/liste-topics-par-categories">Solo-Lvl</a></h6>
+                                    <h6><a href="/liste-topics-par-categories">Noblesse</a></h6>
+                                    <h6><a href="/liste-topics-par-categories">GoH</a></h6>
+                                    <h6><a href="/liste-topics-par-categories">ToG</a></h6>
+                                </div>
+                            </div>
+                            <div class="subforum-stats subforum-column ">
+                                <span><a href="" id="liste-topics-par-categories">
+                                        1                                    </a> posts</span>
+                            </div>
+                            <div class="subforum-info subforum-column">
+                                <b><a href="">Last post: </a></b>
+                                                                    <a href="/topic-161">
+                                                                                                                                                    <a href="/topic-161">
+                                                                                User: 04/03/2024                                    </a>
+                                                            </div>
+                        </div>
+                        <hr class="subforum-devider">
+                        <div class="subforum-row">
+                            <div class="subforum-icon subforum-column ">
+                                <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                            </div>
+                            <div class="subforum-description subforum-column">
+                                <h4><a href="/liste-topics-par-categories">Explore more</a></h4>
+                                <div>
+                                    <h6><a href="/liste-topics-par-categories">Dr. Frost</a></h6>
+                                    <h6><a href="/liste-topics-par-categories">Gosu</a></h6>
+                                    <h6><a href="/liste-topics-par-categories">Dice</a></h6>
+                                    <h6><a href="/liste-topics-par-categories">more</a></h6>
+                                </div>
+                            </div>
+                            <div class="subforum-stats subforum-column ">
+                                <span><a href="" id="liste-topics-par-categories">
+                                        1                                    </a> posts</span>
+                            </div>
+                            <div class="subforum-info subforum-column">
+                                <b><a href="">Last post: </a></b>
+                                                                    <a href="/topic-161">
+                                                                                                                                                    <a href="/topic-161">
+                                                                                User: 04/03/2024                                    </a>
+                                                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subforum gather" id="afrostories">
+                        <div class="subforum-title">
+                            <h1>Afrostories</h1>
+                        </div>
+                        <div class="subforum-row">
+                            <div class="subforum-icon subforum-column ">
+                                <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                            </div>
+                            <div class="subforum-description subforum-column">
+                                <h4><a href="/liste-topics-par-categories">Comics</a></h4>
+                                <div>
+                                    <h6><a href="/liste-topics-par-categories">X-TSHERS</a></h6>
+                                    <h6><a href="/liste-topics-par-categories">UN-FAZE</a></h6>
+                                    <h6><a href="/liste-topics-par-categories">more</a></h6>
+                                </div>
+                            </div>
+                            <div class="subforum-stats subforum-column ">
+                                <span><a href="" id="liste-topics-par-categories">
+                                        1                                    </a> posts</span>
+                            </div>
+                            <div class="subforum-info subforum-column">
+                                <b><a href="">Last post: </a></b>
+                                                                    <a href="/topic-161">
+                                                                                                                                                    <a href="/topic-161">
+                                                                                User: 04/03/2024                                    </a>
+                                                            </div>
+                        </div>
+                        <hr class="subforum-devider">
+
+                    </div>
+                    <div class="subforum webtoon" id="webtoon">
+                        <div class="subforum-title">
+                            <h1>Novels</h1>
+                        </div>
+                        <div class="subforum-row">
+                            <div class="subforum-icon subforum-column ">
+                                <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                            </div>
+                            <div class="subforum-description subforum-column">
+                                <h4><a href="/liste-topics-par-categories">Populaire</a></h4>
+                                <div>
+                                    <h6><a href="/liste-topics-par-categories">Sherlock</a></h6>
+                                    <h6><a href="/liste-topics-par-categories">GoT</a></h6>
+                                    <h6><a href="/liste-topics-par-categories">Harry Potter</a></h6>
+                                    <h6><a href="/liste-topics-par-categories">more</a></h6>
+                                </div>
+                            </div>
+                            <div class="subforum-stats subforum-column ">
+                                <span><a href="" id="liste-topics-par-categories">
+                                        1                                    </a> posts</span>
+                            </div>
+                            <div class="subforum-info subforum-column">
+                                <b><a href="">Last post: </a></b>
+                                                                    <a href="/topic-161">
+                                                                                                                                                    <a href="/topic-161">
+                                                                                User: 04/03/2024                                    </a>
+                                                            </div>
+                        </div>
+                        <hr class="subforum-devider">
+                        <div class="subforum-row">
+                            <div class="subforum-icon subforum-column ">
+                                <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                            </div>
+                            <div class="subforum-description subforum-column">
+                                <h4><a href="/liste-topics-par-categories">Autres</a></h4>
+                                <div>
+                                    <h6><a href="/liste-topics-par-categories">The 100</a></h6>
+                                    <h6><a href="/liste-topics-par-categories">Atlas</a></h6>
+                                    <h6><a href="/liste-topics-par-categories">more</a></h6>
+                                </div>
+                            </div>
+                            <div class="subforum-stats subforum-column ">
+                                <span><a href="" id="liste-topics-par-categories">
+                                        1                                    </a> posts</span>
+                            </div>
+                            <div class="subforum-info subforum-column">
+                                <b><a href="">Last post: </a></b>
+                                                                    <a href="/topic-161">
+                                                                                                                                                    <a href="/topic-161">
+                                                                                User: 04/03/2024                                    </a>
+                                                            </div>
+                        </div>
+                    </div>
+                    <hr class="subforum-devider">
+                    
+
+                    <div class="subforum gather" id="gather">
+                        <div class="subforum-title">
+                            <h1>Controverse</h1>
+                        </div>
+                        <div class="subforum-row">
+                            <div class="subforum-icon subforum-column ">
+                                <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                            </div>
+                            <div class="subforum-description subforum-column">
+                                <h4><a href="/liste-topics-par-categories">Politique</a></h4>
+                                <p>Soyons respecteux dans la discussion</p>
+                            </div>
+                            <div class="subforum-stats subforum-column ">
+                                <span><a href="" id="liste-topics-par-categories">
+                                        1                                    </a> posts</span>
+                            </div>
+                            <div class="subforum-info subforum-column">
+                                <b><a href="">Last post: </a></b><a href="">
+                                                                                                                <a href="/topic-161">
+                                                                                User: 04/03/2024                                    </a>
+                                                            </div>
+                        </div>
+                        <hr class="subforum-devider">
+                        <div class="subforum-row">
+                            <div class="subforum-icon subforum-column ">
+                                <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
+                            </div>
+                            <div class="subforum-description subforum-column">
+                                <h4><a href="/liste-topics-par-categories">Social</a></h4>
+                                <p>Soyons respecteux dans la discussion</p>
+                            </div>
+                            <div class="subforum-stats subforum-column ">
+                                <span><a href="" id="liste-topics-par-categories">
+                                        1                                    </a> posts</span>
+                            </div>
+                            <div class="subforum-info subforum-column">
+                                <b><a href="">Last post: </a></b><a href="">
+                                                                                                                <a href="/topic-161">
+                                                                                User: 04/03/2024                                    </a>
+                                                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+
+    <!--Aside bar-->
+    <aside class="right-sidebar">
+
+        <div class="updates">
+            <h2>Les Publications</h2>
+            <ul>
+                
+            </ul>
+        </div>
+        <div class="updates">
+            <h2>Le Stats du Forum</h2>
+            <ul>
+                <li><b>Nombre de Publication: </b><span id="posts-posted"><a href="/posts">
+                            1                        </a></span></li>
+                <li><b>Guests : </b><span id="guests-online">0</span></li>
+                                                    <li><b>Members actif : </b><a href="#"></a><span id="members-online">
+                        1                    </span></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+</div>
+<!-- le footer avec liens pour contact, aide et termes -->
+<footer class="footer">
+    <div class="footer-links">
+        <a href="/contact">Nous contacter</a>
+        <a href="/termes">Termes et conditions</a>
+        <a href="/credits">Mentions légales</a>
+    </div>
+    <p>EJMT &copy; Melodytown</p>
+</footer>
+
+
+<!-- appel de script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6b6dfd0b83.js" crossorigin="anonymous"></script>
+
+</body>
+</html> 
+<script src="../../assets/javaSc/topic.js"></script>
