@@ -13,10 +13,10 @@ require_once '../../utils/functions.php';
 
 session_start(); // démarrage de la session
 
-if (empty($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
-    header('Location: /connexion'); // le rediriger vers la page d'accueil
-    exit;
-}
+// if (empty($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
+//     header('Location: /connexion'); // le rediriger vers la page d'accueil
+//     exit;
+// }
 
 // établissement des variables pour accéder aux données des modèles 
 $user = new Users;
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addStatus'])) {
 if (isset($_POST['deleteStatus'])) { // si est déclenché le POST variable deleteStatus
     $status->id = $_POST['idStatusDelete'];
     if ($status->delete()) { // si la suppression de l'utilisateur réussie, on redirige vers la page de profil
-        header('Location: /profil'); 
+        header('Location: /profil');
         exit;
     }
 }
@@ -88,7 +88,7 @@ if (isset($_POST['updateStatus'])) { // si est déclenché le POST variable upda
 
 $comments = new Comments;
 
-$comments->id_users = (int)$_SESSION['user']['id'];
+$comments->id_users = (int) $_SESSION['user']['id'];
 
 
 // même logique pour creer les commentaires que pour les status
@@ -96,7 +96,7 @@ if (isset($_POST['addComment'])) {
     if (!empty($_POST['commenting'])) {
         if (!preg_match($regex['comment'], $_POST['commenting'])) {
             $comments->content = $_POST['commenting'];
-            
+
             $comments->id_status = $_POST['statusid'];
         } else {
             $errors['comment'] = STATUS_COMMENTS_ERROR;
@@ -125,7 +125,7 @@ if (isset($_POST['updateComments'])) {
 
         if (empty($errors)) {
             $comments->id_users = $_SESSION['user']['id'];
-                $comments->id = $_POST['commentsid'];
+            $comments->id = $_POST['commentsid'];
             if ($comments->update()) {
                 $comments->content = $_POST['commentUpdate'];
                 $success = STATUS_COMMENTS_UPDATE_SUCCESS;
@@ -139,7 +139,7 @@ if (isset($_POST['updateComments'])) {
 //suppresion de commentaires
 if (isset($_POST['deleteComment'])) {
     if (isset($_POST['idCommentsDelete'])) {
-            $comments->id = $_POST['commentsid'];
+        $comments->id = $_POST['commentsid'];
         if ($comments->delete()) {
             header('Location: /profil');
             exit;
@@ -154,7 +154,7 @@ $topic->id_users = $_SESSION['user']['id'];
 $userTopics = $topic->getUserTopics();
 $userTotalTopics = count($userTopics);
 
-if(count($userTopics) > 0) {
+if (count($userTopics) > 0) {
     $latestPost = $userTopics[0];
 }
 
@@ -162,27 +162,25 @@ if(count($userTopics) > 0) {
 $replies = new Replies;
 $replies->id_users = $_SESSION['user']['id'];
 
-foreach($userTopics as $key => $post) {  
-    $replies->id_topics =  $post['id'];
+foreach ($userTopics as $key => $post) {
+    $replies->id_topics = $post['id'];
     $userTopics[$key]['content'] = $replies->getRepliesByTopics();
 }
 
 $userReply = $replies->getUserReply();
-if($userReply != false) {
+
+if ($userReply != false) {
     $latestReply = $replies->getReply();
-$userTotalAnswer = count($userReply);
+    $userTotalAnswer = count($userReply);
 
-
-if(count($userReply) > 0) {
-    $latestReply = $userReply[0];
-}
-}
-
-
+    if (count($userReply) > 0) {
+        $latestReply = $userReply;
+    } 
+} 
 
 //status
 $userStatus = $status->getListByIdUsers();
-if(count($userStatus) > 0) {
+if (count($userStatus) > 0) {
     $latestStatus = $userStatus[0];
 }
 

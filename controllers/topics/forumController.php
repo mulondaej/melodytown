@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+
+
 require_once "../../models/usersModel.php" ;
 require_once "../../models/forumModel.php" ;
 require_once "../../models/statusModel.php";
@@ -14,8 +17,10 @@ require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
 
 
-session_start();
-
+if (empty($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
+    header('Location: /accueil'); // le rediriger vers la page d'accueil
+    exit;
+}
 
 $user = new Users;
 

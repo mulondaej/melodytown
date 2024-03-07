@@ -852,7 +852,7 @@
                                 <?= $latestReply->content ?>
                             </a><span id="posts-posted">
                                 <?php if (!empty($latestTopic)) { ?>par <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php } ?>
+                                    <?php } ?> 
                                     <?= $latestReply->username ?>
                                 </a>
                             </span></li>

@@ -5,7 +5,8 @@
     <!-- le button de forums -->
     <div class="btn-group dropdown-center">
         <button class="btn btn-secondary btn-sm" type="button">
-            <i class="fa-brands fa-discourse" id="discuss"></i><a href="/forum"> Forums</a></button>
+            <i class="fa-sharp fa-solid fa-brands fa-discourse" id="discover"></i><a href="/forums">
+                Forums</a></button>
         <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="visually-hidden"></span>
         </button>
@@ -13,7 +14,6 @@
             <li><a class="dropdown-item" href="#manga">Manga</a></li>
             <li><a class="dropdown-item" href="#comics">Comics</a></li>
             <li><a class="dropdown-item" href="#webtoon">Webtoon</a></li>
-            <li><a class="dropdown-item" href="#afrostories">Afrostories</a></li>
         </ul>
     </div>
     <!-- le button de discover (découverte) -->

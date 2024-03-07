@@ -71,7 +71,7 @@
                     <div class="btn-group" id="menu-button">
                         <button type="button" class="btn btn-sm btn-tertiary dropdown-toggle" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <img src="/assets/IMG/Avril23j.jpg" alt="UserAvatar" id="avatar">
+                            <a href="/profil" class="online"><img src="/assets/IMG/Avril23j.jpg" alt="UserAvatar" id="avatar"></a>
                         </button>
                         <ul class="dropdown-menu text-center dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
                             <li><a class="dropdown-item" type="button" href="/mon-compte"><i class="fa-solid fa-user"></i> Mon

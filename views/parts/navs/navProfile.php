@@ -3,7 +3,7 @@
 <!-- le navs de profile -->
 <div class="navbar">
     <button class="btn btn-secondary btn-sm" type="button">
-        <a href="/forum"> Forums</a>
+        <a href="/accueil"> Accueil</a>
     </button>
     <button class="btn btn-secondary btn-sm" type="button">
         <a href="/inbox"> Inbox</a>
