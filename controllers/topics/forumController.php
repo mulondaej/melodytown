@@ -17,10 +17,10 @@ require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
 
 
-if (empty($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
-    header('Location: /accueil'); // le rediriger vers la page d'accueil
-    exit;
-}
+// if (empty($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
+//     header('Location: /accueil'); // le rediriger vers la page d'accueil
+//     exit;
+// }
 
 $user = new Users;
 
@@ -111,7 +111,7 @@ $replies = new Replies;
 $repliesList = $replies->getList();
 $postCount = count($repliesList);
 if ($postCount > 0) {
-    $latestReply[0] = $replies->getReply();
+    $latestReply = $replies->getReply();
 }
 
 

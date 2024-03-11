@@ -6,7 +6,7 @@
     <div class="btn-group dropdown-center">
         <button class="btn btn-secondary btn-sm" type="button">
             <i class="fa-brands fa-discourse" id="discuss"></i>
-            <a href="/forum">Forums</a>
+            <a href="/forums">Forums</a>
         </button>
         <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="visually-hidden"></span>

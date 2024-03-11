@@ -7,7 +7,7 @@
         <a href="/termes">Termes et conditions</a>
         <a href="/credits">Mentions légales</a>
     </div>
-    <p>EJMT &copy; Melodytown</p>
+    <p>EJMT &copy; Melodytown 2024</p>
 </footer>
 
 

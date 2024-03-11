@@ -30,9 +30,10 @@
         </div>
         
         <div class="interact">
+          <?php if(!empty($_SESSION['user'])) { ?>
           <button id="likeBtn"><i class="fa-solid fa-heart"></i></button>
           <button id="replyBtn" name="replyBtn" quotecontent="<?= $topicsDetails->content ?>"><a href="#comments">répondre</a></button>
-          <?php if(!empty($_SESSION['user'])) { ?>
+          
           <?php if($_SESSION['user']['id'] == $topicsDetails->id_users && ($_SESSION['user']['id_usersRoles'] == 167 || 381)){ ?>
             <button type="submit" name="update" id="editModal" updatecontent=<?= $topicsDetails->content ?> >modifier</button>
             <button id="openModalBtn" style="background-color: transparent;">
@@ -73,14 +74,17 @@
               </div>
               
               <div class="interact">
+                <?php if(!empty($_SESSION['user'])) { ?>
                 <button id="replyLikeBtn"><i class="fa-solid fa-heart"></i></button>
                 <button id="replyRepliesBtn" class="repliesBtn" name="replyRepliesBtn" quotereply=<?= $r['content'] ?>><a href="#comments">répondre</a></button>
                 
-                <?php if($_SESSION['user']['id'] == $r['id_users'] && ($_SESSION['user']['id_usersRoles'] == 167 || 381)){ ?>
+                <?php if($_SESSION['user']['id'] == $r['id_users'] || ($_SESSION['user']['id_usersRoles'] == 167 || 381)){ ?>
                   <button type="submit" name="updatereplies" id="replyEditModal" updatereply=<?= $r['content'] ?>>modifier</button>
                   <button id="replyModalBtn" style="background-color: transparent;" deleteid="<?= $r['id'] ?>">
                   <a href="#replyDelete"><i class="fa-solid fa-eraser"></i></a></button>
                 <?php } ?>
+                <?php }?>
+                  
               </div>
               <div id="replyLogFormEdits">
                 <form action="#" method="POST" id="editFormeReply">

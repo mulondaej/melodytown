@@ -8,6 +8,7 @@ RewriteRule ^contact$ /controllers/pages/contactController.php
 #USERS
 RewriteRule ^inscription$ /controllers/users/registerController.php
 RewriteRule ^connexion$ /controllers/users/loginController.php
+RewriteRule ^media$ /controllers/users/mediaController.php
 RewriteRule ^deconnexion$ /controllers/users/logoutController.php
 RewriteRule ^mon-compte$ /controllers/users/accountController.php
 RewriteRule ^modifier-mon-compte$ /controllers/users/updateAccountController.php

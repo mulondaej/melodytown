@@ -100,10 +100,12 @@ if ($topicCount > 0) {
 }
 
 $replies = new Replies;
+
 $repliesList = $replies->getList();
 $postCount = count($repliesList);
+
 if ($postCount > 0) {
-    $latestReply[0] = $replies->getReply();
+    $latestReply = $replies->getReply();
 }
 
 

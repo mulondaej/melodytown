@@ -39,7 +39,7 @@ section {
 }
 
 /* .... */
-button { 
+button {
     cursor: pointer;
     background-color: #708390;
     text-decoration: none;
@@ -70,7 +70,8 @@ header a {
     color: #f2f2f2;
 }
 
-.siteLogo { /* le container du logo à gauche */
+.siteLogo {
+    /* le container du logo à gauche */
     display: flex;
     justify-content: space-between;
     top: 0;
@@ -78,7 +79,7 @@ header a {
     margin: 0;
 }
 
-#logo { 
+#logo {
     width: 60px;
     height: 60px;
     object-fit: cover;
@@ -92,7 +93,8 @@ header a {
     margin-left: 25px;
 }
 
-.siteLogo h1 { /* le nom du site en dessous du logo*/
+.siteLogo h1 {
+    /* le nom du site en dessous du logo*/
     text-decoration: none;
     justify-content: left;
     left: 0;
@@ -103,10 +105,12 @@ header a {
     font-style: italic;
     color: rgba(244, 255, 255, 0.781);
     margin-top: 5rem;
-    animation: bowAnimation 2s linear infinite; /* animation */
+    animation: bowAnimation 2s linear infinite;
+    /* animation */
 }
 
-@keyframes bowAnimation { 
+@keyframes bowAnimation {
+
     /* l'animation des couleurs du logo */
     0% {
         color: #c4e5e1d6;
@@ -168,7 +172,8 @@ header a {
 }
 
 /* NAVBAR */
-.navbar { /* les liens et icons sont en flex */
+.navbar {
+    /* les liens et icons sont en flex */
     display: flex;
     justify-content: center;
     text-align: center;
@@ -177,7 +182,8 @@ header a {
 }
 
 .navbar button {
-    background-color: transparent; /* trqsnpqrent pour ne pas trop gener */
+    background-color: transparent;
+    /* trqsnpqrent pour ne pas trop gener */
     border: transparent;
     margin-right: 7px;
 }
@@ -212,7 +218,8 @@ header a {
 }
 
 /* COMPTE */
-#avatar { /* la photo de profile ou du compte est centré et au dessus des détails */
+#avatar {
+    /* la photo de profile ou du compte est centré et au dessus des détails */
     width: 60px;
     height: 60px;
     object-fit: cover;
@@ -254,8 +261,9 @@ header a {
     /* background-color: #e8ecefc5;
     box-shadow: 0 0 10px rgba(225, 228, 231, 0.2); */
 }
+
 /* pour la centrification de la page de compte */
-.comptePage { 
+.comptePage {
     margin: 0 auto;
     margin-top: 10px;
     text-align: center;
@@ -268,8 +276,11 @@ header a {
     box-shadow: 0 0 10px rgba(82, 83, 83, 0.2);
 }
 
-.compteH1, #compteH1 { /* le h1 sera centré */
+.compteH1,
+#compteH1 {
+    /* le h1 sera centré */
     text-align: center;
+    color: #001015;
     /* color: white; */
 }
 
@@ -286,23 +297,28 @@ header a {
     justify-content: center;
 }
 
-.terms { /* pour la centrification de la page de termes, help et autres */
+.terms {
+    /* pour la centrification de la page de termes, help et autres */
     margin: 0 auto;
     margin-top: 10px;
+    margin-bottom: 2rem;
     justify-content: center;
     display: block;
-    height: max-content;
+    height: 80%;
     width: 60%;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(82, 83, 83, 0.2);
-    background-color: #eff7fa9e;
+    background-color: #747e7e9e;
 }
 
 .terms div {
     margin: 10px;
+    width: 80%;
+    margin: 0 auto;
 }
 
-#messTxt, .terms div p {
+#messTxt,
+.terms div p {
     text-align: center;
     margin: 20px;
 }
@@ -399,16 +415,16 @@ header a {
     margin-top: 2rem;
     position: absolute;
     height: 20%;
-  }
-  
-  .searchContainer input[type="text"] {
+}
+
+.searchContainer input[type="text"] {
     padding: 10px;
     font-size: 16px;
     border-radius: 5px 0 0 5px;
     border: 1px solid #ccc;
-  }
-  
-  .searchContainer button {
+}
+
+.searchContainer button {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #606d75;
@@ -418,11 +434,11 @@ header a {
     cursor: pointer;
     text-align: center;
     width: max-content;
-  }
- 
-  #searchResults {
+}
+
+#searchResults {
     margin-top: 20px;
-  }
+}
 
 /* LOGIN & SIGNUP FORMS */
 #logForm {
@@ -443,18 +459,20 @@ header a {
     justify-self: center;
     text-align: center;
     color: #0b2b34;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
-#logForm h2 {
+#logForm h2,
+#Form h2 {
     justify-self: center;
     text-align: center;
     color: #8f9292;
 }
 
-#logForm label {
+#logForm label,
+#Form label {
     display: block;
-    margin: 15px 0 5px;
+    margin: 10px 0 5px;
     color: #13414d;
 }
 
@@ -467,7 +485,8 @@ header a {
     box-sizing: border-box;
 }
 
-#logForm input[type="submit"] {
+#logForm input[type="submit"],
+#Form input[type="submit"] {
     background-color: #6499a3;
     color: white;
     padding: 10px 15px;
@@ -481,20 +500,31 @@ header a {
 }
 
 #logForm input[type="submit"]:hover,
-#openModalBtn:hover , #delete input:hover {
+#openModalBtn:hover,
+#delete input:hover,
+#Form input[type="submit"]:hover {
     background-color: #45a049;
 }
 
 #logForm input[placeholder],
-#logForm input[name] {
+#logForm input[name],
+#Form input[placeholder],
+#Form input[name] {
     text-align: center;
 }
 
-#logForm a:hover {
+#logForm a:hover,
+#Form a:hover {
     color: rgb(54, 56, 44);
 }
 
 /* # forms Messages */
+.success {
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
 #successMessage {
     color: #209045;
     text-align: center;
@@ -506,7 +536,7 @@ header a {
     color: red;
     text-align: center;
     font-size: 14px;
-    margin: 0 auto;    
+    margin: 0 auto;
 }
 
 #errorsMessage {
@@ -514,6 +544,36 @@ header a {
     text-align: center;
     font-size: 14px;
     margin: 0 auto;
+}
+
+/* contact */
+#Form {
+    margin: 0 auto;
+    max-width: 400px;
+    padding: 17px;
+    display: block;
+    background-color: #b9c2c3f3;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 1rem;
+    height: max-content;
+}
+
+#Form h1 {
+    justify-self: center;
+    text-align: center;
+    color: #0b2b34;
+    margin-bottom: 20px;
+}
+
+#Form input[type] {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
 }
 
 /* PROFILE */
@@ -544,7 +604,8 @@ header a {
     top: 0;
     padding: 0;
     margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* un peu d'ombrage pour stylé les bloques balisés */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* un peu d'ombrage pour stylé les bloques balisés */
 }
 
 #coverPicture {
@@ -652,7 +713,8 @@ header a {
     width: 100%;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* un peu d'ombrage pour stylé les bloques balisés */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* un peu d'ombrage pour stylé les bloques balisés */
     margin: 0 auto;
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -697,7 +759,7 @@ header a {
 
 .userContainer p small a:hover {
     /* on hover, clor changes and it is underlined */
-    text-decoration: underline; 
+    text-decoration: underline;
     color: rgb(190, 230, 255);
 }
 
@@ -705,7 +767,8 @@ header a {
 .mainStatus {
     background-color: rgb(247, 251, 255);
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* un peu d'ombrage pour stylé les bloques balisés */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* un peu d'ombrage pour stylé les bloques balisés */
     height: 100%;
     width: max-content;
     margin: 7px;
@@ -802,7 +865,8 @@ header a {
     position: relative;
 }
 
-.comments button, #status button {
+.comments button,
+#status button {
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
@@ -837,14 +901,18 @@ header a {
 }
 
 /* form hidden */
-#logFormEdit, #logFormEdits, #replyLogFormEdits  {
+#logFormEdit,
+#logFormEdits,
+#replyLogFormEdits {
     display: none;
     margin: 0 auto;
     justify-content: center;
     text-align: center;
 }
 
-#editForm, #editForme, #editFormeReply {
+#editForm,
+#editForme,
+#editFormeReply {
     margin: 0 auto;
     justify-content: center;
     text-align: center;
@@ -862,7 +930,8 @@ header a {
     background-color: rgb(251, 253, 255);
     border-radius: 5px;
     height: max-content;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* un peu d'ombrage pour stylé les bloques balisés */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* un peu d'ombrage pour stylé les bloques balisés */
     justify-content: center;
     margin: 5px;
 }
@@ -894,7 +963,8 @@ header a {
 .Media,
 .Archive {
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* un peu d'ombrage pour stylé les bloques balisés */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* un peu d'ombrage pour stylé les bloques balisés */
     margin: 4px;
     display: block;
     justify-content: center;
@@ -997,7 +1067,8 @@ header a {
     color: gold;
     display: flex;
     justify-content: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* un peu d'ombrage pour stylé les bloques balisés */ 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* un peu d'ombrage pour stylé les bloques balisés */
     text-align: center;
     max-height: fit-content;
     margin-top: 19px;
@@ -1005,7 +1076,8 @@ header a {
     background-color: #333;
     padding: 10px 25px;
     margin-left: 10px;
-    width: max-content; /* la taille depend des contenus téléchargés */
+    width: max-content;
+    /* la taille depend des contenus téléchargés */
     border-radius: 8px;
 }
 
@@ -1027,7 +1099,7 @@ header a {
     display: none;
 }
 
-#uploadMediaBtn { 
+#uploadMediaBtn {
     /* le bouton pour uploqd sur la page media sera marginé de 5pixels et en padding de 8pixels */
     color: #fff;
     padding: 8px 8px;
@@ -1092,7 +1164,7 @@ header a {
 }
 
 /* FOOTER */
-.footer { 
+.footer {
     /* le footer en bas du site dans une couleur grise avec des liens centré au centre */
     background-color: #363333b5;
     color: #fff;
@@ -1102,7 +1174,7 @@ header a {
     text-align: center;
     bottom: 0;
     width: 100%;
-    position:relative;
+    position: relative;
 }
 
 .footer a {
@@ -1112,7 +1184,8 @@ header a {
     text-align: center;
 }
 
-.footer a:hover, .updates a:hover {
+.footer a:hover,
+.updates a:hover {
     text-decoration: underline;
 }
 
@@ -1127,9 +1200,9 @@ header a {
 button:hover,
 #uploadMediaBtn:hover,
 #createThread:hover,
-#ToCreate:hover , 
-#posted:hover, 
-#editAvatar:hover, 
+#ToCreate:hover,
+#posted:hover,
+#editAvatar:hover,
 #editCover:hover,
 .searchContainer button:hover {
     background-color: #6ca4ca;
@@ -1140,7 +1213,8 @@ button:hover,
 a:hover,
 button:hover,
 .navbar button:hover,
-#replyBtn a:hover, #replyRepliesBtn a:hover{
+#replyBtn a:hover,
+#replyRepliesBtn a:hover {
     text-decoration: underline;
     color: rgb(255, 155, 100);
 }
@@ -1150,6 +1224,7 @@ button:hover,
 }
 
 .replies button:hover,
-#commentBtn:hover, .interact button:hover {
+#commentBtn:hover,
+.interact button:hover {
     color: rgb(235, 90, 70);
 }
