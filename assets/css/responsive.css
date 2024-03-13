@@ -77,12 +77,19 @@
         margin: 10px;
     }
 
+    #connect {
+        top: 0;
+        margin: 0 auto;
+        margin-top: -8.7rem;
+        font-size: 15px;
+    }
+
     .navbar {
         display: block;
         justify-content: space-around;
         text-align: center;
         margin: 0 auto;
-        margin-top: 5rem;
+        margin-top: 4.7rem;
     }
 
     .navbar button {
