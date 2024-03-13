@@ -13,10 +13,10 @@ require_once '../../utils/functions.php';
 
 session_start(); // démarrage de la session
 
-// if (empty($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
-//     header('Location: /connexion'); // le rediriger vers la page d'accueil
-//     exit;
-// }
+if (empty($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
+    header('Location: /connexion'); // le rediriger vers la page d'accueil
+    exit;
+}
 
 // établissement des variables pour accéder aux données des modèles 
 $user = new Users;
@@ -203,3 +203,4 @@ require_once '../../views/parts/footer.php';
 
 <script src="assets/javaSc/comments.js"></script>
 <script src="assets/javaSc/profile.js"></script>
+<script src="assets/javaSc/media.js"></script>
