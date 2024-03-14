@@ -654,6 +654,32 @@
         position: relative;
     }
 
+    .comptePage {
+        width: 90%;
+        margin: 0 auto;
+        padding: 0;
+        display: block;
+        justify-content: space-evenly;
+    }
+
+    .details {
+        text-align: center;
+        justify-content: center;
+        height: max-content;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+
+    .details p {
+        color: rgb(0, 0, 0);
+        background-color: #f5f8f9df;
+        width: 90%;
+        margin: 8px auto;
+        border-radius: 10px;
+    }
+
     .footer {
         position: relative;
         text-align: center;

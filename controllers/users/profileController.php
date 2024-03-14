@@ -147,6 +147,42 @@ if (isset($_POST['deleteComment'])) {
     }
 }
 
+// mis a jour de l'avatar
+if (isset($_POST['updateAvatar'])) {
+    if (!empty($_FILES['avatar'])) {
+        $imageMessage = checkImage($_FILES['avatar']);
+
+        if ($imageMessage != '') {
+            $errors['avatar'] = $imageMessage;
+        } else {
+            $user->id = $_SESSION['user']['id'];
+            $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+            $user->avatar = uniqid() . '.' . $extension;
+
+            // Check if avatar file already exists
+            $upload_dir = '../../assets/IMG/';
+            while (file_exists($upload_dir . $user->avatar)) {
+                $user->avatar = uniqid() . '.' . $extension;
+            }
+            
+            // Move uploaded file to the destination directory
+            if (move_uploaded_file($_FILES['avatar']['tmp_name'], $upload_dir . $user->avatar)) {
+                // Update user's avatar in the database
+                if ($user->updateAvatar()) {
+                    $success = IMAGE_SUCCESS;
+                } else {
+                    // If database update fails, remove uploaded avatar
+                    unlink($upload_dir . $user->avatar);
+                    $errors['add'] = IMAGE_ERROR;
+                }
+            } else {
+                $errors['add'] = IMAGE_ERROR;
+            }
+        }
+    }
+}
+
+
 // établissement des variables pour accéder aux données des modèles 
 //topics
 $topic = new Topics;

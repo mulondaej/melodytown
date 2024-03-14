@@ -8,7 +8,7 @@
         <title>
             <?= $title ?>
         </title>
-        <link rel="sicon" href="../../assets/IMG/logoResized.jpg" type="image/jpg">
+        <link rel="icon" href="../../logoResized.jpg" type="image/jpeg">
         <link rel="canonical" href="URL_canonique_de_votre_forum">
         <link rel="stylesheet" href="../../assets/css/mainstyle.css">
         <link rel="stylesheet" href="../../assets/css/modal.css">

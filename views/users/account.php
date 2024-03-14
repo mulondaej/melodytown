@@ -9,7 +9,7 @@
         <P><b>Pseudo :</b> <?= $userAccount->username ?></P>
         <P><b>Adresse mail :</b> <?= $userAccount->email ?></P>
         <P><b>Date de Naissance :</b> <?= $userAccount->birthdate ?></P>
-        <P><b>Location :</b> <?= $userAccount->location ?></P>
+        <P><b>Ville :</b> <?= $userAccount->location ?></P>
         <P><b>Membre depuis :</b> <?= $userAccount->registerDate ?></P>
         <P><b>Rôle :</b> <?= $userAccount->roleName ?></P>
     </div>
