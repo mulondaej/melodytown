@@ -90,13 +90,13 @@
                             </a>
                         <?php }
                         if ($_SESSION['user']['id_usersRoles'] == 167) { ?>
-                            <a href="/profile" id="idCorner">@
+                            <a href="/profil" id="idCorner">@
                                 <?= $_SESSION['user']['username'] ?>
                             </a>
                             <a href="/dashboard" style="color: rgb(130, 182, 195);">Moderation</a></li>
                         <?php }
                         if ($_SESSION['user']['id_usersRoles'] == 381) { ?>
-                            <a href="/profile" id="idCorner">@
+                            <a href="/profil" id="idCorner">@
                                 <?= $_SESSION['user']['username'] ?>
                             </a>
                             <a href="/dashboard" style="color: darkgreen;">Admin</a>
