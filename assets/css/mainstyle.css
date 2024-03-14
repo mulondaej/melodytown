@@ -262,6 +262,20 @@ header a {
     box-shadow: 0 0 10px rgba(225, 228, 231, 0.2); */
 }
 
+.accountForm {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: max-content;
+    display: block;
+    /* grid-template-columns: repeat(2, 1fr); */
+}
+
 /* pour la centrification de la page de compte */
 .comptePage {
     margin: 0 auto;
@@ -378,8 +392,6 @@ header a {
     display: inline-block;
     flex-direction: column;
 }
-
-
 
 /* NOTIFICATIONS */
 .notification {
