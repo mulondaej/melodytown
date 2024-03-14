@@ -276,6 +276,10 @@ header a {
     /* grid-template-columns: repeat(2, 1fr); */
 }
 
+.dashboard {
+    background-color: #d0dbe2;
+}
+
 /* pour la centrification de la page de compte */
 .comptePage {
     margin: 0 auto;
