@@ -76,7 +76,7 @@
                         <ul class="dropdown-menu text-center dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
                             <li><a class="dropdown-item" type="button" href="/mon-compte"><i class="fa-solid fa-user"></i> Mon
                                     compte</a></li>
-                            <li><a class="dropdown-item" type="button" href="/topic-list"><i class="fa-solid fa-list"></i>
+                            <li><a class="dropdown-item" type="button" href="/liste-topics"><i class="fa-solid fa-list"></i>
                                     Topics</a></li>
                         </ul>
                     </div>
