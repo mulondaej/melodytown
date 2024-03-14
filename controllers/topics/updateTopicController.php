@@ -113,6 +113,6 @@ require_once '../../views/topics/updateTopic.php';
 require_once '../../views/parts/footer.php';
 ?>
 
-<script src="assets/javaSc/modals.js"></script>
+<script src="assets/js/modals.js"></script>
 
 

@@ -201,6 +201,6 @@ require_once '../../views/users/profile.php';
 require_once '../../views/parts/footer.php';
 ?>
 
-<script src="assets/javaSc/comments.js"></script>
-<script src="assets/javaSc/profile.js"></script>
-<script src="assets/javaSc/media.js"></script>
+<script src="assets/js/comments.js"></script>
+<script src="assets/js/profile.js"></script>
+<script src="assets/js/media.js"></script>

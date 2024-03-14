@@ -229,12 +229,12 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/forum">Manga</a></h4>
+                        <h4><a href="/forums">Manga</a></h4>
                         <div>
-                            <h5><a href="/forum">One Piece</a></h5>
-                            <h5><a href="/forum">Naruto</a></h5>
-                            <h5><a href="/forum">Bleach</a></h5>
-                            <h5><a href="/forum">more</a></h5>
+                            <h5><a href="/forums">One Piece</a></h5>
+                            <h5><a href="/forums">Naruto</a></h5>
+                            <h5><a href="/forums">Bleach</a></h5>
+                            <h5><a href="/forums">more</a></h5>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -442,7 +442,7 @@
                             <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                         </div>
                         <div class="subforum-description subforum-column">
-                            <h4><a href="/forum">Multiverse</a></h4>
+                            <h4><a href="/forums">Multiverse</a></h4>
                             <div>
                                 <h5><a href="/liste-topics-par-categories">Versus</a></h5>
                                 <h5><a href="/liste-topics-par-categories">Théories</a></h5>

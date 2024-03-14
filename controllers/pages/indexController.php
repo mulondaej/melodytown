@@ -128,4 +128,4 @@ $title = 'MelodyTown'; // Titre de la page
  require_once('../../views/parts/footer.php'); 
  ?>
 
-<script src="../../assets/javaSc/topic.js"></script>
+<script src="../../assets/js/topic.js"></script>

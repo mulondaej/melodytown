@@ -281,5 +281,5 @@ require_once '../../views/users/updateAccount.php';
 require_once '../../views/parts/footer.php';
 ?>
 
-<script src="assets/javaSc/modals.js"></script>
-<script src="assets/javaSc/repliesModal.js"></script>
+<script src="assets/js/modals.js"></script>
+<script src="assets/js/repliesModal.js"></script>

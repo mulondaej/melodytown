@@ -44,4 +44,4 @@
     </form>
 </section>
 
-<script src="assets/javaSC/recaptcha.js"></script>
+<script src="assets/js/recaptcha.js"></script>

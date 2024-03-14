@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
         coverImageUpload.click(); // Trigger the file input click event
     });
 
-    // JavaScript for avatar image upload (Similar to cover image upload)
+    // jsript for avatar image upload (Similar to cover image upload)
     const avatarImageUpload = document.getElementById("avatarUpload");
     const avatarImg = document.getElementById("avatar");
 
