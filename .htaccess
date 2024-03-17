@@ -7,6 +7,7 @@ RewriteRule ^contact$ /controllers/pages/contactController.php
 
 #USERS
 RewriteRule ^inscription$ /controllers/users/registerController.php
+RewriteRule ^verification$ /views/users/verify.php
 RewriteRule ^connexion$ /controllers/users/loginController.php
 RewriteRule ^media$ /controllers/users/mediaController.php
 RewriteRule ^deconnexion$ /controllers/users/logoutController.php

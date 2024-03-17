@@ -9,8 +9,14 @@ class Users
     public string $location;
     public string $birthdate;
     public string $registerDate;
-    public string $avatar ;
+    public string $avatar;
     public int $id_usersRoles;
+
+    public int $token;
+
+    public int $verified;
+    public string $verificationDate;
+    public string $verificationToken;
 
     public function __construct()
     {
@@ -72,13 +78,12 @@ class Users
      */
     public function create() // ajout d'un utilisateur dans la base de données
     {
-        $sql = 'INSERT INTO `a8yk4_users`(`username`, `email`, `password`, `birthdate`, `registerDate`, `id_usersRoles`) 
-        VALUES (:username,:email,:password,:birthdate, NOW(), 1)'; // calling the specific table request
+        $sql = 'INSERT INTO `a8yk4_users`(`username`, `email`, `password`, `registerDate`, `id_usersRoles`) 
+        VALUES (:username,:email,:password, NOW(), 1)'; // calling the specific table request
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->bindValue(':email', $this->email, PDO::PARAM_STR);
         $req->bindValue(':password', $this->password, PDO::PARAM_STR);
-        $req->bindValue(':birthdate', $this->birthdate, PDO::PARAM_STR);
         return $req->execute();
     }
 
@@ -151,7 +156,7 @@ class Users
      * @param string $birthdate La date de naissance au format YYYY-MM-DD
      * @return objet
      */
-    public function update() 
+    public function update()
     {
         $sql = 'UPDATE `a8yk4_users` SET `username`=:username,`email`=:email,
          `birthdate` = :birthdate, `location` =:location
@@ -166,7 +171,7 @@ class Users
     }
 
     // les functions sql updates de location, email, username, password et avatar
-    public function updateLocation() 
+    public function updateLocation()
     {
         $sql = 'UPDATE `a8yk4_users` SET `location`=:location WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
@@ -175,7 +180,7 @@ class Users
         return $req->execute();
     }
 
-    public function updateUsername() 
+    public function updateUsername()
     {
         $sql = 'UPDATE `a8yk4_users` SET `username`=:username WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
@@ -184,7 +189,7 @@ class Users
         return $req->execute();
     }
 
-    public function updateEmail() 
+    public function updateEmail()
     {
         $sql = 'UPDATE `a8yk4_users` SET `email`=:email WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
@@ -211,9 +216,52 @@ class Users
         return $req->execute();
     }
 
-    public function verifyAccount() {
-
+    public function verifyAccount()
+    {
+        if (empty($this->token)) {
+            throw new \Exception("Le token est vide");
+        }
     
+        // Vérification si le token existe dans la base de données
+        $req = $this->pdo->prepare('SELECT * FROM `a8yk4_emailvalidations` WHERE `id_users` = ? AND `token` = ?');
+        $req->execute([$this->id, sha1($this->token)]);
+    
+        // Si il n'y a pas d'enregistrement correspondant au token et à l'utilisateur, on renvoie false
+        if ($data = $req->fetch()) {
+            // On supprime l'enregistrement de validation pour éviter une utilisation multiple du même token
+            $delete = $this->pdo->prepare('DELETE FROM `a8yk4_emailvalidations` WHERE `id_users` = ? AND `token` = ?');
+            $delete->execute([$data['id'], $data['token']]);
+            
+            
+            $update = $this->pdo->prepare('UPDATE `a8yk4_users` SET `verified` = 1 WHERE `id` = ?');
+            $update->execute([$this->id]);
+    
+            return true; 
+        }
+        
+        return false; 
+    }
+    
+
+    public function setToken()
+    {
+        $this->token = bin2hex(random_bytes(64));
+        $date = date('Y-m 00:00:00');
+        $expirationDate = date('Y-m-d H:i:s', strtotime('+ 7 days'));
+
+        $req = $this->pdo->prepare('INSERT INTO `a8yk4_emailvalidations` (`id_users`, `token`, `creationDate`, `expirationDate`) VALUES (:id_users, :token, :creationDate, :expirationDate)');
+        $req->bindValue(':id_users', $this->id);
+        $req->bindValue(':token', hash('sha512', $this->token . $date), \PDO::PARAM_STR);
+        $req->bindValue(':creationDate', $date);
+        $req->bindValue(':expirationDate', $expirationDate);
+        $req->execute();
     }
 
+    public function save() {
+        if (!isset($this->id)){ 
+            return $this->create(); 
+        } else{  
+            return $this->update();  
+        }                        
+    }
 }

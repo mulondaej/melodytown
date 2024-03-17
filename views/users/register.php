@@ -31,11 +31,7 @@
             <p class=errorsMessage><?= $errors['password_confirm'] ?></p>
         <?php } ?>
 
-        <label for="birthdate">Date de naissance</label><!-- Champ de la date de naissance -->
-        <input type="date" name="birthdate" id="birthdate" value="<?= @$_COOKIE['birthdate'] ?>">
-        <?php if (isset($errors['birthdate'])) { ?>
-            <p class=errorsMessage><?= $errors['birthdate'] ?></p>
-        <?php } ?>
+        
         <br>
         <input type="submit" value="S'inscrire"><!-- Bouton de l'inscription -->
     </form>
