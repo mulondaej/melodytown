@@ -27,7 +27,7 @@ class sendEmail
 
             $mail->SMTPAuth = true;  // enable smtp authentication                             
 
-            $mail->Username = 'ntjosu31@gmail.com';  // sender gmail host              
+            $mail->Username = 'mtjosu31@gmail.com';  // sender gmail host              
 
             $mail->Password = 'Triplej15.'; // sender gmail host password                          
 
@@ -37,7 +37,7 @@ class sendEmail
 
             $mail->isHTML(true);
 
-            $mail->setFrom('kibongatsho31@gmail.com', "Kibongtsho"); // sender's email and name
+            $mail->setFrom('kibongatsho31@gmail.com', "Kibongatsho"); // sender's email and name
 
             $mail->addAddress('receiver@gmail.com', "Receiver");  // receiver's email and name
 

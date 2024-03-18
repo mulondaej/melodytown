@@ -81,33 +81,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // si les erreurs sont vides, l'utilisateur sera ajouté dans le BDD et inscrit dans le forum
     if (empty ($errors)) {
         if ($user->create()) {
-            // Generate a random token for email verification
 
-            // // Store the verification token in the user's record
-            // $user->token = bin2hex(random_bytes(64));
-            // $user->save(); // Assuming 'save' method saves the user data to the database
+            // Store the verification token in the user's record
+            $user->token = bin2hex(random_bytes(64));
+            $user->save(); // Assuming 'save' method saves the user data to the database
 
-            // // Send verification email
-            // $to = $user->email; // Assuming you have an 'email' property in your $user object
-            // $subject = 'Confirm your registration';
-            // $message = 'Click the following link to confirm your registration: <a href="https://melodytown/verification?token=' . $verification_token . '">Verify Email</a>';
-            // $headers = 'From: episkuzance@gmail.com' . "\r\n" .
-            //     'Content-type: text/html; charset=UTF-8' . "\r\n";
+            // Send verification email
+            $to = $user->email; // Assuming you have an 'email' property in your $user object
+            $subject = 'Confirm your registration';
+            $message = 'Click the following link to confirm your registration: <a href="https://melodytown/verification?token=' . $verification_token . '">Verify Email</a>';
+            $headers = 'From: kibongatsho31@gmail.com' . "\r\n" .
+                'Content-type: text/html; charset=UTF-8' . "\r\n";
 
-            // // Send the email
-            // mail($to, $subject, $message, $headers);
-
-            $sql = "INSERT INTO `a8yk4_emailvalidations` (`id_users`, `token`, `creationDate`) VALUES (:id_users, :token, NOW())";
-
-            $result = mysqli_query($connection, $sql);
-
-            if ($result) {
-
-                echo "Registration successfull. Please verify your email.";
-
-                $sendMl->send($token);
-
-            }
+            // Send the email
+            mail($to, $subject, $message, $headers);
 
             // Provide feedback to the user
             $success = '<p id="successMessage">Bienvenue! Un email de confirmation a été envoyé à votre adresse email. Veuillez vérifier votre boîte de réception pour terminer votre inscription.</p>';
