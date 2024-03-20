@@ -11,9 +11,8 @@ class Users
     public string $registerDate;
     public string $avatar;
     public int $id_usersRoles;
-
+    public int $points;
     public int $token;
-
     public int $verified;
     public string $verificationDate;
     public string $verificationToken;
@@ -148,6 +147,25 @@ class Users
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
+    //points 
+    public function setPoints()
+    {
+        $sql = 'UPDATE `a8yk4_users` SET `points`=:points
+        WHERE `id` = :id';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':points', $this->points, PDO::PARAM_INT);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $req->execute();
+    }
+
+    public function reducePoints() {
+        $sql = 'DELETE FROM `a8yk4_users` WHERE `points`= :points ;';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $req->execute();
+    }
+
+    // updates
     /**
      * Mettre à jour le nom d'utilisateur, l'adresse ,le mail et la date de naissance 
      * @param string $username Le nom d'utilisateur

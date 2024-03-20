@@ -1041,6 +1041,9 @@ header a {
     border-color: black;
     width: max-content;
     margin-right: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
 }
 
 #avyMedia {
@@ -1062,7 +1065,7 @@ header a {
 /*media user info */
 .userMedia {
     width: 100%;
-    max-height: 200px;
+    max-height: max-content;
     margin-top: -190px;
     /* Move user info up to overlap cover */
     position: relative;
@@ -1078,13 +1081,10 @@ header a {
 }
 
 .usernameMedia {
-    /* le container des images d'utilisateur s'aggrandisse par rapport aux tailles et nombres des images
-    téléchargés */
     color: gold;
     display: flex;
     justify-content: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    /* un peu d'ombrage pour stylé les bloques balisés */
     text-align: center;
     max-height: fit-content;
     margin-top: 19px;
@@ -1093,7 +1093,6 @@ header a {
     padding: 10px 25px;
     margin-left: 10px;
     width: max-content;
-    /* la taille depend des contenus téléchargés */
     border-radius: 8px;
 }
 
@@ -1128,7 +1127,7 @@ header a {
 #media-list {
     list-style: none;
     padding: 0;
-    width: 60%;
+    width: 400px;
     display: flex;
     margin: 2px;
 }
@@ -1138,7 +1137,11 @@ header a {
 }
 
 #media-list img {
-    max-width: 100%;
+    width: 60%;
+    height: 60%;
+    object-fit: cover;
+    border-radius: 3px;
+    display: inline-flexbox;
 }
 
 /* RIGHT SIDEBAR */
