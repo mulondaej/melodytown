@@ -86,3 +86,55 @@ if (replyBtn != null) {
 
 ///////////////////////////////////////
 
+  //PROFILE
+  const coverImageUpload = document.getElementById("coverUpload");
+  const coverPicture = document.getElementById("coverPicture");
+
+  coverImageUpload.addEventListener("change", function () {
+      const file = coverImageUpload.files[0];
+
+      if (file) {
+          // Create a FileReader to read the uploaded file
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+              // Set the uploaded image as the cover picture source
+              coverPicture.src = e.target.result;
+          };
+
+          // Read the file as a data URL
+          reader.readAsDataURL(file);
+      }
+  });
+
+  // Add functionality to trigger the file input when "Edit Cover" is clicked
+  const editCoverButton = document.getElementById("editCover");
+
+  editCoverButton.addEventListener("click", function () {
+      coverImageUpload.click(); // Trigger the file input click event
+  });
+
+  // jsript for avatar image upload (Similar to cover image upload)
+  const avatarImageUpload = document.getElementById("avatarUpload");
+  const avatarImg = document.getElementById("avatar");
+
+  avatarImageUpload.addEventListener("change", function () {
+      const file = avatarImageUpload.files[0];
+
+      if (file) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+              avatarImg.src = e.target.result;
+          };
+
+          reader.readAsDataURL(file);
+      }
+  });
+
+  const editAvatarButton = document.getElementById("editAvatar");
+  if (editAvatarButton != null) {
+      editAvatarButton.addEventListener("click", function () {
+          avatarImageUpload.click();
+      });
+  }

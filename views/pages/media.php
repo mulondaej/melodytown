@@ -12,11 +12,11 @@
             <p>Points: <a href="">100</a> </p>
         </div>
         <div class="media-container">
-        <input type="file" id="fileUploadMedia" accept="image/*">
-        <button id="uploadMediaBtn">Upload Media</button>
-        <ul id="media-list">
-            <!-- Media files will be displayed here -->
-        </ul>
-    </div>
+            <input type="file" id="fileUploadMedia" accept="image/*">
+            <button id="uploadMediaBtn">Upload Media</button>
+            <ul id="media-list">
+                <!-- Media files will be displayed here -->
+            </ul>
+        </div>
     </div>
 </main>

@@ -38,3 +38,5 @@ require_once '../../views/parts/header.php';
 require_once '../../views/pages/media.php';
 require_once '../../views/parts/footer.php';
 ?>
+
+<script src="assets/js/media.js"></script>
