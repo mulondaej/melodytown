@@ -14,7 +14,7 @@ $topic = new Topics();
 $topic->id = (int) $_GET['id'];
 
 if ($topic->checkIfExistsById() == 0) { // si le topic n'existe pas, on redirige vers l'accueil
-    header('Location: /liste-topics-par-categories');
+    header('Location: /topics-par-categories');
     exit;
 }
 
@@ -116,7 +116,7 @@ if (isset($_POST['updateContent'])) { // Même logique que pour l'update de repl
 // si l'envoi de delete est déclenche, le topic sera supprimé
 if (isset($_POST['deleteTopic'])) {
     if ($topic->delete()) {
-        (header('Location: /liste-topics-par-categories'));
+        (header('Location: /topics-par-categories'));
         exit;
     }
 }

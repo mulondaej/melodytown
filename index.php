@@ -71,7 +71,7 @@
                         <p>Les règles de forum à respecter </p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="/regles" id="liste-topics-par-categories"> 1 </a> posts</span>
+                        <span><a href="/regles" id="topics-par-categories"> 1 </a> posts</span>
                     </div>
                     <div class="subforum-info subforum-column">
                         <b><a href="">Last post:</a></b> <a href="/regles">
@@ -103,14 +103,14 @@
                             <!-- topic items go here -->
                         </ul>
                         <?php if (!empty($_SESSION['user'])) { ?>
-                            <h4><a href="/liste-topics-par-categories?<?= $c->name ?>">News</a></h4>
+                            <h4><a href="/topics-par-categories?<?= $c->name ?>">News</a></h4>
                         <?php } else { ?>
-                            <h4><a href="/liste-topics-par-categories?">News</a></h4>
+                            <h4><a href="/topics-par-categories?">News</a></h4>
                         <?php } ?>
                         <p>Prenez des nouvelles du site ou forum</p>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="liste-topics-par-categories">
+                        <span><a href="" id="topics-par-categories">
                                 <?= $totalCount ?>
                             </a> posts</span>
                     </div>
@@ -147,11 +147,11 @@
                             <ul class="topic-list">
                                 <!-- topic items go here -->
                             </ul>
-                            <h4><a href="/liste-topics-par-categories">Events</a></h4>
+                            <h4><a href="/topics-par-categories">Events</a></h4>
                             <p>Découvrez des évenements à venir</p>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                            <span><a href="" id="liste-topics-par-categories">
+                            <span><a href="" id="topics-par-categories">
                                     <?= $totalCount ?>
                                 </a> posts</span>
                         </div>
@@ -187,11 +187,11 @@
                             <ul class="topic-list">
                                 <!-- topic items go here -->
                             </ul>
-                            <h4><a href="/liste-topics-par-categories">Welcome</a></h4>
+                            <h4><a href="/topics-par-categories">Welcome</a></h4>
                             <p>Chaleureux accueil pour les nouveaux membres</p>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                            <span><a href="" id="liste-topics-par-categories"> 0</a> posts</span>
+                            <span><a href="" id="topics-par-categories"> 0</a> posts</span>
                         </div>
                         <div class="subforum-info subforum-column">
                             <b><a href="">Last post: </a></b>
@@ -238,7 +238,7 @@
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="liste-topics-par-categories">
+                        <span><a href="" id="topics-par-categories">
                                 <?= $totalCount ?>
                             </a> posts</span>
                     </div>
@@ -271,15 +271,15 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/liste-topics-par-categories">Comics</a></h4>
+                        <h4><a href="/topics-par-categories">Comics</a></h4>
                         <div>
-                            <h5><a href="/liste-topics-par-categories">Marvel</a></h5>
-                            <h5><a href="/liste-topics-par-categories">D.C</a></h5>
-                            <h5><a href="/liste-topics-par-categories">Others</a></h5>
+                            <h5><a href="/topics-par-categories">Marvel</a></h5>
+                            <h5><a href="/topics-par-categories">D.C</a></h5>
+                            <h5><a href="/topics-par-categories">Others</a></h5>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="liste-topics-par-categories">
+                        <span><a href="" id="topics-par-categories">
                                 <?= $totalCount ?>
                             </a> posts</span>
                     </div>
@@ -312,16 +312,16 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/liste-topics-par-categories">Webtoon</a></h4>
+                        <h4><a href="/topics-par-categories">Webtoon</a></h4>
                         <div>
-                            <h5><a href="/liste-topics-par-categories">Solo-Leveling</a></h5>
-                            <h5><a href="/liste-topics-par-categories">ToG</a></h5>
-                            <h5><a href="/liste-topics-par-categories">GoH</a></h5>
-                            <h5><a href="/liste-topics-par-categories">more</a></h5>
+                            <h5><a href="/topics-par-categories">Solo-Leveling</a></h5>
+                            <h5><a href="/topics-par-categories">ToG</a></h5>
+                            <h5><a href="/topics-par-categories">GoH</a></h5>
+                            <h5><a href="/topics-par-categories">more</a></h5>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="liste-topics-par-categories">
+                        <span><a href="" id="topics-par-categories">
                                 <?= $totalCount ?>
                             </a> posts</span>
                     </div>
@@ -355,15 +355,15 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/liste-topics-par-categories">Afrostories</a></h4>
+                        <h4><a href="/topics-par-categories">Afrostories</a></h4>
                         <div>
-                            <h5><a href="/liste-topics-par-categories">Sat. A.M</a></h5>
-                            <h5><a href="/liste-topics-par-categories">Kibongatsho</a></h5>
-                            <h5><a href="/liste-topics-par-categories">more</a></h5>
+                            <h5><a href="/topics-par-categories">Sat. A.M</a></h5>
+                            <h5><a href="/topics-par-categories">Kibongatsho</a></h5>
+                            <h5><a href="/topics-par-categories">more</a></h5>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="liste-topics-par-categories">
+                        <span><a href="" id="topics-par-categories">
                                 <?= $totalCount ?>
                             </a> posts</span>
                     </div>
@@ -396,16 +396,16 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/liste-topics-par-categories">B.D</a></h4>
+                        <h4><a href="/topics-par-categories">B.D</a></h4>
                         <div>
-                            <h5><a href="/liste-topics-par-categories">Asterix</a></h5>
-                            <h5><a href="/liste-topics-par-categories">Titeuf</a></h5>
-                            <h5><a href="/liste-topics-par-categories">Tintin</a></h5>
-                            <h5><a href="/liste-topics-par-categories">more</a></h5>
+                            <h5><a href="/topics-par-categories">Asterix</a></h5>
+                            <h5><a href="/topics-par-categories">Titeuf</a></h5>
+                            <h5><a href="/topics-par-categories">Tintin</a></h5>
+                            <h5><a href="/topics-par-categories">more</a></h5>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
-                        <span><a href="" id="liste-topics-par-categories">
+                        <span><a href="" id="topics-par-categories">
                                 <?= $totalCount ?>
                             </a> posts</span>
                     </div>
@@ -444,12 +444,12 @@
                         <div class="subforum-description subforum-column">
                             <h4><a href="/forums">Multiverse</a></h4>
                             <div>
-                                <h5><a href="/liste-topics-par-categories">Versus</a></h5>
-                                <h5><a href="/liste-topics-par-categories">Théories</a></h5>
+                                <h5><a href="/topics-par-categories">Versus</a></h5>
+                                <h5><a href="/topics-par-categories">Théories</a></h5>
                             </div>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                            <span><a href="" id="liste-topics-par-categories">
+                            <span><a href="" id="topics-par-categories">
                                     <?= $totalCount ?>
                                 </a> posts</span>
                         </div>
@@ -481,13 +481,13 @@
                             <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                         </div>
                         <div class="subforum-description subforum-column">
-                            <h4><a href="/liste-topics-par-categories">TAKE OR LOSE</a></h4>
+                            <h4><a href="/topics-par-categories">TAKE OR LOSE</a></h4>
                             <div>
-                                <h5><a href="/liste-topics-par-categories">à venir...</a></h5>
+                                <h5><a href="/topics-par-categories">à venir...</a></h5>
                             </div>
                         </div>
                         <div class="subforum-stats subforum-column ">
-                            <span><a href="" id="liste-topics-par-categories">
+                            <span><a href="" id="topics-par-categories">
                                     <?= $totalCount ?>
                                 </a> posts</span>
                         </div>
@@ -527,11 +527,11 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/liste-topics-par-categories">Novels</a></h4>
+                                <h4><a href="/topics-par-categories">Novels</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
-                                <span><a href="" id="liste-topics-par-categories">
+                                <span><a href="" id="topics-par-categories">
                                         <?= $totalCount ?>
                                     </a> posts</span>
                             </div>
@@ -564,11 +564,11 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/liste-topics-par-categories">Anime</a></h4>
+                                <h4><a href="/topics-par-categories">Anime</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
-                                <span><a href="" id="liste-topics-par-categories">
+                                <span><a href="" id="topics-par-categories">
                                         <?= $totalCount ?>
                                     </a> posts</span>
                             </div>
@@ -601,11 +601,11 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/liste-topics-par-categories">Cartoons</a></h4>
+                                <h4><a href="/topics-par-categories">Cartoons</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
-                                <span><a href="" id="liste-topics-par-categories">
+                                <span><a href="" id="topics-par-categories">
                                         <?= $totalCount ?>
                                     </a> posts</span>
                             </div>
@@ -643,11 +643,11 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/liste-topics-par-categories">Politique</a></h4>
+                                <h4><a href="/topics-par-categories">Politique</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
-                                <span><a href="" id="liste-topics-par-categories">
+                                <span><a href="" id="topics-par-categories">
                                         <?= $totalCount ?>
                                     </a> posts</span>
                             </div>
@@ -680,11 +680,11 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/liste-topics-par-categories">Social</a></h4>
+                                <h4><a href="/topics-par-categories">Social</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
-                                <span><a href="" id="liste-topics-par-categories">
+                                <span><a href="" id="topics-par-categories">
                                         <?= $totalCount ?>
                                     </a> posts</span>
                             </div>
@@ -722,11 +722,11 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/liste-topics-par-categories">Main lounge</a></h4>
+                                <h4><a href="/topics-par-categories">Main lounge</a></h4>
                                 <p>Raccueillement de tous</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
-                                <span><a href="" id="liste-topics-par-categories">
+                                <span><a href="" id="topics-par-categories">
                                         <?= $totalCount ?>
                                     </a> posts</span>
                             </div>
@@ -759,11 +759,11 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/liste-topics-par-categories">Clubs</a></h4>
+                                <h4><a href="/topics-par-categories">Clubs</a></h4>
                                 <p>Créez ou réjoignez un club de ton personnage preféré</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
-                                <span><a href="" id="liste-topics-par-categories">
+                                <span><a href="" id="topics-par-categories">
                                         <?= $totalCount ?>
                                     </a> posts</span>
                             </div>
@@ -796,11 +796,11 @@
                                     <i class="fa-solid fa-dumpster" style="color: #e0e9f6"></i>
                                 </div>
                                 <div class="subforum-description subforum-column">
-                                    <h4><a href="/liste-topics-par-categories">Archives</a></h4>
+                                    <h4><a href="/topics-par-categories">Archives</a></h4>
                                     <p>Recycle Bin</p>
                                 </div>
                                 <div class="subforum-stats subforum-column ">
-                                    <span><a href="" id="liste-topics-par-categories">0</a> posts</span>
+                                    <span><a href="" id="topics-par-categories">0</a> posts</span>
                                 </div>
                                 <div class="subforum-info subforum-column">
                                     <b>X</b>
@@ -839,7 +839,7 @@
                     <li><b>Tournois:</b> <a href="#events"></a><span id="members-online"><a href="#profile">0</a></span>
                     </li>
                     <li><b>Evénements:</b> <a href="#events"></a><span id="posts-posted"><a
-                                href="/liste-topics-par-categories">0</a></span></li>
+                                href="/topics-par-categories">0</a></span></li>
                 </ul>
             </div>
         <?php } ?>

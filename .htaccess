@@ -19,7 +19,8 @@ RewriteRule ^compte-supprime$ index.php?deleteAccount=true
 
 #TOPICS
 RewriteRule ^liste-topics$ /controllers/topics/topicsListController.php
-RewriteRule ^liste-topics-par-categories$ /controllers/topics/topicsListByCategoriesController.php
+RewriteRule ^liste-souscategories$ /controllers/topics/topicsBySubcategories.php
+RewriteRule ^topics-par-categories$ /controllers/topics/topicsListByCategoriesController.php
 RewriteRule ^modifier-topic-([0-9]+)$ /controllers/topics/updateTopicController.php?id=$1 [L]
 RewriteRule ^forums$ /controllers/topics/forumController.php
 RewriteRule ^topic-([0-9]+)$ /controllers/topics/topicController.php?id=$1

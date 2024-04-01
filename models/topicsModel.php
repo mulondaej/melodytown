@@ -143,10 +143,25 @@ class Topics
 
     public function getTopicsByCategories()
     {
-        $sql = 'SELECT t.`id`, t.`content`, `c`.`name` AS `categorie`
+        $sql = 'SELECT t.`id`, t.`title, t.`content`, c.`name` AS `categorie`
         FROM `a8yk4_topics` AS t
-        INNER JOIN `a8yk4_categories` AS `c` ON t.`id_categories` = `c`.`id`
+        INNER JOIN `a8yk4_categories` AS c ON t.`id_categories` = c.`id`
         WHERE id_categories = :id_categories
+        ORDER BY `publicationDate` DESC ';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':id_categories', $this->id_categories, PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getTopicsBySubcategories() 
+    {
+        $sql = 'SELECT t.`id`, t.`title, t.`content`, `c`.`name` AS `categorie`
+        
+        SELECT t.*, s.name AS subcategorie 
+        FROM `a8yk4_topics` AS t
+        INNER JOIN a8yk4_subcategories s ON t.id_subcategories = s.id
+        WHERE t.id_subcategories = :id_subcategories;
         ORDER BY `publicationDate` DESC ';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id_categories', $this->id_categories, PDO::PARAM_INT);
@@ -158,6 +173,17 @@ class Topics
     {
         $sql = 'SELECT t.`id`, t.`title`, `u`.`username`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
         FROM  `a8yk4_topics` AS `t`
+        INNER JOIN `a8yk4_users` AS `u` ON `t`.`id_users` = `u`.`id`
+        ORDER BY `publicationDate` DESC';
+        $req = $this->pdo->query($sql);
+        return $req->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function getCategorie()
+    {
+        $sql = 'SELECT c.`id`, c.`name`, t.`id`, t.`title`, `u`.`username`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
+        FROM  `a8yk4_topics` AS `t`
+        INNER JOIN `a8yk4_categories` AS `c` ON `t`.`id_categories` = `c`.`id`
         INNER JOIN `a8yk4_users` AS `u` ON `t`.`id_users` = `u`.`id`
         ORDER BY `publicationDate` DESC';
         $req = $this->pdo->query($sql);

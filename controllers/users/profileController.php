@@ -244,13 +244,10 @@ if ($userPoints > 0) {
     $points = log10($userPoints); // Calculate logarithm of absolute value
 }
 
-// Assuming you want to update the user points in the user object, you might have a method like this:
-$user->setPoints($points);
+// if($_POST['addStatus'] || $_POST['addComment'] || $_POST[' ) {
 
-// Assuming you want to echo the user points
-echo "User Points: $userPoints";
-
-
+// }
+$userPoints += 1; // Add one point for every answer/topic posted
 
 //comments
 $comments->id_users = $_SESSION['user']['id'];

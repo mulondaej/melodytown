@@ -1,7 +1,7 @@
 <main id="threadMain">
 
   <div id="threadHeader">
-    <button id="backBtn"><a href="/liste-topics-par-categories">
+    <button id="backBtn"><a href="/topics-par-categories">
         <i id="backArrow" class="fa fa-arrow-left"> Back</i>
       </a></button>
     <div id="threadTitle">

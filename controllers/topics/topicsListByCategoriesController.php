@@ -4,6 +4,7 @@
 require_once "../../models/topicsModel.php";
 require_once "../../models/topicsRepliesModel.php";
 require_once "../../models/categoriesModel.php";
+require_once "../../models/subcategoriesModel.php";
 require_once "../../models/tagsModel.php";
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
@@ -80,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
         if ($topic->create()) {
             $success = TOPICS_SUCCESS;
 
-            header("Location: /liste-topics-par-categories");
+            header("Location: /topics-par-categories");
             exit();
         } else {
         $errors['add'] = TOPICS_ERROR;

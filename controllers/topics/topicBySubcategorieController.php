@@ -1,28 +1,28 @@
 <?php
 
 // les models de site et les utils
-require_once '../../models/usersModel.php' ;
-require_once '../../models/forumModel.php' ;
-require_once '../../models/statusModel.php';
-require_once '../../models/topicsRepliesModel.php' ;
-require_once '../../models/commentsModel.php' ;
-require_once '../../models/topicsModel.php';
-require_once '../../models/categoriesModel.php';
-require_once '../../models/tagsModel.php';
-require_once '../../models/sectionsModel.php' ;
+require_once "../../models/topicsModel.php";
+require_once "../../models/topicsRepliesModel.php";
+require_once "../../models/categoriesModel.php";
+require_once "../../models/subcategoriesModel.php";
+require_once "../../models/tagsModel.php";
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
 
+
 session_start();
 
-// établissement des variables pour accéder aux données des modèles 
-$user = new Users;
-$latestUser = $user->getLatestUser();
-$userDetails = $user->getList();
-$userCount = count($userDetails);
+// // Confirmation que l'utilisateur est bel et bien en ligne
+// if (!isset($_SESSION['user'])) {
+//     // Sinon, lui rediriger vers la page d'accueil ou de connexion
+//     header("Location: /connexion");
+//     exit();
+// }
 
-$forums = new Forums;
+// établissement des variables pour accéder aux données des modèles 
+$subcategories = new subcategories;
+$subcategoriesList = $subcategories->getList();
 
 $categories = new Categories;
 $categoriesList = $categories->getList();
@@ -32,16 +32,18 @@ $tagsList = $tags->getList();
 
 $topic = new Topics;
 
+$replies = new Replies;
+
 // si la requete est de type POST (envoi du formulaire), on l'execute
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
     // on récupère les données du formulaire
     if (!empty($_POST['title'])) { // si le titre n'est pas vide
         if (preg_match($regex['title'], $_POST['title'])) { // si le titre n'est pas vide
             $topic->title = clean($_POST['title']); // on récupère le titre en le nettoyant
-        }
-    } else {
+        }  else {
         $errors['title'] = TOPICS_TITLE_ERROR; // sinon, afficher le message d'erreur 
     }
+}
 
     // même logique de titre pour le contenu mais avec une regex plus large
     if (!empty($_POST['content'])) {
@@ -85,47 +87,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
             header("Location: /topics-par-categories");
             exit();
         } else {
-            $errors['add'] = TOPICS_ERROR;
-        }
-    } else {
         $errors['add'] = TOPICS_ERROR;
     }
+}
 
 }
+
+// topic
 
 $topicsList = $topic->getList();
+$latestTopic = $topic->getTopic();
 $topicCount = count($topicsList);
-if ($topicCount > 0) {
-    $latestTopic = $topic->getTopic();
-}
 
-$replies = new Replies;
-
+// replies
 $repliesList = $replies->getList();
-$postCount = count($repliesList);
+$latestReply = $replies->getReply();
+$repliesCount = count($repliesList);
 
-if ($postCount > 0) {
-    $latestReply = $replies->getReply();
-}
-
-
-
-$status = new Status;
-$statusList = $status->getList();
-$latestStatus = $status->getStatus();
-$statusCount = count($statusList);
+$totalCount = $repliesCount + $topicCount;
 
 
 
-$totalCount = $postCount + $topicCount + $statusCount ; // total count de tous les publications : status; topics et replies 
+$title = 'Topics';// Titre de la page
 
-$title = 'MelodyTown'; // Titre de la page
+//  Inclusion des fichiers: header, du view et du footer
+require_once '../../views/parts/header.php';
+require_once '../../views/topics/topicsBySubcategories.php';
+require_once '../../views/parts/footer.php';
+?>
+ 
 
-//  Inclusion des fichiers: header, du view et du footer 
-
- require_once('../../views/parts/header.php');
- require_once('../../index.php');
- require_once('../../views/parts/footer.php'); 
- ?>
-
+<script src="assets/js/modals.js"></script>
 <script src="../../assets/js/topic.js"></script>

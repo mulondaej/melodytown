@@ -1,0 +1,21 @@
+{
+    "name": "mtjos/melodytown",
+    "description": "a forum to discuss manga,comics and more",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mtjos\\Melodytown\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Echizen Ryouma",
+            "email": "inktamba@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}

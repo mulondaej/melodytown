@@ -63,21 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors['password'] = USERS_PASSWORD_ERROR_EMPTY;
     }
 
-    // // même logique de nom pour la date de naissance mais avec la fonction de formatage de date
-    // if (!empty($_POST['birthdate'])) {
-    //     if (preg_match($regex['date'], $_POST['birthdate'])) {
-    //         if (checkDateValidity($_POST['birthdate'])) {
-    //             $user->birthdate = $_POST['birthdate'];
-    //         } else {
-    //             $errors['birthdate'] = USERS_BIRTHDATE_ERROR_INVALID;
-    //         }
-    //     } else {
-    //         $errors['birthdate'] = USERS_BIRTHDATE_ERROR_INVALID;
-    //     }
-    // } else {
-    //     $errors['birthdate'] = USERS_BIRTHDATE_ERROR_EMPTY;
-    // }
-
     // si les erreurs sont vides, l'utilisateur sera ajouté dans le BDD et inscrit dans le forum
     if (empty ($errors)) {
         if ($user->create()) {
@@ -98,8 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Provide feedback to the user
             $success = '<p id="successMessage">Bienvenue! Un email de confirmation a été envoyé à votre adresse email. Veuillez vérifier votre boîte de réception pour terminer votre inscription.</p>';
-            $success = '<p id=successMessage">Bienvenue! Vous êtes bel et bien inscript dans le forum. Vous pouvez vous '
-                . '<a href="/connexion"> connecter maintenant </a></p>';
+            $success = '<p id=successMessage">Bienvenue! Vous êtes bel et bien inscript dans le forum. 
+            <br>Vous pouvez vous <a href="/connexion"> connecter maintenant </a></p>';
         }
     }
 }

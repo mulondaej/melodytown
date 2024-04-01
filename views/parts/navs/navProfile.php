@@ -1,7 +1,7 @@
 <?php ?>
 
 <!-- le navs de profile -->
-<div class="navbar">
+<div class="navbarProfil">
     <button class="btn btn-secondary btn-sm" type="button">
         <a href="/accueil"> Accueil</a>
     </button>
@@ -11,7 +11,8 @@
     <button class="btn btn-secondary btn-sm" type="button">
         <a href="/mon-compte"> Mon compte</a>
     </button>
-    <a href="/deconnexion">Déconnexion</a>
+    <button class="btn btn-secondary btn-sm" type="button"><a href="/deconnexion">Déconnexion</a>
+    </button>
 </div>
 
 <style>
