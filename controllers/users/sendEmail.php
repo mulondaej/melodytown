@@ -1,6 +1,10 @@
 <?php
 // Include PHPMailer autoload.php file
-require 'vendor/autoload.php';
+require_once '../../models/usersModel.php';
+  
+
+$user = new Users;
+$userAccount = $user->getById();
 
 // Create a new PHPMailer instance
 $mail = new PHPMailer\PHPMailer\PHPMailer();
@@ -15,9 +19,9 @@ $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, 
 $mail->Port = 587;                                    // TCP port to connect to
 
 // Set up email
-$mail->setFrom('inktamba@gmail.com', 'Echizen Ryouma');
-$mail->addAddress('recipient@example.com');           // Add a recipient
-$mail->addReplyTo('info@example.com', 'Information');
+$mail->setFrom('inktamba@gmail.com', 'EJMT');
+$mail->addAddress($userAccount->email);           // Add a recipient
+$mail->addReplyTo('kibongatsho31@gmail.com', 'Information');
 
 // Add attachments (optional)
 $mail->addAttachment('/path/to/file');                // Add attachments
@@ -27,8 +31,8 @@ $mail->addAttachment('/path/to/image', 'new.jpg');    // Optional name
 $mail->isHTML(true);
 
 // Set email subject and body
-$mail->Subject = 'Subject Here';
-$mail->Body    = 'Body content here.';
+$mail->Subject = 'Email verification';
+$mail->Body    = 'Please click this button to verify your account: <a href=http://melodytown/verify?code=' . $code . '>Verify</a>';
 
 // Send the email
 if(!$mail->send()) {

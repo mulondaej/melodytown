@@ -15,6 +15,7 @@ RewriteRule ^mon-compte$ /controllers/users/accountController.php
 RewriteRule ^modifier-mon-compte$ /controllers/users/updateAccountController.php
 RewriteRule ^profil-([0-9]+)$ /controllers/users/profileController.php?id=$1
 RewriteRule ^profil$ /controllers/users/profileController.php
+RewriteRule ^membres$ /controllers/users/usersListController.php
 RewriteRule ^compte-supprime$ index.php?deleteAccount=true
 
 #TOPICS

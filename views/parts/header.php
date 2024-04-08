@@ -74,10 +74,17 @@
                             <a href="/profil" class="online"><img src="/assets/IMG/Avril23j.jpg" alt="UserAvatar" id="avatar"></a>
                         </button>
                         <ul class="dropdown-menu text-center dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
-                            <li><a class="dropdown-item" type="button" href="/mon-compte"><i class="fa-solid fa-user"></i> Mon
-                                    compte</a></li>
-                            <li><a class="dropdown-item" type="button" href="/liste-topics"><i class="fa-solid fa-list"></i>
-                                    Topics</a></li>
+                            <li>
+                                <a class="dropdown-item" type="button" href="/mon-compte"><i class="fa-solid fa-user"></i> Mon compte</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" type="button" href="/liste-topics"><i class="fa-solid fa-list"></i>
+                            Topics</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" type="button" href="/membres"><i class="fa-solid fa-list"></i>
+                                Members</a>
+                            </li>
                         </ul>
                     </div>
 

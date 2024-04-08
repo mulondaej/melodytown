@@ -76,7 +76,7 @@
                     </div>
                     <div class="subforum-description subforum-column">
                     <?php if (isset($categoriesList)) {  ?>
-                        <h4><a href="#"><?= $c->name ?> </a></h4>
+                        <h4><a href="/topics-par-categories"><?= $c->name ?> </a></h4>
                         
                         <div>
                             <h6><a href="/topics-par-categories">Discussions</a></h6>
@@ -118,7 +118,7 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="#"><?= $c->name ?> </a></h4>
+                        <h4><a href="/topics-par-categories"><?= $c->name ?> </a></h4>
                         <div>
                             <h6><a href="/topics-par-categories">Discussions</a></h6>
                             <h6><a href="/topics-par-categories">Théories</a></h6>
@@ -159,7 +159,7 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="#"><?= $c->name ?> </a></h4>
+                        <h4><a href="/topics-par-categories"><?= $c->name ?> </a></h4>
                         <div>
                             <h6><a href="/topics-par-categories">Discussions</a></h6>
                             <h6><a href="/topics-par-categories">Théories</a></h6>
@@ -201,7 +201,7 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="#">Hunter X Hunter</a></h4>
+                        <h4><a href="/topics-par-categories">Hunter X Hunter</a></h4>
                         <div>
                             <h6><a href="/topics-par-categories">Discussions</a></h6>
                             <h6><a href="/topics-par-categories">Théories</a></h6>
@@ -242,7 +242,7 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="#">Golden</a></h4>
+                        <h4><a href="/topics-par-categories">Golden</a></h4>
                         <div>
                             <h6><a href="/topics-par-categories">DBZ</a></h6>
                             <h6><a href="/topics-par-categories">Saint Seiya</a></h6>
@@ -283,7 +283,7 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="#">New Gen</a></h4>
+                        <h4><a href="/topics-par-categories">New Gen</a></h4>
                         <div>
                             <h6><a href="/topics-par-categories">MHA</a></h6>
                             <h6><a href="/topics-par-categories">Kingdom</a></h6>
@@ -325,7 +325,7 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="#">Finished series</a></h4>
+                        <h4><a href="/topics-par-categories">Finished series</a></h4>
                         <div>
                             <h6><a href="/topics-par-categories">Reborn</a></h6>
                             <h6><a href="/topics-par-categories">Fairytail</a></h6>
@@ -371,7 +371,7 @@
                             <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                         </div>
                         <div class="subforum-description subforum-column">
-                            <h4><a href="#">Marvel</a></h4>
+                            <h4><a href="/topics-par-categories">Marvel</a></h4>
                             <div>
                                 <h6><a href="/topics-par-categories">Comics</a></h6>
                                 <h6><a href="/topics-par-categories">Series/ Movies</a></h6>
@@ -410,7 +410,7 @@
                             <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                         </div>
                         <div class="subforum-description subforum-column">
-                            <h4><a href="#">D.C</a></h4>
+                            <h4><a href="/topics-par-categories">D.C</a></h4>
                             <div>
                                 <h6><a href="/topics-par-categories">Comics</a></h6>
                                 <h6><a href="/topics-par-categories">Series/ Movies</a></h6>
@@ -449,7 +449,7 @@
                             <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                         </div>
                         <div class="subforum-description subforum-column">
-                            <h4><a href="#">Other publishers</a></h4>
+                            <h4><a href="/topics-par-categories">Other publishers</a></h4>
                             <div>
                                 <h6><a href="/topics-par-categories">Invincible</a></h6>
                                 <h6><a href="/topics-par-categories">other series</a></h6>
@@ -494,7 +494,7 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="#">Well-known</a></h4>
+                                <h4><a href="/topics-par-categories">Well-known</a></h4>
                                 <div>
                                     <h6><a href="/topics-par-categories">Solo-Lvl</a></h6>
                                     <h6><a href="/topics-par-categories">Noblesse</a></h6>
@@ -536,7 +536,7 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="#">Explore more</a></h4>
+                                <h4><a href="/topics-par-categories">Explore more</a></h4>
                                 <div>
                                     <h6><a href="/topics-par-categories">Dr. Frost</a></h6>
                                     <h6><a href="/topics-par-categories">Gosu</a></h6>
@@ -583,7 +583,7 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="#">Comics</a></h4>
+                                <h4><a href="/topics-par-categories">Comics</a></h4>
                                 <div>
                                     <h6><a href="/topics-par-categories">X-TSHERS</a></h6>
                                     <h6><a href="/topics-par-categories">UN-FAZE</a></h6>
@@ -630,7 +630,7 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="#">Populaire</a></h4>
+                                <h4><a href="/topics-par-categories">Populaire</a></h4>
                                 <div>
                                     <h6><a href="/topics-par-categories">Sherlock</a></h6>
                                     <h6><a href="/topics-par-categories">GoT</a></h6>
@@ -672,7 +672,7 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="#">Autres</a></h4>
+                                <h4><a href="/topics-par-categories">Autres</a></h4>
                                 <div>
                                     <h6><a href="/topics-par-categories">The 100</a></h6>
                                     <h6><a href="/topics-par-categories">Atlas</a></h6>
@@ -720,7 +720,7 @@
                                     <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                                 </div>
                                 <div class="subforum-description subforum-column">
-                                    <h4><a href="#">Discussion</a></h4>
+                                    <h4><a href="/topics-par-categories">Discussion</a></h4>
                                     <p>Restons poli dans la discussion</p>
                                 </div>
                                 <div class="subforum-stats subforum-column ">
@@ -757,7 +757,7 @@
                                     <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                                 </div>
                                 <div class="subforum-description subforum-column">
-                                    <h4><a href="#">Versus</a></h4>
+                                    <h4><a href="/topics-par-categories">Versus</a></h4>
                                     <p>Tête à tête</p>
                                 </div>
                                 <div class="subforum-stats subforum-column ">
@@ -801,7 +801,7 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="#">Politique</a></h4>
+                                <h4><a href="/topics-par-categories">Politique</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -835,7 +835,7 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="#">Social</a></h4>
+                                <h4><a href="/topics-par-categories">Social</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">

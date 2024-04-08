@@ -1246,3 +1246,25 @@ button:hover,
 .interact button:hover {
     color: rgb(235, 90, 70);
 }
+
+#centerBtn a {
+    margin: 0 auto;
+    justify-content: center;
+    background-color: none;
+    border: none;
+}
+
+#centerBtn {
+    width: fit-content;
+    justify-content: center;
+    display: block;
+}
+
+#okey {
+    max-width: max-content;
+    margin: 0 auto;
+}
+
+.topic-list p {
+    margin-bottom: 1.2rem;
+}

@@ -84,6 +84,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $success = '<p id=successMessage">Vous êtes connecté !</p>';
             header('Location: /accueil');
             exit;
+        } else {
+            header('Location: /connexion');
+            exit;
         }
     }
 
