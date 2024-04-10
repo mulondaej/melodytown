@@ -20,7 +20,11 @@
                                 </a>
                             </h4>
                             <p><b>membre depuis:</b> <?= $u->registerDate ?>,
-                                <b>Nombre de publications:</b> <?= $totalPosts ?></p>
+
+                                <b>Publications:</b> <?php foreach ($userTopics as $t): ?>
+                                    <?php if(!empty($userTopics)) { ?> <?= $userTotalTopics ?> <?php } ?></p>
+                                <?php endforeach ?>
+
                         </ul>
                     </div>
                     <div class="subforum-stats subforum-column center">

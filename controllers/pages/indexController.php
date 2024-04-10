@@ -22,6 +22,13 @@ $latestUser = $user->getLatestUser();
 $userDetails = $user->getList();
 $userCount = count($userDetails);
 
+// $user->username = array("user1", "user2", "user3");
+
+// // Loop through each username and display as a link
+// foreach ($userAccount->username as $username) {
+//     echo "<a href='profile.php?username=$username'>$username</a><br>";
+// }
+
 $forums = new Forums;
 
 $categories = new Categories;

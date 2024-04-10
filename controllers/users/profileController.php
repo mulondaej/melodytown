@@ -21,7 +21,8 @@ if (empty ($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
 // établissement des variables pour accéder aux données des modèles 
 $user = new Users;
 $user->id = $_SESSION['user']['id'];
-$userAccount = $user->getById();
+$userAccount = array($user->getById()); 
+
 
 $status = new Status;
 
@@ -147,40 +148,57 @@ if (isset ($_POST['deleteComment'])) {
     }
 }
 
-// mis a jour de l'avatar
-if (isset ($_POST['updateAvatar'])) {
-    if (!empty ($_FILES['avatar'])) {
-        $imageMessage = checkImage($_FILES['avatar']);
+// Check if the form has been submitted for updating the avatar
+if (isset($_POST['updateAvatar'])) {
+    // Check if the avatar file is not empty
+    if (!empty($_FILES['avatarUpload'])) {
+        // Function to check if the uploaded file is an image
+        function checkImage($file) {
+            $validTypes = array('image/jpeg', 'image/jpg', 'image/png', 'image/gif');
+            $fileType = $file['type'];
+            if (!in_array($fileType, $validTypes)) {
+                return 'Invalid image format. Please upload a JPG, JPEG, PNG, or GIF file.';
+            }
+            return ''; // No error
+        }
 
+        // Call the checkImage function to validate the uploaded avatar
+        $imageMessage = checkImage($_FILES['avatarUpload']);
+
+        // If there's an error message returned from checkImage function, assign it to $errors['avatar']
         if ($imageMessage != '') {
             $errors['avatar'] = $imageMessage;
         } else {
+            // If the uploaded avatar is valid, proceed with further processing
             $user->id = $_SESSION['user']['id'];
-            $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+            $extension = pathinfo($_FILES['avatarUpload']['name'], PATHINFO_EXTENSION);
             $user->avatar = uniqid() . '.' . $extension;
 
-            // Check if avatar file already exists
+            // Destination directory for avatar upload
             $upload_dir = '../../assets/IMG/';
+
+            // Check if avatar file already exists
             while (file_exists($upload_dir . $user->avatar)) {
                 $user->avatar = uniqid() . '.' . $extension;
             }
 
             // Move uploaded file to the destination directory
-            if (move_uploaded_file($_FILES['avatar']['tmp_name'], $upload_dir . $user->avatar)) {
+            if (move_uploaded_file($_FILES['avatarUpload']['tmp_name'], $upload_dir . $user->avatar)) {
                 // Update user's avatar in the database
                 if ($user->updateAvatar()) {
-                    $success = IMAGE_SUCCESS;
+                    $success = 'Avatar updated successfully.';
                 } else {
                     // If database update fails, remove uploaded avatar
                     unlink($upload_dir . $user->avatar);
-                    $errors['add'] = IMAGE_ERROR;
+                    $errors['add'] = 'Error updating avatar. Please try again.';
                 }
             } else {
-                $errors['add'] = IMAGE_ERROR;
+                $errors['add'] = 'Error uploading avatar. Please try again.';
             }
         }
     }
 }
+
 
 
 // établissement des variables pour accéder aux données des modèles 

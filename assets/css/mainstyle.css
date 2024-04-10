@@ -1261,10 +1261,10 @@ button:hover,
 }
 
 #okey {
-    max-width: max-content;
+    width: 75%;
     margin: 0 auto;
 }
 
-.topic-list p {
+#okey .topic-list p {
     margin-bottom: 1.2rem;
 }

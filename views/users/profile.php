@@ -1,15 +1,17 @@
 <main class="mainbox">
 
     <div class="profileContainer ">
-        <input type="file" id="coverUpload" value="<?= $userAccount->avatar ?>" accept="image*/" style="display: none;">
+        
+    <?php foreach($userAccount as $u) { ?>
+        <input type="file" id="coverUpload" value="<?= $u->avatar ?>" accept="image*/" style="display: none;">
         <div class="coverContainer">
-            <img src="../assets/IMG/asha-frozz.jpg" alt="Cover Picture" id="cover-picture">
+            <img src="/assets/IMG/<?= $u->avatar ?>" alt="Cover Picture" id="cover-picture">
         </div>
         <button id="editCover">change</button>
         <div class="avatarContainer text-center">
-            <input type="file" id="avatarUpload" class="avatarChange" value="<?= $userAccount->avatar ?>"
+            <input type="file" id="avatarUpload" class="avatarChange" value="<?= $u->avatar ?>"
                 accept="image*/" style="display: none;">
-            <img src="/assets/IMG/Avril23j.jpg" alt="User Avatar" id="profileAvy">
+            <img src="/assets/IMG/<?= $u->avatar ?>" alt="User Avatar" id="profileAvy">
             <input type="submit" id="editAvatar" class="overLay" value="Modifier" name="updateAvatar">
         </div>
 
@@ -17,18 +19,19 @@
 
     <div class="userContainer">
         <p>@
-            <b><?= $userAccount->username ?></b>,
+            <b><?= $u->username ?></b>,
             <i class="fa-sharp fa-solid fa-location-dot fa-sm" style="color: white"></i>
-            <b><?= $userAccount->location ?></b>
+            <b><?= $u->location ?></b>
             <small><a href="/modifier-mon-compte"> modifier tes infos </a></small>
         </p>
         <div class="infoUser">
             <p>Posts: <span id="postCount"><b><?= $userTotalTopics ?></b></span></p>
             <p>Likes: <span id="likeCount"><b>100</b></span></p>
-            <p>Rank: <span id="rank"><b><?= $userAccount->roleName ?></b></span></p>
+            <p>Rank: <span id="rank"><b><?= $u->roleName ?></b></span></p>
             <p>Points: <span id="points"><b><? $userPoints ?></b></span></p>
-            <p>Depuis <b><?= $userAccount->registerDate ?></b></p>
+            <p>Depuis <b><?= $u->registerDate ?></b></p>
         </div>
+        <?php } ?>
     </div>
 
     <div class="mainContainer">
