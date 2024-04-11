@@ -16,7 +16,7 @@
 
   <div id="threadContains">
     <div id="userCard">
-      <div class="userImg"><img src="../../assets/IMG/<?= $topicsDetails->avatar ?>" id="userAvy"></div><br>
+      <div class="userImg"><img src="/assets/IMG/<?= $topicsDetails->avatar ?>" id="userAvy"></div><br>
       <div class="username">
         <h5>@<a href="/profil-<?= $topicsDetails->id_users ?>"><?= $topicsDetails->username ?>
           </a></h5>
@@ -61,7 +61,7 @@
       <?php foreach ($repliesList as $r) { ?>
         <div id="repliesContains">
           <div id="userCard">
-            <div class="userImg"><img src="../../assets/IMG/<? $r['avatar'] ?>" id="userAvy"></div>
+            <div class="userImg"><img src="/assets/IMG/<?= $r['avatar'] ?>" id="userAvy"></div>
             <div class="username">
               <h5><a href="/profil-<?= $r['id_users'] ?>">@<?= $r['username'] ?></a></h5>
             </div>

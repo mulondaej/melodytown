@@ -31,4 +31,3 @@ modalContainer.addEventListener("click", (e) => {
     }
 });
 
-

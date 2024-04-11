@@ -87,7 +87,7 @@
         justify-content: center;
         text-align: center;
         margin: 0 auto;
-        margin-top: -2rem;
+        margin-top: 0;
         background-color: none;
     }
 
@@ -96,5 +96,6 @@
         text-decoration: none;
         justify-content: center;
         text-align: center;
+        
     }
 </style>

@@ -172,13 +172,22 @@ header a {
 }
 
 /* NAVBAR */
-.navbar, .navbarProfil {
+.navbar {
     /* les liens et icons sont en flex */
     display: flex;
     justify-content: center;
     text-align: center;
     margin: 0 auto;
     margin-top: 6rem;
+}
+
+.navbarProfil {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 0.5rem auto;
+    top: 0;
+    position: absolute;
 }
 
 .navbar button, .navbarProfil button {
@@ -609,57 +618,63 @@ header a {
     width: 100%;
 }
 
-/* cover pictures */
+/* cover picture */
 .coverContainer {
     position: relative;
     width: 100%;
-    max-height: 200px;
+    max-height: 250px;
     overflow: hidden;
     background-color: none;
     top: 0;
     padding: 0;
     margin: 0 auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    /* un peu d'ombrage pour stylé les bloques balisés */
 }
 
 #coverPicture {
     width: 100%;
-    max-height: 200px;
+    max-height: fit-content;
     object-fit: cover;
     top: 0;
     background-position: center;
     background-size: cover;
     position: relative;
+    background-attachment: fixed;
+    margin: 0;
 }
 
 #editCover {
     border-radius: 6px;
-    padding: 5px 8px;
-    border: none;
-    cursor: pointer;
+    padding: 4px 6px;
+    border: none; cursor: pointer;
     z-index: 3;
-    position: absolute;
-    top: 5rem;
-    right: 90px;
     opacity: 1;
+    right: 4rem;
+    position: absolute;
     background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.5);
+    width: max-content;
 }
 
 /* Avatar */
+#imgModalBtn {
+    border-radius: 6px;
+    padding: 4px 6px;
+    border: none; cursor: pointer;
+    z-index: 3;
+    opacity: 1;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
+    width: max-content;
+}
 .avatarContainer {
     padding: 0;
     width: 90%;
     height: max-content;
-    margin-top: -200px;
     /* user info up to overlap cover */
-    position: relative;
+    position: absolute;
     z-index: 3;
-    /*user info above cover */
-    margin-left: 0 auto;
-    margin-right: 0 auto;
-    margin-bottom: 0;
+    margin: 0 auto;
     justify-content: center;
     text-align: center;
 }
@@ -668,7 +683,7 @@ header a {
     padding: 0;
     width: 150px;
     height: 150px;
-    margin: 5px;
+    margin: 6px;
     object-fit: cover;
     border-radius: 50%;
     cursor: pointer;
@@ -731,7 +746,7 @@ header a {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     /* un peu d'ombrage pour stylé les bloques balisés */
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: 0;
     margin-bottom: 1rem;
     display: block;
 }
@@ -1268,3 +1283,4 @@ button:hover,
 #okey .topic-list p {
     margin-bottom: 1.2rem;
 }
+

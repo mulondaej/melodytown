@@ -10,6 +10,7 @@ class Users
     public string $birthdate;
     public string $registerDate;
     public string $avatar;
+    public string $coverpicture;
     public int $id_usersRoles;
     public int $points;
     public int $token;
@@ -116,7 +117,7 @@ class Users
     {
         $sql = 'SELECT `username`, `email`, `location`, DATE_FORMAT(`birthdate`, "%d/%m/%y") 
         AS `birthdateFr`, `birthdate` , DATE_FORMAT(`registerDate`, "%M %Y") AS `registerDate`,
-        `avatar`, `name` AS `roleName` 
+        `avatar`, `coverpicture`, `name` AS `roleName` 
         FROM `a8yk4_users`
         INNER JOIN `a8yk4_usersroles` ON id_usersRoles = `a8yk4_usersroles`.`id`
         WHERE `a8yk4_users`.`id`= :id';
@@ -138,9 +139,9 @@ class Users
 
     public function getList()
     {
-        $sql = 'SELECT `u`.`id`, `u`.`username`, `email`, `location`, DATE_FORMAT(`birthdate`, "%d/%m/%y") 
-        AS `birthdateFr`, `birthdate` , DATE_FORMAT(`registerDate`, "%M %Y") AS `registerDate`, 
-        `avatar`, `name` AS `roleName` 
+        $sql = 'SELECT `u`.`id`, `u`.`username`, `u`.`email`, `u`.`location`, DATE_FORMAT(`u`.`birthdate`, "%d/%m/%y") 
+        AS `birthdateFr`, `birthdate` , DATE_FORMAT(`u`.`registerDate`, "%M %Y") AS `registerDate`, 
+        `u`.`avatar`, `u`.`coverpicture`, `name` AS `roleName` 
         FROM `a8yk4_users` AS `u`
         INNER JOIN `a8yk4_usersroles` ON id_usersRoles = `a8yk4_usersroles`.`id`';
         $req = $this->pdo->query($sql);
@@ -221,6 +222,15 @@ class Users
         $sql = 'UPDATE `a8yk4_users` SET `avatar`=:avatar WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':avatar', $this->avatar, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $req->execute();
+    }
+
+    public function updateCoverPicture()
+    {
+        $sql = 'UPDATE `a8yk4_users` SET `coverpicture`=:coverpicture WHERE `id` = :id';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':coverpicture', $this->coverpicture, PDO::PARAM_STR);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
     }

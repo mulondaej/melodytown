@@ -485,7 +485,7 @@
         animation: pulse 2s infinite;
     }
 
-    #editAvatar {
+    #editAvatar, #imgModalBtn {
         width: max-content;
         padding: 5px 22px;
         border: none;

@@ -1,32 +1,32 @@
-document.getElementById('editCover').addEventListener('click', function() {
-    document.getElementById('coverUpload').click();
-});
+// document.getElementById('editCover').addEventListener('click', function() {
+//     document.getElementById('coverUpload').click();
+// });
 
-document.getElementById('coverUpload').addEventListener('change', function() {
-    var file = this.files[0];
-    var reader = new FileReader();
+// document.getElementById('coverUpload').addEventListener('change', function() {
+//     var file = this.files[0];
+//     var reader = new FileReader();
 
-    reader.onload = function(e) {
-        document.getElementById('cover-picture').src = e.target.result;
-    };
+//     reader.onload = function(e) {
+//         document.getElementById('cover-picture').src = e.target.result;
+//     };
 
-    reader.readAsDataURL(file);
-});
+//     reader.readAsDataURL(file);
+// });
 
-document.getElementById('editAvatar').addEventListener('click', function() {
-    document.getElementById('avatarUpload').click();
-});
+// document.getElementById('editAvatar').addEventListener('click', function() {
+//     document.getElementById('avatarUpload').click();
+// });
 
-document.getElementById('avatarUpload').addEventListener('change', function() {
-    var file = this.files[0];
-    var reader = new FileReader();
+// document.getElementById('avatarUpload').addEventListener('change', function() {
+//     var file = this.files[0];
+//     var reader = new FileReader();
 
-    reader.onload = function(e) {
-        document.getElementById('profileAvy').src = e.target.result;
-    };
+//     reader.onload = function(e) {
+//         document.getElementById('profileAvy').src = e.target.result;
+//     };
 
-    reader.readAsDataURL(file);
-});
+//     reader.readAsDataURL(file);
+// });
 
 
 //////////////////////////////////////////

@@ -71,7 +71,8 @@
                     <div class="btn-group" id="menu-button">
                         <button type="button" class="btn btn-sm btn-tertiary dropdown-toggle" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <a href="/profil" class="online"><img src="/assets/IMG/<?= $userAccount->avatar ?>"  alt="UserAvatar" id="avatar"></a>
+                            <a href="/profil" class="online"><?php if(isset($_SESSION['user'])) { ?>
+                            <img src="/assets/IMG/<?= $_SESSION['user']['avatar'] ?>"<?= $_SESSION['user']['avatar'] ?> <?php } ?>  alt="UserAvatar" id="avatar"></a>
                         </button>
                         <ul class="dropdown-menu text-center dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
                             <li>

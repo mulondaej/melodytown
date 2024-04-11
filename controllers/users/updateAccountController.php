@@ -227,16 +227,7 @@ if (isset($_POST['updateLocation'])) {
 if (isset($_POST['updateAvatar'])) {
     // Check if the avatar file is not empty
     if (!empty($_FILES['avatar'])) {
-        // // Function to check if the uploaded file is an image
-        // function checkImage($file) {
-        //     $validTypes = array('image/jpeg', 'image/jpg', 'image/png', 'image/gif');
-        //     $fileType = $file['type'];
-        //     if (!in_array($fileType, $validTypes)) {
-        //         return 'Invalid image format. Please upload a JPG, JPEG, PNG, or GIF file.';
-        //     }
-        //     return ''; // No error
-        // }
-
+        
         // Call the checkImage function to validate the uploaded avatar
         $imageMessage = checkImage($_FILES['avatar']);
 
@@ -261,14 +252,54 @@ if (isset($_POST['updateAvatar'])) {
             if (move_uploaded_file($_FILES['avatar']['tmp_name'], $upload_dir . $user->avatar)) {
                 // Update user's avatar in the database
                 if ($user->updateAvatar()) {
-                    $success = 'Avatar updated successfully.';
+                    $success = 'la photo profile vient d/être mis à jour avec succès';
                 } else {
                     // If database update fails, remove uploaded avatar
                     unlink($upload_dir . $user->avatar);
-                    $errors['add'] = 'Error updating avatar. Please try again.';
+                    $errors['add'] = 'Réessayez encore car il y\eut une erreur';
                 }
             } else {
-                $errors['add'] = 'Error uploading avatar. Please try again.';
+                $errors['add'] = 'Une erreur est survenue';
+            }
+        }
+    }
+}
+
+if (isset($_POST['updateCoverPicture'])) {
+    // Check if the avatar file is not empty
+    if (!empty($_FILES['image'])) {
+        // Call the checkImage function to validate the uploaded avatar
+        $imageMessage = checkImage($_FILES['image']);
+
+        // If there's an error message returned from checkImage function, assign it to $errors['avatar']
+        if ($imageMessage != '') {
+            $errors['image'] = $imageMessage;
+        } else {
+            // If the uploaded avatar is valid, proceed with further processing
+            $user->id = $_SESSION['user']['id'];
+            $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $user->coverpicture = uniqid() . '.' . $extension;
+
+            // Destination directory for avatar upload
+            $upload_dir = '../../assets/IMG/';
+
+            // Check if avatar file already exists
+            while (file_exists($upload_dir . $user->coverpicture)) {
+                $user->coverpicture = uniqid() . '.' . $extension;
+            }
+
+            // Move uploaded file to the destination directory
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $user->coverpicture)) {
+                // Update user's avatar in the database
+                if ($user->updateCoverPicture()) {
+                    $success = 'la banière d/être mis à jour avec succès';
+                } else {
+                    // If database update fails, remove uploaded avatar
+                    unlink($upload_dir . $user->coverpicture);
+                    $errors['add'] = 'Réessayez encore car il y\eut une erreur';
+                }
+            } else {
+                $errors['add'] = 'Une erreur est survenue';
             }
         }
     }

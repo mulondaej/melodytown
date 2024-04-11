@@ -52,11 +52,11 @@ class Replies {
     {
         $sql = 'SELECT `r`.`id`, `r`.`content`, 
         DATE_FORMAT(`r`.`publicationDate`, "%d/%m/%y") AS `publicationDate`, 
-        `u`.`username`, `r`.`id_users`, `r`.`id_topics`
+        `u`.`username`, `u`.`avatar`, `r`.`id_users`, `r`.`id_topics`
         FROM `a8yk4_topicreplies` AS `r`
         INNER JOIN `a8yk4_users` AS `u` ON `r`.`id_users` = `u`.`id`
         INNER JOIN `a8yk4_topics` AS `t` ON `r`.`id_topics` = `t`.`id`
-        WHERE `r`.id = :id ;';
+        WHERE `r`.id = :id ';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         $req->execute();
@@ -89,7 +89,7 @@ class Replies {
     {
         $sql = 'SELECT `r`.`id`,`content`, 
         DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, 
-        `u`.`username`, `id_users`
+        `u`.`username`, `u`.`avatar`, `id_users`
         FROM `a8yk4_topicreplies` AS `r`
         INNER JOIN `a8yk4_users` AS `u` ON `r`.`id_users` = `u`.`id`
         WHERE `id_topics` = :id_topics

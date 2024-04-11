@@ -148,22 +148,12 @@ if (isset ($_POST['deleteComment'])) {
     }
 }
 
-// Check if the form has been submitted for updating the avatar
 if (isset($_POST['updateAvatar'])) {
     // Check if the avatar file is not empty
-    if (!empty($_FILES['avatarUpload'])) {
-        // Function to check if the uploaded file is an image
-        function checkImage($file) {
-            $validTypes = array('image/jpeg', 'image/jpg', 'image/png', 'image/gif');
-            $fileType = $file['type'];
-            if (!in_array($fileType, $validTypes)) {
-                return 'Invalid image format. Please upload a JPG, JPEG, PNG, or GIF file.';
-            }
-            return ''; // No error
-        }
-
+    if (!empty($_FILES['avatar'])) {
+        
         // Call the checkImage function to validate the uploaded avatar
-        $imageMessage = checkImage($_FILES['avatarUpload']);
+        $imageMessage = checkImage($_FILES['avatar']);
 
         // If there's an error message returned from checkImage function, assign it to $errors['avatar']
         if ($imageMessage != '') {
@@ -171,7 +161,7 @@ if (isset($_POST['updateAvatar'])) {
         } else {
             // If the uploaded avatar is valid, proceed with further processing
             $user->id = $_SESSION['user']['id'];
-            $extension = pathinfo($_FILES['avatarUpload']['name'], PATHINFO_EXTENSION);
+            $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
             $user->avatar = uniqid() . '.' . $extension;
 
             // Destination directory for avatar upload
@@ -183,22 +173,72 @@ if (isset($_POST['updateAvatar'])) {
             }
 
             // Move uploaded file to the destination directory
-            if (move_uploaded_file($_FILES['avatarUpload']['tmp_name'], $upload_dir . $user->avatar)) {
+            if (move_uploaded_file($_FILES['avatar']['tmp_name'], $upload_dir . $user->avatar)) {
                 // Update user's avatar in the database
                 if ($user->updateAvatar()) {
-                    $success = 'Avatar updated successfully.';
+                    $success = 'la photo profile vient d/être mis à jour avec succès';
                 } else {
                     // If database update fails, remove uploaded avatar
                     unlink($upload_dir . $user->avatar);
-                    $errors['add'] = 'Error updating avatar. Please try again.';
+                    $errors['add'] = 'Réessayez encore car il y\eut une erreur';
                 }
             } else {
-                $errors['add'] = 'Error uploading avatar. Please try again.';
+                $errors['add'] = 'Une erreur est survenue';
             }
         }
     }
 }
 
+if (isset($_POST['updateCoverPicture'])) {
+    // Check if the avatar file is not empty
+    if (!empty($_FILES['image'])) {
+        // Call the checkImage function to validate the uploaded avatar
+        $imageMessage = checkImage($_FILES['image']);
+
+        // If there's an error message returned from checkImage function, assign it to $errors['avatar']
+        if ($imageMessage != '') {
+            $errors['image'] = $imageMessage;
+        } else {
+            // If the uploaded avatar is valid, proceed with further processing
+            $user->id = $_SESSION['user']['id'];
+            $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $user->coverpicture = uniqid() . '.' . $extension;
+
+            // Destination directory for avatar upload
+            $upload_dir = '../../assets/IMG/';
+
+            // Check if avatar file already exists
+            while (file_exists($upload_dir . $user->coverpicture)) {
+                $user->coverpicture = uniqid() . '.' . $extension;
+            }
+
+            // Move uploaded file to the destination directory
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $user->coverpicture)) {
+                // Update user's avatar in the database
+                if ($user->updateCoverPicture()) {
+                    $success = 'la banière d/être mis à jour avec succès';
+                } else {
+                    // If database update fails, remove uploaded avatar
+                    unlink($upload_dir . $user->coverpicture);
+                    $errors['add'] = 'Réessayez encore car il y\eut une erreur';
+                }
+            } else {
+                $errors['add'] = 'Une erreur est survenue';
+            }
+        }
+    }
+}
+
+
+// Suppression de l'utilisateur
+if (isset($_POST['deleteAccount'])) {
+    if ($user->delete()) {
+        unset($_SESSION);
+        session_destroy();
+        header('Location: /accueil');
+        exit;
+    }
+}
 
 
 // établissement des variables pour accéder aux données des modèles 
@@ -262,8 +302,6 @@ if ($userPoints > 0) {
     $points = log10($userPoints); // Calculate logarithm of absolute value
 }
 
-// if($_POST['addStatus'] || $_POST['addComment'] || $_POST[' ) {
-
 // }
 $userPoints += 1; // Add one point for every answer/topic posted
 
@@ -285,3 +323,4 @@ require_once '../../views/parts/footer.php';
 <script src="assets/js/comments.js"></script>
 <script src="assets/js/profile.js"></script>
 <script src="assets/js/media.js"></script>
+<script src="assets/js/avyCover.js"></script>
