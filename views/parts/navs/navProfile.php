@@ -11,8 +11,10 @@
     <button class="btn btn-secondary btn-sm" type="button">
         <a href="/mon-compte"> Mon compte</a>
     </button>
-    <button class="btn btn-secondary btn-sm" type="button"><a href="/deconnexion">Déconnexion</a>
+  <button class="btn btn-secondary btn-sm" type="button">
+        <a href="/deconnexion">Déconnexion</a>
     </button>
+    
 </div>
 
 <style>
@@ -89,6 +91,8 @@
         margin: 0 auto;
         margin-top: 0;
         background-color: none;
+      	top: 0;
+      	position: relative;
     }
 
     .navbar a {
@@ -96,6 +100,38 @@
         text-decoration: none;
         justify-content: center;
         text-align: center;
-        
+      	top: 0;
+      	position: relative;
     }
+  
+  @media screen and (max-width: 767px) {
+    .navbar {
+        display: block;
+        justify-content: space-between;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 0;
+    }
+
+    .navbar button {
+        margin-right: 0;
+    }
+
+    .navbar a {
+        font-size: 14px;
+        height: max-content;
+        margin: -8px;
+      margin-top: 0;
+    }
+
+    .navbar button i {
+        margin-right: 2px;
+    }
+	
+  	.navbarProfil {
+      top:0;
+      margin: 0 auto;
+      margin-top: 0;
+  }
+  }
 </style>
