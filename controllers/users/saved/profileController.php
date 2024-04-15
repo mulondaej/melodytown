@@ -21,7 +21,8 @@ if (empty ($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
 // établissement des variables pour accéder aux données des modèles 
 $user = new Users;
 $user->fetchUserData($_SESSION['user']['id']);
-$userAccount = $user->getById(); 
+$userAccount = array($user->getById()); 
+
 
 $status = new Status;
 
@@ -161,24 +162,24 @@ if (isset($_POST['updateAvatar'])) {
             // If the uploaded avatar is valid, proceed with further processing
             $user->fetchUserData($_SESSION['user']['id']);
             $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-            $user->setAvatar(uniqid() . '.' . $extension);
+            $user->avatar = uniqid() . '.' . $extension;
 
             // Destination directory for avatar upload
             $upload_dir = '../../assets/IMG/users/';
 
             // Check if avatar file already exists
-            while (file_exists($upload_dir . $user->getAvatar())) {
-                $user->setAvatar(uniqid() . '.' . $extension);
+            while (file_exists($upload_dir . $user->avatar)) {
+                $user->avatar = uniqid() . '.' . $extension;
             }
 
             // Move uploaded file to the destination directory
-            if (move_uploaded_file($_FILES['avatar']['tmp_name'], $upload_dir . $user->getAvatar())) {
+            if (move_uploaded_file($_FILES['avatar']['tmp_name'], $upload_dir . $user->avatar)) {
                 // Update user's avatar in the database
-                if ($user->updateAvatar()) {
+                if ($user->setAvatar()) {
                     $success = 'la photo profile vient d/être mis à jour avec succès';
                 } else {
                     // If database update fails, remove uploaded avatar
-                    unlink($upload_dir . $user->getAvatar());
+                    unlink($upload_dir . $user->avatar);
                     $errors['add'] = 'Réessayez encore car il y\eut une erreur';
                 }
             } else {
@@ -201,24 +202,24 @@ if (isset($_POST['updateCoverPicture'])) {
             // If the uploaded avatar is valid, proceed with further processing
             $user->fetchUserData($_SESSION['user']['id']);
             $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-            $user->setCoverpicture(uniqid() . '.' . $extension);
+            $user->coverpicture = uniqid() . '.' . $extension;
 
             // Destination directory for avatar upload
             $upload_dir = '../../assets/IMG/users/';
 
             // Check if avatar file already exists
-            while (file_exists($upload_dir . $user->getCoverPicture())) {
-                $user->setCoverpicture(uniqid() . '.' . $extension);
+            while (file_exists($upload_dir . $user->coverpicture)) {
+                $user->coverpicture = uniqid() . '.' . $extension;
             }
 
             // Move uploaded file to the destination directory
-            if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $user->getCoverPicture())) {
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $user->coverpicture)) {
                 // Update user's avatar in the database
-                if ($user->updateCoverPicture()) {
+                if ($user->setCoverPicture()) {
                     $success = 'la banière d/être mis à jour avec succès';
                 } else {
                     // If database update fails, remove uploaded avatar
-                    unlink($upload_dir . $user->getCoverPicture());
+                    unlink($upload_dir . $user->coverpicture);
                     $errors['add'] = 'Réessayez encore car il y\eut une erreur';
                 }
             } else {

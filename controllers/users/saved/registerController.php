@@ -9,7 +9,7 @@ require_once '../../controllers/users/sendMail.php';
 
 session_start();
 
-// $token = rand();
+$token = rand();
 
 
 
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $to = $user->email; // Assuming you have an 'email' property in your $user object
             $subject = 'Confirm your registration';
             $message = 'Click the following link to confirm your registration: <a href="https://melodytown/verification?token=' . $verification_token . '">Verify Email</a>';
-            $headers = 'From: mailfrom:kibongatsho31@gmail.com' . "\r\n" .
+            $headers = 'From: kibongatsho31@gmail.com' . "\r\n" .
                 'Content-type: text/html; charset=UTF-8' . "\r\n";
 
             // Send the email

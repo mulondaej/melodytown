@@ -65,14 +65,14 @@
                     <?php require_once 'navs/navProfile.php'; ?>
 
                 <?php } else { ?>
-
+                    
                     <?php require_once 'navs/navMember.php'; ?>
                     <!-- l'avatar dans un menu bouton pour afficher ces liens -->
                     <div class="btn-group" id="menu-button">
                         <button type="button" class="btn btn-sm btn-tertiary dropdown-toggle" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <a href="/profil" class="online"><?php if(isset($_SESSION['user'])) { ?>
-                            <img src="/assets/IMG/<?= $_SESSION['user']['avatar'] ?>"<?= $_SESSION['user']['avatar'] ?> <?php } ?>  alt="UserAvatar" id="avatar"></a>
+                            <img src="assets/IMG/users/<?= $userAccount->avatar ?>" <?php } ?>  alt="UserAvatar" id="avatar"></a>
                         </button>
                         <ul class="dropdown-menu text-center dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
                             <li>

@@ -64,6 +64,7 @@ function checkAvatar($avatar) {
     $errors['avatar'] = '';
 
     if($avatar['error'] != 4) {
+        
         if($avatar['error'] != 1 &&  $avatar['size'] > 0 && $avatar['size'] <= 1000000) {
             if($avatar['error'] == 0) {
 
@@ -92,4 +93,42 @@ function checkAvatar($avatar) {
     }
 
     return $errors['avatar'];
+}
+
+function checkImages($images) {
+    $errors = array();
+
+    // Define max size for each image (5MB)
+    $maxSize = 5 * 1024 * 1024;
+
+    // Iterate over each image file
+    foreach ($images['error'] as $key => $error) {
+        // Skip iteration if no file was uploaded
+        if ($error == UPLOAD_ERR_NO_FILE) {
+            continue;
+        }
+
+        // Check for upload errors
+        if ($error != UPLOAD_ERR_OK || $images['size'][$key] > $maxSize) {
+            $errors[] = 'Image ' . ($key + 1) . ': Invalid image size or upload error.';
+            continue;
+        }
+
+        // Check file extension and MIME type
+        $extensionArray = array(
+            'jpg' => 'image/jpeg', 
+            'jpeg' => 'image/jpeg', 
+            'png' => 'image/png', 
+            'gif' => 'image/gif', 
+            'webp' => 'image/webp'
+        );
+
+        $imgExtension = strtolower(pathinfo($images['name'][$key], PATHINFO_EXTENSION));
+
+        if (!array_key_exists($imgExtension, $extensionArray) || mime_content_type($images['tmp_name'][$key]) != $extensionArray[$imgExtension]) {
+            $errors[] = 'Image ' . ($key + 1) . ': Invalid image format. Please upload a JPG, JPEG, PNG, GIF, or WEBP file.';
+        }
+    }
+
+    return $errors;
 }

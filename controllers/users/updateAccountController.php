@@ -20,41 +20,39 @@ if (!isset($_SESSION['user'])) {
 
 // établissement des variables pour accéder aux données des modèles 
 $user = new Users;
-$user->id = $_SESSION['user']['id'];
+$user->fetchUserData($_SESSION['user']['id']); // Fetch user data from the database
 
 $topic = new Topics;
 
 $status = new Status;
 
-
-// Vérifier si le formulaire d'édition d'informations a été soumis
+// Check if the update infos form has been submitted
 if (isset($_POST['updateInfos'])) {
-
-    // Vérifier si le champ "username" est rempli
+    // Check if the "username" field is filled
     if (!empty($_POST['username'])) {
-        // Vérifier si le format du "username" est valide
+        // Check if the format of the "username" is valid
         if (preg_match($regex['name'], $_POST['username'])) {
-            // Nettoie le "username"
-            $user->username = clean($_POST['username']);
-            // Vérifier si le "username" existe déjà dans la base de données (BDD)
-            if ($user->checkIfExistsByUsername() == 1 && $user->username != $_SESSION['user']['username']) {
-                // sinon, afficher une erreur pour le "username"
+            // Clean the "username"
+            $user->setUsername(clean($_POST['username']));
+            // Check if the "username" already exists in the database
+            if ($user->checkIfExistsByUsername() == 1 && $user->getUsername() != $_SESSION['user']['username']) {
+                // Display an error for the "username"
                 $errors['username'] = USERS_USERNAME_ERROR_EXISTS;
             }
         } else {
-            // sinon, afficher une erreur pour le "username"
+            // Display an error for the "username"
             $errors['username'] = USERS_USERNAME_ERROR_INVALID;
         }
     } else {
-        // sinon, afficher une erreur pour le "username"
+        // Display an error for the "username"
         $errors['username'] = USERS_USERNAME_ERROR_EMPTY;
     }
 
-    // Même logique que pour le "username" mais pour l'email
+    // Similar logic as above but for the email
     if (!empty($_POST['email'])) {
         if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $user->email = clean($_POST['email']);
-            if ($user->checkIfExistsByEmail() == 1 && $user->email != $_SESSION['user']['email']) {
+            $user->setEmail(clean($_POST['email']));
+            if ($user->checkIfExistsByEmail() == 1 && $user->getEmail() != $_SESSION['user']['email']) {
                 $errors['email'] = USERS_EMAIL_ERROR_EXISTS;
             }
         } else {
@@ -64,11 +62,11 @@ if (isset($_POST['updateInfos'])) {
         $errors['email'] = USERS_EMAIL_ERROR_EMPTY;
     }
 
-    // Même logique que pour le "username" mais pour la date de naissance
+    // Similar logic as above but for the birthdate
     if (!empty($_POST['birthdate'])) {
         if (preg_match($regex['date'], $_POST['birthdate'])) {
             if (checkDateValidity($_POST['birthdate'])) {
-                $user->birthdate = $_POST['birthdate'];
+                $user->setBirthdate($_POST['birthdate']);
             } else {
                 $errors['birthdate'] = USERS_BIRTHDATE_ERROR_INVALID;
             }
@@ -79,11 +77,11 @@ if (isset($_POST['updateInfos'])) {
         $errors['birthdate'] = USERS_BIRTHDATE_ERROR_EMPTY;
     }
 
-    // Même logique que pour le "username" mais pour la location
+    // Similar logic as above but for the location
     if (!empty($_POST['location'])) {
         if (preg_match($regex['name'], $_POST['location'])) {
-            $user->location = clean($_POST['location']);
-            if ($user->checkIfExistsByLocation() == 1 && $user->location != $_SESSION['user']['location']) {
+            $user->setLocation(clean($_POST['location']));
+            if ($user->checkIfExistsByLocation() == 1 && $user->getLocation() != $_SESSION['user']['location']) {
                 $errors['location'] = USERS_LOCATION_ERROR_EXISTS;
             }
         } else {
@@ -93,21 +91,22 @@ if (isset($_POST['updateInfos'])) {
         $errors['location'] = USERS_LOCATION_ERROR_EMPTY;
     }
 
-    // Si aucune erreur n'a été détectée, met à jour les informations de l'utilisateur
+    // If no errors are detected, update the user's information
     if (empty($errors)) {
-        if ($user->update()) {
-            // Met à jour les informations de l'utilisateur dans la session
-            $_SESSION['user']['username'] = $user->username;
-            $_SESSION['user']['email'] = $user->email;
-            $_SESSION['user']['location'] = $user->location;
-            // Affichage d'un message de succès au cas de réussite
+        if ($user->updateUserInfos()) {
+            // Update the user's information in the session
+            $_SESSION['user']['username'] = $user->getUsername();
+            $_SESSION['user']['email'] = $user->getEmail();
+            $_SESSION['user']['location'] = $user->getLocation();
+            // Display a success message in case of success
             $success = USERS_UPDATE_SUCCESS;
         } else {
-            // sinon, afficher le message d'erreur de mise à jour qu cas d'echec
+            // Display the update error message in case of failure
             $errors['update'] = USERS_UPDATE_ERROR;
         }
     }
 }
+
 
 // Mis à jour du mot de passe de l'utilisateur
 if (isset($_POST['updatePassword'])) {
@@ -117,7 +116,7 @@ if (isset($_POST['updatePassword'])) {
             if (!empty($_POST['password_confirm'])) {
                 if ($_POST['password'] == $_POST['password_confirm']) {
                     // Hash le mot de passe
-                    $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                    $user->setPassword(password_hash($_POST['password'], PASSWORD_DEFAULT));
                 } else {
                     // sinon, afficher le message d'erreur 
                     $errors['password_confirm'] = USERS_PASSWORD_CONFIRM_ERROR_INVALID;
@@ -146,12 +145,12 @@ if (isset($_POST['updatePassword'])) {
     }
 }
 
-// Mis à jour de username de l'utilisateur
+// Mis à jour du nom d'utilisateur de l'utilisateur
 if (isset($_POST['updateUsername'])) {
     if (!empty($_POST['username'])) {
         if (preg_match($regex['name'], $_POST['username'])) {
-            $user->username = clean($_POST['username']);
-            if ($user->checkIfExistsByUsername() == 1 && $user->username != $_SESSION['user']['username']) {
+            $user->setUsername(clean($_POST['username']));
+            if ($user->checkIfExistsByUsername() == 1 && $user->getUsername() != $_SESSION['user']['username']) {
                 $errors['username'] = USERS_USERNAME_ERROR_EXISTS;
             }
         } else {
@@ -161,13 +160,13 @@ if (isset($_POST['updateUsername'])) {
         $errors['username'] = USERS_USERNAME_ERROR_EMPTY;
     }
 
-    // Si aucune erreur n'a été détectée, met à jour l'email de l'utilisateur
+    // Si aucune erreur n'a été détectée, met à jour le nom d'utilisateur de l'utilisateur
     if (empty($errors)) {
-        if ($user->updateUsername()) {
-            $success = USERS_USERNAME_UPDATE_SUCCESS;// afficher le message de succès au cas de réussite
+        if ($user->updateUserInfos()) {
+            $success = USERS_USERNAME_UPDATE_SUCCESS; // Afficher le message de succès en cas de réussite
+            $_SESSION['user']['username'] = $user->getUsername(); // Mettre à jour le nom d'utilisateur dans la session
         } else {
-            // sinon, afficher le message d'erreur de mise à jour au cas d'echec
-            $errors['updat'] = USERS_USERNAME_UPDATE_ERROR;
+            $errors['update'] = USERS_USERNAME_UPDATE_ERROR; // Sinon, afficher le message d'erreur de mise à jour en cas d'échec
         }
     }
 }
@@ -176,8 +175,8 @@ if (isset($_POST['updateUsername'])) {
 if (isset($_POST['updateEmail'])) {
     if (!empty($_POST['email'])) {
         if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $user->email = clean($_POST['email']);
-            if ($user->checkIfExistsByEmail() == 1 && $user->email != $_SESSION['user']['email']) {
+            $user->setEmail(clean($_POST['email']));
+            if ($user->checkIfExistsByEmail() == 1 && $user->getEmail() != $_SESSION['user']['email']) {
                 $errors['email'] = USERS_EMAIL_ERROR_EXISTS;
             }
         } else {
@@ -189,21 +188,21 @@ if (isset($_POST['updateEmail'])) {
 
     // Si aucune erreur n'a été détectée, met à jour l'email de l'utilisateur
     if (empty($errors)) {
-        if ($user->updateEmail()) {
-            $success = USERS_EMAIL_UPDATE_SUCCESS;// afficher le message de succès au cas de réussite
+        if ($user->updateUserInfos()) {
+            $success = USERS_EMAIL_UPDATE_SUCCESS; // Afficher le message de succès en cas de réussite
+            $_SESSION['user']['email'] = $user->getEmail(); // Mettre à jour l'email dans la session
         } else {
-            // sinon, afficher le message d'erreur de mise à jour au cas d'echec
-            $errors['update'] = USERS_EMAIL_UPDATE_ERROR;
+            $errors['update'] = USERS_EMAIL_UPDATE_ERROR; // Sinon, afficher le message d'erreur de mise à jour en cas d'échec
         }
     }
 }
 
-// Même logique que pour le "username" mais pour la location
+// Même logique que pour le "username" mais pour la localisation
 if (isset($_POST['updateLocation'])) {
     if (!empty($_POST['location'])) {
         if (preg_match($regex['name'], $_POST['location'])) {
-            $user->location = clean($_POST['location']);
-            if ($user->checkIfExistsByLocation() == 1 && $user->location != $_SESSION['user']['location']) {
+            $user->setLocation(clean($_POST['location']));
+            if ($user->checkIfExistsByLocation() == 1 && $user->getLocation() != $_SESSION['user']['location']) {
                 $errors['location'] = USERS_LOCATION_ERROR_EXISTS;
             }
         } else {
@@ -213,97 +212,89 @@ if (isset($_POST['updateLocation'])) {
         $errors['location'] = USERS_LOCATION_ERROR_EMPTY;
     }
 
+    // Si aucune erreur n'a été détectée, met à jour la localisation de l'utilisateur
     if (empty($errors)) {
-        if ($user->updateLocation()) {
-            $success = USERS_LOCATION_UPDATE_SUCCESS;// afficher le message de succès au cas de réussite
+        if ($user->updateUserInfos()) {
+            $success = USERS_LOCATION_UPDATE_SUCCESS; // Afficher le message de succès en cas de réussite
+            $_SESSION['user']['location'] = $user->getLocation(); // Mettre à jour la localisation dans la session
         } else {
-            // sinon, afficher le message d'erreur de mise à jour au cas d'echec
-            $errors['update'] = USERS_LOCATION_UPDATE_ERROR;
+            $errors['update'] = USERS_LOCATION_UPDATE_ERROR; // Sinon, afficher le message d'erreur de mise à jour en cas d'échec
         }
     }
 }
 
-// mis a jour de l'avatar
+// Mis à jour de l'avatar de l'utilisateur
 if (isset($_POST['updateAvatar'])) {
-    // Check if the avatar file is not empty
-    if (!empty($_FILES['avatar'])) {
-        
-        // Call the checkImage function to validate the uploaded avatar
+    // Vérifier si le fichier d'avatar n'est pas vide
+    if (!empty($_FILES['avatar']['name'])) {
+        // Appeler la fonction checkImage pour valider l'avatar téléchargé
         $imageMessage = checkImage($_FILES['avatar']);
 
-        // If there's an error message returned from checkImage function, assign it to $errors['avatar']
+        // S'il y a un message d'erreur retourné par la fonction checkImage, l'assigner à $errors['avatar']
         if ($imageMessage != '') {
             $errors['avatar'] = $imageMessage;
         } else {
-            // If the uploaded avatar is valid, proceed with further processing
-            $user->id = $_SESSION['user']['id'];
+            // Si l'avatar téléchargé est valide, procéder au traitement ultérieur
+            $user->fetchUserData($_SESSION['user']['id']); // Récupérer les données de l'utilisateur depuis la base de données
             $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-            $user->avatar = uniqid() . '.' . $extension;
+            $user->setAvatar(uniqid() . '.' . $extension); // Définir le nom du nouvel avatar
 
-            // Destination directory for avatar upload
-            $upload_dir = '../../assets/IMG/';
+            // Répertoire de destination pour le téléchargement de l'avatar
+            $upload_dir = '../../assets/IMG/users/';
 
-            // Check if avatar file already exists
-            while (file_exists($upload_dir . $user->avatar)) {
-                $user->avatar = uniqid() . '.' . $extension;
-            }
-
-            // Move uploaded file to the destination directory
-            if (move_uploaded_file($_FILES['avatar']['tmp_name'], $upload_dir . $user->avatar)) {
-                // Update user's avatar in the database
+            // Déplacer le fichier téléchargé vers le répertoire de destination
+            if (move_uploaded_file($_FILES['avatar']['tmp_name'], $upload_dir . $user->getAvatar())) {
+                // Mettre à jour l'avatar de l'utilisateur dans la base de données
                 if ($user->updateAvatar()) {
-                    $success = 'la photo profile vient d/être mis à jour avec succès';
+                    $success = 'La photo de profil a été mise à jour avec succès';
                 } else {
-                    // If database update fails, remove uploaded avatar
-                    unlink($upload_dir . $user->avatar);
-                    $errors['add'] = 'Réessayez encore car il y\eut une erreur';
+                    // En cas d'échec de la mise à jour de la base de données, supprimer l'avatar téléchargé
+                    unlink($upload_dir . $user->getAvatar());
+                    $errors['update'] = 'Une erreur est survenue lors de la mise à jour de la base de données';
                 }
             } else {
-                $errors['add'] = 'Une erreur est survenue';
+                $errors['update'] = 'Une erreur est survenue lors du téléchargement du fichier';
             }
         }
     }
 }
 
+// Mis à jour de la photo de couverture de l'utilisateur
 if (isset($_POST['updateCoverPicture'])) {
-    // Check if the avatar file is not empty
-    if (!empty($_FILES['image'])) {
-        // Call the checkImage function to validate the uploaded avatar
+    // Vérifier si le fichier de la photo de couverture n'est pas vide
+    if (!empty($_FILES['image']['name'])) {
+        // Appeler la fonction checkImage pour valider la photo de couverture téléchargée
         $imageMessage = checkImage($_FILES['image']);
 
-        // If there's an error message returned from checkImage function, assign it to $errors['avatar']
+        // S'il y a un message d'erreur retourné par la fonction checkImage, l'assigner à $errors['image']
         if ($imageMessage != '') {
             $errors['image'] = $imageMessage;
         } else {
-            // If the uploaded avatar is valid, proceed with further processing
-            $user->id = $_SESSION['user']['id'];
+            // Si la photo de couverture téléchargée est valide, procéder au traitement ultérieur
+            $user->fetchUserData($_SESSION['user']['id']); // Récupérer les données de l'utilisateur depuis la base de données
             $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-            $user->coverpicture = uniqid() . '.' . $extension;
+            $user->setCoverPicture(uniqid() . '.' . $extension); // Définir le nom de la nouvelle photo de couverture
 
-            // Destination directory for avatar upload
-            $upload_dir = '../../assets/IMG/';
+            // Répertoire de destination pour le téléchargement de la photo de couverture
+            $upload_dir = '../../assets/IMG/users/';
 
-            // Check if avatar file already exists
-            while (file_exists($upload_dir . $user->coverpicture)) {
-                $user->coverpicture = uniqid() . '.' . $extension;
-            }
-
-            // Move uploaded file to the destination directory
-            if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $user->coverpicture)) {
-                // Update user's avatar in the database
+            // Déplacer le fichier téléchargé vers le répertoire de destination
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $user->getCoverPicture())) {
+                // Mettre à jour la photo de couverture de l'utilisateur dans la base de données
                 if ($user->updateCoverPicture()) {
-                    $success = 'la banière d/être mis à jour avec succès';
+                    $success = 'La bannière a été mise à jour avec succès';
                 } else {
-                    // If database update fails, remove uploaded avatar
-                    unlink($upload_dir . $user->coverpicture);
-                    $errors['add'] = 'Réessayez encore car il y\eut une erreur';
+                    // En cas d'échec de la mise à jour de la base de données, supprimer la photo de couverture téléchargée
+                    unlink($upload_dir . $user->getCoverPicture());
+                    $errors['update'] = 'Une erreur est survenue lors de la mise à jour de la base de données';
                 }
             } else {
-                $errors['add'] = 'Une erreur est survenue';
+                $errors['update'] = 'Une erreur est survenue lors du téléchargement du fichier';
             }
         }
     }
 }
+
 
 
 // Suppression de l'utilisateur

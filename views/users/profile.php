@@ -2,9 +2,9 @@
 
     <div class="profileContainer ">
         
-    <?php foreach ($userAccount as $u) { ?>
+    
             <div class="avatarContainer" >
-                <img src="/assets/IMG/<?= $u->avatar ?>" alt="User Avatar" id="profileAvy">
+                <img src="/assets/IMG/users/<?= $userAccount->avatar ?>" alt="User Avatar" id="profileAvy">
                 <input type="submit" name="avy" id="imgModalBtn" class="overLay" value="modifier">
                 <!-- <button type="submit" name="open" id="imgModalBtn" class="overLay">modifier</button> -->
             </div>
@@ -13,7 +13,7 @@
                     <span id="imgClose">&times;</span>
                     <form action="/profil" method="post"  enctype="multipart/form-data">
                         <label for="avatar">Nouveau avatar</label>
-                        <input type="file" name="avatar" id="profileAvatar" value="<?= $u->avatar ?>" accept="image/*">
+                        <input type="file" name="avatar" id="profileAvatar" value="<?= $userAccount->avatar ?>" accept="image/*">
                         <?php if (isset($errors['avatar'])) { ?>
                                             <p id=errorsMessage><?= $errors['avatar'] ?></p>
                         <?php } ?>
@@ -23,7 +23,7 @@
             </div>
     
             <div class="coverContainer" action="/profil" method="post" enctype="multipart/form-data">
-                <img src="/assets/img/<?= $u->coverpicture ?>" alt="Cover Picture" id="cover-picture">
+                <img src="/assets/img/<?= $userAccount->coverpicture ?>" alt="Cover Picture" id="cover-picture">
                 <input type="submit" name="open" id="editCover" class="overLay" value="changer">
             </div>
             <div id="myModals" class="imgModals">
@@ -31,7 +31,7 @@
                     <span id="imgCloses">&times;</span>
                     <form action="/profil" method="post" enctype="multipart/form-data">
                         <label for="avatar">Nouvelle banière</label>
-                        <input type="file" name="image" id="profileBaniere" value="<?= $u->coverpicture ?>" accept="image/*" >
+                        <input type="file" name="image" id="profileBaniere" value="<?= $userAccount->coverpicture ?>" accept="image/*" >
                         <?php if (isset($errors['image'])) { ?>
                                             <p id=errorsMessage><?= $errors['image'] ?></p>
                         <?php } ?>
@@ -44,19 +44,18 @@
             <div class="userContainer">
                 <div class="infoUser">
                     <p>@
-                        <b><?= $u->username ?></b>,
+                        <b><?= $userAccount->username ?></b>,
                         <i class="fa-sharp fa-solid fa-location-dot fa-sm" style="color: white"></i>
-                        <b><?= $u->location ?></b>
+                        <b><?= $userAccount->location ?></b>
                         <small><a href="/modifier-mon-compte"> modifier tes infos </a></small>
                     </p>
                         <p>Posts: <span id="postCount"><b><?= $userTotalTopics ?></b></span></p>
                         <p>Likes: <span id="likeCount"><b>100</b></span></p>
-                        <p>Rank: <span id="rank"><b><?= $u->roleName ?></b></span></p>
+                        <p>Rank: <span id="rank"><b><?= $userAccount->roleName ?></b></span></p>
                         <p>Points: <span id="points"><b><? $userPoints ?></b></span></p>
-                        <p>Depuis <b><?= $u->registerDate ?></b></p>
+                        <p>Depuis <b><?= $userAccount->registerDate ?></b></p>
                 </div>
             </div>
-        <?php } ?>
 
     <div class="mainContainer">
         <aside class="asideBar">

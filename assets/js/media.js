@@ -1,41 +1,51 @@
-// document.getElementById('editCover').addEventListener('click', function() {
-//     document.getElementById('coverUpload').click();
-// });
+document.addEventListener("DOMContentLoaded", function () {
+    const fileUploadMedia = document.getElementById("fileUploadMedia");
+    const mediaList = document.getElementById("media-list");
 
-// document.getElementById('coverUpload').addEventListener('change', function() {
-//     var file = this.files[0];
-//     var reader = new FileReader();
+    fileUploadMedia.addEventListener("change", function () {
+        const files = this.files;
+        if (files.length > 0) {
+            mediaList.innerHTML = ""; // Clear existing list items
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const listItem = document.createElement("li");
+                const image = document.createElement("img");
+                image.src = URL.createObjectURL(file); // Set image source
+                image.alt = file.name; // Set alt text
+                listItem.appendChild(image); // Append image to list item
+                mediaList.appendChild(listItem); // Append list item to list
+            }
+        }
+    });
 
-//     reader.onload = function(e) {
-//         document.getElementById('cover-picture').src = e.target.result;
-//     };
+    const mediaForm = document.getElementById("mediaForm");
+    mediaForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent default form submission
+        const formData = new FormData(this);
 
-//     reader.readAsDataURL(file);
-// });
-
-// document.getElementById('editAvatar').addEventListener('click', function() {
-//     document.getElementById('avatarUpload').click();
-// });
-
-// document.getElementById('avatarUpload').addEventListener('change', function() {
-//     var file = this.files[0];
-//     var reader = new FileReader();
-
-//     reader.onload = function(e) {
-//         document.getElementById('profileAvy').src = e.target.result;
-//     };
-
-//     reader.readAsDataURL(file);
-// });
+        fetch("upload.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle response if needed
+            console.log(data);
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    });
+});
 
 
-//////////////////////////////////////////
-const mediaLink = document.getElementById('media-link');
-const mediaFolder = document.getElementById('media-folder');
+// const mediaLink = document.getElementById('media-link');
+// const mediaFolder = document.getElementById('media-folder');
 
-if (mediaLink != null) {
-    mediaLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        mediaFolder.classList.toggle('show-media-folder');
-    })
-};
+// if (mediaLink != null) {
+//     mediaLink.addEventListener('click', function (e) {
+//         e.preventDefault();
+//         mediaFolder.classList.toggle('show-media-folder');
+//     })
+// };
+

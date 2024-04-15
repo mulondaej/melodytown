@@ -104,7 +104,7 @@ if (isset($_POST['updateContent'])) { // Même logique que pour l'update de repl
     }
     if (empty($errors)) { // si les erreurs sont vides, alors mets le contenu du topic à jour dans la BDD
         $topic->id_users = $_SESSION['user']['id'];
-        if ($topic->updateContent()) {
+        if ($topic->setContent()) {
             $topic->content;
             $success = TOPIC_CONTENT_UPDATE_SUCCESS;
         } else {

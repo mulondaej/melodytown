@@ -1120,12 +1120,24 @@ header a {
     border-radius: 5px;
     background-color: #eff2f4;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: max-content;
+    width: 60%;
     margin-left: 10px;
+    position: relative;
+    margin: 0 auto;
 }
 
 #fileUploadMedia {
-    display: none;
+    
+}
+
+#mediaForm {
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+}
+
+#mediaForm input[type='file'] {
+    width: fit-content;
 }
 
 #uploadMediaBtn {
