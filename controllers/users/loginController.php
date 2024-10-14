@@ -23,12 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //Je vérifie que l'email est valide
         if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
             // Et je le stocke dans une variable
-            $user->email = $_POST['email'];
+            $user->setEmail(clean($_POST['email']));
 
             if (!$user->checkIfExistsByEmail()) {
                 $errors['email'] = $errors['password'] = 'Votre adresse mail ou votre mot de passe est incorrect';
             } else {
-                $user->password = $user->getPassword();
+                $user->setPAssword($user->getPassword());
             }
         } else {
             // Sinon, je remplis mon tableau d'erreurs
@@ -47,38 +47,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Si je n'ai aucune erreur
     if (empty($errors)) {
         // Je vérifie que l'email et le mot de passe correspondent à ceux stockés dans le tableau $credentials (plus tard, ce sera une requête SQL). S'il y a une erreur, je ne précise pas si c'est l'email ou le mot de passe qui est incorrect pour ne pas donner d'informations à un éventuel pirate.
-        if (!password_verify($password, $user->password)) {
+        if (!password_verify($password, $user->getPassword())) {
             $errors['email'] = $errors['password'] = 'Votre adresse mail ou votre mot de passe est incorrect';
         } else {
             // Si ma case "Se souvenir de moi" est cochée, je crée un cookie qui contient l'email et le mot de passe de l'utilisateur. Le cookie sera valable 60 secondes et accessible depuis tout le site.
             if (isset($_POST['remember'])) {
-                setcookie('email', $user->email, time() + 60, '/');
+                setcookie('email', $user->getEmail(), time() + 60, '/');
                 setcookie('password', $password, time() + 60, '/');
             }
 
-            /**
-             * Dans tous les cas, si les informations sont correctes, je crée une session qui contient les informations de l'utilisateur. Ici, je ne mets que quelques informations, mais je peux mettre toutes les informations que je veux (nom, prénom, rôle, etc.)
-             * Je ne stocke que des informations peu sensibles dans la session (pas de mot de passe, pas de numéro de carte bancaire, etc.)
-             * Ca me permettra de savoir si l'utilisateur est connecté ou non en vérifiant si la session existe ou non.
-             * Je peux aussi stocker l'id de l'utilisateur dans la session pour pouvoir faire des requêtes SQL avec.
-             * Ou vérifier s'il a le bon rôle pour accéder à certaines pages.
-             * Je peux également utiliser la session pour stocker des informations qui ne sont pas propres à l'utilisateur (par exemple, le panier d'un utilisateur non connecté).
-             */
             $_SESSION['user'] = $user->getInfosByEmail();
     
         }
-
-
-        // $recaptcha_secret = "YOUR_SECRET_KEY";
-        // $recaptcha_response = $_POST['g-recaptcha-response'];
-
-        // $verify_response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$recaptcha_secret}&response={$recaptcha_response}");
-        // $response_data = json_decode($verify_response);
-
-        // if (!$response_data->success) {
-        //     // si la verification de reCAPTCHA verification échoue, 
-        //     exit("le reCAPTCHA a échoué; veuillez recommencer svp.");
-        // }
 
         if($user->getInfosByEmail() && $user->getPassword()) {
             $success = '<p id=successMessage">Vous êtes connecté !</p>';
@@ -88,9 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('Location: /connexion');
             exit;
         }
-    }
-
-    
+    }  
 }
 
 $title = 'Connexion';
@@ -100,3 +78,17 @@ require_once '../../views/parts/header.php';
 require_once '../../views/users/login.php';
 require_once '../../views/parts/footer.php';
 ?>
+
+<script src="assets/js/recaptcha.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+<script>
+      function onClick(e) {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+          grecaptcha.execute('reCAPTCHA_site_key', {action: 'submit'}).then(function(token) {
+              // Add your logic to submit to your backend server here.
+          });
+        });
+      }
+  </script>
+

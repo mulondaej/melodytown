@@ -1,4 +1,10 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader if using Composer (otherwise, manually include PHPMailer files)
+require '../../vendor/autoload.php';
+
 class Users
 {
     private $pdo;
@@ -13,10 +19,10 @@ class Users
     private string $coverpicture;
     private int $id_usersRoles;
     private int $points;
-    private int $token;
+
+    private string $token;
+
     private int $verified;
-    private string $verificationDate;
-    private string $verificationToken;
 
     public function __construct()
     {
@@ -30,24 +36,15 @@ class Users
 
     public function create(): bool
     {
-        // Prepare the SQL query
-        $query = "INSERT INTO a8yk4_users (username, email, password, registerDate) 
-                  VALUES (:username, :email, :password, :NOW())";
-
-        // Prepare the req
-        $req = $this->pdo->prepare($query);
-
-        // Bind parameters
+        $sql = "INSERT INTO a8yk4_users (username, email, password, registerDate, `id_usersRoles`) 
+              VALUES (:username, :email, :password, NOW(), 1)";
+        $req = $this->pdo->prepare($sql);
         $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->bindValue(':email', $this->email, PDO::PARAM_STR);
         $req->bindValue(':password', $this->password, PDO::PARAM_STR);
-        $req->bindValue(':registerDate', $this->registerDate, PDO::PARAM_STR);
-
-        // Execute the req
-        $success = $req->execute();
-
-        return $success;
+        return $req->execute();
     }
+
 
     public function updateUserInfos(): bool
     {
@@ -90,10 +87,8 @@ class Users
         $this->coverpicture = $user['coverpicture'];
         $this->id_usersRoles = $user['id_usersRoles'];
         $this->points = $user['points'];
-        // $this->token = $user['token'];
+        $this->token = $user['token'];
         // $this->verified = $user['verified'];
-        // $this->verificationDate = $user['verificationDate'];
-        // $this->verificationToken = $user['verificationToken'];
     }
 
     /**
@@ -160,15 +155,15 @@ class Users
         return $this->avatar;
     }
 
-    public function getCoverpicture(): string
+    public function getCoverPicture(): string
     {
         return $this->coverpicture;
     }
 
-    // public function getEmail(): string
-    // {
-    //     return $this->email;
-    // }
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
 
     public function getLocation(): string
     {
@@ -184,6 +179,17 @@ class Users
     {
         return $this->points;
     }
+
+    public function getToken(): string
+    {
+        if (!$this->token) {
+            $this->token = bin2hex(random_bytes(32));
+        }
+        return $this->token;
+        ;
+    }
+
+
 
     //setters
     public function setId(int $id): void
@@ -241,24 +247,14 @@ class Users
         $this->points = $points;
     }
 
-    // public function setToken(int $token): void
-    // {
-    //     $this->token = $token;
-    // }
+    public function setToken(string $token): void
+    {
+        $this->token = $token;
+    }
 
     public function setVerified(int $verified): void
     {
         $this->verified = $verified;
-    }
-
-    public function setVerificationDate(string $verificationDate): void
-    {
-        $this->verificationDate = $verificationDate;
-    }
-
-    public function setVerificationToken(string $verificationToken): void
-    {
-        $this->verificationToken = $verificationToken;
     }
 
     /**
@@ -299,14 +295,14 @@ class Users
         return $req->fetchColumn();
     }
 
-    public function getEmail(): ?string
-    {
-        $sql = 'SELECT `email` FROM `a8yk4_users` WHERE `email`= :email';
-        $req = $this->pdo->prepare($sql);
-        $req->bindValue(':email', $this->email, PDO::PARAM_STR);
-        $req->execute();
-        return $req->fetchColumn();
-    }
+    // public function getEmail(): ?string
+    // {
+    //     $sql = 'SELECT `email` FROM `a8yk4_users` WHERE `email`= :email';
+    //     $req = $this->pdo->prepare($sql);
+    //     $req->bindValue(':email', $this->email, PDO::PARAM_STR);
+    //     $req->execute();
+    //     return $req->fetchColumn();
+    // }
 
     public function delete(): bool
     {
@@ -351,6 +347,55 @@ class Users
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function verificationEmail($email, $username)
+    {
+        $mail = new PHPMailer(true);
+
+
+        try {
+            // parametres de serveur
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';  // serveur SMTP  (e.g., Gmail SMTP)
+            $mail->SMTPAuth = true;              // autorisation de SMTP authentication
+            $mail->Username = 'mtjosue31@gmail.com';  // mon email address
+            $mail->Password = 'rzuhdpoopwczlaad';   // mon email password (considerer que je l'utilise)
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // autorisation de TLS encryption, `ssl` est aussi accepte
+            $mail->Port = 587;               // port TCP 
+            // TCP port to connect to
+            // Disable SSL certificate verification (quick fix)
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+
+            // Recipients
+            $mail->setFrom('mtjosue31@gmail.com', 'MelodyTown');
+            $mail->addAddress($email, $username);  // email de l'utilisateur
+
+            // Content
+            $mail->isHTML(true);  // remettre le format d'email en html
+            $mail->Subject = 'Verify Your Email';
+
+            // Creer un token unique
+            $this->token = uniqid();
+
+            // Sauvegarde de token
+
+            $verificationLink = "http://melodytown/verification?code=$this->token?account verified?";
+            $mail->Body = "Hi $username,<br><br>Thank you for registering. Please click the link below to verify your email address:<br><br>
+                              <a href='$verificationLink'>Verify Email</a>";
+
+            // envoie d'email
+            $mail->send();
+            echo 'Verification email sent.';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+
     // // updates
     /**
      * Mettre à jour le nom d'utilisateur, l'adresse ,le mail et la date de naissance 
@@ -363,7 +408,7 @@ class Users
 
 
     // les functions sql updates de location, email, username, password et avatar
-    public function updateLocation(): bool 
+    public function updateLocation(): bool
     {
         $sql = 'UPDATE `a8yk4_users` SET `location`=:location WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
@@ -417,43 +462,25 @@ class Users
         return $req->execute();
     }
 
-    // public function verifyAccount(): bool
-    // {
-    //     if (empty($this->token)) {
-    //         throw new \Exception("Le token est vide");
-    //     }
-    
-    //     // Vérification si le token existe dans la base de données
-    //     $selectQuery = $this->pdo->prepare('SELECT * FROM `a8yk4_emailvalidations` WHERE `id_users` = ? AND `token` = ?');
-    //     $selectQuery->execute([$this->id, sha1($this->token)]);
-    
-    //     // Si il n'y a pas d'enregistrement correspondant au token et à l'utilisateur, on renvoie false
-    //     if ($data = $selectQuery->fetch(PDO::FETCH_ASSOC)) {
-    //         // On supprime l'enregistrement de validation pour éviter une utilisation multiple du même token
-    //         $deleteQuery = $this->pdo->prepare('DELETE FROM `a8yk4_emailvalidations` WHERE `id_users` = ? AND `token` = ?');
-    //         $deleteQuery->execute([$data['id_users'], $data['token']]);
-    
-    //         $updateQuery = $this->pdo->prepare('UPDATE `users` SET `verified` = 1 WHERE `id` = ?');
-    //         $updateQuery->execute([$this->id]);
-    
-    //         return true;
-    //     }
-    //     return false;
-    // }
-    
-    // public function setTokens() : bool
-    // {
-    //     $this->token = bin2hex(random_bytes(64));
-    //     $date = date('Y-m 00:00:00');
-    //     $expirationDate = date('Y-m-d H:i:s', strtotime('+ 7 days'));
+    public function updateToken(): bool
+    {
+        $sql = 'UPDATE `a8yk4_users` SET `token`=:token WHERE `id` = :id';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':token', $this->token, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $req->execute();
+    }
 
-    //     $req = $this->pdo->prepare('INSERT INTO `a8yk4_emailvalidations` (`id_users`, `token`, `creationDate`, `expirationDate`) VALUES (:id_users, :token, :creationDate, :expirationDate)');
-    //     $req->bindValue(':id_users', $this->id);
-    //     $req->bindValue(':token', hash('sha512', $this->token . $date), \PDO::PARAM_STR);
-    //     $req->bindValue(':creationDate', $date);
-    //     $req->bindValue(':expirationDate', $expirationDate);
-    //     $req->execute();
-    // }
+    public function verified(): bool
+    {
+        $sql = 'UPDATE `a8yk4_users` SET `verified` = 1 WHERE `id_users` = :id_users';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':token', $this->token, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $req->execute();
+    }
+
+    
 
     //points 
     // public function setPoints()

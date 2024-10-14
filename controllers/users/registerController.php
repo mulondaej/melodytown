@@ -1,39 +1,46 @@
 <?php
 
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\Exception;
+
+// require '../../vendor/autoload.php';
+
+// require_once '../../php.ini';
+
 // les models de site et les utils
 require_once '../../models/usersModel.php';
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
-require_once '../../controllers/users/sendMail.php';
+// require_once 'sendMail.php';
 
 session_start();
 
-// $token = rand();
+$errors = [];
 
-
-
-// si la requete est de type POST (envoi du formulaire), on l'traite
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $user = new Users(); // création d'un nouvel utilisateur
+    $user = new Users();
+    // $token = bin2hex(random_bytes(50));
+// $sendMail = new sendEmail;
 
-    if (!empty ($_POST['username'])) { // si la case de nom n'est pas vide
-        if (preg_match($regex['name'], $_POST['username'])) { // si le nom est valide, on l'ajoute le utilisateur
-            $user->username = clean($_POST['username']); // on récupère le nom de l'utilisateur en le nettoyant
-            if ($user->checkIfExistsByUsername() == 1) {    // on récupère le nombre de résultats (=1 si il existe, sinon 0)
-                $errors['username'] = USERS_USERNAME_ERROR_EXISTS; // sinon, afficher le message d'erreur
+    // Validate username
+    if (!empty($_POST['username'])) {
+        if (preg_match($regex['name'], $_POST['username'])) {
+            $user->setUsername(clean($_POST['username']));
+            if ($user->checkIfExistsByUsername() == 1) {
+                $errors['username'] = USERS_USERNAME_ERROR_EXISTS;
             }
         } else {
-            $errors['username'] = USERS_USERNAME_ERROR_INVALID; // sinon, afficher le message d'erreur invalide
+            $errors['username'] = USERS_USERNAME_ERROR_INVALID;
         }
     } else {
-        $errors['username'] = USERS_USERNAME_ERROR_EMPTY;   // sinon, afficher le message d'erreur vides
+        $errors['username'] = USERS_USERNAME_ERROR_EMPTY;
     }
 
-    // même logique de nom pour l'addresse mail
-    if (!empty ($_POST['email'])) {
-        if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) { // si l'adresse email est valide
-            $user->email = clean($_POST['email']);
+    // Validate email
+    if (!empty($_POST['email'])) {
+        if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            $user->setEmail(clean($_POST['email']));
             if ($user->checkIfExistsByEmail() == 1) {
                 $errors['email'] = USERS_EMAIL_ERROR_EXISTS;
             }
@@ -44,12 +51,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors['email'] = USERS_EMAIL_ERROR_EMPTY;
     }
 
-    // même logique de nom pour le mot de passe mais avec hashement du password ou mot de passe
-    if (!empty ($_POST['password'])) {
+    // Validate password
+    if (!empty($_POST['password'])) {
         if (preg_match($regex['password'], $_POST['password'])) {
-            if (!empty ($_POST['password_confirm'])) {
+            if (!empty($_POST['password_confirm'])) {
                 if ($_POST['password'] == $_POST['password_confirm']) {
-                    $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT); // on hash le mot de passe
+                    $user->setPassword(password_hash($_POST['password'], PASSWORD_DEFAULT));
                 } else {
                     $errors['password_confirm'] = USERS_PASSWORD_CONFIRM_ERROR_INVALID;
                 }
@@ -63,31 +70,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors['password'] = USERS_PASSWORD_ERROR_EMPTY;
     }
 
-    // si les erreurs sont vides, l'utilisateur sera ajouté dans le BDD et inscrit dans le forum
-    if (empty ($errors)) {
+    // si il n'y'a pas des erreurs :
+    if (empty($errors)) {
         if ($user->create()) {
-
-            // Store the verification token in the user's record
-            $user->token = bin2hex(random_bytes(64));
-            $user->save(); // Assuming 'save' method saves the user data to the database
-
             // Send verification email
-            $to = $user->email; // Assuming you have an 'email' property in your $user object
-            $subject = 'Confirm your registration';
-            $message = 'Click the following link to confirm your registration: <a href="https://melodytown/verification?token=' . $verification_token . '">Verify Email</a>';
-            $headers = 'From: mailfrom:kibongatsho31@gmail.com' . "\r\n" .
-                'Content-type: text/html; charset=UTF-8' . "\r\n";
+            if($user->verificationEmail($user->getEmail(), $user->getUsername()) == true) {
 
-            // Send the email
-            mail($to, $subject, $message, $headers);
+            // $user->updateToken();
+            };
 
-            // Provide feedback to the user
-            $success = '<p id="successMessage">Bienvenue! Un email de confirmation a été envoyé à votre adresse email. Veuillez vérifier votre boîte de réception pour terminer votre inscription.</p>';
-            $success = '<p id=successMessage">Bienvenue! Vous êtes bel et bien inscript dans le forum. 
-            <br>Vous pouvez vous <a href="/connexion"> connecter maintenant </a></p>';
+
+            // //$sendMail->send($code);
+            $success = '<p id="successMessage">Bienvenue! Un email de confirmation a été envoyé à votre adresse email. 
+            Veuillez vérifier votre boîte de réception pour terminer votre inscription.</p>';
+        } else {
+            $success = $errors;
         }
     }
 }
+
 
 $title = 'Inscription'; // titre de la page
 

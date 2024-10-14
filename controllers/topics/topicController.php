@@ -1,6 +1,8 @@
 <?php
 
 // les models de site et les utils
+require_once '../../models/usersModel.php' ;
+require_once '../../models/likesModel.php' ;
 require_once "../../models/topicsModel.php";
 require_once "../../models/topicsRepliesModel.php";
 require_once '../../utils/regex.php';
@@ -8,6 +10,13 @@ require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
 
 session_start(); // démarrage de la session
+
+$user = new Users;
+
+if(!empty($_SESSION['user'])) {
+$user->fetchUserData($_SESSION['user']['id']);
+$userAccount = $user->getById();
+}
 
 $topic = new Topics();
 
@@ -23,6 +32,15 @@ $replies = new Replies();
 $replies->id_topics = (int) $_GET['id']; // on récupère l'id du topic
 
 $replies->id_users = (int) $_GET['id']; // on récupère l'id de l'utilisateur qui a posté ce commentaire
+
+
+$likes = new Likes();
+$likes->id_topics = (int) $_GET['id'];
+$likes->id_topicreplies = (int) $_GET['id']; 
+$likes->id_comments = (int) $_GET['id'];
+$likes->id_status = (int) $_GET['id'];
+$likes->id_users = (int) $_GET['id']; 
+
 
 
 // si la requete est de type POST (envoi du formulaire), on l'traite
@@ -46,6 +64,28 @@ if (isset($_POST['reply'])) {
             $success = TOPICS_REPLIES_SUCCESS;
         } else {
             $errors['add'] = TOPICS_REPLIES_ERROR;
+        }
+    }
+}
+
+if (isset($_POST['liked'])) {
+    if (!empty($_POST['liked'])) { // si le contenu n'est pas vide
+        if (!preg_match($regex['content'], $_POST['liked'])) {
+            $likes->id_topics = $_POST['liked']; // si le contenu est valide, on l'ajoute le reply
+        } else {
+            $errors['content'] = TOPICS_REPLIES_ERROR; // sinon, afficher le message d'erreur 
+        }
+    } else {
+        $errors['content'] = TOPICS_REPLIES_ERROR; // sinon, afficher le message d'erreur 
+    }
+
+    // si les erreurs sont vides, alors on ajoute les réponses($replies)
+    if (empty($errors)) {
+        if ($likes->create()) {
+            $likes->id_topics = "liked";
+            $success = "Liked";
+        } else {
+            $errors['add'] = "error";
         }
     }
 }
@@ -104,7 +144,7 @@ if (isset($_POST['updateContent'])) { // Même logique que pour l'update de repl
     }
     if (empty($errors)) { // si les erreurs sont vides, alors mets le contenu du topic à jour dans la BDD
         $topic->id_users = $_SESSION['user']['id'];
-        if ($topic->setContent()) {
+        if ($topic->updateContent()) {
             $topic->content;
             $success = TOPIC_CONTENT_UPDATE_SUCCESS;
         } else {
@@ -138,7 +178,7 @@ $title = $topicsDetails->title; // Titre de la page sera le nom du topic
 //  Inclusion des fichiers: header, du view et du footer
 require_once '../../views/parts/header.php';
 require_once '../../views/topics/topic.php';
-require_once '../../views/replies/topicReplies.php';
+// require_once '../../views/replies/topicReplies.php';
 require_once '../../views/parts/footer.php';
 ?>
 

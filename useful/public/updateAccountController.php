@@ -20,7 +20,7 @@ if (!isset($_SESSION['user'])) {
 
 // établissement des variables pour accéder aux données des modèles 
 $user = new Users;
-$user->userId = $_SESSION['user']['id'];
+$user->id = $_SESSION['user']['id'];
 
 $topic = new Topics;
 
@@ -95,7 +95,7 @@ if (isset($_POST['updateInfos'])) {
 
     // Si aucune erreur n'a été détectée, met à jour les informations de l'utilisateur
     if (empty($errors)) {
-        if ($user->setUserInfos()) {
+        if ($user->updateUserInfos()) {
             // Met à jour les informations de l'utilisateur dans la session
             $_SESSION['user']['username'] = $user->username;
             $_SESSION['user']['email'] = $user->email;
@@ -137,7 +137,7 @@ if (isset($_POST['updatePassword'])) {
 
     // Si aucune erreur n'a été détectée, met à jour le mot de passe de l'utilisateur
     if (empty($errors)) {
-        if ($user->setPassword()) {
+        if ($user->updatePassword()) {
             $success = USERS_PASSWORD_UPDATE_SUCCESS;// afficher le message de succès au cas de réussite
         } else {
             // sinon, afficher le message d'erreur de mise à jour au cas d'echec
@@ -163,7 +163,7 @@ if (isset($_POST['updateUsername'])) {
 
     // Si aucune erreur n'a été détectée, met à jour l'email de l'utilisateur
     if (empty($errors)) {
-        if ($user->setUsername()) {
+        if ($user->updateUsername()) {
             $success = USERS_USERNAME_UPDATE_SUCCESS;// afficher le message de succès au cas de réussite
         } else {
             // sinon, afficher le message d'erreur de mise à jour au cas d'echec
@@ -189,7 +189,7 @@ if (isset($_POST['updateEmail'])) {
 
     // Si aucune erreur n'a été détectée, met à jour l'email de l'utilisateur
     if (empty($errors)) {
-        if ($user->setEmail()) {
+        if ($user->updateEmail()) {
             $success = USERS_EMAIL_UPDATE_SUCCESS;// afficher le message de succès au cas de réussite
         } else {
             // sinon, afficher le message d'erreur de mise à jour au cas d'echec
@@ -214,7 +214,7 @@ if (isset($_POST['updateLocation'])) {
     }
 
     if (empty($errors)) {
-        if ($user->setLocation()) {
+        if ($user->updateLocation()) {
             $success = USERS_LOCATION_UPDATE_SUCCESS;// afficher le message de succès au cas de réussite
         } else {
             // sinon, afficher le message d'erreur de mise à jour au cas d'echec
@@ -236,7 +236,7 @@ if (isset($_POST['updateAvatar'])) {
             $errors['avatar'] = $imageMessage;
         } else {
             // If the uploaded avatar is valid, proceed with further processing
-            $user->fetchUserData($_SESSION['user']['id']);
+            $user->id = $_SESSION['user']['id'] ;
             $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
             $user->avatar = uniqid() . '.' . $extension;
 
@@ -251,7 +251,7 @@ if (isset($_POST['updateAvatar'])) {
             // Move uploaded file to the destination directory
             if (move_uploaded_file($_FILES['avatar']['tmp_name'], $upload_dir . $user->avatar)) {
                 // Update user's avatar in the database
-                if ($user->setAvatar()) {
+                if ($user->updateAvatar()) {
                     $success = 'la photo profile vient d/être mis à jour avec succès';
                 } else {
                     // If database update fails, remove uploaded avatar
@@ -276,7 +276,7 @@ if (isset($_POST['updateCoverPicture'])) {
             $errors['image'] = $imageMessage;
         } else {
             // If the uploaded avatar is valid, proceed with further processing
-            $user->fetchUserData($_SESSION['user']['id']);
+            $user->id = $_SESSION['user']['id'];
             $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
             $user->coverpicture = uniqid() . '.' . $extension;
 
@@ -291,7 +291,7 @@ if (isset($_POST['updateCoverPicture'])) {
             // Move uploaded file to the destination directory
             if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $user->coverpicture)) {
                 // Update user's avatar in the database
-                if ($user->setCoverPicture()) {
+                if ($user->updateCoverPicture()) {
                     $success = 'la banière d/être mis à jour avec succès';
                 } else {
                     // If database update fails, remove uploaded avatar

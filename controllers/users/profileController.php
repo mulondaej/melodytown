@@ -20,8 +20,10 @@ if (empty ($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
 
 // établissement des variables pour accéder aux données des modèles 
 $user = new Users;
-$user->fetchUserData($_SESSION['user']['id']);
-$userAccount = $user->getById(); 
+if(!empty($_SESSION['user'])) {
+    $user->fetchUserData($_SESSION['user']['id']);
+    $userAccount = $user->getById();
+    }
 
 $status = new Status;
 
@@ -253,7 +255,7 @@ if (count($userTopics) > 0) {
 
 //replies
 $replies = new Replies;
-$replies->id_users = $_SESSION['user']['id'];
+$replies->id_users =$_SESSION['user']['id'] ;
 
 foreach ($userTopics as $key => $post) {
     $replies->id_topics = $post['id'];

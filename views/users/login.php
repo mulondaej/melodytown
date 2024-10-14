@@ -43,5 +43,3 @@
         <hr> Ou <a href="/inscription"><i class="fa-solid fa-circle-arrow-right"> S'enregistrer </i></a>
     </form>
 </section>
-
-<script src="assets/js/recaptcha.js"></script>

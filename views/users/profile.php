@@ -1,7 +1,6 @@
 <main class="mainbox">
 
     <div class="profileContainer ">
-        
     
             <div class="avatarContainer" >
                 <img src="/assets/IMG/users/<?= $userAccount->avatar ?>" alt="User Avatar" id="profileAvy">
@@ -23,8 +22,10 @@
             </div>
     
             <div class="coverContainer" action="/profil" method="post" enctype="multipart/form-data">
-                <img src="/assets/img/<?= $userAccount->coverpicture ?>" alt="Cover Picture" id="cover-picture">
+                
+                <img src="/assets/IMG/users/<?= $userAccount->coverpicture ?>" alt="" id="cover-picture">
                 <input type="submit" name="open" id="editCover" class="overLay" value="changer">
+                
             </div>
             <div id="myModals" class="imgModals">
                 <div id="imgModalContents">

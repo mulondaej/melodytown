@@ -179,7 +179,7 @@ class Topics
         return $req->fetch(PDO::FETCH_OBJ);
     }
 
-    public function getCategories()
+    public function getCategorie()
     {
         $sql = 'SELECT c.`id`, c.`name`, t.`id`, t.`title`, `u`.`username`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
         FROM  `a8yk4_topics` AS `t`
@@ -191,7 +191,7 @@ class Topics
     }
     
 
-    public function setNewUser()
+    public function changeUsers()
     {
         $sql = "UPDATE `a8yk4_topics` SET `id_users` = :id_users WHERE id = :id";
         $req = $this->pdo->prepare($sql);
@@ -212,7 +212,7 @@ class Topics
         return $req->execute();
     }
 
-    public function setContent() //update de contenu dans la BDD sans toucher au reste des champs
+    public function updateContent() //update de contenu dans la BDD sans toucher au reste des champs
     {
         $sql = 'UPDATE `a8yk4_topics` SET `content`=:content, `updateDate` = NOW()
         WHERE `id` = :id';

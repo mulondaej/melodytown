@@ -1,8 +1,5 @@
 <?php
 
-session_start();
-
-
 require_once "../../models/usersModel.php" ;
 require_once "../../models/forumModel.php" ;
 require_once "../../models/statusModel.php";
@@ -18,15 +15,16 @@ require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
 
 
-// if (empty($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
-//     header('Location: /accueil'); // le rediriger vers la page d'accueil
-//     exit;
-// }
+session_start();
 
 $user = new Users;
 
-$latestUser = $user->getLatestUser();
+if(!empty($_SESSION['user'])) {
+    $user->fetchUserData($_SESSION['user']['id']);
+    $userAccount = $user->getById();
+    }
 
+$latestUser = $user->getLatestUser();
 $userDetails = $user->getList();
 $userCount = count($userDetails);
 
@@ -34,7 +32,6 @@ $forums = new Forums;
 
 $categories = new Categories;
 $categoriesList = $categories->getList();
-
 
 
 $tags = new Tags;
@@ -48,16 +45,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
     if (!empty($_POST['title'])) { // si le titre n'est pas vide
         if (preg_match($regex['title'], $_POST['title'])) { // si le titre n'est pas vide
             $topic->title = clean($_POST['title']); // on récupère le titre en le nettoyant
-        } 
-    } else {
-        $errors['title'] = TOPICS_TITLE_ERROR; // sinon, afficher le message d'erreur 
+        } else {
+            $errors['title'] = TOPICS_TITLE_ERROR; // sinon, afficher le message d'erreur 
+        }
     }
 
     // même logique de titre pour le contenu mais avec une regex plus large
     if (!empty($_POST['content'])) {
         if (!preg_match($regex['content'], $_POST['content'])) {
             $topic->content = trim($_POST['content']);
-        } 
+        }
     } else {
         $errors['content'] = TOPICS_CONTENT_ERROR;
     }
@@ -73,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
     } else {
         $errors['categories'] = TOPICS_CATEGORIES_ERROR_EMPTY;
     }
-    
+
     // même logique pour les tags
     if (!empty($_POST['tag'])) {
         $tags->id = $_POST['tag'];
@@ -97,10 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
         } else {
             $errors['add'] = TOPICS_ERROR;
         }
-    } else {
-        $errors['add'] = TOPICS_ERROR;
     }
-
 }
 
 // $subcategories = new subcategories;
@@ -146,3 +140,5 @@ require_once('../../views/parts/footer.php');
 ?>
 
 <script src="../../assets/js/topic.js"></script>
+<script src="../../ \
+"></script>

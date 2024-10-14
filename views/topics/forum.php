@@ -75,8 +75,7 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i> 
                     </div>
                     <div class="subforum-description subforum-column">
-                    <?php if (isset($categoriesList)) {  ?>
-                        <h4><a href="/topics-par-categories"><?= $c->name ?> </a></h4>
+                        <h4><a href="/topics-par-categories">Bleach </a></h4>
                         
                         <div>
                             <h6><a href="/topics-par-categories">Discussions</a></h6>
@@ -118,7 +117,7 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics-par-categories"><?= $c->name ?> </a></h4>
+                        <h4><a href="/topics-par-categories"> Naruto  </a></h4>
                         <div>
                             <h6><a href="/topics-par-categories">Discussions</a></h6>
                             <h6><a href="/topics-par-categories">Théories</a></h6>
@@ -159,7 +158,7 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics-par-categories"><?= $c->name ?> </a></h4>
+                        <h4><a href="/topics-par-categories">One Piece  </a></h4>
                         <div>
                             <h6><a href="/topics-par-categories">Discussions</a></h6>
                             <h6><a href="/topics-par-categories">Théories</a></h6>
@@ -194,7 +193,7 @@
                         <?php } ?>
                     </div>
                 </div>
-                <?php } ?>
+
                 <hr class="subforum-devider">
                 <div class="subforum-row">
                     <div class="subforum-icon subforum-column ">

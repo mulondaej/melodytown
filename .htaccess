@@ -4,10 +4,14 @@ RewriteEngine On
 RewriteRule ^$ /controllers/pages/indexController.php
 RewriteRule ^accueil$ /controllers/pages/indexController.php
 RewriteRule ^contact$ /controllers/pages/contactController.php
+RewriteRule ^inbox$ /controllers/pages/inboxController.php
+RewriteRule ^alerts$ /controllers/pages/alertsController.php
+# RewriteRule ^chatsList$ /controllers/pages/contactController.php
+RewriteRule ^chat-([0-9]+)$ /controllers/pages/chatController.php?id=$1
 
 #USERS
 RewriteRule ^inscription$ /controllers/users/registerController.php
-RewriteRule ^verification$ /views/users/verify.php
+RewriteRule ^verification$ /controllers/users/confirmationMail.php
 RewriteRule ^connexion$ /controllers/users/loginController.php
 RewriteRule ^media$ /controllers/users/mediaController.php
 RewriteRule ^deconnexion$ /controllers/users/logoutController.php
