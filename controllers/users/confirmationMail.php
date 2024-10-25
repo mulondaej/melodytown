@@ -12,31 +12,17 @@ $user = new Users();
 
 $user->__construct();
 
-// if (isset($_GET['token'])) {
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get the verification code from the POST request
-    $verificationCode = $_POST['token'];
-    $user->setToken($_GET['token']);
 
-    $req = $this->pdo->prepare("SELECT * FROM a8yk4_users WHERE token=? LIMIT 1");
-    $req->bind_param("s", $user->getToken());
-    $req->execute();
-    $result = $req->get_result();
-    if ($result->num_rows > 0) {
-        $user->getById($result->fetch_assoc());
-        $req->close();
-        $req = $this->pdo->prepare("UPDATE a8yk4_users SET verified=1, token=NULL WHERE id=?");
-        $req->bind_param("i", $user['id']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['verification_token']) && isset($_POST['verification_code'])) {
+    $verificationToken = $_POST['verification_token'];
+    $verificationCode = $_POST['verification_code'];
 
-        if ($req->execute() === TRUE) {
-            echo "Email verification successful!";
-        } else {
-            echo "Error: " . $this->pdo->error;
-        }
-        $req->close();
-    } else {
-        echo "Invalid token!";
-    }
+    // Perform the account verification
+    $response = $user->verifyAccount($this->pdo, $verificationToken, $verificationCode);
+
+    // Return JSON response
+    header('Content-Type: application/json');
+    echo json_encode($response);
 }
 
 // $this->pdo->close();

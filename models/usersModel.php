@@ -247,10 +247,27 @@ class Users
         $this->points = $points;
     }
 
-    public function setToken(string $token): void
-    {
-        $this->token = $token;
+    // public function setToken(string $token): void
+    // {
+    //     $this->token = $token;
+    // }
+
+    public function setToken($token) {
+        $sql = 'SELECT id, verified FROM a8yk4_users WHERE token = :token';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':token', $token, PDO::PARAM_STR);
+        $req->execute();
+    
+        $user = $req->fetch(PDO::FETCH_ASSOC);
+    
+        if ($user && $user['verified'] == 0) {
+            $this->id = $user['id'];
+            $this->token = $token;
+            return true;
+        } 
+        return false;
     }
+    
 
     public function setVerified(int $verified): void
     {
@@ -386,13 +403,55 @@ class Users
 
             $verificationLink = "http://melodytown/verification?code=$this->token?account verified?";
             $mail->Body = "Hi $username,<br><br>Thank you for registering. Please click the link below to verify your email address:<br><br>
-                              <a href='$verificationLink'>Verify Email</a>";
+                              <a href='$verificationLink'>". $this->token . "<br>Verify Email</a>";
 
             // envoie d'email
             $mail->send();
             echo 'Verification email sent.';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+
+    public function clickedMail() {
+        // $this->token = $_GET['code'];
+        $sql = 'UPDATE a8yk4_users SET verified = 1 WHERE id = :id AND token = :token';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':token', $this->token, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+    
+        return $req->execute() && $req->rowCount() > 0;
+        if (!$req->execute()) {
+            print_r($req->errorInfo());
+        }
+        // if ($req->execute()) {
+        //     // verifie si le column a été modifié
+        //     return $req->rowCount() > 0;
+        // }
+        // // si l'execution echoue, return false
+        // return false;
+    }
+    public function verifyAccount() {
+        // Fetch user by token
+        $req = $this->pdo->prepare('SELECT id, verified, token FROM a8yk4_users WHERE token = :token');
+        $req->bindValue(':token', $this->token, PDO::PARAM_STR);
+        $req->execute();
+        $user = $req->fetch(PDO::FETCH_ASSOC);
+    
+        // If no user found or already verified, return error
+        if (!$user || $user['verified'] == 1) {
+            return ['success' => false, 'message' => 'Invalid or already verified token.'];
+        }
+    
+        // Update the user's verified status
+        $req = $this->pdo->prepare('UPDATE a8yk4_users SET verified = 1 WHERE token = :token');
+        $req->bindValue(':token', $this->token, PDO::PARAM_STR);
+        $result = $req->execute();
+    
+        if ($result) {
+            return ['success' => true];
+        } else {
+            return ['success' => false, 'message' => 'Failed to update verification status.'];
         }
     }
 
@@ -462,26 +521,7 @@ class Users
         return $req->execute();
     }
 
-    public function updateToken(): bool
-    {
-        $sql = 'UPDATE `a8yk4_users` SET `token`=:token WHERE `id` = :id';
-        $req = $this->pdo->prepare($sql);
-        $req->bindValue(':token', $this->token, PDO::PARAM_STR);
-        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
-        return $req->execute();
-    }
-
-    public function verified(): bool
-    {
-        $sql = 'UPDATE `a8yk4_users` SET `verified` = 1 WHERE `id_users` = :id_users';
-        $req = $this->pdo->prepare($sql);
-        $req->bindValue(':token', $this->token, PDO::PARAM_STR);
-        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
-        return $req->execute();
-    }
-
     
-
     //points 
     // public function setPoints()
     // {

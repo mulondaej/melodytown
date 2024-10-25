@@ -1,4 +1,38 @@
 /*...*/
+
+.breadcrumb {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+.breadcrumb li {
+    margin: 0 5px;
+}
+.breadcrumb li a {
+    text-decoration: none;
+    color: #3498db;
+}
+.breadcrumb li.active a {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.commente {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.pagination-controls {
+    margin-top: 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
 /* CREATE BTNS */
 #threadForm {
     max-width: 310px;

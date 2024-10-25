@@ -88,7 +88,8 @@
                         <?php if (isset($success)) { ?>
                                     <p class="successContainer" id="successMessage"> <?= $success ?></p>
                         <?php } ?>
-
+                        
+                           
                         <form action="#" method="POST" id="postStatus">
                             <textarea name="content" id="postHere" ></textarea>
                             <input type="submit" id="posted" value="post" name="addStatus">
@@ -98,10 +99,12 @@
                         </form>
 
                         <div class="statusContainer">
+                        
 
                             <?php if (count($userStatus) == 0) { ?>
                                         <p class="errorsMessage">No status available</p>
                             <?php } else { ?>
+                                
                                     <?php foreach ($userStatus as $personalStatus) { ?>
 
                                                 <div class="status" id="status">

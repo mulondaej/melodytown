@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class Replies {
+class Replies
+{
 
     private $pdo;
     public int $id;
@@ -10,6 +11,12 @@ class Replies {
     public string $username;
     public int $id_users;
     public int $id_topics;
+    public int $page;
+    public int $repliesPerPage;
+    public int $offset;
+    public int $totalPages;
+    public int $repliesListe;
+    public int $totalReplies;
 
     public function __construct()
     {
@@ -21,13 +28,13 @@ class Replies {
     }
 
     public function checkIfExistsByContent()
-        {
-            $sql = 'SELECT COUNT(content) FROM `a8yk4_topicreplies` WHERE `content` = :content';
-            $req = $this->pdo->prepare($sql);
-            $req->bindValue(':content', $this->content, PDO::PARAM_STR);
-            $req->execute();
-            return $req->fetch(PDO::FETCH_COLUMN);
-        }
+    {
+        $sql = 'SELECT COUNT(content) FROM `a8yk4_topicreplies` WHERE `content` = :content';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':content', $this->content, PDO::PARAM_STR);
+        $req->execute();
+        return $req->fetch(PDO::FETCH_COLUMN);
+    }
 
     public function create() // ajout de réponses pour le topic dans la base de données
     {
@@ -61,8 +68,8 @@ class Replies {
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         $req->execute();
         return $req->fetch(PDO::FETCH_OBJ);
-    } 
-    
+    }
+
     public function getReply()
     {
         $sql = 'SELECT *, `u`.`username`, DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`
@@ -84,7 +91,7 @@ class Replies {
         return $req->fetch(PDO::FETCH_ASSOC);
     }
 
-    
+
     public function getRepliesByTopics()
     {
         $sql = 'SELECT `r`.`id`,`content`, 
@@ -112,6 +119,33 @@ class Replies {
         ORDER BY `publicationDate` DESC';
         $req = $this->pdo->query($sql);
         return $req->fetchAll(PDO::FETCH_OBJ);
+        // $this->totalPages = ceil($this->totalReplies / $this->repliesPerPage);
+    }
+
+
+    public function repliesLimit()
+    {
+        // $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+        // $repliesPerPage = 15;
+        // $offset = ($page - 1) * $repliesPerPage;
+
+        $query = "SELECT * FROM a8yk4_topicreplies WHERE id_topics = :id_topics ORDER BY publicationDate LIMIT :limit OFFSET :offset";
+        $req = $this->pdo->prepare($query);
+        $req->bindValue(':id_topics', $this->id_topics, PDO::PARAM_INT);
+        $req->bindValue(':limit', $this->repliesPerPage, PDO::PARAM_INT);
+        $req->bindValue(':offset', $this->offset, PDO::PARAM_INT);
+        $req->execute();
+        $this->repliesListe = $req->fetchAll();
+    }
+
+    public function getPage()
+    {
+        $totalRepliesQuery = "SELECT COUNT(*) FROM a8yk4_topicreplies WHERE id_topics = :id_topics";
+        $req = $this->pdo->prepare($totalRepliesQuery);
+        $req->bindValue(':id_topics', $this->id_topics, PDO::PARAM_INT);
+        $req->execute();
+        $this->totalReplies = $req->fetchColumn();
+        $this->totalPages = ceil($this->totalReplies / $this->repliesPerPage);
     }
 
     public function update() // update de la réponse

@@ -1,15 +1,15 @@
 <?php
 
 // les models de site et les utils
-require_once '../../models/usersModel.php' ;
-require_once '../../models/forumModel.php' ;
+require_once '../../models/usersModel.php';
+require_once '../../models/forumModel.php';
 require_once '../../models/statusModel.php';
-require_once '../../models/topicsRepliesModel.php' ;
-require_once '../../models/commentsModel.php' ;
+require_once '../../models/topicsRepliesModel.php';
+require_once '../../models/commentsModel.php';
 require_once '../../models/topicsModel.php';
 require_once '../../models/categoriesModel.php';
 require_once '../../models/tagsModel.php';
-require_once '../../models/sectionsModel.php' ;
+require_once '../../models/sectionsModel.php';
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
@@ -19,9 +19,9 @@ session_start();
 // établissement des variables pour accéder aux données des modèles 
 $user = new Users;
 
-if(!empty($_SESSION['user'])) {
-$user->fetchUserData($_SESSION['user']['id']);
-$userAccount = $user->getById();
+if (!empty($_SESSION['user'])) {
+    $user->fetchUserData($_SESSION['user']['id']);
+    $userAccount = $user->getById();
 }
 
 $latestUser = $user->getLatestUser();
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
     // on récupère les données du formulaire
     if (!empty($_POST['title'])) { // si le titre n'est pas vide
         if (preg_match($regex['title'], $_POST['title'])) { // si le titre n'est pas vide
-            $topic->setTitle(clean($_POST['title'])); // on récupère le titre en le nettoyant
+            $topic->title = clean($_POST['title']); // on récupère le titre en le nettoyant
         } else {
             $errors['title'] = TOPICS_TITLE_ERROR; // sinon, afficher le message d'erreur 
         }
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
     // même logique de titre pour le contenu mais avec une regex plus large
     if (!empty($_POST['content'])) {
         if (!preg_match($regex['content'], $_POST['content'])) {
-            $topic->setContent(trim($_POST['content']));
+            $topic->content = trim($_POST['content']);
         }
     } else {
         $errors['content'] = TOPICS_CONTENT_ERROR;
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
     if (!empty($_POST['categories'])) {
         $categories->id = $_POST['categories'];
         if ($categories->checkIfExistsById() == 1) {
-            $topic->setIdCategories(clean($_POST['categories']));
+            $topic->id_categories = clean($_POST['categories']);
         } else {
             $errors['categories'] = TOPICS_CATEGORIES_ERROR_INVALID;
         }
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
     if (!empty($_POST['tag'])) {
         $tags->id = $_POST['tag'];
         if ($tags->checkIfExistsById() == 1) {
-            $topic->setIdTags(clean($_POST['tag']));
+            $topic->id_tags = clean($_POST['tag']);
         } else {
             $errors['tag'] = TOPICS_TAGS_ERROR_INVALID;
         }
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
 
     // si les erreurs sont vides, alors on ajoute le topic
     if (empty($errors)) {
-        $topic->setIdUsers($_SESSION['user']['id']);
+        $topic->id_users = $_SESSION['user']['id'];
         if ($topic->create()) {
             $success = TOPICS_SUCCESS;
 
@@ -120,15 +120,15 @@ $statusCount = count($statusList);
 
 
 
-$totalCount = $postCount + $topicCount + $statusCount ; // total count de tous les publications : status; topics et replies 
+$totalCount = $postCount + $topicCount + $statusCount; // total count de tous les publications : status; topics et replies 
 
 $title = 'MelodyTown'; // Titre de la page
 
 //  Inclusion des fichiers: header, du view et du footer 
 
- require_once('../../views/parts/header.php');
- require_once('../../index.php');
- require_once('../../views/parts/footer.php'); 
- ?>
+require_once('../../views/parts/header.php');
+require_once('../../index.php');
+require_once('../../views/parts/footer.php');
+?>
 
 <script src="../../assets/js/topic.js"></script>

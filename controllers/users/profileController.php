@@ -13,27 +13,62 @@ require_once '../../utils/functions.php';
 
 session_start(); // démarrage de la session
 
-if (empty ($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
+if (empty($_SESSION['user'])) { // si l'utilisateur n'est pas en ligne
     header('Location: /connexion'); // le rediriger vers la page d'accueil
     exit;
 }
 
 // établissement des variables pour accéder aux données des modèles 
 $user = new Users;
-if(!empty($_SESSION['user'])) {
+if (!empty($_SESSION['user'])) {
     $user->fetchUserData($_SESSION['user']['id']);
     $userAccount = $user->getById();
-    }
+}
 
 $status = new Status;
 
 $status->id_users = $_SESSION['user']['id'];
 
 
-// si la requête est une méthode POST et le POST variable est déclenché, on traite les données du formulaire
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['addStatus'])) {
+// if (!isset($_POST['token'])) {
+//     if ($user->verificationEmail($user->getEmail(), $user->getUsername()) == true) {
+//         if (empty($_POST['token'])) {
+//             $user->setToken($token = uniqid()) == $_POST['token'];
+//         } else {
+//             $errors['token'] = 'Token inconnu';
+//         }
+//     } else {
+//         $errors['token'] = 'Token invalide';
+//     }
+// }
 
-    if (!empty ($_POST['content'])) { // si le message n'est pas vide
+$errors = [];
+
+if (isset($_POST['token'])) {
+
+    if (empty($_POST['token'])) {
+        $user->verifyAccount();
+        $token = uniqid();
+        $user->setToken($token = $_POST['token']); 
+
+        echo 'Token generated and set successfully.';
+    } else {
+        $errors['token'] = 'Token inconnu';
+    }
+} else {
+    $errors['token'] = 'Token invalide';
+}
+
+// if (!empty($errors)) {
+//     foreach ($errors as $error) {
+//         echo '<p class="errorMessage">' . $error . '</p>';
+//     }
+// }
+
+// si la requête est une méthode POST et le POST variable est déclenché, on traite les données du formulaire
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addStatus'])) {
+
+    if (!empty($_POST['content'])) { // si le message n'est pas vide
         if (!preg_match($regex['content'], $_POST['content'])) {  // si le message n'est pas conforme à la regex
             $status->content = trim($_POST['content']); // on récupère le message en le trimmant
         } else {
@@ -44,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['addStatus'])) {
     }
 
     // si les erreurs sont vides, les status seront ajoutés dans la BDD
-    if (empty ($errors)) {
+    if (empty($errors)) {
         $status->id_users = $_SESSION['user']['id'];
         if ($status->create()) {
             $success = STATUS_SUCCESS;
@@ -57,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset ($_POST['addStatus'])) {
 }
 
 //suppression des status
-if (isset ($_POST['deleteStatus'])) { // si est déclenché le POST variable deleteStatus
+if (isset($_POST['deleteStatus'])) { // si est déclenché le POST variable deleteStatus
     $status->id = $_POST['idStatusDelete'];
     if ($status->delete()) { // si la suppression de l'utilisateur réussie, on redirige vers la page de profil
         header('Location: /profil');
@@ -67,8 +102,8 @@ if (isset ($_POST['deleteStatus'])) { // si est déclenché le POST variable del
 
 
 // les mis à jour et la suppression des status et des commentaires sont gérées ici.
-if (isset ($_POST['updateStatus'])) { // si est déclenché le POST variable updateStatus
-    if (!empty ($_POST['statusUpdate'])) { // si le status n'est pas vide
+if (isset($_POST['updateStatus'])) { // si est déclenché le POST variable updateStatus
+    if (!empty($_POST['statusUpdate'])) { // si le status n'est pas vide
         if (!preg_match($regex['content'], $_POST['statusUpdate'])) {
             $status->content = clean($_POST['statusUpdate']); // on récupère le message en le nettoyant
         } else {
@@ -76,7 +111,7 @@ if (isset ($_POST['updateStatus'])) { // si est déclenché le POST variable upd
         }
 
         // si les erreurs sont vides, les status seront mis à jour dans la BDD
-        if (empty ($errors)) {
+        if (empty($errors)) {
             $status->id_users = $_SESSION['user']['id'];
             $status->id = $_POST['statusid'];
             if ($status->update()) {
@@ -94,8 +129,8 @@ $comments->id_users = (int) $_SESSION['user']['id'];
 
 
 // même logique pour creer les commentaires que pour les status
-if (isset ($_POST['addComment'])) {
-    if (!empty ($_POST['commenting'])) {
+if (isset($_POST['addComment'])) {
+    if (!empty($_POST['commenting'])) {
         if (!preg_match($regex['comment'], $_POST['commenting'])) {
             $comments->content = $_POST['commenting'];
 
@@ -107,7 +142,7 @@ if (isset ($_POST['addComment'])) {
         $errors['comment'] = STATUS_COMMENTS_ERROR_EXISTS;
     }
 
-    if (empty ($errors)) {
+    if (empty($errors)) {
         if ($comments->create()) {
             $success = STATUS_COMMENTS_SUCCESS;
         } else {
@@ -117,15 +152,15 @@ if (isset ($_POST['addComment'])) {
 }
 
 // même logique pour les mis à jour des commentaires que pour les status
-if (isset ($_POST['updateComments'])) {
-    if (!empty ($_POST['commentUpdate'])) {
+if (isset($_POST['updateComments'])) {
+    if (!empty($_POST['commentUpdate'])) {
         if (!preg_match($regex['reponse'], $_POST['commentUpdate'])) {
             $comments->content = htmlspecialchars($_POST['commentUpdate']);
         } else {
             $errors['reponse'] = STATUS_COMMENTS_UPDATE_ERROR_INVALID;
         }
 
-        if (empty ($errors)) {
+        if (empty($errors)) {
             $comments->id_users = $_SESSION['user']['id'];
             $comments->id = $_POST['commentsid'];
             if ($comments->update()) {
@@ -139,8 +174,8 @@ if (isset ($_POST['updateComments'])) {
 }
 
 //suppresion de commentaires
-if (isset ($_POST['deleteComment'])) {
-    if (isset ($_POST['idCommentsDelete'])) {
+if (isset($_POST['deleteComment'])) {
+    if (isset($_POST['idCommentsDelete'])) {
         $comments->id = $_POST['commentsid'];
         if ($comments->delete()) {
             header('Location: /profil');
@@ -152,7 +187,7 @@ if (isset ($_POST['deleteComment'])) {
 if (isset($_POST['updateAvatar'])) {
     // Check if the avatar file is not empty
     if (!empty($_FILES['avatar'])) {
-        
+
         // Call the checkImage function to validate the uploaded avatar
         $imageMessage = checkImage($_FILES['avatar']);
 
@@ -255,7 +290,7 @@ if (count($userTopics) > 0) {
 
 //replies
 $replies = new Replies;
-$replies->id_users =$_SESSION['user']['id'] ;
+$replies->id_users = $_SESSION['user']['id'];
 
 foreach ($userTopics as $key => $post) {
     $replies->id_topics = $post['id'];
@@ -285,19 +320,19 @@ if (count($userStatus) > 0) {
 // Assuming $userReply, $userTopics, and $userStatus are defined elsewhere
 $totalPosting = $userTotalAnswer + $userTotalTopics + $userTotalStatus;
 $pointsPerPost = 10;
-$userPoints = $totalPosting * $pointsPerPost * 10; 
+$userPoints = $totalPosting * $pointsPerPost * 10;
 
 if ($userPoints > 0) {
     // If user has positive points, set points to 25
     $userPoints = 25;
-    $points = 25; 
+    $points = 25;
 } else {
     $userPoints = abs($userPoints);
-    $points = log10($userPoints); 
+    $points = log10($userPoints);
 }
 
 // }
-$userPoints += 1; 
+$userPoints += 1;
 
 //comments
 $comments->id_users = $_SESSION['user']['id'];

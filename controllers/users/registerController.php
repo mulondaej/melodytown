@@ -73,12 +73,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // si il n'y'a pas des erreurs :
     if (empty($errors)) {
         if ($user->create()) {
-            // Send verification email
+            // envoie de email de verififxation
             if($user->verificationEmail($user->getEmail(), $user->getUsername()) == true) {
-
-            // $user->updateToken();
-            };
-
+                  $user->setToken($token = uniqid()) ;
+                } else {
+                    $errors['token'] = 'Token inconnu';
+                } {
+                    $errors['token'] = 'Token invalide';
+                };
 
             // //$sendMail->send($code);
             $success = '<p id="successMessage">Bienvenue! Un email de confirmation a été envoyé à votre adresse email. 
@@ -88,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-
+ 
 
 $title = 'Inscription'; // titre de la page
 

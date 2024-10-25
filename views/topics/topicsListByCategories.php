@@ -65,6 +65,7 @@
                 <p>No topics available</p>
             <?php } else { ?>
                 <?php foreach ($topicsList as $t) { ?>
+                    
                 <div class="subforum central" id="central">
                     <!-- <div class="subforum-title">
                         <h1 id="title"><?= $t->categorie ?></h1>

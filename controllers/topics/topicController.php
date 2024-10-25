@@ -161,6 +161,20 @@ if (isset($_POST['deleteTopic'])) {
     }
 }
 
+
+// Assume `$page` is the current page number from GET parameters or default to 1
+$pages = $replies->page = isset($_GET['id']) ? (int) $_GET['id'] : 1;
+$replies->repliesPerPage = 10;
+$replies->offset = ($replies->page - 1) * $replies->repliesPerPage;
+
+$totalPage = ceil($pages);
+$pagesList =  $replies->getRepliesByTopics();
+if ($pagesList !== false) {
+    if ($totalPage > 0) {
+        $getPage = $replies->getPage();
+    }
+}
+
 $topicsDetails = $topic->getById();
 
 $repliesList = $replies->getRepliesByTopics();
@@ -185,3 +199,4 @@ require_once '../../views/parts/footer.php';
 <script src="assets/js/topic.js"></script>
 <script src="assets/js/modals.js"></script>
 <script src="assets/js/replies.js"></script>
+<script src="assets/js/pagination.js"></script>
