@@ -44,8 +44,12 @@
         </div>
             <div class="userContainer">
                 <div class="infoUser">
-                    <p>@
-                        <b><?= $userAccount->username ?></b>,
+                    <p><b>@<?= htmlspecialchars( $userAccount->username)?></b> 
+                                <?php if (isset($_SESSION['user']['verified']) && $_SESSION['user']['verified'] == 1) { ?>
+                                    <i class="fa-solid fa-xmark" style="color: red;"> </i>
+                                <?php } else { ?>
+                                    <i class="fa-solid fa-check" style="color: green;"></i>&nbsp;&nbsp;
+                                <?php } ?>
                         <i class="fa-sharp fa-solid fa-location-dot fa-sm" style="color: white"></i>
                         <b><?= $userAccount->location ?></b>
                         <small><a href="/modifier-mon-compte"> modifier tes infos </a></small>

@@ -10,20 +10,22 @@ session_start();
 $errors = [];
 $user = new Users();
 
-$user->__construct();
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['verification_token']) && isset($_POST['verification_code'])) {
-    $verificationToken = $_POST['verification_token'];
-    $verificationCode = $_POST['verification_code'];
-
-    // Perform the account verification
-    $response = $user->verifyAccount($this->pdo, $verificationToken, $verificationCode);
-
-    // Return JSON response
-    header('Content-Type: application/json');
-    echo json_encode($response);
+if (isset($_POST['updateVerified'])) {
+    if (!empty($_POST['verified'])) {
+        if ($user->setVerified(true)) {
+            $success = "Email verified successfully, thank you.";
+            header('Location: /accueil');
+            exit;
+        } else {
+           $success = 'Échec de la mise à jour du statut de vérification.</p>';
+        }
+    } else {
+        $success = 'Votre email est déjà confirmé.</p>';
+    }
+} else {
+    $success= 'Jeton invalide ou expiré.</p>';
 }
+
 
 // $this->pdo->close();
 $title = "verification";

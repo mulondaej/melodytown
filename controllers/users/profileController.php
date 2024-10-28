@@ -47,7 +47,7 @@ $errors = [];
 if (isset($_POST['token'])) {
 
     if (empty($_POST['token'])) {
-        $user->verifyAccount();
+        $user->tokenInsert();
         $token = uniqid();
         $user->setToken($token = $_POST['token']); 
 

@@ -119,7 +119,6 @@ class Replies
         ORDER BY `publicationDate` DESC';
         $req = $this->pdo->query($sql);
         return $req->fetchAll(PDO::FETCH_OBJ);
-        // $this->totalPages = ceil($this->totalReplies / $this->repliesPerPage);
     }
 
 
@@ -129,8 +128,8 @@ class Replies
         // $repliesPerPage = 15;
         // $offset = ($page - 1) * $repliesPerPage;
 
-        $query = "SELECT * FROM a8yk4_topicreplies WHERE id_topics = :id_topics ORDER BY publicationDate LIMIT :limit OFFSET :offset";
-        $req = $this->pdo->prepare($query);
+        $sql  = "SELECT * FROM a8yk4_topicreplies WHERE id_topics = :id_topics ORDER BY publicationDate LIMIT :limit OFFSET :offset";
+        $req = $this->pdo->prepare($sql );
         $req->bindValue(':id_topics', $this->id_topics, PDO::PARAM_INT);
         $req->bindValue(':limit', $this->repliesPerPage, PDO::PARAM_INT);
         $req->bindValue(':offset', $this->offset, PDO::PARAM_INT);

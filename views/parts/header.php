@@ -65,26 +65,28 @@
                     <?php require_once 'navs/navProfile.php'; ?>
 
                 <?php } else { ?>
-                    
+
                     <?php require_once 'navs/navMember.php'; ?>
                     <!-- l'avatar dans un menu bouton pour afficher ces liens -->
                     <div class="btn-group" id="menu-button">
                         <button type="button" class="btn btn-sm btn-tertiary dropdown-toggle" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <a href="/profil" class="online"><?php if(isset($_SESSION['user'])) { ?>
-                            <img src="assets/IMG/users/<?= $userAccount->avatar ?>" <?php } ?>  alt="UserAvatar" id="avatar"></a>
+                            <a href="/profil" class="online"><?php if (isset($_SESSION['user'])) { ?>
+                                    <img src="assets/IMG/users/<?= $userAccount->avatar ?>" <?php } ?> alt="UserAvatar"
+                                    id="avatar"></a>
                         </button>
                         <ul class="dropdown-menu text-center dropdown-menu-end dropdown-menu-dark dropdown-menu-lg-start">
                             <li>
-                                <a class="dropdown-item" type="button" href="/mon-compte"><i class="fa-solid fa-user"></i> Mon compte</a>
+                                <a class="dropdown-item" type="button" href="/mon-compte"><i class="fa-solid fa-user"></i> Mon
+                                    compte</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" type="button" href="/liste-topics"><i class="fa-solid fa-list"></i>
-                            Topics</a>
+                                    Topics</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" type="button" href="/membres"><i class="fa-solid fa-list"></i>
-                                Members</a>
+                                    Members</a>
                             </li>
                         </ul>
                     </div>
@@ -93,23 +95,40 @@
                             ?>
                     <div id="logging">
                         <?php if ($_SESSION['user']['id_usersRoles'] == 1) { ?>
-                            <a href="/profil" id="idCorner">@
-                                <?= $_SESSION['user']['username'] ?>
+                            <a href="/profil" id="idCorner">
+                                @<?= htmlspecialchars($_SESSION['user']['username']) ?>
+                                <?php print_r($_SESSION['user']); ?>
+                                <?php if (isset($_SESSION['user']['verified']) && ($_SESSION['user']['verified'] == 1 
+                                || $_SESSION['user']['verified'] === true)) { ?>
+                                    <i class="fa-solid fa-xmark" style="color: red;"></i>
+                                <?php } else { ?>
+                                    <i class="fa-solid fa-check" style="color: green;"></i>&nbsp;&nbsp;
+                                <?php } ?>
                             </a>
-                        <?php }
+                        <?php } 
                         if ($_SESSION['user']['id_usersRoles'] == 473) { ?>
                             <a href="/profil" id="idCorner">@
                                 <?= $_SESSION['user']['username'] ?>
-                            </a>
+                                <?php if (isset($_SESSION['user']['verified']) && ($_SESSION['user']['verified'] == 1 
+                                || $_SESSION['user']['verified'] === true)) { ?>
+                                    <i class="fa-solid fa-xmark" style="color: red;"></i>
+                                <?php } else { ?>
+                                    <i class="fa-solid fa-check" style="color: green;"></i>&nbsp;&nbsp;
+                                <?php } ?></a>
                             <a href="/dashboard" style="color: rgb(130, 182, 195);">Moderation</a></li>
                         <?php }
                         if ($_SESSION['user']['id_usersRoles'] == 381) { ?>
                             <a href="/profil" id="idCorner">@
                                 <?= $_SESSION['user']['username'] ?>
-                            </a>
+                                <?php if (isset($_SESSION['user']['verified']) && ($_SESSION['user']['verified'] == 1 
+                                || $_SESSION['user']['verified'] === true)) { ?>
+                                    <i class="fa-solid fa-xmark" style="color: red;"></i>
+                                <?php } else { ?>
+                                    <i class="fa-solid fa-check" style="color: green;"></i>&nbsp;&nbsp;
+                                <?php } ?></a>
                             <a href="/dashboard" style="color: darkgreen;">Admin</a>
                         <?php } ?>
-                        <a href="/deconnexion"><i class="fa-solid fa-user-slash"></i>Déconnexion</a>
+                        <a href="/deconnexion"><i class="fa-solid fa-user-slash"></i>&nbsp;Déconnexion</a>
                     </div>
                 <?php } ?>
             <?php } ?>

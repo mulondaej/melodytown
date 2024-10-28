@@ -163,7 +163,7 @@ if (isset($_POST['deleteTopic'])) {
 
 
 // Assume `$page` is the current page number from GET parameters or default to 1
-$pages = $replies->page = isset($_GET['id']) ? (int) $_GET['id'] : 1;
+$pages = $replies->page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $replies->repliesPerPage = 10;
 $replies->offset = ($replies->page - 1) * $replies->repliesPerPage;
 

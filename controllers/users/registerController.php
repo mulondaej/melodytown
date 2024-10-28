@@ -74,15 +74,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($errors)) {
         if ($user->create()) {
             // envoie de email de verififxation
-            if($user->verificationEmail($user->getEmail(), $user->getUsername()) == true) {
-                  $user->setToken($token = uniqid()) ;
+            if($user->verificationEmail($user->getEmail(), $user->getUsername())  ) {
+                  $user->setToken($token = uniqid());  
                 } else {
-                    $errors['token'] = 'Token inconnu';
-                } {
                     $errors['token'] = 'Token invalide';
                 };
-
-            // //$sendMail->send($code);
+            
+            
             $success = '<p id="successMessage">Bienvenue! Un email de confirmation a été envoyé à votre adresse email. 
             Veuillez vérifier votre boîte de réception pour terminer votre inscription.</p>';
         } else {

@@ -66,17 +66,17 @@ document.querySelectorAll('.pagination-link').forEach(link => {
     });
 });
 
-// const threadId = json_encode($_GET['id']) 
-// document.querySelectorAll('.pagination-link').forEach(link => {
-//     link.addEventListener('click', function(e) {
-//         e.preventDefault();
-//         const page = this.getAttribute('href').split('page=')[1];
+const threadId = json_encode($_GET['id']) 
+document.querySelectorAll('.pagination-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const page = this.getAttribute('href').split('page=')[1];
 
-//         fetch(`/path/to/your/php?page=${id}&id=topic-${threadId}`)
-//             .then(response => response.text())
-//             .then(html => {
-//                 document.getElementById('repliesContainer').innerHTML = html;
-//             })
-//             .catch(error => console.error('Error loading page:', error));
-//     });
-// });
+        fetch(`/path/to/your/php?page=${page}&id=topic-${threadId}`)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('repliesContainer').innerHTML = html;
+            })
+            .catch(error => console.error('Error loading page:', error));
+    });
+});

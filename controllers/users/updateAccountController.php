@@ -1,5 +1,6 @@
 <?php
 
+
 // les models de site et les utils
 require_once '../../models/topicsModel.php';
 require_once '../../models/usersModel.php';
@@ -294,6 +295,75 @@ if (isset($_POST['updateCoverPicture'])) {
         }
     }
 }
+
+
+//verification de email
+if (isset($_POST['updateVerified']) ) {
+    if (!empty($_POST['verified'])) {
+        if ($user->setVerified(true) === 0) {
+            $user->setVerified($_POST['verified']);
+        } else {
+            $errors['verified'] = 'Il eut une erreur';
+        }
+    }
+
+    // if (!empty($_POST['token'])) {
+    //     $token = $_POST['token'];
+    //     $user->setToken($token);
+
+    //     if (empty($_SESSION['user']['token'])) {
+    //         $newToken = uniqid();
+    //         if ($user->setToken($newToken)) {
+    //             $_SESSION['user']['token'] = $newToken;
+    //         } else {
+    //             $errors['token'] = 'Il y a eu une erreur lors de la génération du token.';
+    //         }
+    //     }
+    // } else {
+    //     $errors['token'] = 'Le champ du token est vide.';
+    // }
+
+
+    // if (empty($errors)) {
+    //     if ($user->verifyAccount()) {
+    //         $user->verificationEmail($user->getEmail(), $user->getUsername());
+
+    //         $success = 'Votre compte vient d\'être verifié';
+    //     } else {
+    //         $errors['update'] = "réesayez à nouveau";
+    //     }
+    // }
+    if (empty($errors)) {
+        if ($user->emailVerified()) {
+            $user->verificationEmail($user->getEmail(), $user->getUsername());
+
+            $success = 'Votre compte vient d\'être verifié';
+        } else {
+            $errors['update'] = "réesayez à nouveau";
+        }
+    }
+}
+
+//verification de email
+if (isset($_POST['updateToken'])) {
+    if (!empty($_POST['token'])) {
+        $user->setToken($_POST['token']);
+        if ($user->setToken($_POST['token']) && $_SESSION['user']['token'] === '') {
+            $user->setToken($_POST['token'] = uniqid());
+        } else {
+            $errors['token'] = 'Il eut une erreur';
+        }
+    }
+
+    if (empty($errors)) {
+        if ($user->tokenInsert()) {
+            $success = 'le token est inseré avec succès';
+        } else {
+            $errors['update'] = "réesayez à nouveau";
+        }
+    }
+}
+
 
 
 
