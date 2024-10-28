@@ -338,7 +338,7 @@ class Users
     {
         $sql = 'SELECT `username`, `email`, `location`, DATE_FORMAT(`birthdate`, "%d/%m/%y") 
         AS `birthdateFr`, `birthdate` , DATE_FORMAT(`registerDate`, "%M %Y") AS `registerDate`,
-        `avatar`, `coverpicture`, `name` AS `roleName` 
+        `avatar`, `coverpicture`, `name` AS `roleName` , `verified`
         FROM `a8yk4_users`
         INNER JOIN `a8yk4_usersroles` ON id_usersRoles = `a8yk4_usersroles`.`id`
         WHERE `a8yk4_users`.`id`= :id';

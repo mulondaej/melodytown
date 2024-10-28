@@ -97,7 +97,6 @@
                         <?php if ($_SESSION['user']['id_usersRoles'] == 1) { ?>
                             <a href="/profil" id="idCorner">
                                 @<?= htmlspecialchars($_SESSION['user']['username']) ?>
-                                <?php print_r($_SESSION['user']); ?>
                                 <?php if (isset($_SESSION['user']['verified']) && ($_SESSION['user']['verified'] == 1 
                                 || $_SESSION['user']['verified'] === true)) { ?>
                                     <i class="fa-solid fa-xmark" style="color: red;"></i>

@@ -45,7 +45,7 @@
             <div class="userContainer">
                 <div class="infoUser">
                     <p><b>@<?= htmlspecialchars( $userAccount->username)?></b> 
-                                <?php if (isset($_SESSION['user']['verified']) && $_SESSION['user']['verified'] == 1) { ?>
+                                <?php if (isset($userAccount->verified)) { ?>
                                     <i class="fa-solid fa-xmark" style="color: red;"> </i>
                                 <?php } else { ?>
                                     <i class="fa-solid fa-check" style="color: green;"></i>&nbsp;&nbsp;
@@ -59,7 +59,6 @@
                         <p>Rank: <span id="rank"><b><?= $userAccount->roleName ?></b></span></p>
                         <p>Points: <span id="points"><b><? $userPoints ?></b></span></p>
                         <p>Depuis <b><?= $userAccount->registerDate ?></b></p>
-                </div>
             </div>
 
     <div class="mainContainer">
