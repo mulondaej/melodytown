@@ -2,10 +2,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Load Composer's autoloader if using Composer (otherwise, manually include PHPMailer files)
 require '../../vendor/autoload.php';
 
-class Users
+class Users  
 {
     private $pdo;
     private int $id;
@@ -27,10 +26,10 @@ class Users
     public function __construct()
     {
         try {
-            $this->pdo = new PDO('mysql:host=localhost;dbname=melodytown;charset=utf8', 'm18wq_admin', 'ktxkVURHF2mt4pk'); // Connect to the MySQL database
+            $this->pdo = new PDO('mysql:host=localhost;dbname=melodytown;charset=utf8', 'm18wq_admin', 'ktxkVURHF2mt4pk'); // Connexion à MySQL database
         } catch (PDOException $e) {
             header('Location: /accueil');
-            exit(); // Exit to prevent further execution if there's an error
+            exit(); // Exit pour empecher des nouvelles executions au cqs où il y'a une erreur
         }
     }
 
@@ -48,26 +47,20 @@ class Users
 
     public function updateUserInfos(): bool
     {
-        // Prepare the SQL query
         $query = "UPDATE a8yk4_users SET username = :username, email = :email, location = :location, birthdate = :birthdate WHERE id = :id";
-
-        // Prepare the req
         $req = $this->pdo->prepare($query);
-
-        // Bind parameters
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         $req->bindValue(':username', $this->username, PDO::PARAM_STR);
         $req->bindValue(':email', $this->email, PDO::PARAM_STR);
         $req->bindValue(':location', $this->location, PDO::PARAM_STR);
         $req->bindValue(':birthdate', $this->birthdate, PDO::PARAM_STR);
 
-        // Execute the req
         $success = $req->execute();
 
         return $success;
     }
 
-    // Method to fetch user data from the database
+    // Méthode de récuper les données d'utilisateur dès database
     public function fetchUserData($userId): void
     {
         $query = "SELECT * FROM a8yk4_users WHERE id = :id";
@@ -75,7 +68,7 @@ class Users
         $req->execute(['id' => $userId]);
         $user = $req->fetch(PDO::FETCH_ASSOC);
 
-        // Assign fetched data to object properties
+        // Assigner les données récuperé aux objects properties
         $this->id = $user['id'];
         $this->username = $user['username'];
         $this->email = $user['email'];
@@ -256,23 +249,6 @@ class Users
         $this->token = $token;
     }
 
-    // public function setToken($token)
-    // {
-    //     $sql = 'SELECT id, verified FROM a8yk4_users WHERE token = :token';
-    //     $req = $this->pdo->prepare($sql);
-    //     $req->bindValue(':token', $token, PDO::PARAM_STR);
-    //     $req->execute();
-
-    //     $user = $req->fetch(PDO::FETCH_ASSOC);
-
-    //     if ($user && $user['verified'] == 0) {
-    //         $this->id = $user['id'];
-    //         $this->token = $token;
-    //         return true;
-    //     }
-    //     return false;
-    // }
-
 
     public function setVerified(int $verified): void
     {
@@ -407,8 +383,8 @@ class Users
             // Sauvegarde de token
 
             $verificationLink = "http://melodytown/verification?code=$this->token?account verified?";
-            $mail->Body = "Hi $username,<br><br>Thank you for registering. Please click the link below to verify your email address:<br><br>
-                              <a href='$verificationLink'><br>Verify Email</a>";
+            $mail->Body = "Hi $username,<br><br>Merci de nous avoir rejoint. Maintenant connectez vous pour completer votre nouvelle aventure:<br><br>
+                              <a href='$verificationLink'><br>Bienvenu(e)!</a>";
 
             // envoie d'email
             $mail->send();
@@ -436,14 +412,14 @@ class Users
     return $req->execute();
 }
 
-public function verifyAccount(): bool
-    {
-        $query = "UPDATE a8yk4_users SET token = :token , verified = 1 WHERE id = :id";
-        $req = $this->pdo->prepare($query);
-        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
-        $req->bindValue(':token', $this->token, PDO::PARAM_STR);
-        return $req->execute();
-    }
+// public function verifyAccount(): bool
+//     {
+//         $query = "UPDATE a8yk4_users SET token = :token , verified = 1 WHERE id = :id";
+//         $req = $this->pdo->prepare($query);
+//         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+//         $req->bindValue(':token', $this->token, PDO::PARAM_STR);
+//         return $req->execute();
+//     }
 
     // // updates
     /**

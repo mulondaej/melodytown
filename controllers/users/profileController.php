@@ -9,6 +9,8 @@ require_once '../../models/usersModel.php';
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
+require_once 'sendMail.php';
+
 
 
 session_start(); // démarrage de la session
@@ -29,41 +31,10 @@ $status = new Status;
 
 $status->id_users = $_SESSION['user']['id'];
 
-
-// if (!isset($_POST['token'])) {
-//     if ($user->verificationEmail($user->getEmail(), $user->getUsername()) == true) {
-//         if (empty($_POST['token'])) {
-//             $user->setToken($token = uniqid()) == $_POST['token'];
-//         } else {
-//             $errors['token'] = 'Token inconnu';
-//         }
-//     } else {
-//         $errors['token'] = 'Token invalide';
-//     }
-// }
+$sendMail = new sendMail;
 
 $errors = [];
 
-if (isset($_POST['token'])) {
-
-    if (empty($_POST['token'])) {
-        $user->tokenInsert();
-        $token = uniqid();
-        $user->setToken($token = $_POST['token']); 
-
-        echo 'Token generated and set successfully.';
-    } else {
-        $errors['token'] = 'Token inconnu';
-    }
-} else {
-    $errors['token'] = 'Token invalide';
-}
-
-// if (!empty($errors)) {
-//     foreach ($errors as $error) {
-//         echo '<p class="errorMessage">' . $error . '</p>';
-//     }
-// }
 
 // si la requête est une méthode POST et le POST variable est déclenché, on traite les données du formulaire
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['addStatus'])) {
@@ -261,6 +232,27 @@ if (isset($_POST['updateCoverPicture'])) {
             } else {
                 $errors['add'] = 'Une erreur est survenue';
             }
+        }
+    }
+}
+
+//verification de email
+if (isset($_POST['updateVerified'])) {
+    if (!empty($_POST['verified'])) {
+        if ($user->setVerified(true) === 0) {
+            $user->setVerified($_POST['verified']);
+        } else {
+            $errors['verified'] = 'Il eut une erreur';
+        }
+    }
+
+    if (empty($errors)) {
+        if ($user->emailVerified()) {
+            $sendMail->confirmedEmail($user->getEmail(), $user->getUsername());
+
+            $success = 'Votre compte vient d\'être verifié';
+        } else {
+            $errors['update'] = "réesayez à nouveau";
         }
     }
 }

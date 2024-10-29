@@ -310,6 +310,14 @@ header a {
     text-align: center;
     color: #001015;
     /* color: white; */
+    height: max-content; 
+    width: 34%;
+    background-color: #000000;
+    background-color: #f2f3f3d9;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(82, 83, 83, 0.2);
 }
 
 .success {
@@ -833,6 +841,50 @@ header a {
     margin: 0 auto;
     justify-content: center;
 
+}
+
+#verifyId {
+    margin: 0 auto;
+    justify-content: center;
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: max-content;
+    display: block;
+}
+
+#verifyId label {
+    display: block;
+    margin: 10px 0 1px;
+    color: #13414d;
+}
+
+#verifyId input[type="submit"] {
+    background-color: #6499a3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    justify-content: center;
+    margin: 6px;
+    width: max-content;
+}
+
+#verifyId input[type="submit"]:hover{
+    background-color: #45a049;
+}
+
+#verifyId input[name] {
+    text-align: center;
+}
+
+#verifyId a:hover {
+    color: rgb(54, 56, 44);
 }
 
 /* posting textarea & btn */

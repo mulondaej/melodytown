@@ -1,11 +1,11 @@
-<h1 id="compteH1">Modifier ton compte</h1>
+<h1 id="compteH1" >Modifier ton compte</h1>
 <hr>
 <?php if (isset($success)) { ?><!-- Si la connexion est une reussite, afficher le message de succes -->
     <p id="successMessage" style="background-color: azure;">
         <?= $success ?>
     </p>
 <?php } ?>
-<div class="accountFlex">
+<div class="accountFlex" >
 
     <form action="/modifier-mon-compte" method="post" id="logForm">
         <!--  -->
@@ -118,30 +118,39 @@
 
     </div>
 
-    <form action="/modifier-mon-compte" method="POST" id="logForm">
-        <label for="verified">Verifiez votre email</label>
-        <input type="hidden" name="verified" id="verified">
-        <?php if (isset($errors['update'])): ?>
-            <p class="errorsMessage"><?= $errors['update'] ?></p>
-        <?php endif; ?><br>
+    <?php if (isset($userAccount->verified)) { ?>
 
-        <input type="hidden" name="token" id="token">
-        <?php if (isset($errors['update'])): ?>
-            <p class="errorsMessage"><?= $errors['update'] ?></p>
-        <?php endif; ?><br>
+        <?php echo ''; ?>
 
-        <input type="submit" name="updateVerified" value="verifier">
-    </form>
+    <?php } else { ?>
 
-    <form action="/modifier-mon-compte" method="POST" id="logForm">
-        <label for="token">Inserez votre token</label>
-        <input type="hidden" name="token" id="token">
-        <?php if (isset($errors['update'])): ?>
-            <p class="errorsMessage"><?= $errors['update'] ?></p>
-        <?php endif; ?><br>
+        <form action="/modifier-mon-compte" method="POST" id="logForm">
+            <label for="verified">Verifiez votre compte</label>
+            <input type="hidden" name="verified" id="verified">
+            <?php if (isset($errors['update'])): ?>
+                <p class="errorsMessage"><?= $errors['update'] ?></p>
+            <?php endif; ?><br>
 
-        <input type="submit" name="updateToken" value="Inserez">
-    </form>
+            <input type="hidden" name="token" id="token">
+            <?php if (isset($errors['update'])): ?>
+                <p class="errorsMessage"><?= $errors['update'] ?></p>
+            <?php endif; ?><br>
+
+            <input type="submit" name="updateVerified" value="verifier">
+        </form>
+
+        <form action="/modifier-mon-compte" method="POST" id="logForm">
+            <label for="token">Inserez votre token</label>
+            <input type="hidden" name="token" id="token">
+            <?php if (isset($errors['update'])): ?>
+                <p class="errorsMessage"><?= $errors['update'] ?></p>
+            <?php endif; ?><br>
+
+            <input type="submit" name="updateToken" value="Inserez">
+        </form>
+
+    <?php } ?>
+
 
     <div id="modalContainer">
         <!-- le modal de suppression du compte -->

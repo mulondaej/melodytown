@@ -8,6 +8,7 @@ require_once '../../models/statusModel.php';
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
+require_once 'sendMail.php';
 
 
 session_start(); // démarrage de la session
@@ -26,6 +27,9 @@ $user->fetchUserData($_SESSION['user']['id']); // Fetch user data from the datab
 $topic = new Topics;
 
 $status = new Status;
+
+$sendMail = new sendMail;
+$delMail = new delMail;
 
 // Check if the update infos form has been submitted
 if (isset($_POST['updateInfos'])) {
@@ -298,7 +302,7 @@ if (isset($_POST['updateCoverPicture'])) {
 
 
 //verification de email
-if (isset($_POST['updateVerified']) ) {
+if (isset($_POST['updateVerified'])) {
     if (!empty($_POST['verified'])) {
         if ($user->setVerified(true) === 0) {
             $user->setVerified($_POST['verified']);
@@ -307,35 +311,9 @@ if (isset($_POST['updateVerified']) ) {
         }
     }
 
-    // if (!empty($_POST['token'])) {
-    //     $token = $_POST['token'];
-    //     $user->setToken($token);
-
-    //     if (empty($_SESSION['user']['token'])) {
-    //         $newToken = uniqid();
-    //         if ($user->setToken($newToken)) {
-    //             $_SESSION['user']['token'] = $newToken;
-    //         } else {
-    //             $errors['token'] = 'Il y a eu une erreur lors de la génération du token.';
-    //         }
-    //     }
-    // } else {
-    //     $errors['token'] = 'Le champ du token est vide.';
-    // }
-
-
-    // if (empty($errors)) {
-    //     if ($user->verifyAccount()) {
-    //         $user->verificationEmail($user->getEmail(), $user->getUsername());
-
-    //         $success = 'Votre compte vient d\'être verifié';
-    //     } else {
-    //         $errors['update'] = "réesayez à nouveau";
-    //     }
-    // }
     if (empty($errors)) {
         if ($user->emailVerified()) {
-            $user->verificationEmail($user->getEmail(), $user->getUsername());
+            $sendMail->confirmedEmail($user->getEmail(), $user->getUsername());
 
             $success = 'Votre compte vient d\'être verifié';
         } else {
@@ -365,13 +343,12 @@ if (isset($_POST['updateToken'])) {
 }
 
 
-
-
 // Suppression de l'utilisateur
 if (isset($_POST['deleteAccount'])) {
     if ($user->delete()) {
         unset($_SESSION);
         session_destroy();
+        $delMail->deletedUser($user->getEmail(), $user->getUsername());
         header('Location: /accueil');
         exit;
     }

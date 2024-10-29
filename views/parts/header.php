@@ -88,6 +88,10 @@
                                 <a class="dropdown-item" type="button" href="/membres"><i class="fa-solid fa-list"></i>
                                     Members</a>
                             </li>
+                            <li>
+                                <a class="dropdown-item" type="button" href="/modifier-mon-compte"><i class="fa-solid fa-gears"></i>
+                                    Paramètres</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -97,33 +101,30 @@
                         <?php if ($_SESSION['user']['id_usersRoles'] == 1) { ?>
                             <a href="/profil" id="idCorner">
                                 @<?= htmlspecialchars($_SESSION['user']['username']) ?>
-                                <?php if (isset($_SESSION['user']['verified']) && ($_SESSION['user']['verified'] == 1 
-                                || $_SESSION['user']['verified'] === true)) { ?>
-                                    <i class="fa-solid fa-xmark" style="color: red;"></i>
-                                <?php } else { ?>
+                                <?php if (isset($userAccount->verified) == 1) { ?>
                                     <i class="fa-solid fa-check" style="color: green;"></i>&nbsp;&nbsp;
-                                <?php } ?>
-                            </a>
+                                <?php } else { ?>
+                                    <i class="fa-solid fa-xmark" style="color: red;"></i>&nbsp;&nbsp;
+                                <?php } ?></a>
                         <?php } 
+                            
                         if ($_SESSION['user']['id_usersRoles'] == 473) { ?>
                             <a href="/profil" id="idCorner">@
                                 <?= $_SESSION['user']['username'] ?>
-                                <?php if (isset($_SESSION['user']['verified']) && ($_SESSION['user']['verified'] == 1 
-                                || $_SESSION['user']['verified'] === true)) { ?>
-                                    <i class="fa-solid fa-xmark" style="color: red;"></i>
-                                <?php } else { ?>
+                                <?php if (isset($userAccount->verified) == 1) { ?>
                                     <i class="fa-solid fa-check" style="color: green;"></i>&nbsp;&nbsp;
+                                <?php } else { ?>
+                                    <i class="fa-solid fa-xmark" style="color: red;"></i>&nbsp;&nbsp;
                                 <?php } ?></a>
                             <a href="/dashboard" style="color: rgb(130, 182, 195);">Moderation</a></li>
                         <?php }
                         if ($_SESSION['user']['id_usersRoles'] == 381) { ?>
                             <a href="/profil" id="idCorner">@
                                 <?= $_SESSION['user']['username'] ?>
-                                <?php if (isset($_SESSION['user']['verified']) && ($_SESSION['user']['verified'] == 1 
-                                || $_SESSION['user']['verified'] === true)) { ?>
-                                    <i class="fa-solid fa-xmark" style="color: red;"></i>
-                                <?php } else { ?>
+                                <?php if (isset($userAccount->verified) == 1) { ?>
                                     <i class="fa-solid fa-check" style="color: green;"></i>&nbsp;&nbsp;
+                                <?php } else { ?>
+                                    <i class="fa-solid fa-xmark" style="color: red;"></i>&nbsp;&nbsp;
                                 <?php } ?></a>
                             <a href="/dashboard" style="color: darkgreen;">Admin</a>
                         <?php } ?>

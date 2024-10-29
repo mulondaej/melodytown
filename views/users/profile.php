@@ -46,9 +46,9 @@
                 <div class="infoUser">
                     <p><b>@<?= htmlspecialchars( $userAccount->username)?></b> 
                                 <?php if (isset($userAccount->verified)) { ?>
-                                    <i class="fa-solid fa-xmark" style="color: red;"> </i>
+                                    <i class="fa-solid fa-check" style="color: green;"> </i>&nbsp;&nbsp;
                                 <?php } else { ?>
-                                    <i class="fa-solid fa-check" style="color: green;"></i>&nbsp;&nbsp;
+                                    <i class="fa-solid fa-xmark" style="color: red;"></i>&nbsp;&nbsp;
                                 <?php } ?>
                         <i class="fa-sharp fa-solid fa-location-dot fa-sm" style="color: white"></i>
                         <b><?= $userAccount->location ?></b>
@@ -92,6 +92,24 @@
                                     <p class="successContainer" id="successMessage"> <?= $success ?></p>
                         <?php } ?>
                         
+                        <?php if (isset($userAccount->verified) == 1) { ?>
+                                <?php $success = 'compte verifié' ?>
+                            <?php } else { ?>
+                                <form action="/profil" method="POST" style="background-color: transparent;" id="verifyId">
+                                    <label for="verified">Verifiez votre compte</label>
+                                    <input type="hidden" name="verified" id="verified">
+                                    <?php if (isset($errors['update'])): ?>
+                                        <p class="errorsMessage"><?= $errors['update'] ?></p>
+                                    <?php endif; ?>
+
+                                    <input type="hidden" name="token" id="token">
+                                    <?php if (isset($errors['update'])): ?>
+                                        <p class="errorsMessage"><?= $errors['update'] ?></p>
+                                    <?php endif; ?>
+
+                                    <input type="submit" name="updateVerified" value="verifier">
+                                </form>
+                            <?php } ?>
                            
                         <form action="#" method="POST" id="postStatus">
                             <textarea name="content" id="postHere" ></textarea>
@@ -118,8 +136,8 @@
                                                     <button id="replyBtn" class="replyBtn" name="replyBtn" replystatus=<?= $personalStatus->username ?> ><a href="#commenting">répondre</a></button>
                             
                                                 <?php if ($_SESSION['user']['id'] == $status->id_users) { ?>
-                                                            <button type="submit" name="update" id="editModal" updatestatus=<?= $personalStatus->content ?> >modifier</button>
-                                                            <button type="submit" id="profiModalBtn" statusdeleteid=<?= $personalStatus->id ?>><a href="#delete">supprimer</a></button>
+                                                        <button type="submit" name="update" id="editModal" updatestatus=<?= $personalStatus->content ?> >modifier</button>
+                                                        <button type="submit" id="profiModalBtn" statusdeleteid=<?= $personalStatus->id ?>><a href="#delete">supprimer</a></button>
                                                 <?php } ?>
                                             </div>
 
