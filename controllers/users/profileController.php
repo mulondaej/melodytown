@@ -250,7 +250,7 @@ if (isset($_POST['updateVerified'])) {
         if ($user->emailVerified()) {
             $sendMail->confirmedEmail($user->getEmail(), $user->getUsername());
 
-            $success = 'Votre compte vient d\'être verifié';
+            header('Location: /accueil');
         } else {
             $errors['update'] = "réesayez à nouveau";
         }

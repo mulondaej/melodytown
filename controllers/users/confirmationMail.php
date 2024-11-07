@@ -17,8 +17,8 @@ if (isset($_GET['code'])) {
         $verificationLink = "http://melodytown/connexion?";
         $success = "<p id=\"successMessage\" style=\"background-color: azure;\">
    Ceci prouve que votre email existe bel et bien!" . "<br> et nous vous conseillons de bien vouloir vous connecter 
-   enfin de verifier votre compte en cliquant sur 'modifier tes infos' ou sur le bouton 'verifier' sur votre profil.</p><br><hr>
-    <a href='$verificationLink' style=\"text-align: center\">Connectez vous</a>";
+   enfin de verifier votre compte en cliquant sur le bouton 'verifier' <br>sur votre profil ou dans vos parametres.</p><br><hr>
+    <a href='$verificationLink' style=\"text-align: center\"><br>Connectez vous</a>";
         // header('Location: /connexion');
         // exit;
 

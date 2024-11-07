@@ -412,15 +412,6 @@ class Users
     return $req->execute();
 }
 
-// public function verifyAccount(): bool
-//     {
-//         $query = "UPDATE a8yk4_users SET token = :token , verified = 1 WHERE id = :id";
-//         $req = $this->pdo->prepare($query);
-//         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
-//         $req->bindValue(':token', $this->token, PDO::PARAM_STR);
-//         return $req->execute();
-//     }
-
     // // updates
     /**
      * Mettre à jour le nom d'utilisateur, l'adresse ,le mail et la date de naissance 

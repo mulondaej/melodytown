@@ -153,7 +153,6 @@
 
 
 
-
 <div id="modalContainer">
   <div id="modal">
     <span id="closeBtn">&times;</span>
