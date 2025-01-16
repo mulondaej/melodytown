@@ -13,16 +13,10 @@
             </div>
         </div>
         <div class="media-container">
-            <!-- <button id="uploadMediaBtn">Upload Media</button> -->
-                
-            <form id="mediaForm" action="#" method="post" enctype="multipart/form-data">
-                <input type="file"  name="images[]" multiple accept="image/*">
-                <!-- <ul id="media-list">
-
-                </ul> -->
-                <input type="submit" value="Save" name="uploadMedia" id="uploadMediaBtn">
-            </form>
-
-        </div>
+    <form id="mediaForm" action="#" method="post" enctype="multipart/form-data">
+        <input type="file" name="images[]" multiple accept="image/*">
+        <input type="submit" value="Save" name="uploadMedia" id="uploadMediaBtn">
+    </form>
+</div>
     </div>
 </main>

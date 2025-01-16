@@ -82,8 +82,6 @@ class Media
         return $req->fetch(PDO::FETCH_ASSOC);
     }
 
-
-
     public function getMediaByTopics()
     {
         $sql = 'SELECT `m`.`id`,`file_name`, 
@@ -108,9 +106,19 @@ class Media
         return $req->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function setMedia() // update de la réponse
+    public function setMedia() // upload de media
     {
         $sql = 'UPDATE `a8yk4_media` SET `file_name`=:file_name 
+        WHERE `id` = :id';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':file_name', $this->file_name, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $req->execute();
+    }
+
+    public function updateMedia() // update de media
+    {
+        $sql = 'UPDATE `a8yk4_media` SET `file_name`=:file_name
         WHERE `id` = :id';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':file_name', $this->file_name, PDO::PARAM_STR);

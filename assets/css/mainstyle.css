@@ -1181,6 +1181,7 @@ header a {
 .usernameMedia p {
     justify-content: space-evenly;
     margin-right: 5px;
+    color: white;
 }
 
 .media-container {
@@ -1188,7 +1189,7 @@ header a {
     border-radius: 5px;
     background-color: #eff2f4;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 60%;
+    width: max-content;
     margin-left: 10px;
     position: relative;
     margin: 0 auto;
@@ -1219,7 +1220,7 @@ header a {
 #media-list {
     list-style: none;
     padding: 0;
-    width: 400px;
+    width: max-content;
     display: flex;
     margin: 2px;
 }
