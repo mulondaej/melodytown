@@ -13,4 +13,8 @@ github_username:  jekyll
 # Build settings
 markdown: kramdown
 
+<<<<<<< HEAD
 thrmr: jekyll-theme-minimal
+=======
+theme: jekyll-theme-minimal
+>>>>>>> addeaf8831de54dfbb692e9ab39a806c13055a8e
