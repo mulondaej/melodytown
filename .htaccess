@@ -1,4 +1,6 @@
 RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://melodytown/$1 [R=301,L]
 
 #PAGES
 RewriteRule ^$ /controllers/pages/indexController.php
