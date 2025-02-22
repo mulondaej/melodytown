@@ -356,7 +356,7 @@ class Users
             $mail->Host = 'smtp.gmail.com';  // serveur SMTP  (e.g., Gmail SMTP)
             $mail->SMTPAuth = true;              // autorisation de SMTP authentication
             $mail->Username = 'mtjosue31@gmail.com';  // mon email address
-            $mail->Password = 'rzuhdpoopwczlaad';   // mon email password (considerer que je l'utilise)
+            $mail->Password = 'cwfbylwtvmnzghej';   // mon email password (considerer que je l'utilise)
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // autorisation de TLS encryption, `ssl` est aussi accepte
             $mail->Port = 587;               // port TCP 
             // TCP port to connect to
