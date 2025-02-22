@@ -5,7 +5,7 @@
         <i id="backArrow" class="fa fa-arrow-left"> Back</i>
       </a></button>
     <div id="threadTitle">
-      <h2 id="tag">messagerie entre <?= $chatsDetails->username ?> et <?= $chatsDetails->id_users ?></h2>
+      <h2 id="tag">messagerie entre <?= $chatsDetails->username ?> et <?= $chat->username ?></h2>
       <h2><?= $chatsDetails->title ?></h2>
     </div>
     <hr>

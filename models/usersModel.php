@@ -20,8 +20,8 @@ class Users
     private int $points;
 
     private string $token;
-
     private int $verified;
+    private string $file_name;
 
     public function __construct()
     {
@@ -478,6 +478,16 @@ class Users
         return $req->execute();
     }
 
+
+    public function updateMedia() // update de media
+    {
+        $sql = 'UPDATE `a8yk4_media` SET `file_name`=:file_name
+        WHERE `id` = :id';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':file_name', $this->file_name, PDO::PARAM_STR);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+        return $req->execute();
+    }
 
     //points 
     // public function setPoints()

@@ -309,22 +309,22 @@ if (count($userStatus) > 0) {
 }
 
 
-// Assuming $userReply, $userTopics, and $userStatus are defined elsewhere
-$totalPosting = $userTotalAnswer + $userTotalTopics + $userTotalStatus;
-$pointsPerPost = 10;
-$userPoints = $totalPosting * $pointsPerPost * 10;
+// // Assuming $userReply, $userTopics, and $userStatus are defined elsewhere
+// $totalPosting = $userTotalAnswer + $userTotalTopics + $userTotalStatus;
+// $pointsPerPost = 10;
+// $userPoints = $totalPosting * $pointsPerPost * 10;
 
-if ($userPoints > 0) {
-    // If user has positive points, set points to 25
-    $userPoints = 25;
-    $points = 25;
-} else {
-    $userPoints = abs($userPoints);
-    $points = log10($userPoints);
-}
-
+// if ($userPoints > 0) {
+//     // If user has positive points, set points to 25
+//     $userPoints = 25;
+//     $points = 25;
+// } else {
+//     $userPoints = abs($userPoints);
+//     $points = log10($userPoints);
 // }
-$userPoints += 1;
+
+// // }
+// $userPoints += 1;
 
 //comments
 $comments->id_users = $_SESSION['user']['id'];

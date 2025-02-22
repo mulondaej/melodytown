@@ -22,8 +22,10 @@ $media = new media;
 // $mediaMediaImages = $media->getById();
 $userMedia = $media->getUserMedia();
 
+// header('Content-Type: application/json');
+
 if (isset($_POST['uploadMedia'])) {
-    if (!empty($_FILES['image']['name'][0])) { // Check if at least one file is selected
+    if (!empty($_FILES['image']['name'][0])) { 
         $upload_dir = '../../assets/IMG/media/';
         $successMessages = [];
         $errorMessages = [];
@@ -32,14 +34,12 @@ if (isset($_POST['uploadMedia'])) {
             $tmpName = $_FILES['image']['tmp_name'][$key];
             $error = $_FILES['image']['error'][$key];
 
-            // Check for errors in the file
             if ($error !== UPLOAD_ERR_OK) {
                 $errorMessages[] = "Erreur lors du téléchargement de l'image: $imageName.";
                 continue;
             }
 
-            // Run validation for the current image
-            $imageMessage = checkImages([
+            $imageMessage = checkImage([
                 'name' => $imageName,
                 'tmp_name' => $tmpName,
                 'error' => $error,
@@ -47,26 +47,32 @@ if (isset($_POST['uploadMedia'])) {
 
             if ($imageMessage !== '') {
                 $errorMessages[] = "Validation échouée pour l'image $imageName: $imageMessage";
+                echo "Image Failed: $imageName - $imageMessage"; 
                 continue;
             }
 
-            // Generate a unique file name
-            $extension = pathinfo($imageName, PATHINFO_EXTENSION);
-            $media->file_name = uniqid() . '.' . $extension;
+            $extension = strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
 
-            // Ensure the file name is unique in the directory
-            while (file_exists($upload_dir . $media->file_name)) {
-                $media->file_name = uniqid() . '.' . $extension;
+            if (!in_array($extension, $allowedExtensions)) {
+                $errorMessages[] = "Type de fichier non autorisé pour l'image: $imageName.";
+                continue;
             }
 
-            // Move the uploaded file to the destination directory
-            if (move_uploaded_file($tmpName, $upload_dir . $media->getMedia())) {
-                // Update media record in the database
+            $file_name = uniqid() . '.' . $extension;
+
+            while (file_exists($upload_dir . $file_name)) {
+                $file_name = uniqid() . '.' . $extension;
+            }
+
+            if (move_uploaded_file($tmpName, $upload_dir . $file_name)) {
                 $media->id_users = $_SESSION['user']['id'];
-                if ($media->updateMedia()) {
+                $media->file_name = $file_name;
+
+                if ($media->updateMedia()) { 
                     $successMessages[] = "Image téléchargée avec succès: $imageName.";
                 } else {
-                    unlink($upload_dir . $media->getMedia()); // Rollback on DB failure
+                    unlink($upload_dir . $file_name); 
                     $errorMessages[] = "Erreur lors de l'enregistrement dans la base de données: $imageName.";
                 }
             } else {
@@ -74,7 +80,6 @@ if (isset($_POST['uploadMedia'])) {
             }
         }
 
-        // Display success and error messages
         if (!empty($successMessages)) {
             echo implode("<br>", $successMessages);
         }
@@ -85,10 +90,6 @@ if (isset($_POST['uploadMedia'])) {
         echo "Aucune image sélectionnée.";
     }
 }
-
-
-
-
 
 $userMedia = $media->getUserMedia();
 
@@ -109,3 +110,5 @@ require_once '../../views/parts/footer.php';
 ?>
 
 <script src="../../assets/js/media.js"></script>
+<!-- <script src="../../assets/js/upload.js"></script>
+<script src="../../assets/js/server.js"></script> -->

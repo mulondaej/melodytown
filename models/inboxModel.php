@@ -67,6 +67,7 @@ class Chats
      * @param string $publicationDate La date de la publication au format YYYY-MM-DD
      * @return bool
      */
+
     public function create() // Ajout de topic dans la base de données
     {
         $sql = 'INSERT INTO `a8yk4_inbox`(`username`, `title`, `content`, `publicationDate`,
@@ -79,6 +80,7 @@ class Chats
         $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
         return $req->execute();
     }
+
 
     public function delete() // suppression de topic dans la BDD
     {
@@ -145,6 +147,19 @@ class Chats
         
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getMessagesByUserId($userId) {
+        $sql = "SELECT id, username, title, content, publicationDate 
+                FROM a8yk4_inbox 
+                WHERE id_users = :userId 
+                ORDER BY publicationDate DESC";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getChat()

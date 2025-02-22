@@ -30,23 +30,21 @@ $chat = new Chats;
 $replyback = new replyback();
 
 // si la requete est de type POST (envoi du formulaire), on l'execute
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['messageUser'])) {
 
     $errors = [];
 
     if (!empty($_POST['username'])) {
-        if (preg_match($regex['name'], $_POST['username'])) {
-            $user->setUsername(clean($_POST['username']));
-            if ($user->checkIfExistsByUsername() == 1) {
-                $chat->username = $_POST['username'];
-                $errors['username'] = 'recommencez svp';
-            }
+        $chat->username = $_POST['username'];
+        if ($user->checkIfExistsByUsername() == 1) { // 
+            $chat->username = clean($_POST['username']);
         } else {
-            $errors['username'] = 'invalid';
+            $errors['username'] = 'Recommencez svp'; // 
         }
     } else {
-        $errors['username'] = 'choisissez un utilisateur svp';
+        $errors['username'] = 'Choisissez un utilisateur svp'; // 
     }
+    
 
     if (!empty($_POST['title'])) {
         if (preg_match($regex['title'], $_POST['title'])) {

@@ -41,5 +41,6 @@
 
         <!-- Lien pour s'enregistrer -->
         <hr> Ou <a href="/inscription"><i class="fa-solid fa-circle-arrow-right"> S'enregistrer </i></a>
+    
     </form>
 </section>

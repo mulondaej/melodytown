@@ -41,7 +41,7 @@
                      <?php endif; ?>
  
                      <div class="send">
-                         <input type="submit" name="threadPost" value="Create">
+                         <input type="submit" name="messageUser" value="Create">
                      </div>
                  </form>
                  </div>

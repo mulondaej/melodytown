@@ -238,14 +238,23 @@
                 <ul id="activity-list">
                     <!-- dèrnière activité ici -->
                     <h5><b>Tes contenus:</b><hr></h5>
-                    <?php foreach ($userTopics as $p) { ?>
-                                <li>-- <a href="/topic-<?= $p['id'] ?>"><?= $p['title'] ?></a></li><hr>
+                    <?php if (count($userTopics) == 0) { ?>
+                        <p class="errorsMessage">Aucun contenu</p>
+                    <?php } else { ?>
+                        <ul>
+                            <?php foreach ($userTopics as $p) { ?>
+                                <li>-- <a href="/topic-<?= $p['id'] ?>"><?= htmlspecialchars($p['title']) ?></a></li>
+                                <hr>
                                 <ul>
                                     <?php foreach ($p['content'] as $pr) { ?>
-                                                <li>** <a href="/topic-<?= $p['id'] ?>"><?= $pr['content'] ?></a></li><hr>
-                                <?php } ?>
+                                        <li>** <a href="/topic-<?= $p['id'] ?>"><?= htmlspecialchars($pr['content']) ?></a></li>
+                                        <hr>
+                                    <?php } ?>
                                 </ul>
-                   <?php } ?>
+                            <?php } ?>
+                        </ul>
+                    <?php } ?>
+                    
                 </ul>
             </div>
         </aside>

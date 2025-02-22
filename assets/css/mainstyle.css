@@ -1083,6 +1083,17 @@ header a {
     justify-content: center;
 }
 
+.imagePreviewGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.previewImg {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
 /* profile 's right sidebar */
 .activity {
     margin: 10px;

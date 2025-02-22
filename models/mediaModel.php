@@ -7,7 +7,6 @@ class Media
     public int $id;
     public string $file_name;
     public string $publicationDate;
-    public string $updateDate;
     public string $username;
     public int $id_users;
     public int $id_topics;
@@ -32,13 +31,22 @@ class Media
 
     public function create() // ajout de media
     {
-        $sql = 'INSERT INTO `a8yk4_media`(`file_name`, publicationDate`, `id_users`) 
+        $sql = 'INSERT INTO `a8yk4_media`(`file_name`, `publicationDate`, `id_users`) 
         VALUES (:file_name, NOW(), :id_users)';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':file_name', $this->file_name, PDO::PARAM_STR);
         $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
         $req->execute();
+
+        // $sql = "INSERT INTO a8yk4_media (file_name, publicationDate, id_users) VALUES (:file_name, :id_users)";
+        // $req = $pdo->prepare($sql);
+        // $req->execute([
+        //     'file_name' => $file_name,
+        //     'id_users' => $_SESSION['user']['id']
+        // ]);
     }
+
+    
 
     public function delete() // suppression de réponses pour le topic dans la BDD
     {

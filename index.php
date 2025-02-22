@@ -87,8 +87,9 @@
                             <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
                                 <?php } ?>
-                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+echo $formatter->format(time());
+ ?>
                             </a>
                         <?php } ?>
                     </div>
@@ -131,8 +132,9 @@
                             <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
                                 <?php } ?>
-                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+echo $formatter->format(time());
+ ?>
                             </a>
                         <?php } ?>
                     </div>
@@ -172,8 +174,8 @@
                                 <?php if (!empty($latestTopic)) { ?>
                                     <a href="/topic-<?= $latestTopic->id ?>">
                                     <?php } ?>
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                    <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                 </a>
                             <?php } ?>
                         </div>
@@ -210,8 +212,8 @@
                                 <?php if (!empty($latestTopic)) { ?>
                                     <a href="/topic-<?= $latestTopic->id ?>">
                                     <?php } ?>
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                    <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                 </a>
                             <?php } ?>
                         </div>
@@ -259,8 +261,8 @@
                             <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
                                 <?php } ?>
-                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                             </a>
                         <?php } ?>
                     </div>
@@ -300,8 +302,8 @@
                             <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
                                 <?php } ?>
-                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time());?>
                             </a>
                         <?php } ?>
                     </div>
@@ -342,8 +344,8 @@
                             <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
                                 <?php } ?>
-                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                             </a>
                         <?php } ?>
                     </div>
@@ -384,8 +386,8 @@
                             <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
                                 <?php } ?>
-                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                             </a>
                         <?php } ?>
                     </div>
@@ -426,8 +428,8 @@
                             <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
                                 <?php } ?>
-                                <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                             </a>
                         <?php } ?>
                     </div>
@@ -470,8 +472,8 @@
                                 <?php if (!empty($latestTopic)) { ?>
                                     <a href="/topic-<?= $latestTopic->id ?>">
                                     <?php } ?>
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                    <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                 </a>
                             <?php } ?>
                         </div>
@@ -508,8 +510,8 @@
                                 <?php if (!empty($latestTopic)) { ?>
                                     <a href="/topic-<?= $latestTopic->id ?>">
                                     <?php } ?>
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                    <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                 </a>
                             <?php } ?>
                         </div>
@@ -552,8 +554,8 @@
                                     <?php if (!empty($latestTopic)) { ?>
                                         <a href="/topic-<?= $latestTopic->id ?>">
                                         <?php } ?>
-                                        <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                        echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                        <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                     </a>
                                 <?php } ?>
                             </div>
@@ -589,8 +591,8 @@
                                     <?php if (!empty($latestTopic)) { ?>
                                         <a href="/topic-<?= $latestTopic->id ?>">
                                         <?php } ?>
-                                        <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                        echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                        <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                     </a>
                                 <?php } ?>
                             </div>
@@ -626,8 +628,8 @@
                                     <?php if (!empty($latestTopic)) { ?>
                                         <a href="/topic-<?= $latestTopic->id ?>">
                                         <?php } ?>
-                                        <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                        echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                        <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                     </a>
                                 <?php } ?>
                             </div>
@@ -668,8 +670,8 @@
                                     <?php if (!empty($latestTopic)) { ?>
                                         <a href="/topic-<?= $latestTopic->id ?>">
                                         <?php } ?>
-                                        <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                        echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                        <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                     </a>
                                 <?php } ?>
                             </div>
@@ -705,8 +707,8 @@
                                     <?php if (!empty($latestTopic)) { ?>
                                         <a href="/topic-<?= $latestTopic->id ?>">
                                         <?php } ?>
-                                        <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                        echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                        <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                     </a>
                                 <?php } ?>
                             </div>
@@ -747,8 +749,8 @@
                                     <?php if (!empty($latestTopic)) { ?>
                                         <a href="/topic-<?= $latestTopic->id ?>">
                                         <?php } ?>
-                                        <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                        echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                        <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                     </a>
                                 <?php } ?>
                             </div>
@@ -784,8 +786,8 @@
                                     <?php if (!empty($latestTopic)) { ?>
                                         <a href="/topic-<?= $latestTopic->id ?>">
                                         <?php } ?>
-                                        <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                        echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                        <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                     </a>
                                 <?php } ?>
                             </div>
