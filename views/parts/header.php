@@ -9,6 +9,9 @@
             <?= $title ?>
         </title>
         <link rel="icon" href="../../logoResized.jpg" type="image/jpeg">
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="icon" type="image/svg+xml" href="favicon.svg">
         <link rel="canonical" href="URL_canonique_de_votre_forum">
         <link rel="stylesheet" href="../../assets/css/mainstyle.css">
         <link rel="stylesheet" href="../../assets/css/modal.css">
