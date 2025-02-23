@@ -34,7 +34,7 @@
     <!-- le button de inbox -->
     <div class="btn-group dropdown-center">
         <button class="btn btn-secondary btn-sm notification" type="button">
-            <i class="fa-solid fa-message" id="chats"></i><a href="/inbox"> Inbox
+            <i class="fa-solid fa-message" id="chats"></i><a href="/messages"> Inbox
                 <span class="badge">0</span></a>
         </button>
         <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,12 +42,12 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-dark text-center" id="chatUl">
             <div id="inboxPt">
-                <li><a class="dropdown-item" href="/inbox">New</a></li>
-                <li><a class="dropdown-item" href="/inbox">Check all</a></li>
+                <li><a class="dropdown-item" href="/messages">New</a></li>
+                <li><a class="dropdown-item" href="/messages">Check all</a></li>
             </div>
             <li>
                 <div id="messages">
-                    <p class="dropdown-item" href="/inbox">Private</p>
+                    <p class="dropdown-item" href="/messages">Private</p>
                 </div>
         </ul>
     </div>

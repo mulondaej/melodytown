@@ -6,7 +6,7 @@
         <a href="/accueil"> Accueil</a>
     </button>
     <button class="btn btn-secondary btn-sm" type="button">
-        <a href="/inbox"> Inbox</a>
+        <a href="/messages"> Inbox</a>
     </button>
     <button class="btn btn-secondary btn-sm" type="button">
         <a href="/mon-compte"> Mon compte</a>
