@@ -207,4 +207,9 @@
     </div>
   </div>
 
-  
+<!-- 
+  :::****
+  <?php if(isset($messagingsList) && is_array($messagingsList)){ 
+            foreach ($messagingsList as $sessionMsg) {
+                if ($_SESSION['user']['id'] == $sessionMsg->receiver_id || $_SESSION['user']['id'] == $sessionMsg->sender_id && ( $_SESSION['user']['id_usersRoles'] == 381)) {
+            }?> -->

@@ -122,7 +122,7 @@ if ($req->fetchColumn() == 0) {
 
     public function getListByIdUsers()
     {
-        $sql = 'SELECT *
+        $sql = 'SELECT n.`id`, n.`message`, n.`link`, n.`is_read`, n.`created_at`, u.`username`, m.`title`, m.`sender_id` AS senderid, m.`receiver_id` AS receiverid 
         FROM `a8yk4_messagenotif` AS `n`
         INNER JOIN `a8yk4_messages` AS `m` ON `n`.`id_messages` = `m`.`id`
         INNER JOIN `a8yk4_users` AS `u` ON `n`.`id_users` = `u`.`id`';
@@ -133,7 +133,7 @@ if ($req->fetchColumn() == 0) {
 
     public function getList()
     {
-        $sql = 'SELECT *
+        $sql = 'SELECT n.`id`, n.`message`, n.`link`, n.`is_read`, n.`created_at`, u.`username`, m.`title`, m.`sender_id` AS senderid, m.`receiver_id` AS receiverid 
         FROM `a8yk4_messagenotif` AS `n`
         INNER JOIN `a8yk4_messages` AS `m` ON `n`.`id_messages` = `m`.`id`
         INNER JOIN `a8yk4_users` AS `u` ON `n`.`id_users` = `u`.`id`

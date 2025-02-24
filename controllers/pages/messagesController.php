@@ -78,18 +78,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['messageUser'])) {
             $messaging->sender_id = $_SESSION['user']['id']; // Assign sender ID
 
             if ($messageId = $messaging->create()) { // Create message
+                $notif = new messageNotif();
                 if ($messaging->sender_id = $_SESSION['user']['id']) {
                     $notif->id_messages = $messaging->id;
                     $notif->id_users = $messaging->receiver_id;
                     $notif->message = "Nouveau message de " . $_SESSION['user']['username'];
-                    $notif->link = "/messages" . $messageId;
+                    $notif->link = "/message-$messaging->id" ;
                     $notif->is_read = 0; // Mark notification as unread
                 } else {
                     if ($messaging->receiver_id = $_SESSION['user']['id']) {
                         $notif->id_messages = $messaging->id;
                         $notif->id_users = $messaging->sender_id;
                         $notif->message = "Vous avez reçu un nouveau message de " . $_SESSION['user']['username'];
-                        $notif->link = "/messages" . $messageId;
+                        $notif->link = "/message-$messaging->id" ;
                         $notif->is_read = 0; // Mark notification as unread
                     }
                 }

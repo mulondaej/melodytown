@@ -6,11 +6,11 @@ RewriteEngine On
 RewriteRule ^$ /controllers/pages/indexController.php
 RewriteRule ^accueil$ /controllers/pages/indexController.php
 RewriteRule ^contact$ /controllers/pages/contactController.php
-RewriteRule ^inbox$ /controllers/pages/inboxController.php
+# RewriteRule ^inbox$ /controllers/pages/inboxController.php
 RewriteRule ^messages$ /controllers/pages/messagesController.php
 RewriteRule ^alerts$ /controllers/pages/alertsController.php
 # RewriteRule ^chatsList$ /controllers/pages/contactController.php
-RewriteRule ^chat-([0-9]+)$ /controllers/pages/chatController.php?id=$1
+# RewriteRule ^chat-([0-9]+)$ /controllers/pages/chatController.php?id=$1
 RewriteRule ^message-([0-9]+)$ /controllers/pages/textbackController.php?id=$1
 
 #USERS

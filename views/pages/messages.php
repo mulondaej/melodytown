@@ -54,7 +54,7 @@
                 <p>Pas de message disponible</p>
             <?php } else { ?>
                 <?php foreach ($messagingsList as $msg) { ?>
-                    <?php if($_SESSION['user']['id'] == $msg->sender_id || ($_SESSION['user']['id'] == $msg->receiver_id && ($_SESSION['user']['id_usersRoles'] == 167 || $_SESSION['user']['id_usersRoles'] == 381))){ ?>
+                    <?php if($_SESSION['user']['id'] == $msg->sender_id || ($_SESSION['user']['id'] == $msg->receiver_id && ($_SESSION['user']['id_usersRoles'] == 473 || $_SESSION['user']['id_usersRoles'] == 381))){ ?>
                 <div class="subforum central" id="central">
                     <div class="subforum-row">
                         <div class="subforum-icon subforum-column center" id="icon">

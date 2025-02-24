@@ -34,6 +34,8 @@
     <!-- le button de inbox -->
     <div class="btn-group dropdown-center">
         <button class="btn btn-secondary btn-sm notification" type="button">
+        <?php if(isset($alertsList) && is_array($alertsList)){ ?>
+            <?php if($_SESSION['user']['id'] == $alertsList->senderid || ($_SESSION['user']['id'] == $alertsList->receiverid && ($_SESSION['user']['id_usersRoles'] == 381))){ ?>
             <?php 
             $hasUnreadMessages = false;
             if (isset($messagingsList) && is_array($messagingsList)) {
@@ -46,7 +48,7 @@
             }
             ?>
             <i class="fa-solid fa-message" id="chats"></i><a href="/messages"> Inbox
-                <span class="badge" style="color: <?php echo $hasUnreadMessages ? 'yellow' : 'gray'; ?>">
+                <span class="badge" style="color: <?php echo $hasUnreadMessages ? 'yellow' : 'gray'; ?>; background: <?php echo $hasUnreadMessages ? 'red' : 'transparent'; ?>">
                     <?php echo $hasUnreadMessages ? '1' : '0'; ?>
                 </span></a>
         </button>
@@ -67,7 +69,8 @@
                         <?php } else { ?>
                             <?php foreach ($userAlerts as $note): ?>
                                 <li class="<?php echo $note['is_read'] ? 'read' : 'unread'; ?>">
-                                    <a href="<?php echo $note['link']; ?>"><?php echo $note['message']; ?></a>
+                                    <a href="<?php echo $note['link']; ?>">
+                                        <?php echo "message: <b>". $note['title'] . "</b> de " . $senderName = isset($note['username']) ? $note['username'] : 'Unknown Sender'; ?></a>
                                     <small><?php echo $note['created_at']; ?></small>
                                 </li>
                             <?php endforeach; ?>
@@ -84,6 +87,8 @@
                 </div>
             </li>
         </ul>
+        <?php } ?>
+        <?php } ?>
     </div>
 
     <!-- le button des alertes -->
@@ -101,15 +106,16 @@
             }
             ?>
             <i class="fa-solid fa-bell " id="alertsBtn"></i><a href="/alerts"> Alerts
-                <span class="badge" style="color: <?php echo $hasUnreadMessages ? 'yellow' : 'gray'; ?>">
+            <span class="badge" style="color: <?php echo $hasUnreadMessages ? 'yellow' : 'gray'; ?>; background: <?php echo $hasUnreadMessages ? 'red' : 'transparent'; ?>">
                     <?php echo $hasUnreadMessages ? '1' : '0'; ?>
                 </span></a>
+
         </button>
         <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="visually-hidden"></span>
         </button>
         <!-- si l'utilisateur est un admin ou modérateur, ses alertes seront differents -->
-        <?php if ($_SESSION['user']['id_userRoles'] == 381 || $_SESSION['user']['id_userRoles'] == 167) {  ?> 
+        <?php if (isset($_SESSION['user']['id_userRoles']) && ($_SESSION['user']['id_userRoles'] == 381 || $_SESSION['user']['id_userRoles'] == 473)) {  ?> 
             <ul class="dropdown-menu dropdown-menu-dark text-center">
             <?php 
                 if (isset($messagingsList) && is_array($messagingsList)) {  
@@ -121,7 +127,8 @@
                         <?php } else { ?>
                             <?php foreach ($userAlerts as $note): ?>
                                 <li class="<?php echo $note['is_read'] ? 'read' : 'unread'; ?>">
-                                    <a href="<?php echo $note['link']; ?>"><?php echo $note['message']; ?></a>
+                                    <a href="<?php echo $note['link']; ?>">
+                                        <?php echo "message: <b>". $note['title'] . "</b> de " . $senderName = isset($note['username']) ? $note['username'] : 'Unknown Sender'; ?></a>
                                     <small><?php echo $note['created_at']; ?></small>
                                 </li>
                             <?php endforeach; ?>
@@ -148,7 +155,7 @@
                         <?php } else { ?>
                             <?php foreach ($userAlerts as $note): ?>
                                 <li class="<?php echo $note['is_read'] ? 'read' : 'unread'; ?>">
-                                    <a href="<?php echo $note['link']; ?>"><?php echo $note['message']; ?></a>
+                                <?php echo "message: <b>". $note['title'] . "</b> de " . $senderName = isset($note['username']) ? $note['username'] : 'Unknown Sender'; ?></a>
                                     <small><?php echo $note['created_at']; ?></small>
                                 </li>
                             <?php endforeach; ?>
