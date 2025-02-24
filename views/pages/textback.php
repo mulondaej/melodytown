@@ -18,7 +18,7 @@
     <div id="userCard">
       <div class="userImg"><img src="/assets/IMG/users/<?= $messagingsDetails->avatar ?>" id="userAvy"></div><br>
       <div class="username">
-        <h5>@<a href="/profil-<?= $messagingsDetails->sender_id ?>"><?= $messagingsDetails->username ?>
+        <h5>@<a href="/profil-<?= $messagingsDetails->sender_id ?>"><?= $messagingsDetails->sendername ?>
           </a></h5>
       </div><br>
     </div>
@@ -65,7 +65,7 @@
           <div id="userCard">
             <div class="userImg"><img src="/assets/IMG/users/<?= $cr['avatar'] ?>" id="userAvy"></div>
             <div class="username">
-              <h5><a href="/profil-<?= $cr['id_users'] ?>">@<?= $cr['id_users'] ?></a></h5>
+              <h5><a href="/profil-<?= $cr['id_users'] ?>">@<?= $cr['username'] ?></a></h5>
             </div>
           </div>
           <div id="threadContent">
@@ -147,7 +147,7 @@
             <div id="userCard">
               <div class="userImg"><img src="/assets/IMG/users/<?= $cr['avatar'] ?>" id="userAvy"></div>
               <div class="username">
-                <h5><a href="/profil-<?= $cr['id_users'] ?>">@<?= $cr['id_users'] ?></a></h5>
+                <h5><a href="/profil-<?= $cr['id_users'] ?>">@<?= $cr['username'] ?></a></h5>
               </div>
             </div>
           </div>

@@ -3,12 +3,12 @@
 require_once '../../models/usersModel.php';
 require_once '../../models/topicsModel.php' ;
 require_once '../../models/likesModel.php';
-require_once '../../models/notifModel.php';
+require_once '../../models/messageNotifModel.php';
 require_once '../../models/commentsModel.php';
 require_once '../../models/statusModel.php';
 require_once '../../models/topicsRepliesModel.php';
-require_once "../../models/inboxModel.php";
-require_once "../../models/chatReplyModel.php";
+require_once '../../models/messagesModel.php';
+require_once '../../models/textbackModel.php';
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
@@ -29,29 +29,50 @@ if(empty($_SESSION['user'])) {
 }
 
 // Fetch notifications
-$notification = new Notifications;
-$notifications = $notification->getNotifications();
+$notification = new messageNotif();
+$notifications = json_decode(json_encode($notification->getNotifications()), true);
 
+// Fetch alerts safely
+$userAlerts = json_decode(json_encode($notification->getListByIdUsers()), true) ?? []; // Ensure it's an array
 
-foreach ($notifications as $note) {
-    echo "<li class='".($note['is_read'] ? 'read' : 'unread')."'>";
+foreach ($userAlerts as $note) {
+    echo "<li class='".(isset($note['is_read']) && $note['is_read'] ? 'read' : 'unread')."'>";
     echo "<a href='{$note['link']}'>{$note['message']}</a>";
     echo "<small>{$note['created_at']}</small>";
     echo "</li>";
 }
 
 // Mark notifications as read
-if (!empty($notifications)) {
+if (!empty($userAlerts)) {
     foreach ($notifications as $note) {
-        if (!$note['is_read']) {
+        if (isset($note['is_read']) && !$note['is_read']) {
+            $notification->id = $note['id']; // Ensure id is set
             $notification->markAsRead($note['id']);
         }
     }
 }
 
-$alertsList - $notification->getList();
-$latestAlert = $notification->getNotifByChats();
-$alertsCount = count($alertsList);
+// Fetch alerts safely
+$alertsList = json_decode(json_encode($notification->getList()), true) ?? [];         // Fix typo and ensure array
+$latestAlert = json_decode(json_encode($notification->getUserNotifs()), true) ?? [];  // Ensure it's an array
+
+$alertsCount = is_array($alertsList) ? count($alertsList) : 0;
+
+if (empty($alertsList)) {
+    error_log("Warning: alertsList is empty or null.");
+}
+if (empty($latestAlert)) {
+    error_log("Warning: latestAlert is empty or null.");
+}
+
+// Process alerts safely
+if (!empty($latestAlert)) {
+    foreach ($latestAlert as $alert) {
+        echo "New Alert: " . htmlspecialchars($alert['message']);
+    }
+} else {
+    echo "No new alerts available.";
+}
 
 ?>
 

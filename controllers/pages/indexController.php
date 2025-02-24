@@ -6,6 +6,9 @@ require_once '../../models/forumModel.php';
 require_once '../../models/statusModel.php';
 require_once '../../models/topicsRepliesModel.php';
 require_once '../../models/commentsModel.php';
+require_once '../../models/messagesModel.php';
+require_once '../../models/messageNotifModel.php';
+require_once '../../models/textbackModel.php';
 require_once '../../models/topicsModel.php';
 require_once '../../models/categoriesModel.php';
 require_once '../../models/tagsModel.php';
@@ -37,6 +40,12 @@ $tags = new Tags;
 $tagsList = $tags->getList();
 
 $topic = new Topics;
+
+$messaging = new Messages();
+$messagingsList = $messaging->getList();
+
+// Fetch notifications
+$notification = new messageNotif();
 
 // si la requete est de type POST (envoi du formulaire), on l'execute
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
@@ -112,13 +121,59 @@ if ($postCount > 0) {
 }
 
 
-
 $status = new Status;
 $statusList = $status->getList();
 $latestStatus = $status->getStatus();
 $statusCount = count($statusList);
 
+// texts
+$messagingsList = $messaging->getList();
+// $latesttexts = $messaging->getMessages($user_id);
+$messagingCount = count($messagingsList);
 
+$notifications = json_decode(json_encode($notification->getNotifications()), true);
+
+// Fetch alerts safely
+$userAlerts = json_decode(json_encode($notification->getListByIdUsers()), true) ?? []; // Ensure it's an array
+
+foreach ($userAlerts as $note) {
+    echo "<li class='".(isset($note['is_read']) && $note['is_read'] ? 'read' : 'unread')."'>";
+    echo "<a href='{$note['link']}'>{$note['message']}</a>";
+    echo "<small>{$note['created_at']}</small>";
+    echo "</li>";
+}
+
+// Mark notifications as read
+if (!empty($userAlerts)) {
+    foreach ($notifications as $note) {
+        if (isset($note['is_read']) && !$note['is_read']) {
+            $notification->id = $note['id']; // Ensure id is set
+            $notification->markAsRead($note['id']);
+        }
+    }
+}
+
+// Fetch alerts safely
+$alertsList = json_decode(json_encode($notification->getList()), true) ?? [];         // Fix typo and ensure array
+$latestAlert = json_decode(json_encode($notification->getUserNotifs()), true) ?? [];  // Ensure it's an array
+
+$alertsCount = is_array($alertsList) ? count($alertsList) : 0;
+
+if (empty($alertsList)) {
+    error_log("Warning: alertsList is empty or null.");
+}
+if (empty($latestAlert)) {
+    error_log("Warning: latestAlert is empty or null.");
+}
+
+// Process alerts safely
+if (!empty($latestAlert)) {
+    foreach ($latestAlert as $alert) {
+        echo "New Alert: " . htmlspecialchars($alert['message']);
+    }
+} else {
+    echo "No new alerts available.";
+}
 
 $totalCount = $postCount + $topicCount + $statusCount; // total count de tous les publications : status; topics et replies 
 

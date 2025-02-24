@@ -6,6 +6,7 @@ class Messages
     private int $id_users = 0;
     public int $receiver_id;
     public int $sender_id;
+    public string $title;
     public string $message;
     public string $timestamp;
   
@@ -75,7 +76,13 @@ class Messages
         $req->bindValue(':receiver_id', $this->receiver_id, PDO::PARAM_INT);
         $req->bindValue(':title', $this->title, PDO::PARAM_STR);
         $req->bindValue(':message', $this->message, PDO::PARAM_STR);
-        return $req->execute();
+
+        if ($req->execute()) {
+            $this->id = $this->pdo->lastInsertId();
+            return true;
+        }
+        
+        return false;
     }
 
 
@@ -90,7 +97,7 @@ class Messages
     public function getById()
     {
         $sql = 'SELECT `i`.`id`, `i`.`message`, 
-        DATE_FORMAT(`i`.`timestamp`, "%d/%m/%y") AS `timestamp`, `u1`.`username`, `u1`.`avatar`, `u2`.`username`, `u2`.`avatar`, `sender_id`, `receiver_id`, `title`
+        DATE_FORMAT(`i`.`timestamp`, "%d/%m/%y") AS `timestamp`, `u1`.`username` AS `sendername`, `u1`.`avatar`, `u2`.`username` AS `receivername`, `u2`.`avatar`, `sender_id`, `receiver_id`, `title`
         FROM `a8yk4_messages` AS `i`
         INNER JOIN `a8yk4_users` AS `u1` ON `i`.`sender_id` = `u1`.`id`
         INNER JOIN `a8yk4_users` AS `u2` ON `i`.`receiver_id` = `u2`.`id`
@@ -123,7 +130,7 @@ class Messages
 
     public function getList()
     {
-        $sql = 'SELECT `i`.`id`,`u1`.`username`, `u1`.`avatar`, `u2`.`username`, `u2`.`avatar`, `sender_id`, `receiver_id`,`title`, `timestamp`, SUBSTR(`message`, 1, 500) AS `message`
+        $sql = 'SELECT `i`.`id`,`u1`.`username` AS `sendername`, `u1`.`avatar`, `u2`.`username` AS `receivername`, `u2`.`avatar`, `sender_id`, `receiver_id`,`title`, `timestamp`, SUBSTR(`message`, 1, 500) AS `message`
         FROM `a8yk4_messages` AS `i`
         INNER JOIN `a8yk4_users` AS `u1` ON `i`.`sender_id` = `u1`.`id`
         INNER JOIN `a8yk4_users` AS `u2` ON `i`.`receiver_id` = `u2`.`id`
@@ -157,7 +164,14 @@ public function getMessages($user_id) {
     if (!isset($this->id_users)) {
         $this->id_users = $user_id; // Ensure it's initialized
     }
-    $sql = "SELECT * FROM a8yk4_messages WHERE sender_id = :user_id OR receiver_id = :user_id ORDER BY timestamp DESC";
+
+    $sql = 'SELECT m.id, m.message, m.sender_id, m.receiver_id, DATE_FORMAT(m.timestamp, "%d/%m/%y") AS timestamp, 
+                   u1.username AS sendername, u1.avatar AS senderavatar, u2.username AS receivername, u2.avatar AS receiveravatar
+            FROM a8yk4_messages AS m
+            INNER JOIN a8yk4_users AS u1 ON m.sender_id = u1.id
+            INNER JOIN a8yk4_users AS u2 ON m.receiver_id = u2.id
+            WHERE m.sender_id = :user_id OR m.receiver_id = :user_id
+            ORDER BY m.timestamp DESC';
     $req = $this->pdo->prepare($sql);
     $req->bindValue(':user_id', $this->id_users, PDO::PARAM_INT);
     $req->execute();

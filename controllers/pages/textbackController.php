@@ -3,7 +3,6 @@
 // les models de site et les utils
 require_once '../../models/usersModel.php' ;
 require_once '../../models/likesModel.php' ;
-require_once "../../models/inboxModel.php";
 require_once "../../models/messagesModel.php";
 require_once "../../models/textbackModel.php";
 require_once '../../utils/regex.php';

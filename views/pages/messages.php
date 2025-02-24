@@ -20,7 +20,7 @@
                      <select name="receiver_id" id="receiver_id" value="<?= @$_POST['receiver_id'] ?>">
                         <option selected disabled>Envoyez un message à </option>
                         <?php foreach ($usersList as $u) { ?>
-                            <option value="<?= $u->id ?>"><?= $messagingsDetails->receiver_id ?></option>
+                            <option value="<?= $u->id ?>"><?= $u->username ?></option>
                         <?php } ?>
                     </select>
                     <?php if (isset($errors['receiver_id'])) : ?>
@@ -65,7 +65,7 @@
                                 <h4><a href="/message-<?= $msg->id ?>">
                                 <?= $msg->title ?>
                                     </a></h4>
-                                <p> un message de la part de <?= $msg->username ?> </p>
+                                <p> un message de la part de <?= $msg->sendername ?> </p>
                             </ul>
                         </div>
                         <div class="subforum-stats subforum-column center">
@@ -77,7 +77,7 @@
                         </div>
                         <div class="subforum-info subforum-column">
                             <a href="/message-<?= $msg->id ?>">
-                            <b>par</b> </a><a href="/message-<?= $msg->id ?>"><?= $msg->username ?>,
+                            <b>par</b> </a><a href="/message-<?= $msg->id ?>"><?= $msg->sendername ?>,
                              <?= $msg->timestamp ?></a>
                         </div>
                     </div>

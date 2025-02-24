@@ -428,7 +428,7 @@ header a {
     background-color: red;
 }
 
-.notification .badge {
+/* .notification .badge {
     position: absolute;
     top: -1px;
     right: -5px;
@@ -437,7 +437,7 @@ header a {
     background: red;
     color: white;
     z-index: 1;
-}
+} */
 
 /* SEARCHBAR */
 .searchContainer {

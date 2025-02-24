@@ -37,7 +37,12 @@ class textback {
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
         $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
         $req->bindValue(':id_texts', $this->id_texts, PDO::PARAM_INT);
-        $req->execute();
+        if ($req->execute()) {
+            $this->id = $this->pdo->lastInsertId();
+            return true;
+        }
+        
+        return false;
     }
 
     public function delete() // suppression de réponses pour le topic dans la BDD
@@ -52,7 +57,7 @@ class textback {
     {
         $sql = 'SELECT `cr`.`id`, `cr`.`content`, 
         DATE_FORMAT(`cr`.`publicationDate`, "%d/%m/%y") AS `publicationDate`, 
-        `u`.`username`, `u`.`avatar`, `cr`.`id_users`, `cr`.`id_texts`
+        `u`.`username` AS username , `u`.`avatar`, `cr`.`id_users`, `cr`.`id_texts`
         FROM `a8yk4_textback` AS `cr`
         INNER JOIN `a8yk4_users` AS `u` ON `cr`.`id_users` = `u`.`id`
         INNER JOIN `a8yk4_messages` AS `t` ON `cr`.`id_texts` = `t`.`id`
@@ -105,7 +110,7 @@ class textback {
         $sql = 'SELECT `cr`.`id`, SUBSTR(`cr`.`content`, 1, 500) AS `content`,
         DATE_FORMAT(`cr`.`publicationDate`, "%d/%m/%y") AS `publicationDate`,
         DATE_FORMAT(`cr`.`updateDate`, "%d/%m/%y") AS `updateDate`,
-        `u`.`username`, `cr`.`id_users`, `cr`.`id_texts`
+        `u`.`username` AS username, `cr`.`id_users`, `cr`.`id_texts`
         FROM `a8yk4_textback` AS `cr`
         INNER JOIN `a8yk4_users` AS `u` ON `cr`.`id_users` = `u`.`id`
         INNER JOIN `a8yk4_messages` AS `t` ON `cr`.`id_texts` = `t`.`id`
@@ -122,6 +127,22 @@ class textback {
         $req->bindValue(':content', $this->content, PDO::PARAM_STR);
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
+    }
+
+    public function createOrFetchValidId() {
+        // Logic to create or fetch a valid textback ID
+        // For example, you can create a new record and return its ID
+        // or fetch an existing valid ID from the database
+        // This is just a placeholder implementation
+        $this->id = 1; // Replace with actual logic
+        return $this->id;
+    }
+
+    public function isValidId($id) {
+        // Logic to check if the given ID is valid
+        // For example, you can query the database to check if the ID exists
+        // This is just a placeholder implementation
+        return true; // Replace with actual logic
     }
 
 }
