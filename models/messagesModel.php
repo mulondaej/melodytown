@@ -130,7 +130,7 @@ class Messages
 
     public function getList()
     {
-        $sql = 'SELECT `i`.`id`,`u1`.`username` AS `sendername`, `u1`.`avatar`, `u2`.`username` AS `receivername`, `u2`.`avatar`, `sender_id`, `receiver_id`,`title`, `timestamp`, SUBSTR(`message`, 1, 500) AS `message`
+        $sql = 'SELECT `i`.`id`,`u1`.`username` AS `sendername`, `u1`.`avatar` AS avatar, `u2`.`username` AS `receivername`, `u2`.`avatar` AS avy, `sender_id`, `receiver_id`,`title`, `timestamp`, SUBSTR(`message`, 1, 500) AS `message`
         FROM `a8yk4_messages` AS `i`
         INNER JOIN `a8yk4_users` AS `u1` ON `i`.`sender_id` = `u1`.`id`
         INNER JOIN `a8yk4_users` AS `u2` ON `i`.`receiver_id` = `u2`.`id`

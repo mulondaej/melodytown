@@ -5,6 +5,7 @@ require_once '../../models/usersModel.php' ;
 require_once '../../models/likesModel.php' ;
 require_once "../../models/messagesModel.php";
 require_once "../../models/textbackModel.php";
+require_once "../../models/messageNotifModel.php";
 require_once '../../utils/regex.php';
 require_once '../../utils/messages.php';
 require_once '../../utils/functions.php';
@@ -33,7 +34,7 @@ $textback->id_texts = (int) $_GET['id']; // on récupère l'id du chat
 
 $textback->id_users = (int) $_GET['id']; // on récupère l'id de l'utilisateur qui a posté ce reponse
 
-
+$notification = new messageNotif();
 
 // si la requete est de type POST (envoi du formulaire), on l'traite
 if (isset($_POST['reply'])) {
@@ -112,16 +113,37 @@ if (isset($_POST['updateContent'])) { // Même logique que pour l'update de text
     } else {
         $errors['content'] = TOPIC_CONTENT_UPDATE_ERROR_INVALID;
     }
+
     if (empty($errors)) { // si les erreurs sont vides, alors mets le contenu du chat à jour dans la BDD
         $messaging->id_users = $_SESSION['user']['id'];
         if ($messaging->updateContent()) {
-            $messaging->content;
-            $success = TOPIC_CONTENT_UPDATE_SUCCESS;
-        } else {
-            $errors['update'] = TOPIC_CONTENT_UPDATE_ERROR;
-        }
-    }
-}
+            $notif = new messageNotif();
+            // $textback->id_users == $_SESSION['user']['id']
+            if ($textback->id_users == $_SESSION['user']['id']) {
+                $notif->id_messages = $messaging->id;
+                $notif->id_users = $textback->id_users;
+                $notif->message = "Nouveau reponse de " . $_SESSION['user']['username'];
+                $notif->link = "/message-$messaging->id";
+                $notif->is_read = 0; // Mark notification as unread
+                }
+            
+                if ($notif->createReply()) { 
+                    $success = TOPICS_SUCCESS;
+                    header("Location: /messages");
+                    exit();
+                } else {
+                    $errors['notif'] = "Erreur lors de la création de la notification.";
+                }
+            } else {
+                $errors['message'] = "Erreur lors de l'envoi du message.";
+            }
+                    $success = TOPIC_CONTENT_UPDATE_SUCCESS;
+                } else {
+                    $errors['update'] = TOPIC_CONTENT_UPDATE_ERROR;
+                }
+            }
+    
+
 
 // si l'envoi de delete est déclenche, le chat sera supprimé
 if (isset($_POST['deleteChat'])) {
@@ -134,21 +156,7 @@ if (isset($_POST['deleteChat'])) {
 
 $messagingsDetails = $messaging->getById(); // on récupère les détails du chat
 
-// if (isset($_SESSION['user']['id'])) {
-//     $messageUser = $_SESSION['user']['id'];
 
-//     // Fetch message details based on user ID
-//     if (isset($_GET['id'])) {
-//         $message_id = intval($_GET['id']); // Sanitize input
-//         $messagingsDetails = $messaging->getMessageById($message_id);
-
-//         // Ensure the message belongs to the user
-//         if (!$messagingsDetails || 
-//             ($messagingsDetails->sender_id != $messageUser && $messagingsDetails->receiver_id != $messageUser)) {
-//             $messagingsDetails = null; // Reset if user is not sender or receiver
-//         }
-//     }
-// }
 
 $textbackList = $textback->getRepliesByChats();
 $countReply = count($textbackList);
@@ -158,6 +166,53 @@ $countReply = count($textbackList);
 //         $getReply = $textback->getRepliesByTopics();
 //     }
 // }
+
+
+// notifs
+$notifications = json_decode(json_encode($notification->getNotifications()), true);
+
+// Fetch alerts safely
+$userAlerts = json_decode(json_encode($notification->getListByIdUsers()), true) ?? []; // Ensure it's an array
+
+foreach ($userAlerts as $note) {
+    echo "<li class='".(isset($note['is_read']) && $note['is_read'] ? 'read' : 'unread')."'>";
+    echo "<a href='{$note['link']}'>{$note['message']}</a>";
+    echo "<small>{$note['created_at']}</small>";
+    echo "</li>";
+}
+
+// Mark notifications as read
+if (!empty($userAlerts)) {
+    foreach ($notifications as $note) {
+        if (isset($note['is_read']) && !$note['is_read']) {
+            $notification->id = $note['id']; // Ensure id is set
+            $notification->markAsRead($note['id']);
+        }
+    }
+}
+
+// Fetch alerts safely
+$alertsList = json_decode(json_encode($notification->getList()), true) ?? [];         // Fix typo and ensure array
+$latestAlert = json_decode(json_encode($notification->getUserNotifs()), true) ?? [];  // Ensure it's an array
+
+$alertsCount = is_array($alertsList) ? count($alertsList) : 0;
+
+if (empty($alertsList)) {
+    error_log("Warning: alertsList is empty or null.");
+}
+if (empty($latestAlert)) {
+    error_log("Warning: latestAlert is empty or null.");
+}
+
+// Process alerts safely
+if (!empty($latestAlert)) {
+    foreach ($latestAlert as $alert) {
+        echo "New Alert: " . htmlspecialchars($alert['message']);
+    }
+} else {
+    echo "No new alerts available.";
+}
+
 
 $title = $messagingsDetails->title; // Titre de la page sera le nom du chat
 

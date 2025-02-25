@@ -37,14 +37,6 @@ class statusNotif
     }
     
 
-    // public function checkIfExistsByTitle()
-    // {
-    //     $sql = 'SELECT COUNT(`link`) FROM `a8yk4_notifications` WHERE `link` = :link';
-    //     $req = $this->pdo->prepare($sql);
-    //     $req->bindValue(':link', $this->link, PDO::PARAM_STR);
-    //     $req->execute();
-    //     return $req->fetch(PDO::FETCH_COLUMN);
-    // }
 
     // /**
     //  * Vérifie si un utilisateur existe dans la bASe de données avec le nom d'utilisateur
@@ -63,14 +55,14 @@ class statusNotif
     public function checkIfExistsByIdMessages()
 {
 
-$sql = "SELECT COUNT(*) FROM a8yk4_messages WHERE id = :id_status";
+$sql = "SELECT COUNT(*) FROM a8yk4_status WHERE id = :id_status";
 $req = $this->pdo->prepare($sql);
 $req->bindValue(':id_status', $this->id_status, PDO::PARAM_INT);
 $req->execute();
 
 if ($req->fetchColumn() == 0) {
     // Message ID does not exist, prevent insertion
-    throw new Exception("Error: id_status {$this->id_status} does not exist in a8yk4_messages.");
+    throw new Exception("Error: id_status {$this->id_status} does not exist in a8yk4_status.");
 }
 }
 
@@ -95,6 +87,21 @@ if ($req->fetchColumn() == 0) {
      * @return bool
      */
     public function create() {
+        $sql = 'INSERT INTO `a8yk4_notifications` (`message`, `link`, `is_read`, `created_at`, `id_status`, `id_users`) 
+                VALUES (:message, :link, :is_read, NOW(), :id_status, :id_users)';
+        
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':message', $this->message, PDO::PARAM_STR);
+        $req->bindValue(':link', $this->link, PDO::PARAM_STR);
+        $req->bindValue(':is_read', $this->is_read, PDO::PARAM_INT);
+        $req->bindValue(':id_status', $this->id_status, PDO::PARAM_INT);
+        $req->bindValue(':id_likes', $this->id_likes, PDO::PARAM_INT);
+        $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
+    
+        return $req->execute();
+    }
+    
+    public function createComment() {
         $sql = 'INSERT INTO `a8yk4_notifications` (`message`, `link`, `is_read`, `created_at`, `id_status`, `id_likes`, `id_users`) 
                 VALUES (:message, :link, :is_read, NOW(), :id_status, :id_likes, :id_users)';
         
@@ -108,8 +115,6 @@ if ($req->fetchColumn() == 0) {
     
         return $req->execute();
     }
-    
-
 
     public function delete() // suppression de topic dans la BDD
     {
@@ -123,7 +128,7 @@ if ($req->fetchColumn() == 0) {
     {
         $sql = 'SELECT *
         FROM `a8yk4_notifications` AS `n`
-        INNER JOIN `a8yk4_messages` AS `m` ON `n`.`id_status` = `m`.`id`
+        INNER JOIN `a8yk4_status` AS `m` ON `n`.`id_status` = `m`.`id`
         INNER JOIN `a8yk4_likes` AS `l` ON `n`.`id_likes` = `l`.`id`
         INNER JOIN `a8yk4_users` AS `u` ON `n`.`id_users` = `u`.`id`
         WHERE `n`.`id` = :id ';
@@ -137,7 +142,7 @@ if ($req->fetchColumn() == 0) {
     {
         $sql = 'SELECT *
         FROM `a8yk4_notifications` AS `n`
-        INNER JOIN `a8yk4_messages` AS `m` ON `n`.`id_status` = `m`.`id`
+        INNER JOIN `a8yk4_status` AS `m` ON `n`.`id_status` = `m`.`id`
         INNER JOIN `a8yk4_likes` AS `l` ON `n`.`id_likes` = `l`.`id`
         INNER JOIN `a8yk4_users` AS `u` ON `n`.`id_users` = `u`.`id`';
         $req = $this->pdo->prepare($sql);
@@ -149,7 +154,7 @@ if ($req->fetchColumn() == 0) {
     {
         $sql = 'SELECT *
         FROM `a8yk4_notifications` AS `n`
-        INNER JOIN `a8yk4_messages` AS `m` ON `n`.`id_status` = `m`.`id`
+        INNER JOIN `a8yk4_status` AS `m` ON `n`.`id_status` = `m`.`id`
         INNER JOIN `a8yk4_likes` AS `l` ON `n`.`id_likes` = `l`.`id`
         INNER JOIN `a8yk4_users` AS `u` ON `n`.`id_users` = `u`.`id`
         ORDER BY `created_at` DESC';
@@ -179,23 +184,11 @@ if ($req->fetchColumn() == 0) {
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // public function getNotifByChats()
-    // {
-    //     $sql = 'SELECT n.`id`, n.`link
-    //     FROM `a8yk4_notifications` AS n
-    //     INNER JOIN `a8yk4_inbox` AS c ON n.`id_inbox` = c.`id`
-    //     WHERE id = :id
-    //     ORDER BY `created_at` DESC ';
-    //     $req = $this->pdo->prepare($sql);
-    //     $req->execute();
-    //     return $req->fetchAll(PDO::FETCH_ASSOC);
-    // }
-
-    public function getNotifByMessages()
+    public function getNotifByComments()
     {
         $sql = 'SELECT n.`id`, n.`link
         FROM `a8yk4_notifications` AS n
-        INNER JOIN `a8yk4_messages` AS c ON n.`id_status` = c.`id`
+        INNER JOIN `a8yk4_status` AS c ON n.`id_status` = c.`id`
         WHERE id = :id
         ORDER BY `created_at` DESC ';
         $req = $this->pdo->prepare($sql);
@@ -215,17 +208,19 @@ if ($req->fetchColumn() == 0) {
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // public function getNotifications()
-    // {
-    //     $sql = 'SELECT n.`id`, n.`message`, n.`link`, u.`username`, DATE_FORMAT(n.`created_at`, "%d/%m/%y") AS `created_at`
-    //             FROM `a8yk4_notifications` AS n
-    //             INNER JOIN `a8yk4_users` AS `u` ON n.`id_users` = u.`id`
-    //             ORDER BY created_at DESC';
-    //     $req = $this->pdo->query($sql);
-    //     return $req->fetchAll(PDO::FETCH_OBJ);
-    // }
-
     public function getNotifications() {
+        $sql = "SELECT n.`id`, n.`message`, n.`link`, u.`username`, 
+                DATE_FORMAT(n.`created_at`, '%d/%m/%y') AS `created_at`
+                FROM `a8yk4_notifications` AS n
+                INNER JOIN `a8yk4_users` AS u ON n.`id_users` = u.`id`
+                ORDER BY created_at DESC";
+
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        return $req->fetchAll();
+    }
+
+    public function getCommentNotifications() {
         $sql = "SELECT n.`id`, n.`message`, n.`link`, u.`username`, 
                 DATE_FORMAT(n.`created_at`, '%d/%m/%y') AS `created_at`
                 FROM `a8yk4_notifications` AS n

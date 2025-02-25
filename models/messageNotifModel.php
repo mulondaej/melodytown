@@ -9,6 +9,7 @@ class messageNotif
     public int $is_read = 0;
     public int $id_users = 0;
     public int $id_messages = 0;
+    public int $id_textback = 0;
   
     public function __construct()
     {
@@ -92,12 +93,26 @@ if ($req->fetchColumn() == 0) {
         $req->bindValue(':link', $this->link, PDO::PARAM_STR);
         $req->bindValue(':is_read', $this->is_read, PDO::PARAM_INT);
         $req->bindValue(':id_messages', $this->id_messages, PDO::PARAM_INT);
+        // $req->bindValue(':id_textback', $this->id_textback, PDO::PARAM_INT);
         $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
     
         return $req->execute();
     }
     
-
+    public function createReply() {
+        $sql = 'INSERT INTO `a8yk4_messagenotif` (`message`, `link`, `is_read`, `created_at`, , `id_messages`, `id_textback`, `id_users`) 
+                VALUES (:message, :link, :is_read, NOW(), :id_messages, :id_textback, :id_users)';
+        
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':message', $this->message, PDO::PARAM_STR);
+        $req->bindValue(':link', $this->link, PDO::PARAM_STR);
+        $req->bindValue(':is_read', $this->is_read, PDO::PARAM_INT);
+        $req->bindValue(':id_messages', $this->id_messages, PDO::PARAM_INT);
+        $req->bindValue(':id_textback', $this->id_textback, PDO::PARAM_INT);
+        $req->bindValue(':id_users', $this->id_users, PDO::PARAM_INT);
+    
+        return $req->execute();
+    }
 
     public function delete() // suppression de topic dans la BDD
     {

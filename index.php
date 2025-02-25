@@ -821,13 +821,13 @@ echo $formatter->format(time());
                 <h2>Le Staff</h2>
                 <ul>
                     <li><a href="/#"><b>Admin:</b> </a><span id="members-online">
-                            <a href="/profile">
+                            <a href="/profil">
                                 <?php if ($_SESSION['user']['id_usersRoles'] == '381') { ?>
                                     <?= $latestUser->username ?>
                                 <?php } ?>
                             </a></span></li>
                     <li><a href="/#"><b>Modérateurs:</b> </a><span id="members-online">
-                            <a href="/profile">
+                            <a href="/profil">
                                 <?php if ($_SESSION['user']['id_usersRoles'] == '167') { ?>
                                     <?= $latestUser->username ?>
                                 <?php } ?>

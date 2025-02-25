@@ -30,12 +30,11 @@
             <li><a class="dropdown-item" href="#series">Series</a></li>
         </ul>
     </div>
-
+ 
     <!-- le button de inbox -->
     <div class="btn-group dropdown-center">
         <button class="btn btn-secondary btn-sm notification" type="button">
-        <?php if(isset($alertsList) && is_array($alertsList)){ ?>
-            <?php if($_SESSION['user']['id'] == $alertsList->senderid || ($_SESSION['user']['id'] == $alertsList->receiverid && ($_SESSION['user']['id_usersRoles'] == 381))){ ?>
+        
             <?php 
             $hasUnreadMessages = false;
             if (isset($messagingsList) && is_array($messagingsList)) {
@@ -87,8 +86,6 @@
                 </div>
             </li>
         </ul>
-        <?php } ?>
-        <?php } ?>
     </div>
 
     <!-- le button des alertes -->

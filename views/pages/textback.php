@@ -34,7 +34,7 @@
           <button id="likeBtn" name="liked" ><i class="fa-solid fa-heart">Like</i></button>
           <button id="replyBtn" name="replyBtn" quotecontent="<?= $messagingsDetails->message ?>"><a href="#comments">répondre</a></button>
           
-          <?php if($_SESSION['user']['id'] == $messagingsDetails->sender_id && ($_SESSION['user']['id'] == $messagingsDetails->receiver_id) && ($_SESSION['user']['id_usersRoles'] == 167 || 381)){ ?>
+          <?php if($_SESSION['user']['id'] == $messagingsDetails->sender_id && ($_SESSION['user']['id'] == $messagingsDetails->receiver_id) && ($_SESSION['user']['id_usersRoles'] == 381)){ ?>
             <button type="submit" name="update" id="editModal" updatecontent=<?= $messagingsDetails->message ?> >modifier</button>
             <button id="openModalBtn" style="background-color: transparent;">
             <a href="#delete"><i class="fa-solid fa-trash-can"></i></a></button>
