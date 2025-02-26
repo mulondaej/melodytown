@@ -26,7 +26,7 @@ class Users
     public function __construct()
     {
         try {
-            $this->pdo = new PDO('mysql:host=localhost;dbname=melodytown;charset=utf8', 'm18wq_admin', 'ktxkVURHF2mt4pk'); // Connexion à MySQL database
+            $this->pdo = new PDO('mysql:host=localhost;dbname=melodytown;charset=utf8', 'm18wq_admin', 'Ox)x_2sosDuTXn-i'); // Connexion à MySQL database
         } catch (PDOException $e) {
             header('Location: /accueil');
             exit(); // Exit pour empecher des nouvelles executions au cas où il y'a une erreur

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="un forum de manga, comic, webtoon, ">
+        <meta name="description" content="un forum de manga, comic, webtoon, anime, naruto, luffy, one piece, dragon ball, bleach, fairytail, tsunayoshi, reborn, katekyo hitman reborn, one punchman">
         <title>
             <?= $title ?>
         </title>

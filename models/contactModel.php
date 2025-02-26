@@ -12,7 +12,7 @@ class Contact
     public function __construct()
     {
         try {
-            $this->pdo = new PDO('mysql:host=localhost;dbname=melodytown;charset=utf8', 'm18wq_admin', 'ktxkVURHF2mt4pk'); //connect to database sql
+            $this->pdo = new PDO('mysql:host=localhost;dbname=melodytown;charset=utf8', 'm18wq_admin', 'Ox)x_2sosDuTXn-i'); //connect to database sql
         } catch (PDOException $e) {
             header('Location: /accueil');
         }
