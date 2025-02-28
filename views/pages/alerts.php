@@ -1,7 +1,11 @@
 <?php
 
 ?>
-
+<div id="main">
+<section class="forum" id="forum">
+    
+    <h1>Notifications</h1><hr>
+        <div class="forumcontainer" id="forumcontainer">
 
 <div class="notifications">
     <ul>
@@ -16,5 +20,9 @@
         <?php endforeach; ?>
         <?php }?>
     </ul>
+</div>
+
+</div>
+</section>
 </div>
 

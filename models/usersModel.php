@@ -507,6 +507,18 @@ class Users
     //     return $req->execute();
     // }
 
+    public function searchUsers($keyword)
+    {
+        $sql = 'SELECT u.`id`, u.`content`, `u`.`username`
+        FROM `a8yk4_users` AS u
+        WHERE u.`username` LIKE :keyword
+        ORDER BY u.`publicationDate` DESC';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function save()
     {
         if (!isset($this->id)) {

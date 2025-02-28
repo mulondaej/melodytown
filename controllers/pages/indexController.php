@@ -105,6 +105,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
     }
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['search'])) {
+    $searchResults = [];
+    if (!empty($_POST['searchQuery'])) {
+        $searchQuery = clean($_POST['searchQuery']);
+        $searchResults = $topic->searchTopics($searchQuery);
+    } else {
+        $errors['search'] = 'Search query cannot be empty.';
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['searchUser'])) {
+    $searchResults = [];
+    if (!empty($_POST['searchQuery'])) {
+        $searchQuery = clean($_POST['searchQuery']);
+        $searchResults = $topic->searchUsers($searchQuery);
+    } else {
+        $errors['search'] = 'Search query cannot be empty.';
+    }
+}
+
 $topicsList = $topic->getList();
 $topicCount = count($topicsList);
 if ($topicCount > 0) {

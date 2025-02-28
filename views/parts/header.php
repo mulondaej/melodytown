@@ -44,12 +44,12 @@
             </div>
 
             <!-- affiche de la barre de recherche -->
-            <div class="searchContainer">
-                <input type="text" id="searchInput" placeholder="..Search...">
-                <button onclick="search()">
-                    <i class="fa-solid fa-magnifying-glass fa-sm"></i></button>
-            </div>
-            <div id="searchResults"></div>
+                <form method="POST" action="/topics-par-categories" class="searchContainer">
+                    <input type="text" id="searchInput" name="searchQuery" placeholder="..Search...">
+                    <button type="submit" id="searchingBtn" name="search">
+                        <i class="fa-solid fa-magnifying-glass fa-sm"></i>
+                    </button>
+                </form>
 
 
             <?php // si la personne n'est pas connécté

@@ -190,7 +190,20 @@ class Topics
         return $req->fetch(PDO::FETCH_OBJ);
     }
     
-     
+    public function searchTopics($keyword)
+    {
+        $sql = 'SELECT `t`.`id`, `t`.`title`, `t`.`content`, `u`.`username`, `c`.`name` AS `categorie`, `g`.`name` AS `tag`
+        FROM `a8yk4_topics` AS `t`
+        INNER JOIN `a8yk4_users` AS `u` ON `t`.`id_users` = `u`.`id`
+        INNER JOIN `a8yk4_categories` AS `c` ON `t`.`id_categories` = `c`.`id`
+        INNER JOIN `a8yk4_tags` AS `g` ON `t`.`id_tags` = `g`.`id`
+        WHERE `t`.`title` LIKE :keyword OR `t`.`content` LIKE :keyword
+        ORDER BY `t`.`publicationDate` DESC';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_OBJ);
+    }
 
     public function changeUsers()
     {
@@ -222,4 +235,6 @@ class Topics
         $req->bindValue(':id', $this->id, PDO::PARAM_INT);
         return $req->execute();
     }
+
+
 }
