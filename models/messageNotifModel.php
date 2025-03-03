@@ -215,15 +215,15 @@ if ($req->fetchColumn() == 0) {
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // public function getNotifications()
-    // {
-    //     $sql = 'SELECT n.`id`, n.`message`, n.`link`, u.`username`, DATE_FORMAT(n.`created_at`, "%d/%m/%y") AS `created_at`
-    //             FROM `a8yk4_messagenotif` AS n
-    //             INNER JOIN `a8yk4_users` AS `u` ON n.`id_users` = u.`id`
-    //             ORDER BY created_at DESC';
-    //     $req = $this->pdo->query($sql);
-    //     return $req->fetchAll(PDO::FETCH_OBJ);
-    // }
+    public function getLatestNotif()
+    {
+        $sql = 'SELECT id, username, 
+        DATE_FORMAT(`registerDate`, "%d/%m /%Y") AS `registerDate` 
+        FROM `a8yk4_users` 
+        ORDER BY `registerDate` DESC';
+        $req = $this->pdo->query($sql);
+        return $req->fetch(PDO::FETCH_OBJ);
+    }
 
     public function getNotifications() {
         $sql = "SELECT n.`id`, n.`message`, n.`link`, u.`username`, 

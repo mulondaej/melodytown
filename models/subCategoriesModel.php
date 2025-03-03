@@ -30,8 +30,8 @@ class Subcategories {
     }
 
     public function getSubcategorie() {
-        $sql = 'SELECT `id`, `name` AS `subCategorie` FROM `a8yk4_subcategories`
-        INNER JOIN `a8yk4_topics.title` ON `name` = `a8yk4_topics`.`id`';
+        $sql = 'SELECT `a8yk4_subcategories`.`id`, `a8yk4_subcategories`.`name` AS `subCategorie` FROM `a8yk4_subcategories`
+        INNER JOIN `a8yk4_topics` ON `a8yk4_subcategories`.`id` = `a8yk4_topics`.`subcategorie_id`';
         $req = $this->pdo->query($sql);
         return $req->fetchAll(PDO::FETCH_OBJ);
     }

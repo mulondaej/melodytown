@@ -26,6 +26,16 @@
             <p class=errorsMessage><?= $errors['categories'] ?></p>
         <?php } ?>
 
+        <label for="sections">Section: </label>
+        <select id="sections" name="sections">
+                <?php foreach ($sectionsList as $s) { ?>
+                    <option value="<?= $s->id ?>"><?= $s->name ?></option>
+                <?php } ?>
+            </select>
+        <?php if (isset($errors['sections'])) { ?>
+            <p class=errorsMessage><?= $errors['sections'] ?></p>
+        <?php } ?>
+
         <label for="title">Titre: </label>
         <input type="text" name="title" id="title" value="<?= $topicsDetails->title ?>">
         <?php if (isset($errors['title'])) { ?>

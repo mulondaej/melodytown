@@ -472,7 +472,7 @@ header a {
 
 /* SEARCHBAR */
 .searchContainer {
-    display: flex;
+    /* display: flex; */
     gap: 0.1rem;
     justify-content: center;
     top: 0;

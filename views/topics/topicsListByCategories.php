@@ -37,6 +37,18 @@
                      <?php if (isset($errors['categories'])) : ?>
                          <p id=errorsMessage><?= $errors['categories'] ?></p>
                      <?php endif; ?>
+
+                     <label for="sections">Section</label>
+                    <select id="sections" name="sections" value="<?= @$_POST['sections'] ?>">
+                        <option selected disabled>Choisissez une section</option>
+                         <?php foreach ($sectionsList as $s) { ?>
+                             <option value="<?= $s->id ?>"><?= $s->name ?></option>
+                         <?php } ?>
+                     </select>
+                     <?php if (isset($errors['sections'])) : ?>
+                         <p id=errorsMessage><?= $errors['sections'] ?></p>
+                     <?php endif; ?>
+ 
  
                      <label for="title">Title:</label>
                      <input type="text" id="title" name="title" value="<?= @$_POST['title'] ?>">

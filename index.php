@@ -38,6 +38,8 @@
                                 <p id=errorsMessage><?= $errors['categories'] ?></p>
                             <?php endif; ?>
 
+                            
+
                             <label for="title">Title:</label>
                             <input type="text" id="title" name="title" value="<?= @$_POST['title'] ?>">
                             <?php if (isset($errors['title'])): ?>
@@ -60,7 +62,14 @@
             <?php } ?>
             <div class="subforum central" id="central">
                 <div class="subforum-title">
-                    <h1 id="central">Central</h1>
+                    <h1 id="central">
+                    <?php if (isset($sectionsList)) {
+                        foreach ($sectionsList as $s) {
+                            if ($s->name == 'Central') {
+                                echo $s->name;
+                            }
+                        }
+                    } ?></h1>
                 </div>
                 <div class="subforum-row">
                     <div class="subforum-icon subforum-column ">
@@ -223,7 +232,14 @@ echo $formatter->format(time());
 
             <div class="subforum manga" id="manga">
                 <div class="subforum-title">
-                    <h1 id="forums">Forums</h1>
+                    <h1 id="forums">
+                    <?php if (isset($sectionsList)) {
+                        foreach ($sectionsList as $s) {
+                            if ($s->name == 'Forums') {
+                                echo $s->name;
+                            }
+                        }
+                    } ?></h1>
                 </div>
                 <hr class="subforum-devider">
                 <div class="subforum-row">
@@ -437,7 +453,14 @@ echo $formatter->format(time());
 
                 <div class="subforum comics" id="comics">
                     <div class="subforum-title">
-                        <h1 id="multiverse">Arène</h1>
+                        <h1 id="multiverse">
+                    <?php if (isset($sectionsList)) {
+                        foreach ($sectionsList as $s) {
+                            if ($s->name == 'Arène') {
+                                echo $s->name;
+                            }
+                        }
+                    } ?></h1>
                     </div>
                     <div class="subforum-row">
                         <div class="subforum-icon subforum-column ">
@@ -522,7 +545,14 @@ echo $formatter->format(time());
                     ?>
                     <div class="subforum discover" id="explore">
                         <div class="subforum-title">
-                            <h1 id="decouvrir">Découvrir</h1>
+                            <h1 id="decouvrir">
+                    <?php if (isset($sectionsList)) {
+                        foreach ($sectionsList as $s) {
+                            if ($s->name == 'Découvrir') {
+                                echo $s->name;
+                            }
+                        }
+                    } ?></h1>
                         </div>
                         <div class="subforum-row">
                             <div class="subforum-icon subforum-column ">
@@ -638,7 +668,14 @@ echo $formatter->format(time());
 
                     <div class="subforum gather" id="gather">
                         <div class="subforum-title">
-                            <h1 id="controverse">Controverse</h1>
+                            <h1 id="controverse">
+                    <?php if (isset($sectionsList)) {
+                        foreach ($sectionsList as $s) {
+                            if ($s->name == 'Controverse') {
+                                echo $s->name;
+                            }
+                        }
+                    } ?></h1>
                         </div>
                         <div class="subforum-row">
                             <div class="subforum-icon subforum-column ">
@@ -717,7 +754,14 @@ echo $formatter->format(time());
 
                     <div class="subforum" id="underground">
                         <div class="subforum-title">
-                            <h1 id="baze">Baze</h1>
+                            <h1 id="baze">
+                    <?php if (isset($sectionsList)) {
+                        foreach ($sectionsList as $s) {
+                            if ($s->name == 'Baze') {
+                                echo $s->name;
+                            }
+                        }
+                    } ?></h1>
                         </div>
                         <div class="subforum-row">
                             <div class="subforum-icon subforum-column ">
@@ -828,7 +872,7 @@ echo $formatter->format(time());
                             </a></span></li>
                     <li><a href="/#"><b>Modérateurs:</b> </a><span id="members-online">
                             <a href="/profil">
-                                <?php if ($_SESSION['user']['id_usersRoles'] == '167') { ?>
+                                <?php if ($_SESSION['user']['id_usersRoles'] == '473') { ?>
                                     <?= $latestUser->username ?>
                                 <?php } ?>
                             </a></span></li>

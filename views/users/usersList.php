@@ -15,7 +15,7 @@
                     <div class="subforum-description subforum-column" id="subDescript">
                         <ul class="topic-list">
                             <h4>
-                                <a href="/topic-<?= $u->id ?>">
+                                <a href="/profil-<?= $u->id ?>">
                                     <b><?= $u->username ?>, <b></b><?= $u->roleName ?></b>
                                 </a>
                             </h4>
@@ -30,13 +30,13 @@
                     <div class="subforum-stats subforum-column center">
                         <span>   
                         <?php if($_SESSION['user']['id'] == $u->id && $_SESSION['user']['id_usersRoles'] == 167 || 381) {?>
-                            <a href="/profile-<?= $u->id ?>">visualiser</a>
+                            <a href="/profil-<?= $u->id ?>">visualiser</a>
                         </span>
                 <?php } ?>
                     </div>
                     <div class="subforum-info subforum-column" id="centerBtn">
                     <?php if($_SESSION['user']['id'] == $u->id && $_SESSION['user']['id_usersRoles'] == 167 || 381) {?>
-                        <a href="/modifier-topic-<?= $u->id ?>"> modifier</a>
+                        <a href="/modifier-mon-compte-<?= $u->id ?>"> modifier</a>
                     </div>
                 <?php } ?>
                 </div>

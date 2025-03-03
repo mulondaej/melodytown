@@ -45,6 +45,7 @@
 
             <!-- affiche de la barre de recherche -->
                 <form method="POST" action="/topics-par-categories" class="searchContainer">
+                    
                     <input type="text" id="searchInput" name="searchQuery" placeholder="..Search...">
                     <button type="submit" id="searchingBtn" name="search">
                         <i class="fa-solid fa-magnifying-glass fa-sm"></i>

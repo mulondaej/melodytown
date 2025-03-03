@@ -14,6 +14,14 @@ class Sections
         }
     }
 
+    public function checkIfExistsById() {
+        $sql = 'SELECT COUNT(*) FROM `a8yk4_sections` WHERE `id` = :id';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetch(PDO::FETCH_COLUMN);
+    }
+
     public function getSection() {
         $sql = 'SELECT `id`, `name` FROM `a8yk4_sections`';
         $req = $this->pdo->query($sql);

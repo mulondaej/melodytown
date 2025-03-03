@@ -66,6 +66,9 @@ define('TOPIC_TAG_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jou
 define('TOPIC_CATEGORIE_UPDATE_SUCCESS', 'le tag ou la categorie a bien été mis à jour');
 define('TOPIC_CATEGORIE_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du tag ou categorie');
 
+define('TOPIC_SECTION_UPDATE_SUCCESS', 'le tag ou la section a bien été mis à jour');
+define('TOPIC_SECTION_UPDATE_ERROR', 'Une erreur est survenue lors de la mise à jour du section');
+
 
 //MIS A JOUR STATUS
 define('STATUS_UPDATE_SUCCESS', 'Le status a bien été mis à jour');
@@ -114,6 +117,10 @@ define('TOPICS_TAGS_ERROR_INVALID', 'Le tag est invalide');
 // CATEGORIES
 define('TOPICS_CATEGORIES_ERROR_EMPTY', 'La categorie est requise');
 define('TOPICS_CATEGORIES_ERROR_INVALID', 'La categorie est invalide');
+
+// CATEGORIES
+define('TOPICS_SECTION_ERROR_EMPTY', 'La section  est requise');
+define('TOPICS_SECTION_ERROR_INVALID', 'La section est invalide');
 
 // TOPIC
 define('TOPICS_SUCCESS', 'Votre topic vient d\'être publié avec succes');

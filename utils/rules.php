@@ -1,13 +1,14 @@
 <?php
-session_start();
 
-$title = 'Règles';
-
-require_once '../models/usersModel.php';
+include_once '../models/usersModel.php';
 require_once '../utils/regex.php';
 require_once '../utils/messages.php';
 require_once '../utils/functions.php';
 require_once '../views/parts/header.php';
+
+
+session_start();
+
 
 ?>
 <div class="footDiv">
@@ -59,6 +60,6 @@ require_once '../views/parts/header.php';
 </div>
 
 <?php
-
+$title = 'Règles';
 require_once '../views/parts/footer.php';
 ?>

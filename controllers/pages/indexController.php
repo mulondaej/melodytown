@@ -11,6 +11,7 @@ require_once '../../models/messageNotifModel.php';
 require_once '../../models/textbackModel.php';
 require_once '../../models/topicsModel.php';
 require_once '../../models/categoriesModel.php';
+require_once '../../models/subCategoriesModel.php';
 require_once '../../models/tagsModel.php';
 require_once '../../models/sectionsModel.php';
 require_once '../../utils/regex.php';
@@ -27,14 +28,18 @@ if (!empty($_SESSION['user'])) {
     $userAccount = $user->getById();
 }
 
-$latestUser = $user->getLatestUser();
-$userDetails = $user->getList();
-$userCount = count($userDetails);
+
 
 $forums = new Forums;
 
 $categories = new Categories;
 $categoriesList = $categories->getList();
+
+$subCategories = new Subcategories;
+$subCategoriesList = $subCategories->getList();
+
+$sections = new Sections;
+$sectionsList = $sections->getSection();
 
 $tags = new Tags;
 $tagsList = $tags->getList();
@@ -67,17 +72,55 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['threadPost'])) {
         $errors['content'] = TOPICS_CONTENT_ERROR;
     }
 
+     // même logique pour les sections
+    //  if (!empty($_POST['sections'])) {
+    //     $sections->id = $_POST['sections'];
+    //     if ($sections->checkIfExistsById() == 1) {
+    //         $topic->id_sections = clean($_POST['sections']);
+    //     } else {
+    //         $errors['sections'] = TOPICS_SECTION_ERROR_INVALID;
+    //     }
+    // } else {
+    //     $errors['sections'] = TOPICS_SECTION_ERROR_EMPTY;
+    // }
+
     // même logique pour les catégories 
     if (!empty($_POST['categories'])) {
         $categories->id = $_POST['categories'];
         if ($categories->checkIfExistsById() == 1) {
             $topic->id_categories = clean($_POST['categories']);
+            if (in_array($categories->id, [1, 3, 4, 8, 13])) {
+                $topic->id_sections = 6; // Set section id to 1 for specified categories
+            } elseif (in_array($categories->id, [14, 15, 17])) {
+                $topic->id_sections = 1;
+            } elseif (in_array($categories->id, [9, 18])) {
+                $topic->id_sections = 2;
+            } elseif (in_array($categories->id, [2, 5, 16])) {
+                $topic->id_sections = 3;
+            } elseif (in_array($categories->id, [10, 11])) {
+                $topic->id_sections = 4;
+            } else {
+                $topic->id_sections = 5;
+            }
         } else {
             $errors['categories'] = TOPICS_CATEGORIES_ERROR_INVALID;
         }
     } else {
         $errors['categories'] = TOPICS_CATEGORIES_ERROR_EMPTY;
     }
+
+
+    // // même logique pour les catégories 
+    // if (!empty($_POST['subcategories'])) {
+    //     $subCategories->id = $_POST['subcategories'];
+    //     if ($subCategories->checkIfExistsById() == 1) {
+    //         $topic->id_subcategories = clean($_POST['subcategories']);
+    //     } else {
+    //         $errors['subcategories'] = TOPICS_TAGS_ERROR_INVALID;
+    //     }
+    // } else {
+    //     $errors['subcategories'] = TOPICS_TAGS_ERROR_EMPTY;
+    // }
 
     // même logique pour les tags
     if (!empty($_POST['tag'])) {
@@ -141,6 +184,12 @@ if ($postCount > 0) {
 }
 
 
+//users
+$latestUser = $user->getLatestUser();
+$userDetails = $user->getList();
+$userCount = count($userDetails);
+
+///status
 $status = new Status;
 $statusList = $status->getList();
 $latestStatus = $status->getStatus();
