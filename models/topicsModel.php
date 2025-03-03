@@ -117,7 +117,7 @@ class Topics
         FROM `a8yk4_topics` AS `t`
         INNER JOIN `a8yk4_users` ON `t`.`id_users` = `a8yk4_users`.`id` 
         INNER JOIN `a8yk4_categories` ON `t`.`id_categories` = `a8yk4_categories`.`id`
-        INNER JOIN `a8yk4_subcategories` AS `z` ON `t`.`id_subcategories` = `z`.`id`
+        INNER JOIN `a8yk4_subcategories` AS `z` ON `t`.`id_subcategories` = `z`.`id` 
         INNER JOIN `a8yk4_tags` ON `t`.`id_tags` = `a8yk4_tags`.`id` 
         INNER JOIN `a8yk4_sections` ON `t`.`id_sections` = `a8yk4_sections`.`id`';
         $req = $this->pdo->prepare($sql);

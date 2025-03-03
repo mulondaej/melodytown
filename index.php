@@ -170,21 +170,23 @@ echo $formatter->format(time());
                             <b><a href="">Last post: </a></b>
                             <?php if (!empty($latestTopic)) { ?>
                                 <a href="/topic-<?= $latestTopic->id ?>">
-                                <?php } ?>
-                                <?php if (!empty($_SESSION['user'])) {
-                                    if (!empty($latestReply)) { ?>
-                                        <?= $latestReply->username ?>,
-                                        <?= $latestReply->publicationDate ?>
+                            <?php } ?>
+                            <?php if (!empty($_SESSION['user'])) {
+                                if (isset($latestReply)) { 
+                                    foreach($latestReply as $re) { ?>
+                                        <?= $re->username ?>,
+                                        <?= $re->publicationDate ?>
                                     </a>
-                                <?php } else { ?>
+                                    <?php } 
+                                } else { ?>
                                     <p>Aucune</p>
                                 <?php } ?>
                             <?php } else { ?>
                                 <?php if (!empty($latestTopic)) { ?>
                                     <a href="/topic-<?= $latestTopic->id ?>">
-                                    <?php } ?>
-                                    <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
-                                    echo $formatter->format(time()); ?>
+                                <?php } ?>
+                                <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                echo $formatter->format(time()); ?>
                                 </a>
                             <?php } ?>
                         </div>

@@ -202,7 +202,6 @@ $messagingCount = count($messagingsList);
 
 $notifications = json_decode(json_encode($notification->getNotifications()), true);
 
-// Fetch alerts safely
 $userAlerts = json_decode(json_encode($notification->getListByIdUsers()), true) ?? []; // Ensure it's an array
 
 foreach ($userAlerts as $note) {
@@ -212,7 +211,7 @@ foreach ($userAlerts as $note) {
     echo "</li>";
 }
 
-// Mark notifications as read
+// 
 if (!empty($userAlerts)) {
     foreach ($notifications as $note) {
         if (isset($note['is_read']) && !$note['is_read']) {
@@ -222,9 +221,9 @@ if (!empty($userAlerts)) {
     }
 }
 
-// Fetch alerts safely
-$alertsList = json_decode(json_encode($notification->getList()), true) ?? [];         // Fix typo and ensure array
-$latestAlert = json_decode(json_encode($notification->getUserNotifs()), true) ?? [];  // Ensure it's an array
+// recupération des notifications
+$alertsList = json_decode(json_encode($notification->getList()), true) ?? [];         
+$latestAlert = json_decode(json_encode($notification->getUserNotifs()), true) ?? [];  
 
 $alertsCount = is_array($alertsList) ? count($alertsList) : 0;
 
@@ -235,7 +234,7 @@ if (empty($latestAlert)) {
     error_log("Warning: latestAlert is empty or null.");
 }
 
-// Process alerts safely
+// Process 
 if (!empty($latestAlert)) {
     foreach ($latestAlert as $alert) {
         echo "New Alert: " . htmlspecialchars($alert['message']);

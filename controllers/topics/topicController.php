@@ -186,7 +186,7 @@ if ($topicsDetails === false) {
     exit;
 }
 
-$topicsDetails = $topic->getById();
+// $topicsDetails = $topic->getById();
 
 $repliesList = $replies->getRepliesByTopics();
 $countReply = count($repliesList);

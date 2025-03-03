@@ -874,7 +874,7 @@
                     </div>
 
                 </div>
-                <?php } ?>
+                <?php } ?>n 
             </div>
     </section>
 
