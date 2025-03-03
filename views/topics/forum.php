@@ -66,16 +66,17 @@
                 <hr>
             <?php } ?>
 
-
+<?php if (isset($topicsList)) { ?>
+    <?php if(isset($topicsList->id_categories) == 1) ?>
             <div class="subforum manga" id="manga">
                 <div class="subforum-title">
-                    <h1><?php if (isset($categoriesList)) {
-                        foreach ($categoriesList as $c) {
-                            if ($s->name == 'Manga') {
-                                echo $c->name;
-                            }
+                <h1>
+                    <?php foreach ($topicsList as $c) {
+                        if ($c->categorie) {
+                            echo $c->categorie;
                         }
-                    } ?></h1>
+                    }?>
+                </h1>
                 </div>
                 <hr class="subforum-devider">
                 <div class="subforum-row">
@@ -83,12 +84,12 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i> 
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics-par-categories">Bleach </a></h4>
+                        <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Bleach </a></h4>
                         
                         <div>
-                            <h6><a href="/topics-par-categories">Discussions</a></h6>
-                            <h6><a href="/topics-par-categories">Théories</a></h6>
-                            <h6><a href="/topics-par-categories">Versus</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Discussions</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Théories</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Versus</a></h6>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -125,11 +126,11 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics-par-categories"> Naruto  </a></h4>
+                        <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>"> Naruto  </a></h4>
                         <div>
-                            <h6><a href="/topics-par-categories">Discussions</a></h6>
-                            <h6><a href="/topics-par-categories">Théories</a></h6>
-                            <h6><a href="/topics-par-categories">Versus</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Discussions</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Théories</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Versus</a></h6>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -166,11 +167,11 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics-par-categories">One Piece  </a></h4>
+                        <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">One Piece  </a></h4>
                         <div>
-                            <h6><a href="/topics-par-categories">Discussions</a></h6>
-                            <h6><a href="/topics-par-categories">Théories</a></h6>
-                            <h6><a href="/topics-par-categories">Versus</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Discussions</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Théories</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Versus</a></h6>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -208,11 +209,11 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics-par-categories">Hunter X Hunter</a></h4>
+                        <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Hunter X Hunter</a></h4>
                         <div>
-                            <h6><a href="/topics-par-categories">Discussions</a></h6>
-                            <h6><a href="/topics-par-categories">Théories</a></h6>
-                            <h6><a href="/topics-par-categories">Versus</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Discussions</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Théories</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Versus</a></h6>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -249,12 +250,12 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics-par-categories">Golden</a></h4>
+                        <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Golden</a></h4>
                         <div>
-                            <h6><a href="/topics-par-categories">DBZ</a></h6>
-                            <h6><a href="/topics-par-categories">Saint Seiya</a></h6>
-                            <h6><a href="/topics-par-categories">JoJo Bizarre</a></h6>
-                            <h6><a href="/topics-par-categories">Major</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">DBZ</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Saint Seiya</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">JoJo Bizarre</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Major</a></h6>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -290,13 +291,13 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics-par-categories">New Gen</a></h4>
+                        <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">New Gen</a></h4>
                         <div>
-                            <h6><a href="/topics-par-categories">MHA</a></h6>
-                            <h6><a href="/topics-par-categories">Kingdom</a></h6>
-                            <h6><a href="/topics-par-categories">OPM</a></h6>
-                            <h6><a href="/topics-par-categories">JJK</a></h6>
-                            <h6><a href="/topics-par-categories">more</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">MHA</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Kingdom</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">OPM</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">JJK</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">more</a></h6>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -332,12 +333,12 @@
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics-par-categories">Finished series</a></h4>
+                        <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Finished series</a></h4>
                         <div>
-                            <h6><a href="/topics-par-categories">Reborn</a></h6>
-                            <h6><a href="/topics-par-categories">Fairytail</a></h6>
-                            <h6><a href="/topics-par-categories">AoT</a></h6>
-                            <h6><a href="/topics-par-categories">more</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Reborn</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Fairytail</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">AoT</a></h6>
+                            <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">more</a></h6>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -378,10 +379,10 @@
                             <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                         </div>
                         <div class="subforum-description subforum-column">
-                            <h4><a href="/topics-par-categories">Marvel</a></h4>
+                            <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Marvel</a></h4>
                             <div>
-                                <h6><a href="/topics-par-categories">Comics</a></h6>
-                                <h6><a href="/topics-par-categories">Series/ Movies</a></h6>
+                                <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Comics</a></h6>
+                                <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Series/ Movies</a></h6>
                             </div>
                         </div>
                         <div class="subforum-stats subforum-column ">
@@ -406,8 +407,8 @@
                                 <?php if (!empty($latestTopic)) { ?>
                                     <a href="/topic-<?= $latestTopic->id ?>">
                                     <?php } ?>
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                    <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                 </a>
                             <?php } ?>
                         </div>
@@ -417,10 +418,10 @@
                             <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                         </div>
                         <div class="subforum-description subforum-column">
-                            <h4><a href="/topics-par-categories">D.C</a></h4>
+                            <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">D.C</a></h4>
                             <div>
-                                <h6><a href="/topics-par-categories">Comics</a></h6>
-                                <h6><a href="/topics-par-categories">Series/ Movies</a></h6>
+                                <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Comics</a></h6>
+                                <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Series/ Movies</a></h6>
                             </div>
                         </div>
                         <div class="subforum-stats subforum-column ">
@@ -445,8 +446,8 @@
                                 <?php if (!empty($latestTopic)) { ?>
                                     <a href="/topic-<?= $latestTopic->id ?>">
                                     <?php } ?>
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                    <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                 </a>
                             <?php } ?>
                         </div>
@@ -456,10 +457,10 @@
                             <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                         </div>
                         <div class="subforum-description subforum-column">
-                            <h4><a href="/topics-par-categories">Other publishers</a></h4>
+                            <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Other publishers</a></h4>
                             <div>
-                                <h6><a href="/topics-par-categories">Invincible</a></h6>
-                                <h6><a href="/topics-par-categories">other series</a></h6>
+                                <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Invincible</a></h6>
+                                <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">other series</a></h6>
                             </div>
                         </div>
                         <div class="subforum-stats subforum-column ">
@@ -484,8 +485,8 @@
                                 <?php if (!empty($latestTopic)) { ?>
                                     <a href="/topic-<?= $latestTopic->id ?>">
                                     <?php } ?>
-                                    <?php setlocale(LC_TIME, 'fr_FR.utf8');
-                                    echo 'User: ' . strftime('%d/%m/%Y'); ?>
+                                    <?php $formatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::LONG, IntlDateFormatter::SHORT);
+                                    echo $formatter->format(time()); ?>
                                 </a>
                             <?php } ?>
                         </div>
@@ -501,12 +502,12 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Well-known</a></h4>
+                                <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Well-known</a></h4>
                                 <div>
-                                    <h6><a href="/topics-par-categories">Solo-Lvl</a></h6>
-                                    <h6><a href="/topics-par-categories">Noblesse</a></h6>
-                                    <h6><a href="/topics-par-categories">GoH</a></h6>
-                                    <h6><a href="/topics-par-categories">ToG</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Solo-Lvl</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Noblesse</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">GoH</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">ToG</a></h6>
                                 </div>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -543,12 +544,12 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Explore more</a></h4>
+                                <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Explore more</a></h4>
                                 <div>
-                                    <h6><a href="/topics-par-categories">Dr. Frost</a></h6>
-                                    <h6><a href="/topics-par-categories">Gosu</a></h6>
-                                    <h6><a href="/topics-par-categories">Dice</a></h6>
-                                    <h6><a href="/topics-par-categories">more</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Dr. Frost</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Gosu</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Dice</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">more</a></h6>
                                 </div>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -590,11 +591,11 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Comics</a></h4>
+                                <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Comics</a></h4>
                                 <div>
-                                    <h6><a href="/topics-par-categories">X-TSHERS</a></h6>
-                                    <h6><a href="/topics-par-categories">UN-FAZE</a></h6>
-                                    <h6><a href="/topics-par-categories">more</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">X-TSHERS</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">UN-FAZE</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">more</a></h6>
                                 </div>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -637,12 +638,12 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Populaire</a></h4>
+                                <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Populaire</a></h4>
                                 <div>
-                                    <h6><a href="/topics-par-categories">Sherlock</a></h6>
-                                    <h6><a href="/topics-par-categories">GoT</a></h6>
-                                    <h6><a href="/topics-par-categories">Harry Potter</a></h6>
-                                    <h6><a href="/topics-par-categories">more</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Sherlock</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">GoT</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Harry Potter</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">more</a></h6>
                                 </div>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -679,11 +680,11 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Autres</a></h4>
+                                <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Autres</a></h4>
                                 <div>
-                                    <h6><a href="/topics-par-categories">The 100</a></h6>
-                                    <h6><a href="/topics-par-categories">Atlas</a></h6>
-                                    <h6><a href="/topics-par-categories">more</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">The 100</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Atlas</a></h6>
+                                    <h6><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">more</a></h6>
                                 </div>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -727,7 +728,7 @@
                                     <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                                 </div>
                                 <div class="subforum-description subforum-column">
-                                    <h4><a href="/topics-par-categories">Discussion</a></h4>
+                                    <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Discussion</a></h4>
                                     <p>Restons poli dans la discussion</p>
                                 </div>
                                 <div class="subforum-stats subforum-column ">
@@ -764,7 +765,7 @@
                                     <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                                 </div>
                                 <div class="subforum-description subforum-column">
-                                    <h4><a href="/topics-par-categories">Versus</a></h4>
+                                    <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Versus</a></h4>
                                     <p>Tête à tête</p>
                                 </div>
                                 <div class="subforum-stats subforum-column ">
@@ -808,7 +809,7 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Politique</a></h4>
+                                <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Politique</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -842,7 +843,7 @@
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Social</a></h4>
+                                <h4><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Social</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -873,6 +874,7 @@
                     </div>
 
                 </div>
+                <?php } ?>
             </div>
     </section>
 

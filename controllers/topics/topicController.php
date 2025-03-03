@@ -175,6 +175,17 @@ if ($pagesList !== false) {
     }
 }
 
+// Fetch topic details
+$topicsDetails = $topic->getById();
+
+if ($topicsDetails === false) {
+    // Handle the case where the topic was not found
+    $errors['topic'] = 'Topic not found.';
+    // Redirect or display an error message
+    header('Location: /topics-par-categories');
+    exit;
+}
+
 $topicsDetails = $topic->getById();
 
 $repliesList = $replies->getRepliesByTopics();

@@ -112,10 +112,10 @@ echo $formatter->format(time());
                         <ul class="topic-list">
                             <!-- topic items go here -->
                         </ul>
+                            
+                    <?php if (isset($topicsList)) { ?>
                         <?php if (!empty($_SESSION['user'])) { ?>
-                            <h4><a href="/topics-par-categories?<?= $c->name ?>">News</a></h4>
-                        <?php } else { ?>
-                            <h4><a href="/topics-par-categories?">News</a></h4>
+                            <h4><a href="/forums-<?= $topicsList[0]->categorie = 17 ?>">News</a></h4>
                         <?php } ?>
                         <p>Prenez des nouvelles du site ou forum</p>
                     </div>
@@ -158,7 +158,7 @@ echo $formatter->format(time());
                             <ul class="topic-list">
                                 <!-- topic items go here -->
                             </ul>
-                            <h4><a href="/topics-par-categories">Events</a></h4>
+                            <h4><a href="/forums-<?= $topicsList[0]->categorie = 14 ?>">Events</a></h4>
                             <p>Découvrez des évenements à venir</p>
                         </div>
                         <div class="subforum-stats subforum-column ">
@@ -198,7 +198,7 @@ echo $formatter->format(time());
                             <ul class="topic-list">
                                 <!-- topic items go here -->
                             </ul>
-                            <h4><a href="/topics-par-categories">Welcome</a></h4>
+                            <h4><a href="/forums-<?= $topicsList[0]->categorie = 15 ?>">Welcome</a></h4>
                             <p>Chaleureux accueil pour les nouveaux membres</p>
                         </div>
                         <div class="subforum-stats subforum-column ">
@@ -247,12 +247,12 @@ echo $formatter->format(time());
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/forums">Manga</a></h4>
+                        <h4><a href="/forums-<?= $topicsList[0]->categorie = 1 ?>">Manga</a></h4>
                         <div>
-                            <h5><a href="/forums">One Piece</a></h5>
-                            <h5><a href="/forums">Naruto</a></h5>
-                            <h5><a href="/forums">Bleach</a></h5>
-                            <h5><a href="/forums">more</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id = 1 ?>">One Piece</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id = 1 ?>">Naruto</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id = 1 ?>">Bleach</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id = 1 ?>">more</a></h5>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -289,11 +289,11 @@ echo $formatter->format(time());
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics-par-categories">Comics</a></h4>
+                        <h4><a href="/forums-<?= $topicsList[0]->categorie = 3 ?>">Comics</a></h4>
                         <div>
-                            <h5><a href="/topics-par-categories">Marvel</a></h5>
-                            <h5><a href="/topics-par-categories">D.C</a></h5>
-                            <h5><a href="/topics-par-categories">Others</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Marvel</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id?>">D.C</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Others</a></h5>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -330,12 +330,12 @@ echo $formatter->format(time());
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics-par-categories">Webtoon</a></h4>
+                        <h4><a href="/forums-<?= $topicsList[0]->categorie = 8 ?>">Webtoon</a></h4>
                         <div>
-                            <h5><a href="/topics-par-categories">Solo-Leveling</a></h5>
-                            <h5><a href="/topics-par-categories">ToG</a></h5>
-                            <h5><a href="/topics-par-categories">GoH</a></h5>
-                            <h5><a href="/topics-par-categories">more</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Solo-Leveling</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">ToG</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">GoH</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">more</a></h5>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -373,11 +373,11 @@ echo $formatter->format(time());
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics-par-categories">Afrostories</a></h4>
+                        <h4><a href="/forums-<?= $topicsList[0]->categorie = 4 ?>">Afrostories</a></h4>
                         <div>
-                            <h5><a href="/topics-par-categories">Sat. A.M</a></h5>
-                            <h5><a href="/topics-par-categories">Kibongatsho</a></h5>
-                            <h5><a href="/topics-par-categories">more</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Sat. A.M</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Kibongatsho</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">more</a></h5>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -414,12 +414,12 @@ echo $formatter->format(time());
                         <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                     </div>
                     <div class="subforum-description subforum-column">
-                        <h4><a href="/topics-par-categories">B.D</a></h4>
+                        <h4><a href="/forums-<?= $topicsList[0]->categorie = 13 ?>">B.D</a></h4>
                         <div>
-                            <h5><a href="/topics-par-categories">Asterix</a></h5>
-                            <h5><a href="/topics-par-categories">Titeuf</a></h5>
-                            <h5><a href="/topics-par-categories">Tintin</a></h5>
-                            <h5><a href="/topics-par-categories">more</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Asterix</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Titeuf</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Tintin</a></h5>
+                            <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">more</a></h5>
                         </div>
                     </div>
                     <div class="subforum-stats subforum-column ">
@@ -467,10 +467,10 @@ echo $formatter->format(time());
                             <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                         </div>
                         <div class="subforum-description subforum-column">
-                            <h4><a href="/forums">Multiverse</a></h4>
+                            <h4><a href="/forums-<?= $topicsList[0]->categorie = 9 ?>">Multiverse</a></h4>
                             <div>
-                                <h5><a href="/topics-par-categories">Versus</a></h5>
-                                <h5><a href="/topics-par-categories">Théories</a></h5>
+                                <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Versus</a></h5>
+                                <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">Théories</a></h5>
                             </div>
                         </div>
                         <div class="subforum-stats subforum-column ">
@@ -506,9 +506,9 @@ echo $formatter->format(time());
                             <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                         </div>
                         <div class="subforum-description subforum-column">
-                            <h4><a href="/topics-par-categories">TAKE OR LOSE</a></h4>
+                            <h4><a href="/forums-<?= $topicsList[0]->categorie = 18 ?>">TAKE OR LOSE</a></h4>
                             <div>
-                                <h5><a href="/topics-par-categories">à venir...</a></h5>
+                                <h5><a href="/liste-souscategories-<?= $subCategoriesList[0]->id ?>">à venir...</a></h5>
                             </div>
                         </div>
                         <div class="subforum-stats subforum-column ">
@@ -559,7 +559,7 @@ echo $formatter->format(time());
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Novels</a></h4>
+                                <h4><a href="/forums-<?= $topicsList[0]->categorie = 5 ?>">Novels</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -596,7 +596,7 @@ echo $formatter->format(time());
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Anime</a></h4>
+                                <h4><a href="/forums-<?= $topicsList[0]->categorie = 2 ?>">Anime</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -633,7 +633,7 @@ echo $formatter->format(time());
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Cartoons</a></h4>
+                                <h4><a href="/forums-<?= $topicsList[0]->categorie = 16 ?>">Cartoons</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -682,7 +682,7 @@ echo $formatter->format(time());
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Politique</a></h4>
+                                <h4><a href="/forums-<?= $topicsList[0]->categorie = 10 ?>">Politique</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -719,7 +719,7 @@ echo $formatter->format(time());
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Social</a></h4>
+                                <h4><a href="/forums-<?= $topicsList[0]->categorie = 11 ?>">Social</a></h4>
                                 <p>Soyons respecteux dans la discussion</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -768,7 +768,7 @@ echo $formatter->format(time());
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Main lounge</a></h4>
+                                <h4><a href="/forums-<?= $topicsList[0]->categorie = 19 ?>">Main lounge</a></h4>
                                 <p>Raccueillement de tous</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -805,7 +805,7 @@ echo $formatter->format(time());
                                 <i class="fa-regular fa-comment" style="color: #e0e9f6"></i>
                             </div>
                             <div class="subforum-description subforum-column">
-                                <h4><a href="/topics-par-categories">Clubs</a></h4>
+                                <h4><a href="/forums-<?= $topicsList[0]->categorie = 12 ?>">Clubs</a></h4>
                                 <p>Créez ou réjoignez un club de ton personnage preféré</p>
                             </div>
                             <div class="subforum-stats subforum-column ">
@@ -842,7 +842,7 @@ echo $formatter->format(time());
                                     <i class="fa-solid fa-dumpster" style="color: #e0e9f6"></i>
                                 </div>
                                 <div class="subforum-description subforum-column">
-                                    <h4><a href="/topics-par-categories">Archives</a></h4>
+                                    <h4><a href="/forums-<?= $topicsList[0]->categorie = 20 ?>">Archives</a></h4>
                                     <p>Recycle Bin</p>
                                 </div>
                                 <div class="subforum-stats subforum-column ">
@@ -855,6 +855,7 @@ echo $formatter->format(time());
                         <?php } ?>
                     </div>
                 </div>
+                <?php } ?>
             </div>
     </section>
 
@@ -885,7 +886,7 @@ echo $formatter->format(time());
                     <li><b>Tournois:</b> <a href="#events"></a><span id="members-online"><a href="#profile">0</a></span>
                     </li>
                     <li><b>Evénements:</b> <a href="#events"></a><span id="posts-posted"><a
-                                href="/topics-par-categories">0</a></span></li>
+                                href="/forums-<?= $topicsList[0]->categorie = 15 ?>">0</a></span></li>
                 </ul>
             </div>
         <?php } ?>

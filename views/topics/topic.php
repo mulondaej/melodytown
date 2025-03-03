@@ -5,8 +5,12 @@
         <i id="backArrow" class="fa fa-arrow-left"> Back</i>
       </a></button>
     <div id="threadTitle">
-      <h2 id="tag"><?= $topicsDetails->tag ?></h2>
-      <h2><?= $topicsDetails->title ?></h2>
+      <?php if ($topicsDetails !== false): ?>
+        <h2 id="tag"><?= $topicsDetails->tag ?></h2>
+        <h2><?= $topicsDetails->title ?></h2>
+      <?php else: ?>
+        <h2>Topic not found</h2>
+      <?php endif; ?>
     </div>
     <hr>
   </div>
@@ -16,18 +20,21 @@
 
   <div id="threadContains">
     <div id="userCard">
-      <div class="userImg"><img src="/assets/IMG/users/<?= $topicsDetails->avatar ?>" id="userAvy"></div><br>
-      <div class="username">
-        <h5>@<a href="/profil-<?= $topicsDetails->id_users ?>"><?= $topicsDetails->username ?>
-          </a></h5>
-      </div><br>
+      <?php if ($topicsDetails !== false): ?>
+        <div class="userImg"><img src="/assets/IMG/users/<?= $topicsDetails->avatar ?>" id="userAvy"></div><br>
+        <div class="username">
+          <h5>@<a href="/profil-<?= $topicsDetails->id_users ?>"><?= $topicsDetails->username ?></a></h5>
+        </div><br>
+      <?php endif; ?>
     </div>
     <div id="threadContent">
       <div id="contents">
-        <p id="contentP"><?= $topicsDetails->content ?></p>
-        <div id="timed">
-          <p><?= $topicsDetails->publicationDate ?></p>
-        </div>
+        <?php if ($topicsDetails !== false): ?>
+          <p id="contentP"><?= $topicsDetails->content ?></p>
+          <div id="timed">
+            <p><?= $topicsDetails->publicationDate ?></p>
+          </div>
+        <?php endif; ?>
 
         <div class="interact">
           <?php if (!empty($_SESSION['user'])) { ?>

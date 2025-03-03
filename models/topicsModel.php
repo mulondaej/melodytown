@@ -95,11 +95,13 @@ class Topics
     public function getById()
     {
         $sql = 'SELECT `t`.`id`, `g`.`name` AS `tag`, `t`.`title`, `t`.`content`, 
-        DATE_FORMAT(`t`.`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`, `u`.`avatar`, `t`.`id_users`, `c`.`name` AS `categorie`, `s`.`name` AS `section`
+        DATE_FORMAT(`t`.`publicationDate`, "%d/%m/%y") AS `publicationDate`, `u`.`username`, `u`.`avatar`, `t`.`id_users`, 
+        `c`.`name` AS `categorie`, `z`.`name` AS `subcategorie`, `s`.`name` AS `section`
         FROM `a8yk4_topics` AS `t`
         INNER JOIN `a8yk4_users` AS `u` ON `t`.`id_users` = `u`.`id`
         INNER JOIN `a8yk4_tags` AS `g` ON `t`.`id_tags` = `g`.`id`
         INNER JOIN `a8yk4_categories` AS `c` ON `t`.`id_categories` = `c`.`id`
+        INNER JOIN `a8yk4_subcategories` AS `z` ON `t`.`id_subcategories` = `z`.`id`
         INNER JOIN `a8yk4_sections` AS `s` ON `t`.`id_sections` = `s`.`id`
         WHERE `t`.`id` = :id ';
         $req = $this->pdo->prepare($sql);
@@ -115,6 +117,7 @@ class Topics
         FROM `a8yk4_topics` AS `t`
         INNER JOIN `a8yk4_users` ON `t`.`id_users` = `a8yk4_users`.`id` 
         INNER JOIN `a8yk4_categories` ON `t`.`id_categories` = `a8yk4_categories`.`id`
+        INNER JOIN `a8yk4_subcategories` AS `z` ON `t`.`id_subcategories` = `z`.`id`
         INNER JOIN `a8yk4_tags` ON `t`.`id_tags` = `a8yk4_tags`.`id` 
         INNER JOIN `a8yk4_sections` ON `t`.`id_sections` = `a8yk4_sections`.`id`';
         $req = $this->pdo->prepare($sql);
@@ -124,13 +127,14 @@ class Topics
 
     public function getList()
     {
-        $sql = 'SELECT `t`.`id`, `g`.`name` AS `tag`, `c`.`name` AS `categorie`, `s`.`name` AS `section`,
+        $sql = 'SELECT `t`.`id`, `g`.`name` AS `tag`, `c`.`name` AS `categorie`, `z`.`name` AS `subcategorie`, `s`.`name` AS `section`,
         `title`, SUBSTR(`content`, 1, 500) AS `content`, 
         DATE_FORMAT(`publicationDate`, "%d/%m/%y") AS `publicationDate`, 
         DATE_FORMAT(`updateDate`, "%d/%m/%y") AS `updateDate`, `u`.`username` AS `username`, `id_users`
         FROM `a8yk4_topics` AS `t`
         INNER JOIN `a8yk4_tags` AS `g` ON `t`.`id_tags` = `g`.`id`
         INNER JOIN `a8yk4_categories` AS `c` ON `t`.`id_categories` = `c`.`id`
+        INNER JOIN `a8yk4_subcategories` AS `z` ON `t`.`id_subcategories` = `z`.`id`
         INNER JOIN `a8yk4_sections` AS `s` ON `t`.`id_sections` = `s`.`id`
         INNER JOIN `a8yk4_users` AS `u` ON `t`.`id_users` = `u`.`id`
         ORDER BY `publicationDate` DESC';
@@ -157,6 +161,19 @@ class Topics
         ORDER BY `publicationDate` DESC ';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id_categories', $this->id_categories, PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getTopicsBySubCategories()
+    {
+        $sql = 'SELECT t.`id`, t.`title, t.`content`, z.`name` AS `subcategorie`
+        FROM `a8yk4_topics` AS t
+        INNER JOIN `a8yk4_categories` AS z ON t.`id_subcategories` = z.`id`
+        WHERE id_subcategories = :id_subcategories
+        ORDER BY `publicationDate` DESC ';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':id_subcategories', $this->id_subcategories, PDO::PARAM_INT);
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }

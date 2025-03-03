@@ -161,7 +161,7 @@ $statusCount = count($statusList);
 
 $totalCount = $postCount + $topicCount + $statusCount;
 
-$title = 'Forums';
+$title = $topicsList = $topic->getList(0);
 
 
 require_once('../../views/parts/header.php');
