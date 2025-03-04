@@ -135,9 +135,11 @@ $categoriesCount = count($categoriesList);
 if($categoriesCount > 0) {
     $eachCategorie = $topic->getCategorie();
 }
-// if (count($categoriesList) > 0) {
-//     $eachTopic = $eachCategorie;
-// }
+
+$byCategories = $topic->getTopicsByCategories();
+$bySubCategories = $topic->getTopicsBySubCategories();
+$bySections = $topic->getTopicsBySections();
+$byTags = $topic->getTopicsByTags();
 
 $topicsList = $topic->getList();
 $topicCount = count($topicsList);

@@ -8,10 +8,10 @@ class Topics
     public string $publicationDate;
     public string $updateDate;
     public int $id_users;
-    public int $id_categories;
-    public int $id_subcategories; // Initialize with default value
-    public int $id_tags;
-    public int $id_sections;
+    public int $id_categories = 0;
+    public int $id_subcategories = 0; // Initialize with default value
+    public int $id_tags = 0;
+    public int $id_sections = 0;
 
     public function __construct()
     {
@@ -154,7 +154,7 @@ class Topics
 
     public function getTopicsByCategories()
     {
-        $sql = 'SELECT t.`id`, t.`title, t.`content`, c.`name` AS `categorie`
+        $sql = 'SELECT t.`id`, t.`title`, t.`content`, c.`name` AS `categorie`
         FROM `a8yk4_topics` AS t
         INNER JOIN `a8yk4_categories` AS c ON t.`id_categories` = c.`id`
         WHERE id_categories = :id_categories
@@ -167,7 +167,7 @@ class Topics
 
     public function getTopicsBySubCategories()
     {
-        $sql = 'SELECT t.`id`, t.`title, t.`content`, z.`name` AS `subcategorie`
+        $sql = 'SELECT t.`id`, t.`title`, t.`content`, z.`name` AS `subcategorie`
         FROM `a8yk4_topics` AS t
         INNER JOIN `a8yk4_categories` AS z ON t.`id_subcategories` = z.`id`
         WHERE id_subcategories = :id_subcategories
@@ -188,6 +188,18 @@ class Topics
         ORDER BY `t`.`publicationDate` DESC';
         $req = $this->pdo->prepare($sql);
         $req->bindValue(':id_sections', $this->id_sections, PDO::PARAM_INT);
+        $req->execute();
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getTopicsByTags() {
+        $sql = 'SELECT t.`id`, t.`title`, t.`content`, g.`name` AS `tag`
+        FROM `a8yk4_topics` AS t
+        INNER JOIN `a8yk4_tags` AS g ON t.`id_tags` = g.`id`
+        WHERE t.`id_tags` = :id_tags
+        ORDER BY `t`.`publicationDate` DESC';
+        $req = $this->pdo->prepare($sql);
+        $req->bindValue(':id_tags', $this->id_tags, PDO::PARAM_INT);
         $req->execute();
         return $req->fetchAll(PDO::FETCH_ASSOC);
     }
