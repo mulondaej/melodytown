@@ -183,6 +183,10 @@ if ($postCount > 0) {
     $latestReply = $replies->getReply();
 }
 
+$byCategories = $topic->getTopicsByCategories();
+$bySubCategories = $topic->getTopicsBySubCategories();
+$bySections = $topic->getTopicsBySections();
+$byTags = $topic->getTopicsByTags();
 
 //users
 $latestUser = $user->getLatestUser();

@@ -67,13 +67,13 @@
             <?php } ?>
 
 <?php if (isset($topicsList)) { ?>
-    <?php if(isset($topicsList->id_categories) == 1) ?>
             <div class="subforum manga" id="manga">
                 <div class="subforum-title">
                 <h1>
-                    <?php foreach ($topicsList as $c) {
-                        if ($c->categorie) {
-                            echo $c->categorie;
+    <?php if(isset($topicsList)) ?>
+                    <?php foreach ($topicsList as $t) {
+                        if ($t->categorie) {
+                            echo $t->categorie;
                         }
                     }?>
                 </h1>
