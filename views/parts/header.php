@@ -44,14 +44,14 @@
             </div>
 
             <!-- affiche de la barre de recherche -->
+            <div class="searchFormContainer">
                 <form method="POST" action="/topics-par-categories" class="searchContainer">
-                    
                     <input type="text" id="searchInput" name="searchQuery" placeholder="..Search...">
                     <button type="submit" id="searchingBtn" name="search">
                         <i class="fa-solid fa-magnifying-glass fa-sm"></i>
                     </button>
                 </form>
-
+            </div>
 
             <?php // si la personne n'est pas connécté
             if (empty($_SESSION['user'])) { ?>
